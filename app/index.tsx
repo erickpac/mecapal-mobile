@@ -1,19 +1,37 @@
 import { useStore } from "@/store/useStore";
 import { router } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 
 export default function Index() {
   const { isAuthenticated, hasCompletedOnboarding } = useStore();
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    console.log("Iniciando aplicación...");
+    const timer = setTimeout(() => {
+      console.log("Aplicación lista para navegar");
+      setReady(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!ready) return;
+
+    console.log("Estado actual:", { isAuthenticated, hasCompletedOnboarding });
+
     const navigate = async () => {
       try {
         if (!hasCompletedOnboarding) {
+          console.log("Navegando a onboarding...");
           router.replace("/onboarding");
         } else if (!isAuthenticated) {
+          console.log("Navegando a login...");
           router.replace("/login");
         } else {
+          console.log("Navegando a dashboard...");
           router.replace("/dashboard");
         }
       } catch (error) {
@@ -22,7 +40,7 @@ export default function Index() {
     };
 
     navigate();
-  }, [isAuthenticated, hasCompletedOnboarding]);
+  }, [isAuthenticated, hasCompletedOnboarding, ready]);
 
   return (
     <View className="flex-1 items-center justify-center bg-white">
