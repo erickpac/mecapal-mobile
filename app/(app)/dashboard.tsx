@@ -1,4 +1,4 @@
-import DashboardScreen from "@/features/dashboard/dashboard.screen";
+import DashboardScreen from "@/features/dashboard/screens/dashboard.screen";
 
 export default function Dashboard() {
   return <DashboardScreen />;
