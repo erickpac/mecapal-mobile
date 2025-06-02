@@ -1,6 +1,7 @@
 import { useAuth } from "@/hooks/useAuth";
+import { useStore } from "@/store/useStore";
 import { router } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -14,10 +15,17 @@ export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error } = useAuth();
+  const { isAuthenticated } = useStore();
 
   const handleLogin = () => {
     login({ email, password });
   };
+
+  useEffect(() => {
+    if (!isLoading && !error && isAuthenticated) {
+      router.replace("/home");
+    }
+  }, [isLoading, error, isAuthenticated]);
 
   return (
     <KeyboardAvoidingView

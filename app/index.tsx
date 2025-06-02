@@ -23,8 +23,8 @@ export default function Index() {
         } else if (!isAuthenticated) {
           router.replace("/login");
         } else {
-          console.log("Navegando a dashboard...");
-          router.replace("/dashboard");
+          console.log("Navegando a home...");
+          router.replace("/home");
         }
       } catch (error) {
         console.error("Error en la navegación:", error);

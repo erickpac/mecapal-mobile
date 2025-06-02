@@ -1,7 +1,7 @@
 import { useStore } from "@/store/useStore";
 import { Text, TouchableOpacity, View } from "react-native";
 
-export default function DashboardScreen() {
+export default function HomeScreen() {
   const { user, logout } = useStore();
 
   return (

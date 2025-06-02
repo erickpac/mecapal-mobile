@@ -1,5 +1,6 @@
 import { User } from "@/services/api/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -25,7 +26,10 @@ export const useStore = create<AppState>()(
       setToken: (token) => set({ token }),
       setHasCompletedOnboarding: (completed) =>
         set({ hasCompletedOnboarding: completed }),
-      logout: () => set({ user: null, token: null, isAuthenticated: false }),
+      logout: () => {
+        set({ user: null, token: null, isAuthenticated: false });
+        router.replace("/login");
+      },
     }),
     {
       name: "app-storage",
