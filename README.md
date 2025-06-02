@@ -1,50 +1,109 @@
-# Welcome to your Expo app 👋
+# Mecapal App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<p align="center">
+  <img src="https://reactnative.dev/img/tiny_logo.png" width="120" alt="React Native Logo" />
+</p>
 
-## Get started
+## Description
 
-1. Install dependencies
+Mecapal App is a mobile application that connects users with available truck drivers in real-time. Built with React Native and Expo, it provides an intuitive interface for users to find and connect with transporters based on their location, service type, and vehicle availability. The app features a modern UI with smooth animations and real-time updates.
 
-   ```bash
-   npm install
-   ```
+## Key Features
 
-2. Start the app
+- **User Authentication**: Secure login and registration with JWT support
+- **Location-Based Search**: Find nearby transporters using geolocation
+- **Real-time Updates**: Track service status and transporter availability
+- **WhatsApp Integration**: Direct communication with transporters
+- **Service Tracking**: Monitor service progress from booking to delivery
+- **Push Notifications**: Stay informed about service updates
+- **Profile Management**: Manage user preferences and service history
 
-   ```bash
-   npx expo start
-   ```
+## Tech Stack
 
-In the output, you'll find options to open the app in a
+- **Framework**: React Native with Expo
+- **Language**: TypeScript
+- **State Management**: Zustand
+- **Styling**: NativeWind (TailwindCSS for React Native)
+- **Navigation**: Expo Router
+- **API Client**: Axios with React Query
+- **Storage**: AsyncStorage
+- **Package Manager**: pnpm
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Prerequisites
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- Node.js (v18 or higher)
+- pnpm
+- Expo CLI
+- iOS Simulator (for Mac) or Android Studio (for Android development)
 
-## Get a fresh project
-
-When you're ready, run:
+## Installation
 
 ```bash
-npm run reset-project
+# Clone the repository
+$ git clone git@github.com:erickpac/mecapal-mobile.git
+
+# Navigate into the project
+$ cd mecapal-app
+
+# Install dependencies
+$ pnpm install
+
+# Start the development server
+$ pnpm start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Running the Application
 
-## Learn more
+```bash
+# Start the development server
+$ pnpm start
 
-To learn more about developing your project with Expo, look at the following resources:
+# Run on iOS
+$ pnpm ios
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+# Run on Android
+$ pnpm android
 
-## Join the community
+# Run on Web
+$ pnpm web
+```
 
-Join our community of developers creating universal apps.
+### Development
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+# Lint the code
+$ pnpm lint
+
+# Reset project cache
+$ pnpm reset-project
+```
+
+## Project Structure
+
+```
+mecapal-app/
+├── app/              # Main application screens and navigation
+├── assets/          # Images, fonts, and other static files
+├── components/      # Reusable UI components
+├── config/          # Configuration files
+├── features/        # Feature-specific components and logic
+├── hooks/           # Custom React hooks
+├── services/        # API and third-party service integrations
+├── store/           # State management with Zustand
+└── utils/           # Utility functions and helpers
+```
+
+## Environment Setup
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+API_URL=your_api_url_here
+```
+
+## Acknowledgments
+
+- React Native team for the mobile framework
+- Expo team for the development platform
+- NativeWind team for the styling solution
+- All contributors helping this project grow
