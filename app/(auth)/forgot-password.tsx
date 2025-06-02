@@ -1,4 +1,4 @@
-import ForgotPasswordScreen from "@/features/auth/ForgotPasswordScreen";
+import ForgotPasswordScreen from "@/features/auth/forgot-password.screen";
 export default function ForgotPassword() {
   return <ForgotPasswordScreen />;
 }

@@ -1,4 +1,4 @@
-import OnboardingScreen from "@/features/onboarding/OnboardingScreen";
+import OnboardingScreen from "@/features/onboarding/onboarding.screen";
 import { useEffect } from "react";
 
 export default function Onboarding() {

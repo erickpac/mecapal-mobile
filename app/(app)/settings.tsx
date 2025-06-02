@@ -1,4 +1,4 @@
-import SettingsScreen from "@/features/dashboard/SettingsScreen";
+import SettingsScreen from "@/features/dashboard/settings.screen";
 export default function Settings() {
   return <SettingsScreen />;
 }
