@@ -8,13 +8,7 @@ export default function Index() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    console.log("Iniciando aplicación...");
-    const timer = setTimeout(() => {
-      console.log("Aplicación lista para navegar");
-      setReady(true);
-    }, 1000);
-
-    return () => clearTimeout(timer);
+    setReady(true);
   }, []);
 
   useEffect(() => {
@@ -25,10 +19,8 @@ export default function Index() {
     const navigate = async () => {
       try {
         if (!hasCompletedOnboarding) {
-          console.log("Navegando a onboarding...");
           router.replace("/onboarding");
         } else if (!isAuthenticated) {
-          console.log("Navegando a login...");
           router.replace("/login");
         } else {
           console.log("Navegando a dashboard...");
