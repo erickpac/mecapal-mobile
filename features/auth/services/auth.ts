@@ -2,7 +2,7 @@ import {
   AuthResponse,
   LoginCredentials,
   RegisterCredentials,
-} from "../interfaces/auth";
+} from "../types/auth";
 import { api, AUTH_ENDPOINTS } from "@/services/api";
 
 export const authService = {

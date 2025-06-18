@@ -2,7 +2,7 @@ import axios from "axios";
 import { AUTH_ENDPOINTS } from "@/services/api/config/endpoints";
 import TokenManager from "./token-manager";
 import { useStore } from "@/store/useStore";
-import { RefreshTokenResponse, RefreshTokenRequest } from "../interfaces/auth";
+import { RefreshTokenResponse, RefreshTokenRequest } from "../types/auth";
 import { TOKEN_CONFIG } from "@/services/api/config/constants";
 
 export class TokenService {

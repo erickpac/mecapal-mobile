@@ -2,7 +2,7 @@ import { authService } from "@/features/auth/services/auth";
 import {
   LoginCredentials,
   RegisterCredentials,
-} from "@/features/auth/interfaces/auth";
+} from "@/features/auth/types/auth";
 import { useStore } from "@/store/useStore";
 import { useMutation } from "@tanstack/react-query";
 

@@ -1,4 +1,4 @@
-import { User } from "@/features/auth/interfaces/user";
+import { User } from "@/features/auth/types/user";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import { create } from "zustand";
