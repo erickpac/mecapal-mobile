@@ -27,6 +27,7 @@ export class TokenService {
 
       return true;
     } catch (error) {
+      console.log("❌ Token refresh failed:", error);
       this.clearAllTokens();
       return false;
     }

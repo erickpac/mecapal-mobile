@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack } from "expo-router";
-import { useEffect } from "react";
 import { View } from "react-native";
 import "../global.css";
 import { useTokenInitialization } from "@/hooks/useTokenInitialization";
