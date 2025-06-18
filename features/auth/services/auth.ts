@@ -1,0 +1,78 @@
+import {
+  AuthResponse,
+  LoginCredentials,
+  RegisterCredentials,
+} from "../interfaces/auth";
+import api from "@/services/api/axios";
+import { AUTH_ENDPOINTS } from "@/services/api/endpoints";
+
+export const authService = {
+  login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
+    try {
+      const response = await api.post(AUTH_ENDPOINTS.LOGIN, credentials);
+      return response.data;
+    } catch (error: any) {
+      if (error.response?.status === 401) {
+        throw new Error("Credenciales inválidas");
+      }
+
+      if (error.response?.data?.message) {
+        throw new Error(error.response.data.message);
+      }
+
+      throw new Error("Error al iniciar sesión");
+    }
+  },
+
+  register: async (credentials: RegisterCredentials): Promise<AuthResponse> => {
+    try {
+      const response = await api.post(AUTH_ENDPOINTS.REGISTER, credentials);
+      return response.data;
+    } catch (error: any) {
+      if (error.response?.data?.message) {
+        throw new Error(error.response.data.message);
+      }
+
+      throw new Error("Error al registrar usuario");
+    }
+  },
+
+  refreshToken: async (
+    token: string
+  ): Promise<{ access_token: string; refresh_token: string }> => {
+    try {
+      const response = await api.post(AUTH_ENDPOINTS.REFRESH_TOKEN, {
+        refresh_token: token,
+      });
+      return response.data;
+    } catch (error: any) {
+      if (error.response?.data?.message) {
+        throw new Error(error.response.data.message);
+      }
+
+      throw new Error("Error al refrescar el token");
+    }
+  },
+
+  changePassword: async (
+    currentPassword: string,
+    newPassword: string
+  ): Promise<{ message: string }> => {
+    try {
+      await api.post(AUTH_ENDPOINTS.CHANGE_PASSWORD, {
+        currentPassword,
+        newPassword,
+      });
+
+      return {
+        message: "Contraseña actualizada exitosamente",
+      };
+    } catch (error: any) {
+      if (error.response?.data?.message) {
+        throw new Error(error.response.data.message);
+      }
+
+      throw new Error("Error al cambiar la contraseña");
+    }
+  },
+};

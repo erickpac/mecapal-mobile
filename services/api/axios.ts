@@ -1,4 +1,5 @@
-import { useStore } from "@/store/useStore";
+import TokenManager from "./token-manager";
+import { TokenService } from "./token-service";
 import axios from "axios";
 
 const api = axios.create({
@@ -11,10 +12,12 @@ const api = axios.create({
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
-    const token = useStore.getState().token;
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    const accessToken = TokenManager.getToken();
+
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
+
     return config;
   },
   (error) => {
@@ -28,11 +31,19 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    // Handle 401 Unauthorized
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-      useStore.getState().logout();
-      return Promise.reject(error);
+    // Check if we should attempt token refresh
+    if (TokenService.shouldAttemptRefresh(error)) {
+      TokenService.markRequestAsRetried(originalRequest);
+
+      // Attempt to refresh the token
+      const refreshSuccess = await TokenService.refreshAccessToken();
+
+      if (refreshSuccess) {
+        // Retry the original request with the new token
+        const newAccessToken = TokenManager.getToken();
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        return api(originalRequest);
+      }
     }
 
     return Promise.reject(error);

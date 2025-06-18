@@ -1,4 +1,4 @@
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 import { useStore } from "@/store/useStore";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
