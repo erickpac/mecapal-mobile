@@ -62,10 +62,7 @@ export default function ForgotPasswordScreen() {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => router.push("/login")}
-          className="mb-2"
-        >
+        <TouchableOpacity onPress={() => router.back()} className="mb-2">
           <Text className="text-blue-600 text-center">
             Volver al inicio de sesión
           </Text>
