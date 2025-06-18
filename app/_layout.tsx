@@ -19,10 +19,6 @@ export default function RootLayout() {
   // Initialize TokenManager with persisted token
   useTokenInitialization();
 
-  useEffect(() => {
-    console.log("Root layout mounted");
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <View className="flex-1 bg-white">

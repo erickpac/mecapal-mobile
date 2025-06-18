@@ -12,11 +12,9 @@ export class TokenService {
    */
   static async refreshAccessToken(): Promise<boolean> {
     try {
-      console.log("🔄 Attempting token refresh...");
-
       const refreshToken = useStore.getState().refreshToken;
+
       if (!refreshToken) {
-        console.log("❌ No refresh token available");
         return false;
       }
 
@@ -27,18 +25,8 @@ export class TokenService {
       // Update both tokens in store and TokenManager
       this.updateTokens(newAccessToken, newRefreshToken);
 
-      console.log("✅ Tokens refreshed successfully");
-      console.log(
-        "   - New access token:",
-        newAccessToken.substring(0, 20) + "..."
-      );
-      console.log(
-        "   - New refresh token:",
-        newRefreshToken.substring(0, 20) + "..."
-      );
       return true;
     } catch (error) {
-      console.log("❌ Token refresh failed:", error);
       this.clearAllTokens();
       return false;
     }

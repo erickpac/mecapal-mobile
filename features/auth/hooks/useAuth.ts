@@ -12,7 +12,6 @@ export const useAuth = () => {
   const login = useMutation({
     mutationFn: authService.login,
     onSuccess: (response) => {
-      console.log("🔍 Login successful:", response.user.email);
       setUser(response.user);
       setAccessToken(response.access_token);
       setRefreshToken(response.refresh_token);
@@ -22,7 +21,6 @@ export const useAuth = () => {
   const register = useMutation({
     mutationFn: authService.register,
     onSuccess: (response) => {
-      console.log("🔍 Register successful:", response.user.email);
       setUser(response.user);
       setAccessToken(response.access_token);
       setRefreshToken(response.refresh_token);
