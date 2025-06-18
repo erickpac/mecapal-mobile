@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useStore } from "@/store/useStore";
-import TokenManager from "@/services/api/token-manager";
+import TokenManager from "@/features/auth/services/token-manager";
 
 export const useTokenInitialization = () => {
   const { accessToken } = useStore();

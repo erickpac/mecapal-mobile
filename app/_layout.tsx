@@ -3,7 +3,7 @@ import { Stack } from "expo-router";
 import { View } from "react-native";
 import "../global.css";
 import { useTokenInitialization } from "@/hooks/useTokenInitialization";
-import { API_CONFIG } from "@/services/api/constants";
+import { API_CONFIG } from "@/services/api/config/constants";
 
 const queryClient = new QueryClient({
   defaultOptions: {

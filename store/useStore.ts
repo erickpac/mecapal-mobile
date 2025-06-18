@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import TokenManager from "@/services/api/token-manager";
+import TokenManager from "@/features/auth/services/token-manager";
 
 interface AppState {
   user: User | null;

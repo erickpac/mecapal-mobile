@@ -1,5 +1,5 @@
-import TokenManager from "./token-manager";
-import { TokenService } from "./token-service";
+import TokenManager from "@/features/auth/services/token-manager";
+import { TokenService } from "@/features/auth/services/token";
 import axios from "axios";
 
 const api = axios.create({

@@ -3,8 +3,7 @@ import {
   LoginCredentials,
   RegisterCredentials,
 } from "../interfaces/auth";
-import api from "@/services/api/axios";
-import { AUTH_ENDPOINTS } from "@/services/api/endpoints";
+import { api, AUTH_ENDPOINTS } from "@/services/api";
 
 export const authService = {
   login: async (credentials: LoginCredentials): Promise<AuthResponse> => {

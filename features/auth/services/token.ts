@@ -1,9 +1,9 @@
 import axios from "axios";
-import { AUTH_ENDPOINTS } from "./endpoints";
+import { AUTH_ENDPOINTS } from "@/services/api/config/endpoints";
 import TokenManager from "./token-manager";
 import { useStore } from "@/store/useStore";
-import { RefreshTokenResponse, RefreshTokenRequest } from "./types";
-import { TOKEN_CONFIG } from "./constants";
+import { RefreshTokenResponse, RefreshTokenRequest } from "../interfaces/auth";
+import { TOKEN_CONFIG } from "@/services/api/config/constants";
 
 export class TokenService {
   /**
