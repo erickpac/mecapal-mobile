@@ -37,23 +37,6 @@ export const authService = {
     }
   },
 
-  refreshToken: async (
-    token: string
-  ): Promise<{ access_token: string; refresh_token: string }> => {
-    try {
-      const response = await api.post(AUTH_ENDPOINTS.REFRESH_TOKEN, {
-        refresh_token: token,
-      });
-      return response.data;
-    } catch (error: any) {
-      if (error.response?.data?.message) {
-        throw new Error(error.response.data.message);
-      }
-
-      throw new Error("Error al refrescar el token");
-    }
-  },
-
   changePassword: async (
     currentPassword: string,
     newPassword: string

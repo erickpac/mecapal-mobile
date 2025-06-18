@@ -27,14 +27,6 @@ export const useAuth = () => {
     },
   });
 
-  const refreshToken = useMutation({
-    mutationFn: authService.refreshToken,
-    onSuccess: (response) => {
-      setAccessToken(response.access_token);
-      setRefreshToken(response.refresh_token);
-    },
-  });
-
   const changePassword = useMutation({
     mutationFn: ({
       currentPassword,
@@ -49,7 +41,6 @@ export const useAuth = () => {
     login: (credentials: LoginCredentials) => login.mutate(credentials),
     register: (credentials: RegisterCredentials) =>
       register.mutate(credentials),
-    refreshToken: (token: string) => refreshToken.mutate(token),
     changePassword: (currentPassword: string, newPassword: string) =>
       changePassword.mutate({ currentPassword, newPassword }),
     isLoading: login.isPending || register.isPending,
