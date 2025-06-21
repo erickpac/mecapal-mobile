@@ -10,13 +10,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-
+import { useTranslation } from "react-i18next";
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error } = useAuth();
   const { isAuthenticated } = useStore();
-
+  const { t } = useTranslation();
   const handleLogin = () => {
     login({ email, password });
   };
@@ -34,7 +34,7 @@ export default function LoginScreen() {
     >
       <View className="w-full max-w-md bg-white rounded-2xl p-6 shadow">
         <Text className="text-3xl font-bold mb-6 text-center">
-          Iniciar Sesión
+          {t("auth.login.title")}
         </Text>
 
         {error && (
@@ -45,7 +45,7 @@ export default function LoginScreen() {
 
         <TextInput
           className="border border-gray-300 rounded-lg p-4 mb-4 bg-gray-50 text-base"
-          placeholder="Correo electrónico"
+          placeholder={t("auth.login.email")}
           keyboardType="email-address"
           autoCapitalize="none"
           value={email}
@@ -54,7 +54,7 @@ export default function LoginScreen() {
 
         <TextInput
           className="border border-gray-300 rounded-lg p-4 mb-6 bg-gray-50 text-base"
-          placeholder="Contraseña"
+          placeholder={t("auth.login.password")}
           secureTextEntry
           value={password}
           onChangeText={setPassword}
@@ -68,7 +68,7 @@ export default function LoginScreen() {
           }`}
         >
           <Text className="text-white text-center font-semibold text-lg">
-            {isLoading ? "Cargando..." : "Iniciar Sesión"}
+            {isLoading ? t("auth.login.loading") : t("auth.login.login")}
           </Text>
         </TouchableOpacity>
 
@@ -77,13 +77,13 @@ export default function LoginScreen() {
           className="mb-2"
         >
           <Text className="text-blue-600 text-center">
-            ¿No tienes cuenta? Regístrate
+            {t("auth.login.noAccount")}
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push("/forgot-password")}>
           <Text className="text-blue-600 text-center">
-            ¿Olvidaste tu contraseña?
+            {t("auth.login.forgotPassword")}
           </Text>
         </TouchableOpacity>
       </View>
