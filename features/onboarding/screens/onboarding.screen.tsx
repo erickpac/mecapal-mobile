@@ -1,6 +1,5 @@
 import { useStore } from "@/store/useStore";
 import { router } from "expo-router";
-import { useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 export default function OnboardingScreen() {
@@ -8,12 +7,7 @@ export default function OnboardingScreen() {
     (state) => state.setHasCompletedOnboarding
   );
 
-  useEffect(() => {
-    console.log("OnboardingScreen component mounted");
-  }, []);
-
   const handleComplete = () => {
-    console.log("Completing onboarding...");
     setHasCompletedOnboarding(true);
     router.replace("/login");
   };
