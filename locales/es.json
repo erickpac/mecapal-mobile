@@ -1,0 +1,13 @@
+{
+  "auth": {
+    "login": {
+      "title": "Iniciar sesión",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "login": "Iniciar sesión",
+      "loading": "Cargando...",
+      "noAccount": "¿No tienes cuenta? Regístrate",
+      "forgotPassword": "¿Olvidaste tu contraseña?"
+    }
+  }
+}

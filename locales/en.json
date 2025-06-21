@@ -1,0 +1,13 @@
+{
+  "auth": {
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "login": "Login",
+      "loading": "Loading...",
+      "noAccount": "No account? Register",
+      "forgotPassword": "Forgot password?"
+    }
+  }
+}
