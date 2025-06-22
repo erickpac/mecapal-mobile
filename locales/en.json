@@ -8,6 +8,22 @@
       "loading": "Loading...",
       "noAccount": "No account? Register",
       "forgotPassword": "Forgot password?"
+    },
+    "errors": {
+      "invalidCredentials": "Invalid credentials",
+      "unauthorized": "You don't have permission to perform this action",
+      "loginError": "Login error",
+      "registerError": "Register error",
+      "changePasswordError": "Change password error"
+    }
+  },
+  "general": {
+    "errors": {
+      "generic": "An error occurred while processing your request. Please try again later.",
+      "notFound": "The requested resource was not found",
+      "validationError": "The provided data is not valid",
+      "serverError": "Internal server error. Please try again later",
+      "networkError": "Connection error. Please check your internet connection"
     }
   }
 }
