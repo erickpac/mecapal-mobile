@@ -15,17 +15,17 @@ export class ErrorHandler {
     // Map specific error codes
     switch (apiError.status) {
       case 401:
-        return "auth.errors.invalidCredentials";
+        return "errors.unauthorized";
       case 403:
-        return "auth.errors.unauthorized";
+        return "errors.forbidden";
       case 404:
-        return "general.errors.notFound";
+        return "errors.notFound";
       case 422:
-        return "general.errors.validationError";
+        return "errors.validationError";
       case 500:
-        return "general.errors.serverError";
+        return "errors.serverError";
       default:
-        return "general.errors.generic";
+        return "errors.generic";
     }
   }
 

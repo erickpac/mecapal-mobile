@@ -1,29 +1,137 @@
 {
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "close": "Cerrar"
+  },
   "auth": {
     "login": {
       "title": "Iniciar sesión",
       "email": "Correo electrónico",
       "password": "Contraseña",
       "login": "Iniciar sesión",
-      "loading": "Cargando...",
       "noAccount": "¿No tienes cuenta? Regístrate",
       "forgotPassword": "¿Olvidaste tu contraseña?"
     },
+    "register": {
+      "title": "Registrarse",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "register": "Registrarse",
+      "hasAccount": "¿Ya tienes cuenta? Inicia sesión"
+    },
+    "forgotPassword": {
+      "title": "Olvidé mi contraseña",
+      "email": "Correo electrónico",
+      "submit": "Enviar enlace de restablecimiento",
+      "backToLogin": "Volver al inicio de sesión"
+    },
     "errors": {
-      "invalidCredentials": "Credenciales inválidas",
-      "unauthorized": "No tienes permisos para realizar esta acción",
       "loginError": "Error al iniciar sesión",
       "registerError": "Error al registrar usuario",
-      "changePasswordError": "Error al cambiar la contraseña"
+      "changePasswordError": "Error al cambiar la contraseña",
+      "invalidEmail": "Formato de correo electrónico inválido",
+      "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+      "passwordsDoNotMatch": "Las contraseñas no coinciden"
     }
   },
-  "general": {
-    "errors": {
-      "generic": "Ocurrió un error al procesar su solicitud. Por favor, inténtelo de nuevo más tarde.",
-      "notFound": "El recurso solicitado no fue encontrado",
-      "validationError": "Los datos proporcionados no son válidos",
-      "serverError": "Error interno del servidor. Por favor, inténtelo más tarde",
-      "networkError": "Error de conexión. Verifique su conexión a internet"
+  "onboarding": {
+    "welcome": {
+      "title": "Bienvenido a Mecapal",
+      "subtitle": "Tu compañero de finanzas personales",
+      "getStarted": "Comenzar"
+    },
+    "step1": {
+      "title": "Rastrea tus gastos",
+      "description": "Registra y categoriza fácilmente tus gastos diarios"
+    },
+    "step2": {
+      "title": "Establece metas de presupuesto",
+      "description": "Crea presupuestos y mantente en el camino hacia tus metas financieras"
+    },
+    "step3": {
+      "title": "Analiza y mejora",
+      "description": "Obtén información sobre tus patrones de gasto y ahorra más"
     }
+  },
+  "home": {
+    "title": "Inicio",
+    "greeting": "Hola, {{name}}",
+    "balance": {
+      "title": "Saldo actual",
+      "available": "Disponible",
+      "spent": "Gastado este mes"
+    },
+    "quickActions": {
+      "addExpense": "Agregar gasto",
+      "addIncome": "Agregar ingreso",
+      "viewReports": "Ver reportes"
+    },
+    "recentTransactions": {
+      "title": "Transacciones recientes",
+      "noTransactions": "Aún no hay transacciones"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "personalInfo": {
+      "title": "Información personal",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "phone": "Teléfono"
+    },
+    "preferences": {
+      "title": "Preferencias",
+      "currency": "Moneda",
+      "language": "Idioma",
+      "notifications": "Notificaciones"
+    },
+    "account": {
+      "title": "Cuenta",
+      "changePassword": "Cambiar contraseña",
+      "logout": "Cerrar sesión",
+      "deleteAccount": "Eliminar cuenta"
+    }
+  },
+  "settings": {
+    "title": "Configuración",
+    "appearance": {
+      "title": "Apariencia",
+      "theme": "Tema",
+      "darkMode": "Modo oscuro",
+      "lightMode": "Modo claro",
+      "system": "Sistema"
+    },
+    "notifications": {
+      "title": "Notificaciones",
+      "enabled": "Habilitar notificaciones",
+      "budgetAlerts": "Alertas de presupuesto",
+      "billReminders": "Recordatorios de facturas"
+    },
+    "data": {
+      "title": "Datos y privacidad",
+      "exportData": "Exportar datos",
+      "importData": "Importar datos",
+      "clearData": "Borrar todos los datos"
+    }
+  },
+  "errors": {
+    "generic": "Ocurrió un error al procesar su solicitud. Por favor, inténtelo de nuevo más tarde.",
+    "unauthorized": "Credenciales inválidas o no proporcionadas",
+    "forbidden": "No tienes permisos para realizar esta acción",
+    "notFound": "El recurso solicitado no fue encontrado",
+    "validationError": "Los datos proporcionados no son válidos",
+    "serverError": "Error interno del servidor. Por favor, inténtelo más tarde",
+    "networkError": "Error de conexión. Verifique su conexión a internet"
   }
 }

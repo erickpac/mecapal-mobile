@@ -1,29 +1,137 @@
 {
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "close": "Close"
+  },
   "auth": {
     "login": {
       "title": "Login",
       "email": "Email",
       "password": "Password",
       "login": "Login",
-      "loading": "Loading...",
       "noAccount": "No account? Register",
       "forgotPassword": "Forgot password?"
     },
+    "register": {
+      "title": "Register",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "register": "Register",
+      "hasAccount": "Already have an account? Login"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "email": "Email",
+      "submit": "Send Reset Link",
+      "backToLogin": "Back to Login"
+    },
     "errors": {
-      "invalidCredentials": "Invalid credentials",
-      "unauthorized": "You don't have permission to perform this action",
       "loginError": "Login error",
       "registerError": "Register error",
-      "changePasswordError": "Change password error"
+      "changePasswordError": "Change password error",
+      "invalidEmail": "Invalid email format",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "passwordsDoNotMatch": "Passwords do not match"
     }
   },
-  "general": {
-    "errors": {
-      "generic": "An error occurred while processing your request. Please try again later.",
-      "notFound": "The requested resource was not found",
-      "validationError": "The provided data is not valid",
-      "serverError": "Internal server error. Please try again later",
-      "networkError": "Connection error. Please check your internet connection"
+  "onboarding": {
+    "welcome": {
+      "title": "Welcome to Mecapal",
+      "subtitle": "Your personal finance companion",
+      "getStarted": "Get Started"
+    },
+    "step1": {
+      "title": "Track Your Expenses",
+      "description": "Easily record and categorize your daily expenses"
+    },
+    "step2": {
+      "title": "Set Budget Goals",
+      "description": "Create budgets and stay on track with your financial goals"
+    },
+    "step3": {
+      "title": "Analyze & Improve",
+      "description": "Get insights into your spending patterns and save more"
     }
+  },
+  "home": {
+    "title": "Home",
+    "greeting": "Hello, {{name}}",
+    "balance": {
+      "title": "Current Balance",
+      "available": "Available",
+      "spent": "Spent this month"
+    },
+    "quickActions": {
+      "addExpense": "Add Expense",
+      "addIncome": "Add Income",
+      "viewReports": "View Reports"
+    },
+    "recentTransactions": {
+      "title": "Recent Transactions",
+      "noTransactions": "No transactions yet"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "personalInfo": {
+      "title": "Personal Information",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "preferences": {
+      "title": "Preferences",
+      "currency": "Currency",
+      "language": "Language",
+      "notifications": "Notifications"
+    },
+    "account": {
+      "title": "Account",
+      "changePassword": "Change Password",
+      "logout": "Logout",
+      "deleteAccount": "Delete Account"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": {
+      "title": "Appearance",
+      "theme": "Theme",
+      "darkMode": "Dark Mode",
+      "lightMode": "Light Mode",
+      "system": "System"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "enabled": "Enable Notifications",
+      "budgetAlerts": "Budget Alerts",
+      "billReminders": "Bill Reminders"
+    },
+    "data": {
+      "title": "Data & Privacy",
+      "exportData": "Export Data",
+      "importData": "Import Data",
+      "clearData": "Clear All Data"
+    }
+  },
+  "errors": {
+    "generic": "An error occurred while processing your request. Please try again later.",
+    "unauthorized": "Invalid credentials or not provided",
+    "forbidden": "You don't have permission to perform this action",
+    "notFound": "The requested resource was not found",
+    "validationError": "The provided data is not valid",
+    "serverError": "Internal server error. Please try again later",
+    "networkError": "Connection error. Please check your internet connection"
   }
 }

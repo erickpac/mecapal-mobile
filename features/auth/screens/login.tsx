@@ -72,7 +72,7 @@ export default function LoginScreen() {
           }`}
         >
           <Text className="text-white text-center font-semibold text-lg">
-            {isLoading ? t("auth.login.loading") : t("auth.login.login")}
+            {isLoading ? t("common.loading") : t("auth.login.login")}
           </Text>
         </TouchableOpacity>
 
