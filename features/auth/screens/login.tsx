@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 import { useTranslation } from "react-i18next";
-import { useErrorHandler } from "@/utils/error-handler";
+import { useErrorHandler } from "@/hooks/useErrorHanlder";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
