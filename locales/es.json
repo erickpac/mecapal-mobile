@@ -8,6 +8,22 @@
       "loading": "Cargando...",
       "noAccount": "¿No tienes cuenta? Regístrate",
       "forgotPassword": "¿Olvidaste tu contraseña?"
+    },
+    "errors": {
+      "invalidCredentials": "Credenciales inválidas",
+      "unauthorized": "No tienes permisos para realizar esta acción",
+      "loginError": "Error al iniciar sesión",
+      "registerError": "Error al registrar usuario",
+      "changePasswordError": "Error al cambiar la contraseña"
+    }
+  },
+  "general": {
+    "errors": {
+      "generic": "Ocurrió un error al procesar su solicitud. Por favor, inténtelo de nuevo más tarde.",
+      "notFound": "El recurso solicitado no fue encontrado",
+      "validationError": "Los datos proporcionados no son válidos",
+      "serverError": "Error interno del servidor. Por favor, inténtelo más tarde",
+      "networkError": "Error de conexión. Verifique su conexión a internet"
     }
   }
 }

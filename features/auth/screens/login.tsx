@@ -11,12 +11,16 @@ import {
   View,
 } from "react-native";
 import { useTranslation } from "react-i18next";
+import { useErrorHandler } from "@/utils/error-handler";
+
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error } = useAuth();
   const { isAuthenticated } = useStore();
   const { t } = useTranslation();
+  const { handleError } = useErrorHandler();
+
   const handleLogin = () => {
     login({ email, password });
   };
@@ -39,7 +43,7 @@ export default function LoginScreen() {
 
         {error && (
           <Text className="text-red-500 text-center mb-4">
-            {error instanceof Error ? error.message : "Error al iniciar sesión"}
+            {handleError(error)}
           </Text>
         )}
 

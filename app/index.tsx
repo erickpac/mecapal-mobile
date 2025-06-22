@@ -1,41 +1,28 @@
 import { useStore } from "@/store/useStore";
 import { router } from "expo-router";
-import { useEffect, useState } from "react";
-import { ActivityIndicator, View } from "react-native";
+import { useEffect } from "react";
+import { LoadingScreen } from "@/components/loading-screen";
 
 export default function Index() {
-  const { isAuthenticated, hasCompletedOnboarding } = useStore();
-  const [ready, setReady] = useState(false);
+  const { isAuthenticated } = useStore();
 
   useEffect(() => {
-    setReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return;
-
-    console.log("Estado actual:", { isAuthenticated, hasCompletedOnboarding });
+    console.log(`Current state: ${isAuthenticated}`);
 
     const navigate = async () => {
       try {
-        if (!hasCompletedOnboarding) {
-          router.replace("/onboarding");
-        } else if (!isAuthenticated) {
+        if (!isAuthenticated) {
           router.replace("/login");
         } else {
           router.replace("/home");
         }
       } catch (error) {
-        console.error("Error en la navegación:", error);
+        console.error(`Navigation error: ${error}`);
       }
     };
 
     navigate();
-  }, [isAuthenticated, hasCompletedOnboarding, ready]);
+  }, [isAuthenticated]);
 
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <ActivityIndicator size="large" color="#0000ff" />
-    </View>
-  );
+  return <LoadingScreen />;
 }

@@ -2,10 +2,15 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack } from "expo-router";
 import { View } from "react-native";
 import "../global.css";
+import * as SplashScreen from "expo-splash-screen";
+import { useFonts } from "expo-font";
 import { useTokenInitialization } from "@/hooks/useTokenInitialization";
 import { API_CONFIG } from "@/services/api/config/constants";
 import { I18nextProvider } from "react-i18next";
 import i18n from "@/locales/i18n";
+import { useEffect } from "react";
+
+SplashScreen.preventAutoHideAsync();
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,6 +24,20 @@ const queryClient = new QueryClient({
 export default function RootLayout() {
   // Initialize TokenManager with persisted token
   useTokenInitialization();
+
+  const [loaded] = useFonts({
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+  });
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
