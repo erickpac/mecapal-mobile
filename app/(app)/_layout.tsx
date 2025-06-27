@@ -3,6 +3,13 @@ import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
 import { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import {
+  TRANSPORTER_TABS,
+  USER_TABS,
+  TRANSPORTER_HIDDEN_ROUTES,
+  USER_HIDDEN_ROUTES,
+  TAB_SCREEN_OPTIONS,
+} from "@/consts/navigation";
 
 export default function AppLayout() {
   const { user } = useStore();
@@ -19,201 +26,38 @@ export default function AppLayout() {
     return null;
   }
 
-  // If transporter, show transporter tabs
-  if (user.role === UserRole.TRANSPORTER) {
-    return (
-      <Tabs
-        screenOptions={{
-          headerShown: false,
-          tabBarActiveTintColor: "#007AFF",
-          tabBarInactiveTintColor: "#8E8E93",
-          tabBarStyle: {
-            backgroundColor: "#ffffff",
-            borderTopWidth: 1,
-            borderTopColor: "#e5e5e5",
-          },
-        }}
-      >
-        <Tabs.Screen
-          name="home"
-          options={{
-            title: "Dashboard",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="stats-chart" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="orders"
-          options={{
-            title: "Pedidos",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="list" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="vehicles"
-          options={{
-            title: "Vehículos",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="car" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="earnings"
-          options={{
-            title: "Ganancias",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="cash" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="schedule"
-          options={{
-            title: "Horario",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="calendar" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="profile"
-          options={{
-            title: "Perfil",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="person" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="services"
-          options={{
-            href: null, // Hide from tabs
-          }}
-        />
-        <Tabs.Screen
-          name="appointments"
-          options={{
-            href: null, // Hide from tabs
-          }}
-        />
-        <Tabs.Screen
-          name="emergency"
-          options={{
-            href: null, // Hide from tabs
-          }}
-        />
-        <Tabs.Screen
-          name="history"
-          options={{
-            href: null, // Hide from tabs
-          }}
-        />
-        <Tabs.Screen
-          name="settings"
-          options={{
-            href: null, // Hide from tabs
-          }}
-        />
-      </Tabs>
-    );
-  }
+  const isTransporter = user.role === UserRole.TRANSPORTER;
+  const activeTabs = isTransporter ? TRANSPORTER_TABS : USER_TABS;
+  const hiddenRoutes = isTransporter
+    ? TRANSPORTER_HIDDEN_ROUTES
+    : USER_HIDDEN_ROUTES;
 
-  // If regular user, show user tabs
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: "#007AFF",
-        tabBarInactiveTintColor: "#8E8E93",
-        tabBarStyle: {
-          backgroundColor: "#ffffff",
-          borderTopWidth: 1,
-          borderTopColor: "#e5e5e5",
-        },
-      }}
-    >
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: "Inicio",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="services"
-        options={{
-          title: "Servicios",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="construct" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="appointments"
-        options={{
-          title: "Citas",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="calendar" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: "Perfil",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="orders"
-        options={{
-          href: null, // Hide from tabs
-        }}
-      />
-      <Tabs.Screen
-        name="vehicles"
-        options={{
-          href: null, // Hide from tabs
-        }}
-      />
-      <Tabs.Screen
-        name="earnings"
-        options={{
-          href: null, // Hide from tabs
-        }}
-      />
-      <Tabs.Screen
-        name="schedule"
-        options={{
-          href: null, // Hide from tabs
-        }}
-      />
-      <Tabs.Screen
-        name="emergency"
-        options={{
-          href: null, // Hide from tabs
-        }}
-      />
-      <Tabs.Screen
-        name="history"
-        options={{
-          href: null, // Hide from tabs
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          href: null, // Hide from tabs
-        }}
-      />
+    <Tabs screenOptions={TAB_SCREEN_OPTIONS}>
+      {/* Render active tabs */}
+      {activeTabs.map((tab) => (
+        <Tabs.Screen
+          key={tab.name}
+          name={tab.name}
+          options={{
+            title: tab.title,
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name={tab.icon} size={size} color={color} />
+            ),
+          }}
+        />
+      ))}
+
+      {/* Render hidden routes */}
+      {hiddenRoutes.map((route) => (
+        <Tabs.Screen
+          key={route}
+          name={route}
+          options={{
+            href: null, // Hide from tabs
+          }}
+        />
+      ))}
     </Tabs>
   );
 }
