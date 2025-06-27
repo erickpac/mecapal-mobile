@@ -6,8 +6,7 @@ import {
   navigateToVehicles,
   navigateToEarnings,
   navigateToSchedule,
-  navigateToHomeOrders,
-  navigateToHomeOrderDetail,
+  navigateTo,
 } from "@/utils/navigation";
 
 export default function TransporterDashboardScreen() {
@@ -71,7 +70,7 @@ export default function TransporterDashboardScreen() {
             <Text className="text-xl font-semibold text-gray-800">
               Pedidos Recientes
             </Text>
-            <TouchableOpacity onPress={navigateToHomeOrders}>
+            <TouchableOpacity onPress={navigateToOrders}>
               <Text className="text-blue-600 font-medium">Ver todos</Text>
             </TouchableOpacity>
           </View>
@@ -101,7 +100,7 @@ export default function TransporterDashboardScreen() {
             ].map((order) => (
               <TouchableOpacity
                 key={order.id}
-                onPress={() => navigateToHomeOrderDetail(order.id)}
+                onPress={() => navigateTo(`/orders/${order.id}`)}
                 className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
               >
                 <View className="flex-row justify-between items-center">

@@ -17,11 +17,6 @@ export default function UserEmergencyScreen() {
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-red-500 p-4">
-        <Text className="text-2xl font-bold text-white">Emergencia</Text>
-        <Text className="text-red-100 mt-1">Servicio de emergencia 24/7</Text>
-      </View>
-
       <View className="p-4">
         {/* Emergency Contact */}
         <View className="mb-6">
