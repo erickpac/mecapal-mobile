@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 import { useTranslation } from "react-i18next";
-import { useErrorHandler } from "@/hooks/useErrorHanlder";
+import { useLocalizedError } from "@/hooks/useLocalizedError";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ export default function LoginScreen() {
   const { login, isLoading, error } = useAuth();
   const { isAuthenticated } = useStore();
   const { t } = useTranslation();
-  const { handleError } = useErrorHandler();
+  const { handleError } = useLocalizedError();
 
   const handleLogin = () => {
     login({ email, password });

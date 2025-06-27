@@ -36,6 +36,13 @@
       "submit": "Enviar enlace de restablecimiento",
       "backToLogin": "Volver al inicio de sesión"
     },
+    "changePassword": {
+      "title": "Cambiar contraseña",
+      "currentPassword": "Contraseña actual",
+      "newPassword": "Nueva contraseña",
+      "submit": "Cambiar contraseña",
+      "success": "Contraseña cambiada correctamente"
+    },
     "errors": {
       "loginError": "Error al iniciar sesión",
       "registerError": "Error al registrar usuario",

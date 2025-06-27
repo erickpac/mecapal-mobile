@@ -1,5 +1,5 @@
-import SettingsScreen from "@/features/main/screens/settings.screen";
+import SharedSettingsScreen from "@/features/shared/screens/settings.screen";
 
 export default function Settings() {
-  return <SettingsScreen />;
+  return <SharedSettingsScreen />;
 }

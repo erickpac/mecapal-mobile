@@ -36,6 +36,13 @@
       "submit": "Send Reset Link",
       "backToLogin": "Back to Login"
     },
+    "changePassword": {
+      "title": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "submit": "Change Password",
+      "success": "Password changed successfully"
+    },
     "errors": {
       "loginError": "Login error",
       "registerError": "Register error",
