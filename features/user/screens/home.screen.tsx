@@ -6,7 +6,7 @@ import {
   navigateToServices,
   navigateToAppointments,
   navigateToHomeEmergency,
-  navigateToHistory,
+  navigateToHomeHistory,
 } from "@/utils/navigation";
 
 // Type for Ionicons icons
@@ -110,7 +110,7 @@ export default function UserHomeScreen() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={navigateToHistory}
+              onPress={navigateToHomeHistory}
               className="bg-purple-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
               <Ionicons name="time" size={32} color="white" />

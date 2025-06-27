@@ -4,13 +4,6 @@ import { Ionicons } from "@expo/vector-icons";
 export default function UserHistoryScreen() {
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">Mi Historial</Text>
-        <Text className="text-gray-600 mt-1">
-          Revisa tus servicios anteriores
-        </Text>
-      </View>
-
       <View className="p-4">
         {/* Filtros */}
         <View className="mb-6">

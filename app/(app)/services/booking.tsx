@@ -6,9 +6,9 @@ import {
   TextInput,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
 import { router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
+import NavigationHeader from "@/components/navigation-header";
 
 export default function BookingScreen() {
   const { serviceId } = useLocalSearchParams<{ serviceId: string }>();
@@ -31,17 +31,7 @@ export default function BookingScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-white" edges={["top", "left", "right"]}>
-      <View className="bg-white p-4 border-b border-gray-200">
-        <TouchableOpacity
-          onPress={() => router.back()}
-          className="flex-row items-center mb-4"
-        >
-          <Ionicons name="arrow-back" size={24} color="#007AFF" />
-          <Text className="text-lg font-semibold ml-2 text-gray-800">
-            Reservar Servicio
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <NavigationHeader title="Reservar Servicio" />
 
       <ScrollView className="flex-1 p-4">
         <View className="space-y-6">

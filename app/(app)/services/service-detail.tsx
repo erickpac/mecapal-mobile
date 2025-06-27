@@ -1,8 +1,9 @@
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
-import { router, useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import { navigateToServicesBooking } from "@/utils/navigation";
+import NavigationHeader from "@/components/navigation-header";
 
 export default function ServiceDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -13,17 +14,7 @@ export default function ServiceDetailScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-white" edges={["top", "left", "right"]}>
-      <View className="bg-white p-4 border-b border-gray-200">
-        <TouchableOpacity
-          onPress={() => router.back()}
-          className="flex-row items-center mb-4"
-        >
-          <Ionicons name="arrow-back" size={24} color="#007AFF" />
-          <Text className="text-lg font-semibold ml-2 text-gray-800">
-            Detalle del Servicio
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <NavigationHeader title="Detalle del Servicio" />
 
       <ScrollView className="flex-1 p-4">
         <View className="space-y-6">

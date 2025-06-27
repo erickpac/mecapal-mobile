@@ -15,6 +15,7 @@ export const ROUTES = {
 
   // Nested home routes
   HOME_EMERGENCY: "/home/emergency",
+  HOME_HISTORY: "/home/history",
 
   // Nested services routes
   SERVICES_DETAIL: "/services/service-detail",
@@ -48,6 +49,7 @@ export const navigateToHistory = () => navigateTo(ROUTES.HISTORY);
 
 // Nested home navigation functions
 export const navigateToHomeEmergency = () => navigateTo(ROUTES.HOME_EMERGENCY);
+export const navigateToHomeHistory = () => navigateTo(ROUTES.HOME_HISTORY);
 
 // Nested services navigation functions
 export const navigateToServicesDetail = (serviceId: string) =>
