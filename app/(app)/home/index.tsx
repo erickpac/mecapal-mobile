@@ -4,7 +4,7 @@ import UserHomeScreen from "@/features/user/screens/home.screen";
 import TransporterDashboardScreen from "@/features/transporter/screens/dashboard.screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Home() {
+export default function HomeIndex() {
   const { user } = useStore();
 
   return (

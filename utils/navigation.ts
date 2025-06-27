@@ -12,11 +12,27 @@ export const ROUTES = {
   SCHEDULE: "/schedule",
   EMERGENCY: "/emergency",
   HISTORY: "/history",
+
+  // Nested home routes
+  HOME_EMERGENCY: "/home/emergency",
+
+  // Nested services routes
+  SERVICES_DETAIL: "/services/service-detail",
+  SERVICES_BOOKING: "/services/booking",
 } as const;
 
 // Helper function for typed navigation
 export const navigateTo = (route: string) => {
   router.push(route as any);
+};
+
+// Helper function for navigation with parameters
+export const navigateToWithParams = (
+  route: string,
+  params: Record<string, string>
+) => {
+  const queryString = new URLSearchParams(params).toString();
+  router.push(`${route}?${queryString}` as any);
 };
 
 // Typed navigation functions
@@ -29,3 +45,12 @@ export const navigateToEarnings = () => navigateTo(ROUTES.EARNINGS);
 export const navigateToSchedule = () => navigateTo(ROUTES.SCHEDULE);
 export const navigateToEmergency = () => navigateTo(ROUTES.EMERGENCY);
 export const navigateToHistory = () => navigateTo(ROUTES.HISTORY);
+
+// Nested home navigation functions
+export const navigateToHomeEmergency = () => navigateTo(ROUTES.HOME_EMERGENCY);
+
+// Nested services navigation functions
+export const navigateToServicesDetail = (serviceId: string) =>
+  navigateToWithParams(ROUTES.SERVICES_DETAIL, { id: serviceId });
+export const navigateToServicesBooking = (serviceId: string) =>
+  navigateToWithParams(ROUTES.SERVICES_BOOKING, { serviceId });

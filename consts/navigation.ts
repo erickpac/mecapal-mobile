@@ -71,7 +71,6 @@ export const USER_TABS: TabConfig[] = [
 export const TRANSPORTER_HIDDEN_ROUTES = [
   "services",
   "appointments",
-  "emergency",
   "history",
   "settings",
 ];
@@ -80,7 +79,6 @@ export const USER_HIDDEN_ROUTES = [
   "vehicles",
   "earnings",
   "schedule",
-  "emergency",
   "history",
   "settings",
 ];

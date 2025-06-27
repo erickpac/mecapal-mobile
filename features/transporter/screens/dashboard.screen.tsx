@@ -2,11 +2,12 @@ import { useStore } from "@/store/useStore";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import {
-  navigateTo,
   navigateToOrders,
   navigateToVehicles,
   navigateToEarnings,
   navigateToSchedule,
+  navigateToHomeOrders,
+  navigateToHomeOrderDetail,
 } from "@/utils/navigation";
 
 export default function TransporterDashboardScreen() {
@@ -70,7 +71,7 @@ export default function TransporterDashboardScreen() {
             <Text className="text-xl font-semibold text-gray-800">
               Pedidos Recientes
             </Text>
-            <TouchableOpacity onPress={navigateToOrders}>
+            <TouchableOpacity onPress={navigateToHomeOrders}>
               <Text className="text-blue-600 font-medium">Ver todos</Text>
             </TouchableOpacity>
           </View>
@@ -100,7 +101,7 @@ export default function TransporterDashboardScreen() {
             ].map((order) => (
               <TouchableOpacity
                 key={order.id}
-                onPress={() => navigateTo(`/orders/${order.id}`)}
+                onPress={() => navigateToHomeOrderDetail(order.id)}
                 className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
               >
                 <View className="flex-row justify-between items-center">

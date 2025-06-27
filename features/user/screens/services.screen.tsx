@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { navigateTo } from "@/utils/navigation";
+import { navigateToServicesDetail } from "@/utils/navigation";
 
 // Type for Ionicons icons
 type IconName = keyof typeof Ionicons.glyphMap;
@@ -55,7 +55,7 @@ export default function UserServicesScreen() {
           ].map((service) => (
             <TouchableOpacity
               key={service.id}
-              onPress={() => navigateTo(`/services/${service.id}`)}
+              onPress={() => navigateToServicesDetail(service.id)}
               className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
             >
               <View className="flex-row items-center">

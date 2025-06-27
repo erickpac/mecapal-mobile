@@ -5,7 +5,7 @@ import {
   navigateTo,
   navigateToServices,
   navigateToAppointments,
-  navigateToEmergency,
+  navigateToHomeEmergency,
   navigateToHistory,
 } from "@/utils/navigation";
 
@@ -102,7 +102,7 @@ export default function UserHomeScreen() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={navigateToEmergency}
+              onPress={navigateToHomeEmergency}
               className="bg-red-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
               <Ionicons name="warning" size={32} color="white" />
