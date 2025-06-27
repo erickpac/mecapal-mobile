@@ -7,8 +7,6 @@ export default function Index() {
   const { isAuthenticated } = useStore();
 
   useEffect(() => {
-    console.log(`Current state: ${isAuthenticated}`);
-
     const navigate = async () => {
       try {
         if (!isAuthenticated) {
@@ -17,7 +15,7 @@ export default function Index() {
           router.replace("/home");
         }
       } catch (error) {
-        console.error(`Navigation error: ${error}`);
+        console.error("Navigation error:", error);
       }
     };
 

@@ -1,7 +1,6 @@
-import { Tabs, router } from "expo-router";
+import { Tabs } from "expo-router";
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
-import { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import {
   TRANSPORTER_TABS,
@@ -14,19 +13,9 @@ import {
 export default function AppLayout() {
   const { user } = useStore();
 
-  useEffect(() => {
-    if (!user) {
-      router.replace("/login");
-      return;
-    }
-  }, [user]);
-
-  // If no user, don't render anything
-  if (!user) {
-    return null;
-  }
-
-  const isTransporter = user.role === UserRole.TRANSPORTER;
+  // This layout only renders when user is authenticated (handled by index.tsx)
+  // So we can safely assume user exists here
+  const isTransporter = user?.role === UserRole.TRANSPORTER;
   const activeTabs = isTransporter ? TRANSPORTER_TABS : USER_TABS;
   const hiddenRoutes = isTransporter
     ? TRANSPORTER_HIDDEN_ROUTES
