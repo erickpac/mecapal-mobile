@@ -1,13 +1,7 @@
 import { useStore } from "@/store/useStore";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import {
-  navigateTo,
-  navigateToServices,
-  navigateToAppointments,
-  navigateToHomeEmergency,
-  navigateToHomeHistory,
-} from "@/utils/navigation";
+import { navigateTo } from "@/utils/navigation";
 
 // Type for Ionicons icons
 type IconName = keyof typeof Ionicons.glyphMap;
@@ -21,39 +15,68 @@ export default function UserHomeScreen() {
         <Text className="text-2xl font-bold text-gray-800">
           ¡Hola, {user?.name}!
         </Text>
-        <Text className="text-gray-600 mt-1">¿Qué servicio necesitas hoy?</Text>
+        <Text className="text-gray-600 mt-1">¿Necesitas transporte hoy?</Text>
       </View>
 
       <View className="p-4">
-        {/* Featured Services */}
+        {/* Quick Search */}
         <View className="mb-6">
           <Text className="text-xl font-semibold mb-4 text-gray-800">
-            Servicios Destacados
+            Buscar Transportista
+          </Text>
+          <TouchableOpacity
+            onPress={() => navigateTo("/search")}
+            className="bg-blue-500 p-4 rounded-lg items-center"
+          >
+            <Ionicons name="search" size={32} color="white" />
+            <Text className="text-white font-semibold mt-2 text-lg">
+              Buscar Transportistas Disponibles
+            </Text>
+            <Text className="text-blue-100 mt-1 text-center">
+              Encuentra el transporte que necesitas
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Service Types */}
+        <View className="mb-6">
+          <Text className="text-xl font-semibold mb-4 text-gray-800">
+            Tipos de Servicio
           </Text>
           <View className="space-y-3">
             {[
               {
                 id: "1",
-                name: "Mecánica General",
-                icon: "construct" as IconName,
+                name: "Mudanzas",
+                icon: "home" as IconName,
                 color: "bg-blue-500",
+                description: "Traslado de muebles y enseres",
               },
               {
                 id: "2",
-                name: "Electricidad",
-                icon: "flash" as IconName,
-                color: "bg-yellow-500",
+                name: "Carga General",
+                icon: "cube" as IconName,
+                color: "bg-green-500",
+                description: "Mercancías y productos",
               },
               {
                 id: "3",
-                name: "Suspensión",
-                icon: "car" as IconName,
-                color: "bg-green-500",
+                name: "Materiales de Construcción",
+                icon: "construct" as IconName,
+                color: "bg-orange-500",
+                description: "Arena, grava, cemento, etc.",
+              },
+              {
+                id: "4",
+                name: "Entrega/Recolección",
+                icon: "swap-horizontal" as IconName,
+                color: "bg-purple-500",
+                description: "Servicios de logística",
               },
             ].map((service) => (
               <TouchableOpacity
                 key={service.id}
-                onPress={() => navigateTo(`/services/${service.id}`)}
+                onPress={() => navigateTo("/search")}
                 className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
               >
                 <View className="flex-row items-center">
@@ -66,9 +89,7 @@ export default function UserHomeScreen() {
                     <Text className="text-lg font-semibold text-gray-800">
                       {service.name}
                     </Text>
-                    <Text className="text-gray-600">
-                      Ver detalles y precios
-                    </Text>
+                    <Text className="text-gray-600">{service.description}</Text>
                   </View>
                   <Ionicons name="chevron-forward" size={20} color="#8E8E93" />
                 </View>
@@ -84,38 +105,57 @@ export default function UserHomeScreen() {
           </Text>
           <View className="flex-row flex-wrap justify-between">
             <TouchableOpacity
-              onPress={navigateToServices}
+              onPress={() => navigateTo("/search")}
               className="bg-blue-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="construct" size={32} color="white" />
+              <Ionicons name="search" size={32} color="white" />
               <Text className="text-white font-semibold mt-2">
-                Buscar Servicios
+                Buscar Transporte
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={navigateToAppointments}
+              onPress={() => navigateTo("/history")}
               className="bg-green-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="calendar" size={32} color="white" />
-              <Text className="text-white font-semibold mt-2">Nueva Cita</Text>
+              <Ionicons name="time" size={32} color="white" />
+              <Text className="text-white font-semibold mt-2">
+                Mi Historial
+              </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={navigateToHomeEmergency}
-              className="bg-red-500 p-4 rounded-lg w-[48%] mb-4 items-center"
-            >
-              <Ionicons name="warning" size={32} color="white" />
-              <Text className="text-white font-semibold mt-2">Emergencia</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={navigateToHomeHistory}
+              onPress={() => navigateTo("/profile")}
               className="bg-purple-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="time" size={32} color="white" />
-              <Text className="text-white font-semibold mt-2">Historial</Text>
+              <Ionicons name="person" size={32} color="white" />
+              <Text className="text-white font-semibold mt-2">Mi Perfil</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => navigateTo("/settings")}
+              className="bg-gray-500 p-4 rounded-lg w-[48%] mb-4 items-center"
+            >
+              <Ionicons name="settings" size={32} color="white" />
+              <Text className="text-white font-semibold mt-2">
+                Configuración
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Recent Activity */}
+        <View className="mb-6">
+          <Text className="text-xl font-semibold mb-4 text-gray-800">
+            Actividad Reciente
+          </Text>
+          <View className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <Text className="text-gray-600 text-center">
+              No tienes actividad reciente
+            </Text>
+            <Text className="text-gray-500 text-center text-sm mt-1">
+              Los transportistas que contactes aparecerán aquí
+            </Text>
           </View>
         </View>
       </View>

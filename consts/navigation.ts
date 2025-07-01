@@ -19,7 +19,7 @@ export const TRANSPORTER_TABS: TabConfig[] = [
   },
   {
     name: "orders",
-    title: "Pedidos",
+    title: "Órdenes",
     icon: "list",
   },
   {
@@ -31,11 +31,6 @@ export const TRANSPORTER_TABS: TabConfig[] = [
     name: "earnings",
     title: "Ganancias",
     icon: "cash",
-  },
-  {
-    name: "schedule",
-    title: "Horario",
-    icon: "calendar",
   },
   {
     name: "profile",
@@ -51,14 +46,14 @@ export const USER_TABS: TabConfig[] = [
     icon: "home",
   },
   {
-    name: "services",
-    title: "Servicios",
-    icon: "construct",
+    name: "search",
+    title: "Buscar",
+    icon: "search",
   },
   {
-    name: "appointments",
-    title: "Citas",
-    icon: "calendar",
+    name: "history",
+    title: "Historial",
+    icon: "time",
   },
   {
     name: "profile",
@@ -68,16 +63,11 @@ export const USER_TABS: TabConfig[] = [
 ];
 
 // Hidden routes for each role
-export const TRANSPORTER_HIDDEN_ROUTES = [
-  "services",
-  "appointments",
-  "settings",
-];
+export const TRANSPORTER_HIDDEN_ROUTES = ["search", "history", "settings"];
 export const USER_HIDDEN_ROUTES = [
   "orders",
   "vehicles",
   "earnings",
-  "schedule",
   "settings",
 ];
 

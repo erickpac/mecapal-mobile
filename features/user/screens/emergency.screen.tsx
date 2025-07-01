@@ -51,13 +51,13 @@ export default function UserEmergencyScreen() {
               {
                 type: "Accidente",
                 description: "Accidente de tráfico",
-                icon: "car-crash" as IconName,
+                icon: "alert-circle" as IconName,
                 color: "bg-red-600",
               },
               {
                 type: "Pérdida de Combustible",
                 description: "Se quedó sin gasolina",
-                icon: "gas-station" as IconName,
+                icon: "water" as IconName,
                 color: "bg-orange-500",
               },
               {
