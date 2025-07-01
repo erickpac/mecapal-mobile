@@ -85,11 +85,27 @@
       }
     },
     "history": {
-      "title": "Trip History",
-      "subtitle": "Review your previous trips and contacted transporters",
-      "noHistory": "No trip history",
-      "contacted": "Contacted",
-      "completed": "Completed"
+      "filters": {
+        "title": "Filter by",
+        "all": "All",
+        "thisMonth": "This Month",
+        "thisYear": "This Year"
+      },
+      "recentServices": {
+        "title": "Recent Services"
+      },
+      "transporter": "Transporter",
+      "actions": {
+        "details": "Details",
+        "repeat": "Repeat"
+      },
+      "statistics": {
+        "title": "Statistics",
+        "totalServices": "Total Services",
+        "averageRating": "Average Rating",
+        "totalSpent": "Total Spent",
+        "thisMonth": "This Month"
+      }
     },
     "dashboard": {
       "title": "Dashboard",

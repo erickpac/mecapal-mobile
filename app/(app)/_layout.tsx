@@ -3,11 +3,11 @@ import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
 import { Ionicons } from "@expo/vector-icons";
 import {
-  useTabConfigurations,
   TRANSPORTER_HIDDEN_ROUTES,
   USER_HIDDEN_ROUTES,
   TAB_SCREEN_OPTIONS,
 } from "@/consts/navigation";
+import { useTabConfigurations } from "@/hooks/useTabConfigurations";
 
 export default function AppLayout() {
   const { user } = useStore();

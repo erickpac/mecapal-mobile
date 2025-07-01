@@ -85,11 +85,27 @@
       }
     },
     "history": {
-      "title": "Historial de Viajes",
-      "subtitle": "Revisa tus viajes anteriores y transportistas contactados",
-      "noHistory": "No tienes historial de viajes",
-      "contacted": "Contactados",
-      "completed": "Completados"
+      "filters": {
+        "title": "Filtrar por",
+        "all": "Todos",
+        "thisMonth": "Este Mes",
+        "thisYear": "Este Año"
+      },
+      "recentServices": {
+        "title": "Servicios Recientes"
+      },
+      "transporter": "Transportista",
+      "actions": {
+        "details": "Detalles",
+        "repeat": "Repetir"
+      },
+      "statistics": {
+        "title": "Estadísticas",
+        "totalServices": "Servicios Totales",
+        "averageRating": "Calificación Promedio",
+        "totalSpent": "Total Gastado",
+        "thisMonth": "Este Mes"
+      }
     },
     "dashboard": {
       "title": "Dashboard",

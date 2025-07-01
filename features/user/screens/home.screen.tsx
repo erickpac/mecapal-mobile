@@ -2,11 +2,7 @@ import { useStore } from "@/store/useStore";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
-import {
-  navigateTo,
-  navigateToSearch,
-  navigateToHistory,
-} from "@/utils/navigation";
+import { navigateTo } from "@/utils/navigation";
 
 // Type for Ionicons icons
 type IconName = keyof typeof Ionicons.glyphMap;

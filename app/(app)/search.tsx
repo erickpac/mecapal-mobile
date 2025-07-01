@@ -2,11 +2,11 @@ import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";
 
-export default function SearchScreen() {
+export default function SearchIndex() {
   const { t } = useTranslation();
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className="flex-1 bg-white" edges={["top", "left", "right"]}>
       <View className="flex-1 justify-center items-center">
         <Text className="text-xl font-semibold text-gray-800">
           {t("transport.search.title")}
