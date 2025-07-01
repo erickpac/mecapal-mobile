@@ -1,3 +1,56 @@
+import { TabConfig } from "@/types/navigation";
+
+// Active tabs for each role
+export const TRANSPORTER_TABS: TabConfig[] = [
+  {
+    name: "home",
+    titleKey: "navigation.tabs.dashboard",
+    icon: "stats-chart",
+  },
+  {
+    name: "orders",
+    titleKey: "navigation.tabs.orders",
+    icon: "list",
+  },
+  {
+    name: "vehicles",
+    titleKey: "navigation.tabs.vehicles",
+    icon: "car",
+  },
+  {
+    name: "earnings",
+    titleKey: "navigation.tabs.earnings",
+    icon: "cash",
+  },
+  {
+    name: "profile",
+    titleKey: "navigation.tabs.profile",
+    icon: "person",
+  },
+];
+export const USER_TABS: TabConfig[] = [
+  {
+    name: "home",
+    titleKey: "navigation.tabs.home",
+    icon: "home",
+  },
+  {
+    name: "search",
+    titleKey: "navigation.tabs.search",
+    icon: "search",
+  },
+  {
+    name: "history",
+    titleKey: "navigation.tabs.history",
+    icon: "time",
+  },
+  {
+    name: "profile",
+    titleKey: "navigation.tabs.profile",
+    icon: "person",
+  },
+];
+
 // Hidden routes for each role
 export const TRANSPORTER_HIDDEN_ROUTES = ["search", "history", "settings"];
 export const USER_HIDDEN_ROUTES = [

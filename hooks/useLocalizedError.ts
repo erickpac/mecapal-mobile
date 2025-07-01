@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { ErrorHandler } from "@/utils/error-handler";
 
+// Hook to handle errors and return localized messages
 export const useLocalizedError = () => {
   const { t } = useTranslation();
 
