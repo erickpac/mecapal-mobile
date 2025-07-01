@@ -1,28 +1,36 @@
 import { useStore } from "@/store/useStore";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { navigateTo } from "@/utils/navigation";
+import { useTranslation } from "react-i18next";
+import {
+  navigateTo,
+  navigateToSearch,
+  navigateToHistory,
+} from "@/utils/navigation";
 
 // Type for Ionicons icons
 type IconName = keyof typeof Ionicons.glyphMap;
 
 export default function UserHomeScreen() {
   const { user } = useStore();
+  const { t } = useTranslation();
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
       <View className="bg-white p-4 border-b border-gray-200">
         <Text className="text-2xl font-bold text-gray-800">
-          ¡Hola, {user?.name}!
+          {t("transport.home.greeting", { name: user?.name })}
         </Text>
-        <Text className="text-gray-600 mt-1">¿Necesitas transporte hoy?</Text>
+        <Text className="text-gray-600 mt-1">
+          {t("transport.home.subtitle")}
+        </Text>
       </View>
 
       <View className="p-4">
         {/* Quick Search */}
         <View className="mb-6">
           <Text className="text-xl font-semibold mb-4 text-gray-800">
-            Buscar Transportista
+            {t("transport.home.quickSearch.title")}
           </Text>
           <TouchableOpacity
             onPress={() => navigateTo("/search")}
@@ -30,10 +38,10 @@ export default function UserHomeScreen() {
           >
             <Ionicons name="search" size={32} color="white" />
             <Text className="text-white font-semibold mt-2 text-lg">
-              Buscar Transportistas Disponibles
+              {t("transport.home.quickSearch.button")}
             </Text>
             <Text className="text-blue-100 mt-1 text-center">
-              Encuentra el transporte que necesitas
+              {t("transport.home.quickSearch.subtitle")}
             </Text>
           </TouchableOpacity>
         </View>
@@ -41,37 +49,42 @@ export default function UserHomeScreen() {
         {/* Service Types */}
         <View className="mb-6">
           <Text className="text-xl font-semibold mb-4 text-gray-800">
-            Tipos de Servicio
+            {t("transport.home.serviceTypes.title")}
           </Text>
           <View className="space-y-3">
             {[
               {
                 id: "1",
-                name: "Mudanzas",
+                nameKey: "transport.home.serviceTypes.mudanzas.name",
+                descriptionKey:
+                  "transport.home.serviceTypes.mudanzas.description",
                 icon: "home" as IconName,
                 color: "bg-blue-500",
-                description: "Traslado de muebles y enseres",
               },
               {
                 id: "2",
-                name: "Carga General",
+                nameKey: "transport.home.serviceTypes.cargaGeneral.name",
+                descriptionKey:
+                  "transport.home.serviceTypes.cargaGeneral.description",
                 icon: "cube" as IconName,
                 color: "bg-green-500",
-                description: "Mercancías y productos",
               },
               {
                 id: "3",
-                name: "Materiales de Construcción",
+                nameKey:
+                  "transport.home.serviceTypes.materialesConstruccion.name",
+                descriptionKey:
+                  "transport.home.serviceTypes.materialesConstruccion.description",
                 icon: "construct" as IconName,
                 color: "bg-orange-500",
-                description: "Arena, grava, cemento, etc.",
               },
               {
                 id: "4",
-                name: "Entrega/Recolección",
+                nameKey: "transport.home.serviceTypes.entregaRecoleccion.name",
+                descriptionKey:
+                  "transport.home.serviceTypes.entregaRecoleccion.description",
                 icon: "swap-horizontal" as IconName,
                 color: "bg-purple-500",
-                description: "Servicios de logística",
               },
             ].map((service) => (
               <TouchableOpacity
@@ -87,9 +100,11 @@ export default function UserHomeScreen() {
                   </View>
                   <View className="flex-1">
                     <Text className="text-lg font-semibold text-gray-800">
-                      {service.name}
+                      {t(service.nameKey)}
                     </Text>
-                    <Text className="text-gray-600">{service.description}</Text>
+                    <Text className="text-gray-600">
+                      {t(service.descriptionKey)}
+                    </Text>
                   </View>
                   <Ionicons name="chevron-forward" size={20} color="#8E8E93" />
                 </View>
@@ -101,7 +116,7 @@ export default function UserHomeScreen() {
         {/* Quick Actions */}
         <View className="mb-6">
           <Text className="text-xl font-semibold mb-4 text-gray-800">
-            Acciones Rápidas
+            {t("transport.home.quickActions.title")}
           </Text>
           <View className="flex-row flex-wrap justify-between">
             <TouchableOpacity
@@ -110,7 +125,7 @@ export default function UserHomeScreen() {
             >
               <Ionicons name="search" size={32} color="white" />
               <Text className="text-white font-semibold mt-2">
-                Buscar Transporte
+                {t("transport.home.quickActions.searchTransport")}
               </Text>
             </TouchableOpacity>
 
@@ -120,7 +135,7 @@ export default function UserHomeScreen() {
             >
               <Ionicons name="time" size={32} color="white" />
               <Text className="text-white font-semibold mt-2">
-                Mi Historial
+                {t("transport.home.quickActions.myHistory")}
               </Text>
             </TouchableOpacity>
 
@@ -129,7 +144,9 @@ export default function UserHomeScreen() {
               className="bg-purple-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
               <Ionicons name="person" size={32} color="white" />
-              <Text className="text-white font-semibold mt-2">Mi Perfil</Text>
+              <Text className="text-white font-semibold mt-2">
+                {t("transport.home.quickActions.myProfile")}
+              </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -138,7 +155,7 @@ export default function UserHomeScreen() {
             >
               <Ionicons name="settings" size={32} color="white" />
               <Text className="text-white font-semibold mt-2">
-                Configuración
+                {t("transport.home.quickActions.settings")}
               </Text>
             </TouchableOpacity>
           </View>
@@ -147,14 +164,14 @@ export default function UserHomeScreen() {
         {/* Recent Activity */}
         <View className="mb-6">
           <Text className="text-xl font-semibold mb-4 text-gray-800">
-            Actividad Reciente
+            {t("transport.home.recentActivity.title")}
           </Text>
           <View className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
             <Text className="text-gray-600 text-center">
-              No tienes actividad reciente
+              {t("transport.home.recentActivity.noActivity")}
             </Text>
             <Text className="text-gray-500 text-center text-sm mt-1">
-              Los transportistas que contactes aparecerán aquí
+              {t("transport.home.recentActivity.subtitle")}
             </Text>
           </View>
         </View>

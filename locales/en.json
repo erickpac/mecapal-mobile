@@ -11,7 +11,133 @@
     "next": "Next",
     "previous": "Previous",
     "submit": "Submit",
-    "close": "Close"
+    "close": "Close",
+    "viewAll": "View all"
+  },
+  "navigation": {
+    "tabs": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "search": "Search",
+      "history": "History",
+      "orders": "Orders",
+      "vehicles": "Vehicles",
+      "earnings": "Earnings",
+      "profile": "Profile",
+      "settings": "Settings"
+    }
+  },
+  "transport": {
+    "home": {
+      "greeting": "Hello, {{name}}!",
+      "subtitle": "Do you need transportation today?",
+      "quickSearch": {
+        "title": "Find Transporter",
+        "button": "Search Available Transporters",
+        "subtitle": "Find the transportation you need"
+      },
+      "serviceTypes": {
+        "title": "Service Types",
+        "mudanzas": {
+          "name": "Moving",
+          "description": "Furniture and household items transport"
+        },
+        "cargaGeneral": {
+          "name": "General Cargo",
+          "description": "Merchandise and products"
+        },
+        "materialesConstruccion": {
+          "name": "Construction Materials",
+          "description": "Sand, gravel, cement, etc."
+        },
+        "entregaRecoleccion": {
+          "name": "Delivery/Pickup",
+          "description": "Logistics services"
+        }
+      },
+      "quickActions": {
+        "title": "Quick Actions",
+        "searchTransport": "Search Transport",
+        "myHistory": "My History",
+        "myProfile": "My Profile",
+        "settings": "Settings"
+      },
+      "recentActivity": {
+        "title": "Recent Activity",
+        "noActivity": "No recent activity",
+        "subtitle": "Transporters you contact will appear here"
+      }
+    },
+    "search": {
+      "title": "Search Transporters",
+      "subtitle": "Find available transporters according to your needs",
+      "filters": {
+        "title": "Filters",
+        "serviceType": "Service type",
+        "location": "Location",
+        "weight": "Weight",
+        "distance": "Distance"
+      },
+      "results": {
+        "title": "Results",
+        "noResults": "No transporters found",
+        "contact": "Contact"
+      }
+    },
+    "history": {
+      "title": "Trip History",
+      "subtitle": "Review your previous trips and contacted transporters",
+      "noHistory": "No trip history",
+      "contacted": "Contacted",
+      "completed": "Completed"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "stats": {
+        "activeOrders": "Active Orders",
+        "completedOrders": "Completed Orders",
+        "totalEarnings": "Total Earnings",
+        "availableVehicles": "Available Vehicles"
+      },
+      "quickActions": {
+        "viewOrders": "View Orders",
+        "manageVehicles": "Manage Vehicles",
+        "viewEarnings": "View Earnings"
+      }
+    },
+    "orders": {
+      "title": "Orders",
+      "active": "Active",
+      "completed": "Completed",
+      "pending": "Pending",
+      "noOrders": "No orders",
+      "status": {
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "inProgress": "In Progress",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      }
+    },
+    "vehicles": {
+      "title": "Vehicles",
+      "addVehicle": "Add Vehicle",
+      "noVehicles": "No registered vehicles",
+      "types": {
+        "pickup": "Pickup",
+        "truck": "Truck",
+        "trailer": "Trailer",
+        "van": "Van"
+      }
+    },
+    "earnings": {
+      "title": "Earnings",
+      "total": "Total",
+      "thisMonth": "This month",
+      "thisWeek": "This week",
+      "today": "Today",
+      "noEarnings": "No earnings recorded"
+    }
   },
   "auth": {
     "login": {
@@ -55,20 +181,20 @@
   "onboarding": {
     "welcome": {
       "title": "Welcome to Mecapal",
-      "subtitle": "Your personal finance companion",
+      "subtitle": "Connect with reliable transporters",
       "getStarted": "Get Started"
     },
     "step1": {
-      "title": "Track Your Expenses",
-      "description": "Easily record and categorize your daily expenses"
+      "title": "Find transporters",
+      "description": "Search for available transporters according to your needs"
     },
     "step2": {
-      "title": "Set Budget Goals",
-      "description": "Create budgets and stay on track with your financial goals"
+      "title": "Contact directly",
+      "description": "Connect with transporters via WhatsApp to coordinate"
     },
     "step3": {
-      "title": "Analyze & Improve",
-      "description": "Get insights into your spending patterns and save more"
+      "title": "Reliable transportation",
+      "description": "Access a directory of verified transporters"
     }
   },
   "home": {

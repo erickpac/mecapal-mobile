@@ -11,7 +11,133 @@
     "next": "Siguiente",
     "previous": "Anterior",
     "submit": "Enviar",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "viewAll": "Ver todos"
+  },
+  "navigation": {
+    "tabs": {
+      "home": "Inicio",
+      "dashboard": "Dashboard",
+      "search": "Buscar",
+      "history": "Historial",
+      "orders": "Órdenes",
+      "vehicles": "Vehículos",
+      "earnings": "Ganancias",
+      "profile": "Perfil",
+      "settings": "Configuración"
+    }
+  },
+  "transport": {
+    "home": {
+      "greeting": "¡Hola, {{name}}!",
+      "subtitle": "¿Necesitas transporte hoy?",
+      "quickSearch": {
+        "title": "Buscar Transportista",
+        "button": "Buscar Transportistas Disponibles",
+        "subtitle": "Encuentra el transporte que necesitas"
+      },
+      "serviceTypes": {
+        "title": "Tipos de Servicio",
+        "mudanzas": {
+          "name": "Mudanzas",
+          "description": "Traslado de muebles y enseres"
+        },
+        "cargaGeneral": {
+          "name": "Carga General",
+          "description": "Mercancías y productos"
+        },
+        "materialesConstruccion": {
+          "name": "Materiales de Construcción",
+          "description": "Arena, grava, cemento, etc."
+        },
+        "entregaRecoleccion": {
+          "name": "Entrega/Recolección",
+          "description": "Servicios de logística"
+        }
+      },
+      "quickActions": {
+        "title": "Acciones Rápidas",
+        "searchTransport": "Buscar Transporte",
+        "myHistory": "Mi Historial",
+        "myProfile": "Mi Perfil",
+        "settings": "Configuración"
+      },
+      "recentActivity": {
+        "title": "Actividad Reciente",
+        "noActivity": "No tienes actividad reciente",
+        "subtitle": "Los transportistas que contactes aparecerán aquí"
+      }
+    },
+    "search": {
+      "title": "Buscar Transportistas",
+      "subtitle": "Encuentra transportistas disponibles según tus necesidades",
+      "filters": {
+        "title": "Filtros",
+        "serviceType": "Tipo de servicio",
+        "location": "Ubicación",
+        "weight": "Peso",
+        "distance": "Distancia"
+      },
+      "results": {
+        "title": "Resultados",
+        "noResults": "No se encontraron transportistas",
+        "contact": "Contactar"
+      }
+    },
+    "history": {
+      "title": "Historial de Viajes",
+      "subtitle": "Revisa tus viajes anteriores y transportistas contactados",
+      "noHistory": "No tienes historial de viajes",
+      "contacted": "Contactados",
+      "completed": "Completados"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "stats": {
+        "activeOrders": "Órdenes Activas",
+        "completedOrders": "Órdenes Completadas",
+        "totalEarnings": "Ganancias Totales",
+        "availableVehicles": "Vehículos Disponibles"
+      },
+      "quickActions": {
+        "viewOrders": "Ver Órdenes",
+        "manageVehicles": "Gestionar Vehículos",
+        "viewEarnings": "Ver Ganancias"
+      }
+    },
+    "orders": {
+      "title": "Órdenes",
+      "active": "Activas",
+      "completed": "Completadas",
+      "pending": "Pendientes",
+      "noOrders": "No tienes órdenes",
+      "status": {
+        "pending": "Pendiente",
+        "accepted": "Aceptada",
+        "inProgress": "En Progreso",
+        "completed": "Completada",
+        "cancelled": "Cancelada"
+      }
+    },
+    "vehicles": {
+      "title": "Vehículos",
+      "addVehicle": "Agregar Vehículo",
+      "noVehicles": "No tienes vehículos registrados",
+      "types": {
+        "pickup": "Pickup",
+        "truck": "Camión",
+        "trailer": "Remolque",
+        "van": "Furgoneta"
+      }
+    },
+    "earnings": {
+      "title": "Ganancias",
+      "total": "Total",
+      "thisMonth": "Este mes",
+      "thisWeek": "Esta semana",
+      "today": "Hoy",
+      "noEarnings": "No hay ganancias registradas"
+    }
   },
   "auth": {
     "login": {
@@ -55,20 +181,20 @@
   "onboarding": {
     "welcome": {
       "title": "Bienvenido a Mecapal",
-      "subtitle": "Tu compañero de finanzas personales",
+      "subtitle": "Conecta con transportistas confiables",
       "getStarted": "Comenzar"
     },
     "step1": {
-      "title": "Rastrea tus gastos",
-      "description": "Registra y categoriza fácilmente tus gastos diarios"
+      "title": "Encuentra transportistas",
+      "description": "Busca transportistas disponibles según tus necesidades"
     },
     "step2": {
-      "title": "Establece metas de presupuesto",
-      "description": "Crea presupuestos y mantente en el camino hacia tus metas financieras"
+      "title": "Contacta directamente",
+      "description": "Conecta con transportistas vía WhatsApp para coordinar"
     },
     "step3": {
-      "title": "Analiza y mejora",
-      "description": "Obtén información sobre tus patrones de gasto y ahorra más"
+      "title": "Transporte confiable",
+      "description": "Accede a un directorio de transportistas verificados"
     }
   },
   "home": {

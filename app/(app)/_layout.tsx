@@ -3,8 +3,7 @@ import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
 import { Ionicons } from "@expo/vector-icons";
 import {
-  TRANSPORTER_TABS,
-  USER_TABS,
+  useTabConfigurations,
   TRANSPORTER_HIDDEN_ROUTES,
   USER_HIDDEN_ROUTES,
   TAB_SCREEN_OPTIONS,
@@ -12,6 +11,7 @@ import {
 
 export default function AppLayout() {
   const { user } = useStore();
+  const { TRANSPORTER_TABS, USER_TABS } = useTabConfigurations();
 
   // This layout only renders when user is authenticated (handled by index.tsx)
   // So we can safely assume user exists here
