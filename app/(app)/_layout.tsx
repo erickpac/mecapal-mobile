@@ -6,6 +6,7 @@ import {
   TRANSPORTER_HIDDEN_ROUTES,
   USER_HIDDEN_ROUTES,
   TAB_SCREEN_OPTIONS,
+  GUEST_HIDDEN_ROUTES,
 } from "@/consts/navigation";
 import { useTabConfigurations } from "@/hooks/useTabConfigurations";
 
@@ -20,7 +21,7 @@ export default function AppLayout() {
   if (!isAuthenticated) {
     // Guest mode - show basic tabs
     activeTabs = GUEST_TABS;
-    hiddenRoutes = ["orders", "vehicles", "earnings", "settings"];
+    hiddenRoutes = GUEST_HIDDEN_ROUTES;
   } else if (user?.role === UserRole.TRANSPORTER) {
     // Authenticated transporter
     activeTabs = TRANSPORTER_TABS;

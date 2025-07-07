@@ -20,6 +20,7 @@
       "dashboard": "Dashboard",
       "search": "Search",
       "history": "History",
+      "about": "About",
       "orders": "Orders",
       "vehicles": "Vehicles",
       "earnings": "Earnings",
@@ -193,6 +194,82 @@
         "averageRating": "Average Rating",
         "totalSpent": "Total Spent",
         "thisMonth": "This Month"
+      }
+    },
+    "about": {
+      "title": "About Mecapal",
+      "subtitle": "We connect users with reliable transporters",
+      "guest": {
+        "loginPrompt": "Ready to get started?",
+        "loginSubtitle": "Create an account to access all services",
+        "register": "Create Account"
+      },
+      "whatIs": {
+        "title": "What is Mecapal?",
+        "description": "Mecapal is a platform that connects users who need transportation services with professional and reliable transporters. We offer a secure, fast, and efficient solution for all your transportation needs."
+      },
+      "howItWorks": {
+        "title": "How does it work?",
+        "step1": {
+          "title": "Search for your service",
+          "description": "Describe what you need to transport and from where to where"
+        },
+        "step2": {
+          "title": "Compare options",
+          "description": "Review prices, ratings, and transporter availability"
+        },
+        "step3": {
+          "title": "Book and pay",
+          "description": "Select your preferred transporter and make secure payment"
+        },
+        "step4": {
+          "title": "Enjoy the service!",
+          "description": "Your transporter will arrive at the agreed time"
+        }
+      },
+      "services": {
+        "title": "Our Services",
+        "mudanzas": {
+          "name": "Residential Moving",
+          "description": "Complete moving services for homes and offices"
+        },
+        "carga": {
+          "name": "Cargo Transport",
+          "description": "Secure transport of goods and products"
+        },
+        "construccion": {
+          "name": "Construction Materials",
+          "description": "Delivery of construction materials"
+        },
+        "urgente": {
+          "name": "Urgent Delivery",
+          "description": "Fast and urgent delivery services"
+        }
+      },
+      "benefits": {
+        "title": "Why choose Mecapal?",
+        "secure": {
+          "title": "Secure and Reliable",
+          "description": "All our transporters are verified and insured"
+        },
+        "fast": {
+          "title": "Fast and Efficient",
+          "description": "Find available transporters in minutes"
+        },
+        "transparent": {
+          "title": "Transparent Pricing",
+          "description": "No surprises, clear prices from the start"
+        },
+        "support": {
+          "title": "24/7 Support",
+          "description": "We're here to help you anytime"
+        }
+      },
+      "cta": {
+        "title": "Ready to get started?",
+        "subtitle": "Join thousands of users who already trust Mecapal",
+        "register": "Create Account",
+        "login": "Sign In"
       }
     },
     "profile": {

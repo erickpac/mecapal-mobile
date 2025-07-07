@@ -58,9 +58,9 @@ export const GUEST_TABS: TabConfig[] = [
     icon: "search",
   },
   {
-    name: "history",
-    titleKey: "navigation.tabs.history",
-    icon: "time",
+    name: "about",
+    titleKey: "navigation.tabs.about",
+    icon: "information-circle",
   },
   {
     name: "profile",
@@ -81,6 +81,15 @@ export const USER_HIDDEN_ROUTES = [
   "vehicles",
   "settings",
   "earnings",
+  "about",
+];
+
+export const GUEST_HIDDEN_ROUTES = [
+  "orders",
+  "vehicles",
+  "settings",
+  "earnings",
+  "history",
 ];
 
 // Common tab screen options

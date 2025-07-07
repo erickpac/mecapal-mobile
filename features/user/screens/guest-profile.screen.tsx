@@ -72,37 +72,76 @@ export default function GuestProfileScreen() {
           </View>
         </View>
 
-        {/* Login/Register Section */}
-        <View className="bg-blue-50 p-4 rounded-lg mb-6 border border-blue-200">
-          <Text className="text-blue-800 font-semibold text-lg mb-2">
-            {t("transport.profile.guest.upgrade.title", {
-              defaultValue: "¿Quieres más funcionalidades?",
-            })}
-          </Text>
-          <Text className="text-blue-600 mb-4">
-            {t("transport.profile.guest.upgrade.subtitle", {
-              defaultValue:
-                "Crea una cuenta para acceder a todas las funciones de la aplicación",
-            })}
-          </Text>
+        {/* Enhanced Login/Register Section */}
+        <View className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-lg mb-6">
+          <View className="items-center mb-4">
+            <Ionicons name="star" size={32} color="white" />
+            <Text className="text-white text-xl font-bold text-center mt-2">
+              {t("transport.profile.guest.upgrade.title", {
+                defaultValue: "Desbloquea todas las funciones",
+              })}
+            </Text>
+            <Text className="text-blue-100 text-center mt-2">
+              {t("transport.profile.guest.upgrade.subtitle", {
+                defaultValue:
+                  "Crea una cuenta gratuita y accede a todas las funcionalidades premium",
+              })}
+            </Text>
+          </View>
+
+          {/* Benefits List */}
+          <View className="mb-4">
+            {[
+              {
+                text: t("transport.profile.guest.benefits.reservations", {
+                  defaultValue: "✓ Reservas ilimitadas",
+                }),
+                icon: "checkmark-circle",
+              },
+              {
+                text: t("transport.profile.guest.benefits.history", {
+                  defaultValue: "✓ Historial completo de servicios",
+                }),
+                icon: "time",
+              },
+              {
+                text: t("transport.profile.guest.benefits.notifications", {
+                  defaultValue: "✓ Notificaciones en tiempo real",
+                }),
+                icon: "notifications",
+              },
+              {
+                text: t("transport.profile.guest.benefits.support", {
+                  defaultValue: "✓ Soporte prioritario",
+                }),
+                icon: "headset",
+              },
+            ].map((benefit, index) => (
+              <View key={index} className="flex-row items-center mb-2">
+                <Ionicons name={benefit.icon as any} size={16} color="white" />
+                <Text className="text-white ml-2 text-sm">{benefit.text}</Text>
+              </View>
+            ))}
+          </View>
+
           <View className="flex-row space-x-3">
             <TouchableOpacity
               onPress={() => navigateTo("/register")}
-              className="flex-1 bg-blue-500 p-3 rounded-lg"
+              className="flex-1 bg-white p-3 rounded-lg"
             >
-              <Text className="text-white font-semibold text-center">
+              <Text className="text-blue-600 font-semibold text-center">
                 {t("transport.profile.guest.upgrade.register", {
-                  defaultValue: "Crear Cuenta",
+                  defaultValue: "Crear Cuenta Gratis",
                 })}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigateTo("/login")}
-              className="flex-1 bg-green-500 p-3 rounded-lg"
+              className="flex-1 bg-transparent border border-white p-3 rounded-lg"
             >
               <Text className="text-white font-semibold text-center">
                 {t("transport.profile.guest.upgrade.login", {
-                  defaultValue: "Iniciar Sesión",
+                  defaultValue: "Ya tengo cuenta",
                 })}
               </Text>
             </TouchableOpacity>
@@ -187,11 +226,11 @@ export default function GuestProfileScreen() {
           </View>
         </View>
 
-        {/* Features Comparison */}
+        {/* Enhanced Features Comparison */}
         <View className="mb-6">
           <Text className="text-lg font-semibold mb-4 text-gray-800">
             {t("transport.profile.guest.comparison.title", {
-              defaultValue: "Comparación de Funciones",
+              defaultValue: "¿Qué obtienes con una cuenta?",
             })}
           </Text>
           <View className="space-y-3">
