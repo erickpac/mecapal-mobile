@@ -307,7 +307,7 @@
       "userRole": "Usuario",
       "transporterRole": "Transportista",
       "success": "¡Registro exitoso!",
-      "redirecting": "Redirigiendo...",
+      "redirecting": "Redirigiendo al login...",
       "register": "Registrarse",
       "hasAccount": "¿Ya tienes cuenta? Inicia sesión",
       "continueAsGuest": "Continuar como invitado"

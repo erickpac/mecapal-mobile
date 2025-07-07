@@ -16,8 +16,8 @@ import { useLocalizedError } from "@/hooks/useLocalizedError";
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, isLoading, error } = useAuth();
-  const { isAuthenticated, enterGuestMode } = useStore();
+  const { login, isLoading, error, isSuccess } = useAuth();
+  const { enterGuestMode } = useStore();
   const { t } = useTranslation();
   const { handleError } = useLocalizedError();
 
@@ -29,11 +29,12 @@ export default function LoginScreen() {
     enterGuestMode();
   };
 
+  // Navigate to home after successful login
   useEffect(() => {
-    if (!isLoading && !error && isAuthenticated) {
+    if (isSuccess) {
       router.replace("/home");
     }
-  }, [isLoading, error, isAuthenticated]);
+  }, [isSuccess]);
 
   return (
     <KeyboardAvoidingView

@@ -28,10 +28,11 @@ export default function RegisterScreen() {
   useEffect(() => {
     if (isSuccess && !showSuccess) {
       setShowSuccess(true);
+      // Show success message for 1.5 seconds, then navigate to login
       const timer = setTimeout(() => {
         setShowSuccess(false);
         router.replace("/login");
-      }, 2000); // Show success message for 2 seconds then navigate
+      }, 1500);
       return () => clearTimeout(timer);
     }
   }, [isSuccess, showSuccess]);
@@ -65,7 +66,7 @@ export default function RegisterScreen() {
           </Text>
           <Text className="text-gray-600 text-center mb-4">
             {t("auth.register.redirecting", {
-              defaultValue: "Redirigiendo...",
+              defaultValue: "Redirigiendo al login...",
             })}
           </Text>
         </View>

@@ -307,7 +307,7 @@
       "userRole": "User",
       "transporterRole": "Transporter",
       "success": "Registration successful!",
-      "redirecting": "Redirecting...",
+      "redirecting": "Redirecting to login...",
       "register": "Register",
       "hasAccount": "Already have an account? Login",
       "continueAsGuest": "Continue as guest"
