@@ -11,7 +11,281 @@
     "next": "Next",
     "previous": "Previous",
     "submit": "Submit",
-    "close": "Close"
+    "close": "Close",
+    "viewAll": "View all"
+  },
+  "navigation": {
+    "tabs": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "search": "Search",
+      "history": "History",
+      "orders": "Orders",
+      "vehicles": "Vehicles",
+      "earnings": "Earnings",
+      "profile": "Profile",
+      "settings": "Settings"
+    }
+  },
+  "transport": {
+    "home": {
+      "greeting": "Hello, {{name}}!",
+      "guestGreeting": "Welcome to Mecapal!",
+      "subtitle": "Do you need transportation today?",
+      "guestSubtitle": "Find the transportation you need",
+      "guest": {
+        "loginPrompt": "Already have an account?",
+        "loginSubtitle": "Sign in to access all features",
+        "login": "Sign In",
+        "register": "Register",
+        "createAccount": "Create Account",
+        "benefits": {
+          "title": "Benefits of registering",
+          "history": {
+            "title": "Trip history",
+            "description": "Access your complete service history"
+          },
+          "favorites": {
+            "title": "Favorites",
+            "description": "Save your favorite transporters"
+          },
+          "notifications": {
+            "title": "Notifications",
+            "description": "Receive real-time updates"
+          },
+          "payment": {
+            "title": "Secure payments",
+            "description": "Secure and fast payment methods"
+          }
+        },
+        "cta": {
+          "title": "Ready to get started?",
+          "subtitle": "Create an account and enjoy all the benefits",
+          "button": "Create Free Account"
+        }
+      },
+      "quickSearch": {
+        "title": "Find Transporter",
+        "button": "Search Available Transporters",
+        "subtitle": "Find the transportation you need"
+      },
+      "serviceTypes": {
+        "title": "Service Types",
+        "mudanzas": {
+          "name": "Moving",
+          "description": "Furniture and household items transport"
+        },
+        "cargaGeneral": {
+          "name": "General Cargo",
+          "description": "Merchandise and products"
+        },
+        "materialesConstruccion": {
+          "name": "Construction Materials",
+          "description": "Sand, gravel, cement, etc."
+        },
+        "entregaRecoleccion": {
+          "name": "Delivery/Pickup",
+          "description": "Logistics services"
+        }
+      },
+      "quickActions": {
+        "title": "Quick Actions",
+        "searchTransport": "Search Transport",
+        "myHistory": "My History",
+        "myProfile": "My Profile",
+        "settings": "Settings"
+      },
+      "recentActivity": {
+        "title": "Recent Activity",
+        "noActivity": "No recent activity",
+        "subtitle": "Transporters you contact will appear here"
+      }
+    },
+    "search": {
+      "title": "Search Transporters",
+      "subtitle": "Find available transporters according to your needs",
+      "placeholder": "Search transportation services...",
+      "guest": {
+        "loginPrompt": "Sign in to make reservations",
+        "loginSubtitle": "You need an account to make reservations",
+        "login": "Sign In",
+        "reserve": "Reserve",
+        "viewDetails": "View Details",
+        "cta": {
+          "title": "Found what you're looking for?",
+          "subtitle": "Create an account to make reservations and enjoy all benefits",
+          "register": "Create Account",
+          "login": "Sign In"
+        }
+      },
+      "popularServices": {
+        "title": "Popular Services"
+      },
+      "categories": {
+        "title": "Service Categories"
+      },
+      "filters": {
+        "title": "Filters",
+        "serviceType": "Service type",
+        "location": "Location",
+        "weight": "Weight",
+        "distance": "Distance"
+      },
+      "results": {
+        "title": "Results",
+        "noResults": "No transporters found",
+        "contact": "Contact"
+      }
+    },
+    "history": {
+      "title": "Service History",
+      "subtitle": "Review your previous services",
+      "guest": {
+        "loginPrompt": "Sign in to view your history",
+        "loginSubtitle": "Your personal history will be available here",
+        "login": "Sign In",
+        "sampleTitle": "Sample History",
+        "sampleSubtitle": "This is how your history will look when you have an account",
+        "sampleStatsTitle": "Sample Statistics",
+        "benefits": {
+          "title": "Benefits of having an account",
+          "history": {
+            "title": "Complete history",
+            "description": "Access all your previous services"
+          },
+          "ratings": {
+            "title": "Ratings",
+            "description": "Rate and review your experiences"
+          },
+          "repeat": {
+            "title": "Repeat services",
+            "description": "Repeat services with trusted transporters"
+          },
+          "analytics": {
+            "title": "Detailed statistics",
+            "description": "Analyze your usage patterns"
+          }
+        },
+        "cta": {
+          "title": "Want to see your real history?",
+          "subtitle": "Create an account and start building your service history",
+          "register": "Create Account",
+          "login": "Sign In"
+        }
+      },
+      "filters": {
+        "title": "Filter by",
+        "all": "All",
+        "thisMonth": "This Month",
+        "thisYear": "This Year"
+      },
+      "recentServices": {
+        "title": "Recent Services"
+      },
+      "transporter": "Transporter",
+      "actions": {
+        "details": "Details",
+        "repeat": "Repeat"
+      },
+      "statistics": {
+        "title": "Statistics",
+        "totalServices": "Total Services",
+        "averageRating": "Average Rating",
+        "totalSpent": "Total Spent",
+        "thisMonth": "This Month"
+      }
+    },
+    "profile": {
+      "title": "My Profile",
+      "subtitle": "Manage your personal information",
+      "guest": {
+        "title": "Guest User",
+        "subtitle": "Exploring the application",
+        "status": "Guest Mode",
+        "access": "Access",
+        "limited": "Limited",
+        "features": "Available features",
+        "basic": "Basic",
+        "upgrade": {
+          "title": "Want more features?",
+          "subtitle": "Create an account to access all application features",
+          "register": "Create Account",
+          "login": "Sign In"
+        },
+        "availableActions": {
+          "title": "Available Actions"
+        },
+        "actions": {
+          "search": "Explore Services",
+          "about": "About the App",
+          "help": "Help & Support",
+          "settings": "Settings"
+        },
+        "comparison": {
+          "title": "Feature Comparison",
+          "guest": "Guest",
+          "user": "User",
+          "search": "Search services",
+          "reserve": "Make reservations",
+          "history": "View history",
+          "ratings": "Rate services",
+          "favorites": "Save favorites",
+          "notifications": "Notifications"
+        },
+        "cta": {
+          "title": "Ready to unlock everything?",
+          "subtitle": "Join thousands of users who already enjoy all features",
+          "button": "Create Free Account"
+        }
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "stats": {
+        "activeOrders": "Active Orders",
+        "completedOrders": "Completed Orders",
+        "totalEarnings": "Total Earnings",
+        "availableVehicles": "Available Vehicles"
+      },
+      "quickActions": {
+        "viewOrders": "View Orders",
+        "manageVehicles": "Manage Vehicles",
+        "viewEarnings": "View Earnings"
+      }
+    },
+    "orders": {
+      "title": "Orders",
+      "active": "Active",
+      "completed": "Completed",
+      "pending": "Pending",
+      "noOrders": "No orders",
+      "status": {
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "inProgress": "In Progress",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      }
+    },
+    "vehicles": {
+      "title": "Vehicles",
+      "addVehicle": "Add Vehicle",
+      "noVehicles": "No registered vehicles",
+      "types": {
+        "pickup": "Pickup",
+        "truck": "Truck",
+        "trailer": "Trailer",
+        "van": "Van"
+      }
+    },
+    "earnings": {
+      "title": "Earnings",
+      "total": "Total",
+      "thisMonth": "This month",
+      "thisWeek": "This week",
+      "today": "Today",
+      "noEarnings": "No earnings recorded"
+    }
   },
   "auth": {
     "login": {
@@ -20,21 +294,33 @@
       "password": "Password",
       "login": "Login",
       "noAccount": "No account? Register",
-      "forgotPassword": "Forgot password?"
+      "forgotPassword": "Forgot password?",
+      "continueAsGuest": "Continue as guest"
     },
     "register": {
       "title": "Register",
+      "name": "Full name",
       "email": "Email",
       "password": "Password",
       "confirmPassword": "Confirm Password",
       "register": "Register",
-      "hasAccount": "Already have an account? Login"
+      "hasAccount": "Already have an account? Login",
+      "continueAsGuest": "Continue as guest"
     },
     "forgotPassword": {
       "title": "Forgot Password",
+      "description": "This functionality will be available soon. Please contact technical support if you need to recover your password.",
       "email": "Email",
       "submit": "Send Reset Link",
-      "backToLogin": "Back to Login"
+      "backToLogin": "Back to Login",
+      "continueAsGuest": "Continue as guest"
+    },
+    "changePassword": {
+      "title": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "submit": "Change Password",
+      "success": "Password changed successfully"
     },
     "errors": {
       "loginError": "Login error",
@@ -48,20 +334,35 @@
   "onboarding": {
     "welcome": {
       "title": "Welcome to Mecapal",
-      "subtitle": "Your personal finance companion",
+      "subtitle": "Connect with reliable transporters",
+      "description": "Find the transportation you need quickly and safely",
       "getStarted": "Get Started"
     },
-    "step1": {
-      "title": "Track Your Expenses",
-      "description": "Easily record and categorize your daily expenses"
+    "features": {
+      "title": "Main features",
+      "search": {
+        "title": "Quick search",
+        "description": "Find available transporters in your area"
+      },
+      "secure": {
+        "title": "Secure payments",
+        "description": "Secure and reliable transactions"
+      },
+      "tracking": {
+        "title": "Real-time tracking",
+        "description": "Monitor your shipment in real time"
+      }
     },
-    "step2": {
-      "title": "Set Budget Goals",
-      "description": "Create budgets and stay on track with your financial goals"
-    },
-    "step3": {
-      "title": "Analyze & Improve",
-      "description": "Get insights into your spending patterns and save more"
+    "userType": {
+      "title": "What type of user are you?",
+      "client": {
+        "title": "Client",
+        "description": "I need to transport things"
+      },
+      "transporter": {
+        "title": "Transporter",
+        "description": "I offer transportation services"
+      }
     }
   },
   "home": {

@@ -1,10 +1,10 @@
-import SettingsScreen from "@/features/shared/screens/settings.screen";
+import TransporterEarningsScreen from "@/features/transporter/screens/earnings.screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function SettingsIndex() {
+export default function EarningsIndex() {
   return (
     <SafeAreaView className="flex-1 bg-white" edges={["top", "left", "right"]}>
-      <SettingsScreen />
+      <TransporterEarningsScreen />
     </SafeAreaView>
   );
 }

@@ -4,25 +4,26 @@ import { useEffect } from "react";
 import { LoadingScreen } from "@/components/loading-screen";
 
 export default function Index() {
-  const { isAuthenticated } = useStore();
+  const { isAuthenticated, isGuestMode } = useStore();
 
   useEffect(() => {
-    console.log(`Current state: ${isAuthenticated}`);
-
     const navigate = async () => {
       try {
-        if (!isAuthenticated) {
-          router.replace("/login");
+        if (isAuthenticated) {
+          router.replace("/home");
+        } else if (isGuestMode) {
+          router.replace("/home");
         } else {
+          // Si no está autenticado y no está en modo invitado, entrar como invitado
           router.replace("/home");
         }
       } catch (error) {
-        console.error(`Navigation error: ${error}`);
+        console.error("Navigation error:", error);
       }
     };
 
     navigate();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, isGuestMode]);
 
   return <LoadingScreen />;
 }

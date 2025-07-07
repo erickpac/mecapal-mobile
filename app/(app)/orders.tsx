@@ -1,10 +1,10 @@
-import SettingsScreen from "@/features/shared/screens/settings.screen";
+import TransporterOrdersScreen from "@/features/transporter/screens/orders.screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function SettingsIndex() {
+export default function OrdersIndex() {
   return (
     <SafeAreaView className="flex-1 bg-white" edges={["top", "left", "right"]}>
-      <SettingsScreen />
+      <TransporterOrdersScreen />
     </SafeAreaView>
   );
 }

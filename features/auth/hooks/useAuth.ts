@@ -2,6 +2,7 @@ import { authService } from "@/features/auth/services/auth";
 import {
   LoginCredentials,
   RegisterCredentials,
+  ChangePasswordCredentials,
 } from "@/features/auth/types/auth";
 import { useStore } from "@/store/useStore";
 import { useMutation } from "@tanstack/react-query";
@@ -28,21 +29,16 @@ export const useAuth = () => {
   });
 
   const changePassword = useMutation({
-    mutationFn: ({
-      currentPassword,
-      newPassword,
-    }: {
-      currentPassword: string;
-      newPassword: string;
-    }) => authService.changePassword(currentPassword, newPassword),
+    mutationFn: (credentials: ChangePasswordCredentials) =>
+      authService.changePassword(credentials),
   });
 
   return {
     login: (credentials: LoginCredentials) => login.mutate(credentials),
     register: (credentials: RegisterCredentials) =>
       register.mutate(credentials),
-    changePassword: (currentPassword: string, newPassword: string) =>
-      changePassword.mutate({ currentPassword, newPassword }),
+    changePassword: (credentials: ChangePasswordCredentials) =>
+      changePassword.mutate(credentials),
     isLoading: login.isPending || register.isPending,
     error: login.error || register.error,
   };

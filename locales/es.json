@@ -11,7 +11,281 @@
     "next": "Siguiente",
     "previous": "Anterior",
     "submit": "Enviar",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "viewAll": "Ver todos"
+  },
+  "navigation": {
+    "tabs": {
+      "home": "Inicio",
+      "dashboard": "Dashboard",
+      "search": "Buscar",
+      "history": "Historial",
+      "orders": "Órdenes",
+      "vehicles": "Vehículos",
+      "earnings": "Ganancias",
+      "profile": "Perfil",
+      "settings": "Configuración"
+    }
+  },
+  "transport": {
+    "home": {
+      "greeting": "¡Hola, {{name}}!",
+      "guestGreeting": "¡Bienvenido a Mecapal!",
+      "subtitle": "¿Necesitas transporte hoy?",
+      "guestSubtitle": "Encuentra el transporte que necesitas",
+      "guest": {
+        "loginPrompt": "¿Ya tienes cuenta?",
+        "loginSubtitle": "Inicia sesión para acceder a todas las funciones",
+        "login": "Iniciar Sesión",
+        "register": "Registrarse",
+        "createAccount": "Crear Cuenta",
+        "benefits": {
+          "title": "Beneficios de registrarte",
+          "history": {
+            "title": "Historial de viajes",
+            "description": "Accede a tu historial completo de servicios"
+          },
+          "favorites": {
+            "title": "Favoritos",
+            "description": "Guarda tus transportistas favoritos"
+          },
+          "notifications": {
+            "title": "Notificaciones",
+            "description": "Recibe actualizaciones en tiempo real"
+          },
+          "payment": {
+            "title": "Pagos seguros",
+            "description": "Métodos de pago seguros y rápidos"
+          }
+        },
+        "cta": {
+          "title": "¿Listo para empezar?",
+          "subtitle": "Crea tu cuenta y disfruta de todos los beneficios",
+          "button": "Crear Cuenta Gratis"
+        }
+      },
+      "quickSearch": {
+        "title": "Buscar Transportista",
+        "button": "Buscar Transportistas Disponibles",
+        "subtitle": "Encuentra el transporte que necesitas"
+      },
+      "serviceTypes": {
+        "title": "Tipos de Servicio",
+        "mudanzas": {
+          "name": "Mudanzas",
+          "description": "Traslado de muebles y enseres"
+        },
+        "cargaGeneral": {
+          "name": "Carga General",
+          "description": "Mercancías y productos"
+        },
+        "materialesConstruccion": {
+          "name": "Materiales de Construcción",
+          "description": "Arena, grava, cemento, etc."
+        },
+        "entregaRecoleccion": {
+          "name": "Entrega/Recolección",
+          "description": "Servicios de logística"
+        }
+      },
+      "quickActions": {
+        "title": "Acciones Rápidas",
+        "searchTransport": "Buscar Transporte",
+        "myHistory": "Mi Historial",
+        "myProfile": "Mi Perfil",
+        "settings": "Configuración"
+      },
+      "recentActivity": {
+        "title": "Actividad Reciente",
+        "noActivity": "No tienes actividad reciente",
+        "subtitle": "Los transportistas que contactes aparecerán aquí"
+      }
+    },
+    "search": {
+      "title": "Buscar Transportistas",
+      "subtitle": "Encuentra transportistas disponibles según tus necesidades",
+      "placeholder": "Buscar servicios de transporte...",
+      "guest": {
+        "loginPrompt": "Inicia sesión para reservar",
+        "loginSubtitle": "Necesitas una cuenta para hacer reservas",
+        "login": "Iniciar Sesión",
+        "reserve": "Reservar",
+        "viewDetails": "Ver Detalles",
+        "cta": {
+          "title": "¿Encontraste lo que buscabas?",
+          "subtitle": "Crea tu cuenta para hacer reservas y disfrutar de todos los beneficios",
+          "register": "Crear Cuenta",
+          "login": "Iniciar Sesión"
+        }
+      },
+      "popularServices": {
+        "title": "Servicios Populares"
+      },
+      "categories": {
+        "title": "Categorías de Servicios"
+      },
+      "filters": {
+        "title": "Filtros",
+        "serviceType": "Tipo de servicio",
+        "location": "Ubicación",
+        "weight": "Peso",
+        "distance": "Distancia"
+      },
+      "results": {
+        "title": "Resultados",
+        "noResults": "No se encontraron transportistas",
+        "contact": "Contactar"
+      }
+    },
+    "history": {
+      "title": "Historial de Servicios",
+      "subtitle": "Revisa tus servicios anteriores",
+      "guest": {
+        "loginPrompt": "Inicia sesión para ver tu historial",
+        "loginSubtitle": "Tu historial personal estará disponible aquí",
+        "login": "Iniciar Sesión",
+        "sampleTitle": "Ejemplo de Historial",
+        "sampleSubtitle": "Así se verá tu historial cuando tengas una cuenta",
+        "sampleStatsTitle": "Estadísticas de Ejemplo",
+        "benefits": {
+          "title": "Beneficios de tener una cuenta",
+          "history": {
+            "title": "Historial completo",
+            "description": "Accede a todos tus servicios anteriores"
+          },
+          "ratings": {
+            "title": "Calificaciones",
+            "description": "Califica y revisa tus experiencias"
+          },
+          "repeat": {
+            "title": "Repetir servicios",
+            "description": "Repite servicios con transportistas confiables"
+          },
+          "analytics": {
+            "title": "Estadísticas detalladas",
+            "description": "Analiza tus patrones de uso"
+          }
+        },
+        "cta": {
+          "title": "¿Quieres ver tu historial real?",
+          "subtitle": "Crea tu cuenta y comienza a construir tu historial de servicios",
+          "register": "Crear Cuenta",
+          "login": "Iniciar Sesión"
+        }
+      },
+      "filters": {
+        "title": "Filtrar por",
+        "all": "Todos",
+        "thisMonth": "Este Mes",
+        "thisYear": "Este Año"
+      },
+      "recentServices": {
+        "title": "Servicios Recientes"
+      },
+      "transporter": "Transportista",
+      "actions": {
+        "details": "Detalles",
+        "repeat": "Repetir"
+      },
+      "statistics": {
+        "title": "Estadísticas",
+        "totalServices": "Servicios Totales",
+        "averageRating": "Calificación Promedio",
+        "totalSpent": "Total Gastado",
+        "thisMonth": "Este Mes"
+      }
+    },
+    "profile": {
+      "title": "Mi Perfil",
+      "subtitle": "Gestiona tu información personal",
+      "guest": {
+        "title": "Usuario Invitado",
+        "subtitle": "Explorando la aplicación",
+        "status": "Modo Invitado",
+        "access": "Acceso",
+        "limited": "Limitado",
+        "features": "Funciones disponibles",
+        "basic": "Básicas",
+        "upgrade": {
+          "title": "¿Quieres más funcionalidades?",
+          "subtitle": "Crea una cuenta para acceder a todas las funciones de la aplicación",
+          "register": "Crear Cuenta",
+          "login": "Iniciar Sesión"
+        },
+        "availableActions": {
+          "title": "Acciones Disponibles"
+        },
+        "actions": {
+          "search": "Explorar Servicios",
+          "about": "Acerca de la App",
+          "help": "Ayuda y Soporte",
+          "settings": "Configuración"
+        },
+        "comparison": {
+          "title": "Comparación de Funciones",
+          "guest": "Invitado",
+          "user": "Usuario",
+          "search": "Buscar servicios",
+          "reserve": "Hacer reservas",
+          "history": "Ver historial",
+          "ratings": "Calificar servicios",
+          "favorites": "Guardar favoritos",
+          "notifications": "Notificaciones"
+        },
+        "cta": {
+          "title": "¿Listo para desbloquear todo?",
+          "subtitle": "Únete a miles de usuarios que ya disfrutan de todas las funciones",
+          "button": "Crear Cuenta Gratis"
+        }
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "stats": {
+        "activeOrders": "Órdenes Activas",
+        "completedOrders": "Órdenes Completadas",
+        "totalEarnings": "Ganancias Totales",
+        "availableVehicles": "Vehículos Disponibles"
+      },
+      "quickActions": {
+        "viewOrders": "Ver Órdenes",
+        "manageVehicles": "Gestionar Vehículos",
+        "viewEarnings": "Ver Ganancias"
+      }
+    },
+    "orders": {
+      "title": "Órdenes",
+      "active": "Activas",
+      "completed": "Completadas",
+      "pending": "Pendientes",
+      "noOrders": "No tienes órdenes",
+      "status": {
+        "pending": "Pendiente",
+        "accepted": "Aceptada",
+        "inProgress": "En Progreso",
+        "completed": "Completada",
+        "cancelled": "Cancelada"
+      }
+    },
+    "vehicles": {
+      "title": "Vehículos",
+      "addVehicle": "Agregar Vehículo",
+      "noVehicles": "No tienes vehículos registrados",
+      "types": {
+        "pickup": "Pickup",
+        "truck": "Camión",
+        "trailer": "Remolque",
+        "van": "Furgoneta"
+      }
+    },
+    "earnings": {
+      "title": "Ganancias",
+      "total": "Total",
+      "thisMonth": "Este mes",
+      "thisWeek": "Esta semana",
+      "today": "Hoy",
+      "noEarnings": "No hay ganancias registradas"
+    }
   },
   "auth": {
     "login": {
@@ -20,21 +294,33 @@
       "password": "Contraseña",
       "login": "Iniciar sesión",
       "noAccount": "¿No tienes cuenta? Regístrate",
-      "forgotPassword": "¿Olvidaste tu contraseña?"
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "continueAsGuest": "Continuar como invitado"
     },
     "register": {
       "title": "Registrarse",
+      "name": "Nombre completo",
       "email": "Correo electrónico",
       "password": "Contraseña",
       "confirmPassword": "Confirmar Contraseña",
       "register": "Registrarse",
-      "hasAccount": "¿Ya tienes cuenta? Inicia sesión"
+      "hasAccount": "¿Ya tienes cuenta? Inicia sesión",
+      "continueAsGuest": "Continuar como invitado"
     },
     "forgotPassword": {
       "title": "Olvidé mi contraseña",
+      "description": "Esta funcionalidad estará disponible próximamente. Por favor, contacta al soporte técnico si necesitas recuperar tu contraseña.",
       "email": "Correo electrónico",
       "submit": "Enviar enlace de restablecimiento",
-      "backToLogin": "Volver al inicio de sesión"
+      "backToLogin": "Volver al inicio de sesión",
+      "continueAsGuest": "Continuar como invitado"
+    },
+    "changePassword": {
+      "title": "Cambiar contraseña",
+      "currentPassword": "Contraseña actual",
+      "newPassword": "Nueva contraseña",
+      "submit": "Cambiar contraseña",
+      "success": "Contraseña cambiada correctamente"
     },
     "errors": {
       "loginError": "Error al iniciar sesión",
@@ -48,20 +334,35 @@
   "onboarding": {
     "welcome": {
       "title": "Bienvenido a Mecapal",
-      "subtitle": "Tu compañero de finanzas personales",
+      "subtitle": "Conecta con transportistas confiables",
+      "description": "Encuentra el transporte que necesitas de forma rápida y segura",
       "getStarted": "Comenzar"
     },
-    "step1": {
-      "title": "Rastrea tus gastos",
-      "description": "Registra y categoriza fácilmente tus gastos diarios"
+    "features": {
+      "title": "Características principales",
+      "search": {
+        "title": "Búsqueda rápida",
+        "description": "Encuentra transportistas disponibles en tu área"
+      },
+      "secure": {
+        "title": "Pagos seguros",
+        "description": "Transacciones seguras y confiables"
+      },
+      "tracking": {
+        "title": "Seguimiento en tiempo real",
+        "description": "Monitorea tu envío en tiempo real"
+      }
     },
-    "step2": {
-      "title": "Establece metas de presupuesto",
-      "description": "Crea presupuestos y mantente en el camino hacia tus metas financieras"
-    },
-    "step3": {
-      "title": "Analiza y mejora",
-      "description": "Obtén información sobre tus patrones de gasto y ahorra más"
+    "userType": {
+      "title": "¿Qué tipo de usuario eres?",
+      "client": {
+        "title": "Cliente",
+        "description": "Necesito transportar cosas"
+      },
+      "transporter": {
+        "title": "Transportista",
+        "description": "Ofrezco servicios de transporte"
+      }
     }
   },
   "home": {

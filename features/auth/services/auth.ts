@@ -2,6 +2,7 @@ import {
   AuthResponse,
   LoginCredentials,
   RegisterCredentials,
+  ChangePasswordCredentials,
 } from "../types/auth";
 import { api, AUTH_ENDPOINTS } from "@/services/api";
 
@@ -17,16 +18,12 @@ export const authService = {
   },
 
   changePassword: async (
-    currentPassword: string,
-    newPassword: string
+    credentials: ChangePasswordCredentials
   ): Promise<{ message: string }> => {
-    await api.post(AUTH_ENDPOINTS.CHANGE_PASSWORD, {
-      currentPassword,
-      newPassword,
-    });
+    await api.post(AUTH_ENDPOINTS.CHANGE_PASSWORD, credentials);
 
     return {
-      message: "Password updated successfully",
+      message: "auth.changePassword.success",
     };
   },
 };
