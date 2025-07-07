@@ -317,8 +317,8 @@ export default function GuestAboutScreen() {
         </View>
 
         {/* CTA Section */}
-        <View className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-lg mb-6">
-          <Text className="text-white text-xl font-bold text-center mb-2">
+        <View className="bg-blue-600 p-6 rounded-lg mb-6">
+          <Text className="text-white text-xl font-bold text-center">
             {t("transport.about.cta.title", {
               defaultValue: "¿Listo para empezar?",
             })}

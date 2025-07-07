@@ -279,27 +279,40 @@ export default function GuestHomeScreen() {
         </View>
 
         {/* Call to Action */}
-        <View className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-lg">
-          <Text className="text-white text-xl font-bold text-center mb-2">
-            {t("transport.home.guest.cta.title", {
-              defaultValue: "¿Listo para empezar?",
+        <View className="bg-blue-600 p-6 rounded-lg mt-4 mb-6 items-center">
+          <Ionicons name="star" size={32} color="white" />
+          <Text className="text-white text-xl font-bold text-center mt-2">
+            {t("transport.home.guest.ctaTitle", {
+              defaultValue: "¿Listo para reservar tu transporte?",
             })}
           </Text>
-          <Text className="text-blue-100 text-center mb-4">
-            {t("transport.home.guest.cta.subtitle", {
-              defaultValue: "Crea tu cuenta y disfruta de todos los beneficios",
+          <Text className="text-blue-100 text-center mt-1 mb-2">
+            {t("transport.home.guest.ctaSubtitle", {
+              defaultValue: "Crea tu cuenta y accede a todos los beneficios",
             })}
           </Text>
-          <TouchableOpacity
-            onPress={() => navigateTo("/register")}
-            className="bg-white p-4 rounded-lg"
-          >
-            <Text className="text-blue-600 font-bold text-center text-lg">
-              {t("transport.home.guest.cta.button", {
-                defaultValue: "Crear Cuenta Gratis",
-              })}
-            </Text>
-          </TouchableOpacity>
+          <View className="flex-row space-x-3 mt-2">
+            <TouchableOpacity
+              onPress={() => navigateTo("/register")}
+              className="flex-1 bg-white p-3 rounded-lg"
+            >
+              <Text className="text-blue-600 font-semibold text-center">
+                {t("transport.home.guest.ctaRegister", {
+                  defaultValue: "Crear Cuenta",
+                })}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigateTo("/login")}
+              className="flex-1 bg-transparent border border-white p-3 rounded-lg"
+            >
+              <Text className="text-white font-semibold text-center">
+                {t("transport.home.guest.ctaLogin", {
+                  defaultValue: "Iniciar Sesión",
+                })}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </ScrollView>

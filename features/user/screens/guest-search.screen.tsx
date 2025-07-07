@@ -217,35 +217,36 @@ export default function GuestSearchScreen() {
         </View>
 
         {/* Call to Action */}
-        <View className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-lg">
-          <Text className="text-white text-xl font-bold text-center mb-2">
-            {t("transport.search.guest.cta.title", {
-              defaultValue: "¿Encontraste lo que buscabas?",
+        <View className="bg-blue-600 p-6 rounded-lg mb-6 items-center">
+          <Ionicons name="search" size={32} color="white" />
+          <Text className="text-white text-xl font-bold text-center mt-2">
+            {t("transport.search.guest.ctaTitle", {
+              defaultValue: "¿Listo para reservar?",
             })}
           </Text>
-          <Text className="text-blue-100 text-center mb-4">
-            {t("transport.search.guest.cta.subtitle", {
+          <Text className="text-blue-100 text-center mt-1 mb-2">
+            {t("transport.search.guest.ctaSubtitle", {
               defaultValue:
                 "Crea tu cuenta para hacer reservas y disfrutar de todos los beneficios",
             })}
           </Text>
-          <View className="flex-row space-x-3">
+          <View className="flex-row space-x-3 mt-2">
             <TouchableOpacity
               onPress={() => navigateTo("/register")}
-              className="flex-1 bg-white p-4 rounded-lg"
+              className="flex-1 bg-white p-3 rounded-lg"
             >
-              <Text className="text-blue-600 font-bold text-center">
-                {t("transport.search.guest.cta.register", {
+              <Text className="text-blue-600 font-semibold text-center">
+                {t("transport.search.guest.ctaRegister", {
                   defaultValue: "Crear Cuenta",
                 })}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigateTo("/login")}
-              className="flex-1 bg-transparent border border-white p-4 rounded-lg"
+              className="flex-1 bg-transparent border border-white p-3 rounded-lg"
             >
-              <Text className="text-white font-bold text-center">
-                {t("transport.search.guest.cta.login", {
+              <Text className="text-white font-semibold text-center">
+                {t("transport.search.guest.ctaLogin", {
                   defaultValue: "Iniciar Sesión",
                 })}
               </Text>

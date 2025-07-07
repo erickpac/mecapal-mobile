@@ -63,9 +63,9 @@ export const GUEST_TABS: TabConfig[] = [
     icon: "information-circle",
   },
   {
-    name: "profile",
-    titleKey: "navigation.tabs.profile",
-    icon: "person",
+    name: "auth",
+    titleKey: "navigation.tabs.auth",
+    icon: "person-add",
   },
 ];
 
@@ -90,6 +90,7 @@ export const GUEST_HIDDEN_ROUTES = [
   "settings",
   "earnings",
   "history",
+  "profile",
 ];
 
 // Common tab screen options

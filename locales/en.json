@@ -21,6 +21,7 @@
       "search": "Search",
       "history": "History",
       "about": "About",
+      "auth": "Account",
       "orders": "Orders",
       "vehicles": "Vehicles",
       "earnings": "Earnings",
@@ -271,6 +272,47 @@
         "register": "Create Account",
         "login": "Sign In"
       }
+    },
+    "auth": {
+      "title": "Join Mecapal",
+      "subtitle": "Create your account and access all services",
+      "welcome": {
+        "title": "Welcome to Mecapal!",
+        "subtitle": "The most reliable transportation platform"
+      },
+      "createAccount": {
+        "title": "Create Free Account",
+        "subtitle": "Sign up in less than 2 minutes"
+      },
+      "signIn": {
+        "title": "I already have an account",
+        "subtitle": "Sign in to your account"
+      },
+      "benefits": {
+        "title": "Why create an account?",
+        "secure": {
+          "title": "Guaranteed Security",
+          "description": "All our transporters are verified"
+        },
+        "fast": {
+          "title": "Quick Bookings",
+          "description": "Book your transportation in seconds"
+        },
+        "payment": {
+          "title": "Secure Payments",
+          "description": "Multiple payment methods available"
+        },
+        "notifications": {
+          "title": "Real-time Notifications",
+          "description": "Track your transportation in real-time"
+        }
+      },
+      "quickActions": {
+        "title": "Quick Actions",
+        "explore": "Explore Services",
+        "learnMore": "Learn More About Mecapal"
+      },
+      "socialProof": "Join thousands of users who already trust Mecapal"
     },
     "profile": {
       "title": "My Profile",
