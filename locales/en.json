@@ -30,7 +30,40 @@
   "transport": {
     "home": {
       "greeting": "Hello, {{name}}!",
+      "guestGreeting": "Welcome to Mecapal!",
       "subtitle": "Do you need transportation today?",
+      "guestSubtitle": "Find the transportation you need",
+      "guest": {
+        "loginPrompt": "Already have an account?",
+        "loginSubtitle": "Sign in to access all features",
+        "login": "Sign In",
+        "register": "Register",
+        "createAccount": "Create Account",
+        "benefits": {
+          "title": "Benefits of registering",
+          "history": {
+            "title": "Trip history",
+            "description": "Access your complete service history"
+          },
+          "favorites": {
+            "title": "Favorites",
+            "description": "Save your favorite transporters"
+          },
+          "notifications": {
+            "title": "Notifications",
+            "description": "Receive real-time updates"
+          },
+          "payment": {
+            "title": "Secure payments",
+            "description": "Secure and fast payment methods"
+          }
+        },
+        "cta": {
+          "title": "Ready to get started?",
+          "subtitle": "Create an account and enjoy all the benefits",
+          "button": "Create Free Account"
+        }
+      },
       "quickSearch": {
         "title": "Find Transporter",
         "button": "Search Available Transporters",
@@ -71,6 +104,26 @@
     "search": {
       "title": "Search Transporters",
       "subtitle": "Find available transporters according to your needs",
+      "placeholder": "Search transportation services...",
+      "guest": {
+        "loginPrompt": "Sign in to make reservations",
+        "loginSubtitle": "You need an account to make reservations",
+        "login": "Sign In",
+        "reserve": "Reserve",
+        "viewDetails": "View Details",
+        "cta": {
+          "title": "Found what you're looking for?",
+          "subtitle": "Create an account to make reservations and enjoy all benefits",
+          "register": "Create Account",
+          "login": "Sign In"
+        }
+      },
+      "popularServices": {
+        "title": "Popular Services"
+      },
+      "categories": {
+        "title": "Service Categories"
+      },
       "filters": {
         "title": "Filters",
         "serviceType": "Service type",
@@ -85,6 +138,41 @@
       }
     },
     "history": {
+      "title": "Service History",
+      "subtitle": "Review your previous services",
+      "guest": {
+        "loginPrompt": "Sign in to view your history",
+        "loginSubtitle": "Your personal history will be available here",
+        "login": "Sign In",
+        "sampleTitle": "Sample History",
+        "sampleSubtitle": "This is how your history will look when you have an account",
+        "sampleStatsTitle": "Sample Statistics",
+        "benefits": {
+          "title": "Benefits of having an account",
+          "history": {
+            "title": "Complete history",
+            "description": "Access all your previous services"
+          },
+          "ratings": {
+            "title": "Ratings",
+            "description": "Rate and review your experiences"
+          },
+          "repeat": {
+            "title": "Repeat services",
+            "description": "Repeat services with trusted transporters"
+          },
+          "analytics": {
+            "title": "Detailed statistics",
+            "description": "Analyze your usage patterns"
+          }
+        },
+        "cta": {
+          "title": "Want to see your real history?",
+          "subtitle": "Create an account and start building your service history",
+          "register": "Create Account",
+          "login": "Sign In"
+        }
+      },
       "filters": {
         "title": "Filter by",
         "all": "All",
@@ -105,6 +193,50 @@
         "averageRating": "Average Rating",
         "totalSpent": "Total Spent",
         "thisMonth": "This Month"
+      }
+    },
+    "profile": {
+      "title": "My Profile",
+      "subtitle": "Manage your personal information",
+      "guest": {
+        "title": "Guest User",
+        "subtitle": "Exploring the application",
+        "status": "Guest Mode",
+        "access": "Access",
+        "limited": "Limited",
+        "features": "Available features",
+        "basic": "Basic",
+        "upgrade": {
+          "title": "Want more features?",
+          "subtitle": "Create an account to access all application features",
+          "register": "Create Account",
+          "login": "Sign In"
+        },
+        "availableActions": {
+          "title": "Available Actions"
+        },
+        "actions": {
+          "search": "Explore Services",
+          "about": "About the App",
+          "help": "Help & Support",
+          "settings": "Settings"
+        },
+        "comparison": {
+          "title": "Feature Comparison",
+          "guest": "Guest",
+          "user": "User",
+          "search": "Search services",
+          "reserve": "Make reservations",
+          "history": "View history",
+          "ratings": "Rate services",
+          "favorites": "Save favorites",
+          "notifications": "Notifications"
+        },
+        "cta": {
+          "title": "Ready to unlock everything?",
+          "subtitle": "Join thousands of users who already enjoy all features",
+          "button": "Create Free Account"
+        }
       }
     },
     "dashboard": {
@@ -198,19 +330,34 @@
     "welcome": {
       "title": "Welcome to Mecapal",
       "subtitle": "Connect with reliable transporters",
+      "description": "Find the transportation you need quickly and safely",
       "getStarted": "Get Started"
     },
-    "step1": {
-      "title": "Find transporters",
-      "description": "Search for available transporters according to your needs"
+    "features": {
+      "title": "Main features",
+      "search": {
+        "title": "Quick search",
+        "description": "Find available transporters in your area"
+      },
+      "secure": {
+        "title": "Secure payments",
+        "description": "Secure and reliable transactions"
+      },
+      "tracking": {
+        "title": "Real-time tracking",
+        "description": "Monitor your shipment in real time"
+      }
     },
-    "step2": {
-      "title": "Contact directly",
-      "description": "Connect with transporters via WhatsApp to coordinate"
-    },
-    "step3": {
-      "title": "Reliable transportation",
-      "description": "Access a directory of verified transporters"
+    "userType": {
+      "title": "What type of user are you?",
+      "client": {
+        "title": "Client",
+        "description": "I need to transport things"
+      },
+      "transporter": {
+        "title": "Transporter",
+        "description": "I offer transportation services"
+      }
     }
   },
   "home": {

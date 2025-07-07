@@ -10,16 +10,26 @@ import {
 import { useTabConfigurations } from "@/hooks/useTabConfigurations";
 
 export default function AppLayout() {
-  const { user } = useStore();
-  const { TRANSPORTER_TABS, USER_TABS } = useTabConfigurations();
+  const { user, isAuthenticated } = useStore();
+  const { TRANSPORTER_TABS, USER_TABS, GUEST_TABS } = useTabConfigurations();
 
-  // This layout only renders when user is authenticated (handled by index.tsx)
-  // So we can safely assume user exists here
-  const isTransporter = user?.role === UserRole.TRANSPORTER;
-  const activeTabs = isTransporter ? TRANSPORTER_TABS : USER_TABS;
-  const hiddenRoutes = isTransporter
-    ? TRANSPORTER_HIDDEN_ROUTES
-    : USER_HIDDEN_ROUTES;
+  // Determine which tabs to show based on authentication and user role
+  let activeTabs;
+  let hiddenRoutes;
+
+  if (!isAuthenticated) {
+    // Guest mode - show basic tabs
+    activeTabs = GUEST_TABS;
+    hiddenRoutes = ["orders", "vehicles", "earnings", "settings"];
+  } else if (user?.role === UserRole.TRANSPORTER) {
+    // Authenticated transporter
+    activeTabs = TRANSPORTER_TABS;
+    hiddenRoutes = TRANSPORTER_HIDDEN_ROUTES;
+  } else {
+    // Authenticated user
+    activeTabs = USER_TABS;
+    hiddenRoutes = USER_HIDDEN_ROUTES;
+  }
 
   return (
     <Tabs screenOptions={TAB_SCREEN_OPTIONS}>

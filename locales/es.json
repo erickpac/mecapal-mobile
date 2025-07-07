@@ -30,7 +30,40 @@
   "transport": {
     "home": {
       "greeting": "¡Hola, {{name}}!",
+      "guestGreeting": "¡Bienvenido a Mecapal!",
       "subtitle": "¿Necesitas transporte hoy?",
+      "guestSubtitle": "Encuentra el transporte que necesitas",
+      "guest": {
+        "loginPrompt": "¿Ya tienes cuenta?",
+        "loginSubtitle": "Inicia sesión para acceder a todas las funciones",
+        "login": "Iniciar Sesión",
+        "register": "Registrarse",
+        "createAccount": "Crear Cuenta",
+        "benefits": {
+          "title": "Beneficios de registrarte",
+          "history": {
+            "title": "Historial de viajes",
+            "description": "Accede a tu historial completo de servicios"
+          },
+          "favorites": {
+            "title": "Favoritos",
+            "description": "Guarda tus transportistas favoritos"
+          },
+          "notifications": {
+            "title": "Notificaciones",
+            "description": "Recibe actualizaciones en tiempo real"
+          },
+          "payment": {
+            "title": "Pagos seguros",
+            "description": "Métodos de pago seguros y rápidos"
+          }
+        },
+        "cta": {
+          "title": "¿Listo para empezar?",
+          "subtitle": "Crea tu cuenta y disfruta de todos los beneficios",
+          "button": "Crear Cuenta Gratis"
+        }
+      },
       "quickSearch": {
         "title": "Buscar Transportista",
         "button": "Buscar Transportistas Disponibles",
@@ -71,6 +104,26 @@
     "search": {
       "title": "Buscar Transportistas",
       "subtitle": "Encuentra transportistas disponibles según tus necesidades",
+      "placeholder": "Buscar servicios de transporte...",
+      "guest": {
+        "loginPrompt": "Inicia sesión para reservar",
+        "loginSubtitle": "Necesitas una cuenta para hacer reservas",
+        "login": "Iniciar Sesión",
+        "reserve": "Reservar",
+        "viewDetails": "Ver Detalles",
+        "cta": {
+          "title": "¿Encontraste lo que buscabas?",
+          "subtitle": "Crea tu cuenta para hacer reservas y disfrutar de todos los beneficios",
+          "register": "Crear Cuenta",
+          "login": "Iniciar Sesión"
+        }
+      },
+      "popularServices": {
+        "title": "Servicios Populares"
+      },
+      "categories": {
+        "title": "Categorías de Servicios"
+      },
       "filters": {
         "title": "Filtros",
         "serviceType": "Tipo de servicio",
@@ -85,6 +138,41 @@
       }
     },
     "history": {
+      "title": "Historial de Servicios",
+      "subtitle": "Revisa tus servicios anteriores",
+      "guest": {
+        "loginPrompt": "Inicia sesión para ver tu historial",
+        "loginSubtitle": "Tu historial personal estará disponible aquí",
+        "login": "Iniciar Sesión",
+        "sampleTitle": "Ejemplo de Historial",
+        "sampleSubtitle": "Así se verá tu historial cuando tengas una cuenta",
+        "sampleStatsTitle": "Estadísticas de Ejemplo",
+        "benefits": {
+          "title": "Beneficios de tener una cuenta",
+          "history": {
+            "title": "Historial completo",
+            "description": "Accede a todos tus servicios anteriores"
+          },
+          "ratings": {
+            "title": "Calificaciones",
+            "description": "Califica y revisa tus experiencias"
+          },
+          "repeat": {
+            "title": "Repetir servicios",
+            "description": "Repite servicios con transportistas confiables"
+          },
+          "analytics": {
+            "title": "Estadísticas detalladas",
+            "description": "Analiza tus patrones de uso"
+          }
+        },
+        "cta": {
+          "title": "¿Quieres ver tu historial real?",
+          "subtitle": "Crea tu cuenta y comienza a construir tu historial de servicios",
+          "register": "Crear Cuenta",
+          "login": "Iniciar Sesión"
+        }
+      },
       "filters": {
         "title": "Filtrar por",
         "all": "Todos",
@@ -105,6 +193,50 @@
         "averageRating": "Calificación Promedio",
         "totalSpent": "Total Gastado",
         "thisMonth": "Este Mes"
+      }
+    },
+    "profile": {
+      "title": "Mi Perfil",
+      "subtitle": "Gestiona tu información personal",
+      "guest": {
+        "title": "Usuario Invitado",
+        "subtitle": "Explorando la aplicación",
+        "status": "Modo Invitado",
+        "access": "Acceso",
+        "limited": "Limitado",
+        "features": "Funciones disponibles",
+        "basic": "Básicas",
+        "upgrade": {
+          "title": "¿Quieres más funcionalidades?",
+          "subtitle": "Crea una cuenta para acceder a todas las funciones de la aplicación",
+          "register": "Crear Cuenta",
+          "login": "Iniciar Sesión"
+        },
+        "availableActions": {
+          "title": "Acciones Disponibles"
+        },
+        "actions": {
+          "search": "Explorar Servicios",
+          "about": "Acerca de la App",
+          "help": "Ayuda y Soporte",
+          "settings": "Configuración"
+        },
+        "comparison": {
+          "title": "Comparación de Funciones",
+          "guest": "Invitado",
+          "user": "Usuario",
+          "search": "Buscar servicios",
+          "reserve": "Hacer reservas",
+          "history": "Ver historial",
+          "ratings": "Calificar servicios",
+          "favorites": "Guardar favoritos",
+          "notifications": "Notificaciones"
+        },
+        "cta": {
+          "title": "¿Listo para desbloquear todo?",
+          "subtitle": "Únete a miles de usuarios que ya disfrutan de todas las funciones",
+          "button": "Crear Cuenta Gratis"
+        }
       }
     },
     "dashboard": {
@@ -198,19 +330,34 @@
     "welcome": {
       "title": "Bienvenido a Mecapal",
       "subtitle": "Conecta con transportistas confiables",
+      "description": "Encuentra el transporte que necesitas de forma rápida y segura",
       "getStarted": "Comenzar"
     },
-    "step1": {
-      "title": "Encuentra transportistas",
-      "description": "Busca transportistas disponibles según tus necesidades"
+    "features": {
+      "title": "Características principales",
+      "search": {
+        "title": "Búsqueda rápida",
+        "description": "Encuentra transportistas disponibles en tu área"
+      },
+      "secure": {
+        "title": "Pagos seguros",
+        "description": "Transacciones seguras y confiables"
+      },
+      "tracking": {
+        "title": "Seguimiento en tiempo real",
+        "description": "Monitorea tu envío en tiempo real"
+      }
     },
-    "step2": {
-      "title": "Contacta directamente",
-      "description": "Conecta con transportistas vía WhatsApp para coordinar"
-    },
-    "step3": {
-      "title": "Transporte confiable",
-      "description": "Accede a un directorio de transportistas verificados"
+    "userType": {
+      "title": "¿Qué tipo de usuario eres?",
+      "client": {
+        "title": "Cliente",
+        "description": "Necesito transportar cosas"
+      },
+      "transporter": {
+        "title": "Transportista",
+        "description": "Ofrezco servicios de transporte"
+      }
     }
   },
   "home": {

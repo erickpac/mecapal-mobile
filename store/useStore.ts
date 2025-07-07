@@ -10,12 +10,15 @@ interface AppState {
   accessToken: string | null;
   refreshToken: string | null;
   isAuthenticated: boolean;
+  isGuestMode: boolean;
   hasCompletedOnboarding: boolean;
   setUser: (user: User | null) => void;
   setAccessToken: (accessToken: string | null) => void;
   setRefreshToken: (refreshToken: string | null) => void;
   setHasCompletedOnboarding: (completed: boolean) => void;
+  setGuestMode: (isGuest: boolean) => void;
   logout: () => void;
+  enterGuestMode: () => void;
 }
 
 export const useStore = create<AppState>()(
@@ -25,8 +28,10 @@ export const useStore = create<AppState>()(
       accessToken: null,
       refreshToken: null,
       isAuthenticated: false,
+      isGuestMode: false,
       hasCompletedOnboarding: false,
-      setUser: (user) => set({ user, isAuthenticated: !!user }),
+      setUser: (user) =>
+        set({ user, isAuthenticated: !!user, isGuestMode: false }),
       setAccessToken: (accessToken: string | null) => {
         if (accessToken) {
           TokenManager.setToken(accessToken);
@@ -38,6 +43,7 @@ export const useStore = create<AppState>()(
       setRefreshToken: (refreshToken: string | null) => set({ refreshToken }),
       setHasCompletedOnboarding: (completed) =>
         set({ hasCompletedOnboarding: completed }),
+      setGuestMode: (isGuest) => set({ isGuestMode: isGuest }),
       logout: () => {
         TokenManager.clearToken();
         set({
@@ -45,8 +51,19 @@ export const useStore = create<AppState>()(
           accessToken: null,
           refreshToken: null,
           isAuthenticated: false,
+          isGuestMode: false,
         });
-        router.replace("/login");
+        router.replace("/home");
+      },
+      enterGuestMode: () => {
+        set({
+          isGuestMode: true,
+          isAuthenticated: false,
+          user: null,
+          accessToken: null,
+          refreshToken: null,
+        });
+        router.replace("/home");
       },
     }),
     {

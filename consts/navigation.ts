@@ -18,11 +18,6 @@ export const TRANSPORTER_TABS: TabConfig[] = [
     icon: "car",
   },
   {
-    name: "earnings",
-    titleKey: "navigation.tabs.earnings",
-    icon: "cash",
-  },
-  {
     name: "profile",
     titleKey: "navigation.tabs.profile",
     icon: "person",
@@ -51,13 +46,41 @@ export const USER_TABS: TabConfig[] = [
   },
 ];
 
+export const GUEST_TABS: TabConfig[] = [
+  {
+    name: "home",
+    titleKey: "navigation.tabs.home",
+    icon: "home",
+  },
+  {
+    name: "search",
+    titleKey: "navigation.tabs.search",
+    icon: "search",
+  },
+  {
+    name: "history",
+    titleKey: "navigation.tabs.history",
+    icon: "time",
+  },
+  {
+    name: "profile",
+    titleKey: "navigation.tabs.profile",
+    icon: "person",
+  },
+];
+
 // Hidden routes for each role
-export const TRANSPORTER_HIDDEN_ROUTES = ["search", "history", "settings"];
+export const TRANSPORTER_HIDDEN_ROUTES = [
+  "search",
+  "history",
+  "settings",
+  "earnings",
+];
 export const USER_HIDDEN_ROUTES = [
   "orders",
   "vehicles",
-  "earnings",
   "settings",
+  "earnings",
 ];
 
 // Common tab screen options
