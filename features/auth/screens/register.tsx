@@ -1,7 +1,7 @@
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { useStore } from "@/store/useStore";
 import { router } from "expo-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -18,9 +18,23 @@ export default function RegisterScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { register, isLoading, error } = useAuth();
+  const [selectedRole, setSelectedRole] = useState<UserRole>(UserRole.USER);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const { register, isLoading, error, isSuccess } = useAuth();
   const { enterGuestMode } = useStore();
   const { t } = useTranslation();
+
+  // Handle successful registration
+  useEffect(() => {
+    if (isSuccess && !showSuccess) {
+      setShowSuccess(true);
+      const timer = setTimeout(() => {
+        setShowSuccess(false);
+        router.replace("/login");
+      }, 2000); // Show success message for 2 seconds then navigate
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess, showSuccess]);
 
   const handleRegister = () => {
     // Validate passwords match
@@ -33,13 +47,31 @@ export default function RegisterScreen() {
       name,
       email,
       password,
-      role: UserRole.USER, // Default role for new registrations
+      role: selectedRole,
     });
   };
 
   const handleContinueAsGuest = () => {
     enterGuestMode();
   };
+
+  // Show success message if registration was successful
+  if (showSuccess) {
+    return (
+      <View className="flex-1 justify-center items-center bg-white px-4">
+        <View className="w-full max-w-md bg-white rounded-2xl p-6 shadow items-center">
+          <Text className="text-3xl font-bold mb-4 text-center text-green-600">
+            {t("auth.register.success", { defaultValue: "¡Registro exitoso!" })}
+          </Text>
+          <Text className="text-gray-600 text-center mb-4">
+            {t("auth.register.redirecting", {
+              defaultValue: "Redirigiendo...",
+            })}
+          </Text>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <KeyboardAvoidingView
@@ -94,6 +126,53 @@ export default function RegisterScreen() {
           value={confirmPassword}
           onChangeText={setConfirmPassword}
         />
+
+        {/* Role Selector */}
+        <View className="mb-6">
+          <Text className="text-gray-700 font-medium mb-3">
+            {t("auth.register.selectRole", { defaultValue: "Tipo de cuenta" })}
+          </Text>
+          <View className="flex-row space-x-3">
+            <TouchableOpacity
+              onPress={() => setSelectedRole(UserRole.USER)}
+              className={`flex-1 py-3 px-4 rounded-lg border-2 ${
+                selectedRole === UserRole.USER
+                  ? "border-blue-600 bg-blue-50"
+                  : "border-gray-300 bg-white"
+              }`}
+            >
+              <Text
+                className={`text-center font-medium ${
+                  selectedRole === UserRole.USER
+                    ? "text-blue-600"
+                    : "text-gray-600"
+                }`}
+              >
+                {t("auth.register.userRole", { defaultValue: "Usuario" })}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setSelectedRole(UserRole.TRANSPORTER)}
+              className={`flex-1 py-3 px-4 rounded-lg border-2 ${
+                selectedRole === UserRole.TRANSPORTER
+                  ? "border-blue-600 bg-blue-50"
+                  : "border-gray-300 bg-white"
+              }`}
+            >
+              <Text
+                className={`text-center font-medium ${
+                  selectedRole === UserRole.TRANSPORTER
+                    ? "text-blue-600"
+                    : "text-gray-600"
+                }`}
+              >
+                {t("auth.register.transporterRole", {
+                  defaultValue: "Transportista",
+                })}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
 
         <TouchableOpacity
           onPress={handleRegister}

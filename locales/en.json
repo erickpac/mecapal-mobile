@@ -303,6 +303,11 @@
       "email": "Email",
       "password": "Password",
       "confirmPassword": "Confirm Password",
+      "selectRole": "Account type",
+      "userRole": "User",
+      "transporterRole": "Transporter",
+      "success": "Registration successful!",
+      "redirecting": "Redirecting...",
       "register": "Register",
       "hasAccount": "Already have an account? Login",
       "continueAsGuest": "Continue as guest"

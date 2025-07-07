@@ -21,11 +21,6 @@ export const useAuth = () => {
 
   const register = useMutation({
     mutationFn: authService.register,
-    onSuccess: (response) => {
-      setUser(response.user);
-      setAccessToken(response.access_token);
-      setRefreshToken(response.refresh_token);
-    },
   });
 
   const changePassword = useMutation({
@@ -41,5 +36,6 @@ export const useAuth = () => {
       changePassword.mutate(credentials),
     isLoading: login.isPending || register.isPending,
     error: login.error || register.error,
+    isSuccess: login.isSuccess || register.isSuccess,
   };
 };
