@@ -1,21 +1,20 @@
-import { useAuth } from "@/features/auth/hooks/useAuth";
+import { useStore } from "@/store/useStore";
 import { router } from "expo-router";
-import { useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
+import { useTranslation } from "react-i18next";
 
 export default function ForgotPasswordScreen() {
-  const [email, setEmail] = useState("");
-  const { forgotPassword, isLoading, error } = useAuth();
+  const { enterGuestMode } = useStore();
+  const { t } = useTranslation();
 
-  const handleSubmit = () => {
-    forgotPassword(email);
+  const handleContinueAsGuest = () => {
+    enterGuestMode();
   };
 
   return (
@@ -25,46 +24,38 @@ export default function ForgotPasswordScreen() {
     >
       <View className="w-full max-w-md bg-white rounded-2xl p-6 shadow">
         <Text className="text-3xl font-bold mb-6 text-center">
-          Recuperar Contraseña
+          {t("auth.forgotPassword.title")}
         </Text>
 
         <Text className="text-gray-600 text-center mb-6">
-          Ingresa tu correo electrónico y te enviaremos las instrucciones para
-          recuperar tu contraseña
+          {t("auth.forgotPassword.description", {
+            defaultValue:
+              "Esta funcionalidad estará disponible próximamente. Por favor, contacta al soporte técnico si necesitas recuperar tu contraseña.",
+          })}
         </Text>
 
-        {error && (
-          <Text className="text-red-500 text-center mb-4">
-            {error instanceof Error
-              ? error.message
-              : "Error al procesar la solicitud"}
-          </Text>
-        )}
-
-        <TextInput
-          className="border border-gray-300 rounded-lg p-4 mb-6 bg-gray-50 text-base"
-          placeholder="Correo electrónico"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          value={email}
-          onChangeText={setEmail}
-        />
-
-        <TouchableOpacity
-          onPress={handleSubmit}
-          disabled={isLoading}
-          className={`py-4 rounded-lg mb-4 ${
-            isLoading ? "bg-blue-300" : "bg-blue-600"
-          }`}
-        >
-          <Text className="text-white text-center font-semibold text-lg">
-            {isLoading ? "Enviando..." : "Enviar instrucciones"}
+        <TouchableOpacity onPress={() => router.back()} className="mb-4">
+          <Text className="text-blue-600 text-center font-medium">
+            {t("auth.forgotPassword.backToLogin")}
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.back()} className="mb-2">
-          <Text className="text-blue-600 text-center">
-            Volver al inicio de sesión
+        {/* Divider */}
+        <View className="flex-row items-center my-6">
+          <View className="flex-1 h-px bg-gray-300" />
+          <Text className="mx-4 text-gray-500">o</Text>
+          <View className="flex-1 h-px bg-gray-300" />
+        </View>
+
+        {/* Continue as Guest Button */}
+        <TouchableOpacity
+          onPress={handleContinueAsGuest}
+          className="py-3 rounded-lg border border-gray-300"
+        >
+          <Text className="text-gray-700 text-center font-medium">
+            {t("auth.forgotPassword.continueAsGuest", {
+              defaultValue: "Continuar como invitado",
+            })}
           </Text>
         </TouchableOpacity>
       </View>

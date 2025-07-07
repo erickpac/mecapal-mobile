@@ -294,21 +294,26 @@
       "password": "Contraseña",
       "login": "Iniciar sesión",
       "noAccount": "¿No tienes cuenta? Regístrate",
-      "forgotPassword": "¿Olvidaste tu contraseña?"
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "continueAsGuest": "Continuar como invitado"
     },
     "register": {
       "title": "Registrarse",
+      "name": "Nombre completo",
       "email": "Correo electrónico",
       "password": "Contraseña",
       "confirmPassword": "Confirmar Contraseña",
       "register": "Registrarse",
-      "hasAccount": "¿Ya tienes cuenta? Inicia sesión"
+      "hasAccount": "¿Ya tienes cuenta? Inicia sesión",
+      "continueAsGuest": "Continuar como invitado"
     },
     "forgotPassword": {
       "title": "Olvidé mi contraseña",
+      "description": "Esta funcionalidad estará disponible próximamente. Por favor, contacta al soporte técnico si necesitas recuperar tu contraseña.",
       "email": "Correo electrónico",
       "submit": "Enviar enlace de restablecimiento",
-      "backToLogin": "Volver al inicio de sesión"
+      "backToLogin": "Volver al inicio de sesión",
+      "continueAsGuest": "Continuar como invitado"
     },
     "changePassword": {
       "title": "Cambiar contraseña",

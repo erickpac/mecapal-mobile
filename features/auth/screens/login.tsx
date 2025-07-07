@@ -17,12 +17,16 @@ export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error } = useAuth();
-  const { isAuthenticated } = useStore();
+  const { isAuthenticated, enterGuestMode } = useStore();
   const { t } = useTranslation();
   const { handleError } = useLocalizedError();
 
   const handleLogin = () => {
     login({ email, password });
+  };
+
+  const handleContinueAsGuest = () => {
+    enterGuestMode();
   };
 
   useEffect(() => {
@@ -88,6 +92,25 @@ export default function LoginScreen() {
         <TouchableOpacity onPress={() => router.push("/forgot-password")}>
           <Text className="text-blue-600 text-center">
             {t("auth.login.forgotPassword")}
+          </Text>
+        </TouchableOpacity>
+
+        {/* Divider */}
+        <View className="flex-row items-center my-6">
+          <View className="flex-1 h-px bg-gray-300" />
+          <Text className="mx-4 text-gray-500">o</Text>
+          <View className="flex-1 h-px bg-gray-300" />
+        </View>
+
+        {/* Continue as Guest Button */}
+        <TouchableOpacity
+          onPress={handleContinueAsGuest}
+          className="py-3 rounded-lg border border-gray-300"
+        >
+          <Text className="text-gray-700 text-center font-medium">
+            {t("auth.login.continueAsGuest", {
+              defaultValue: "Continuar como invitado",
+            })}
           </Text>
         </TouchableOpacity>
       </View>

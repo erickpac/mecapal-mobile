@@ -294,21 +294,26 @@
       "password": "Password",
       "login": "Login",
       "noAccount": "No account? Register",
-      "forgotPassword": "Forgot password?"
+      "forgotPassword": "Forgot password?",
+      "continueAsGuest": "Continue as guest"
     },
     "register": {
       "title": "Register",
+      "name": "Full name",
       "email": "Email",
       "password": "Password",
       "confirmPassword": "Confirm Password",
       "register": "Register",
-      "hasAccount": "Already have an account? Login"
+      "hasAccount": "Already have an account? Login",
+      "continueAsGuest": "Continue as guest"
     },
     "forgotPassword": {
       "title": "Forgot Password",
+      "description": "This functionality will be available soon. Please contact technical support if you need to recover your password.",
       "email": "Email",
       "submit": "Send Reset Link",
-      "backToLogin": "Back to Login"
+      "backToLogin": "Back to Login",
+      "continueAsGuest": "Continue as guest"
     },
     "changePassword": {
       "title": "Change Password",
