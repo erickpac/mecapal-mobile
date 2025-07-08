@@ -5,5 +5,5 @@ export type IconName = keyof typeof Ionicons.glyphMap;
 export interface TabConfig {
   name: string;
   titleKey: string;
-  icon: IconName;
+  icon: string; // Material Symbols icon name
 }

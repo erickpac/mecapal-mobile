@@ -5,17 +5,17 @@ export const TRANSPORTER_TABS: TabConfig[] = [
   {
     name: "home",
     titleKey: "navigation.tabs.dashboard",
-    icon: "stats-chart",
+    icon: "dashboard",
   },
   {
     name: "orders",
     titleKey: "navigation.tabs.orders",
-    icon: "list",
+    icon: "receipt_long",
   },
   {
     name: "vehicles",
     titleKey: "navigation.tabs.vehicles",
-    icon: "car",
+    icon: "directions_car",
   },
   {
     name: "profile",
@@ -37,7 +37,7 @@ export const USER_TABS: TabConfig[] = [
   {
     name: "history",
     titleKey: "navigation.tabs.history",
-    icon: "time",
+    icon: "history",
   },
   {
     name: "profile",
@@ -60,12 +60,12 @@ export const GUEST_TABS: TabConfig[] = [
   {
     name: "about",
     titleKey: "navigation.tabs.about",
-    icon: "information-circle",
+    icon: "info",
   },
   {
     name: "auth",
     titleKey: "navigation.tabs.auth",
-    icon: "person-add",
+    icon: "person_add",
   },
 ];
 

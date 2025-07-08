@@ -1,7 +1,7 @@
 import { Tabs } from "expo-router";
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialSymbol } from "@/components/material-symbol";
 import {
   TRANSPORTER_HIDDEN_ROUTES,
   USER_HIDDEN_ROUTES,
@@ -41,8 +41,13 @@ export default function AppLayout() {
           name={tab.name}
           options={{
             title: tab.title,
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name={tab.icon} size={size} color={color} />
+            tabBarIcon: ({ focused, size }) => (
+              <MaterialSymbol
+                name={tab.icon}
+                size={size}
+                color={focused ? "text-blue-500" : "text-gray-400"}
+                variant="outlined"
+              />
             ),
           }}
         />

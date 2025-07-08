@@ -1,8 +1,7 @@
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialSymbol } from "@/components/material-symbol";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/utils/navigation";
-import { IconName } from "@/types/navigation";
 import { ScreenHeader } from "@/components/screen-header";
 
 export default function GuestHomeScreen() {
@@ -70,7 +69,7 @@ export default function GuestHomeScreen() {
             onPress={() => navigateTo("/search")}
             className="bg-blue-500 p-4 rounded-lg items-center"
           >
-            <Ionicons name="search" size={32} color="white" />
+            <MaterialSymbol name="search" size={32} color="text-white" />
             <Text className="text-white font-semibold mt-2 text-lg">
               {t("transport.home.quickSearch.button")}
             </Text>
@@ -92,7 +91,7 @@ export default function GuestHomeScreen() {
                 nameKey: "transport.home.serviceTypes.mudanzas.name",
                 descriptionKey:
                   "transport.home.serviceTypes.mudanzas.description",
-                icon: "home" as IconName,
+                icon: "home",
                 color: "bg-blue-500",
               },
               {
@@ -100,7 +99,7 @@ export default function GuestHomeScreen() {
                 nameKey: "transport.home.serviceTypes.cargaGeneral.name",
                 descriptionKey:
                   "transport.home.serviceTypes.cargaGeneral.description",
-                icon: "cube" as IconName,
+                icon: "inventory_2",
                 color: "bg-green-500",
               },
               {
@@ -109,7 +108,7 @@ export default function GuestHomeScreen() {
                   "transport.home.serviceTypes.materialesConstruccion.name",
                 descriptionKey:
                   "transport.home.serviceTypes.materialesConstruccion.description",
-                icon: "construct" as IconName,
+                icon: "construction",
                 color: "bg-orange-500",
               },
               {
@@ -117,7 +116,7 @@ export default function GuestHomeScreen() {
                 nameKey: "transport.home.serviceTypes.entregaRecoleccion.name",
                 descriptionKey:
                   "transport.home.serviceTypes.entregaRecoleccion.description",
-                icon: "swap-horizontal" as IconName,
+                icon: "swap_horiz",
                 color: "bg-purple-500",
               },
             ].map((service) => (
@@ -130,7 +129,11 @@ export default function GuestHomeScreen() {
                   <View
                     className={`w-12 h-12 ${service.color} rounded-lg items-center justify-center mr-4`}
                   >
-                    <Ionicons name={service.icon} size={24} color="white" />
+                    <MaterialSymbol
+                      name={service.icon}
+                      size={24}
+                      color="text-white"
+                    />
                   </View>
                   <View className="flex-1">
                     <Text className="text-lg font-semibold text-gray-800">
@@ -140,7 +143,11 @@ export default function GuestHomeScreen() {
                       {t(service.descriptionKey)}
                     </Text>
                   </View>
-                  <Ionicons name="chevron-forward" size={20} color="#8E8E93" />
+                  <MaterialSymbol
+                    name="chevron_right"
+                    size={20}
+                    color="text-gray-400"
+                  />
                 </View>
               </TouchableOpacity>
             ))}
@@ -157,7 +164,7 @@ export default function GuestHomeScreen() {
               onPress={() => navigateTo("/search")}
               className="bg-blue-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="search" size={32} color="white" />
+              <MaterialSymbol name="search" size={32} color="text-white" />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.home.quickActions.searchTransport")}
               </Text>
@@ -167,7 +174,7 @@ export default function GuestHomeScreen() {
               onPress={() => navigateTo("/auth/login")}
               className="bg-green-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="person-add" size={32} color="white" />
+              <MaterialSymbol name="person_add" size={32} color="text-white" />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.home.guest.createAccount", {
                   defaultValue: "Crear Cuenta",
@@ -179,7 +186,7 @@ export default function GuestHomeScreen() {
               onPress={() => navigateTo("/auth/login")}
               className="bg-purple-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="log-in" size={32} color="white" />
+              <MaterialSymbol name="login" size={32} color="text-white" />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.home.guest.login", {
                   defaultValue: "Iniciar Sesión",
@@ -191,7 +198,7 @@ export default function GuestHomeScreen() {
               onPress={() => navigateTo("/settings")}
               className="bg-gray-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="settings" size={32} color="white" />
+              <MaterialSymbol name="settings" size={32} color="text-white" />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.home.quickActions.settings")}
               </Text>
@@ -209,7 +216,7 @@ export default function GuestHomeScreen() {
           <View className="space-y-3">
             {[
               {
-                icon: "star" as IconName,
+                icon: "star",
                 title: t("transport.home.guest.benefits.history.title", {
                   defaultValue: "Historial de viajes",
                 }),
@@ -221,7 +228,7 @@ export default function GuestHomeScreen() {
                 ),
               },
               {
-                icon: "heart" as IconName,
+                icon: "favorite",
                 title: t("transport.home.guest.benefits.favorites.title", {
                   defaultValue: "Favoritos",
                 }),
@@ -231,7 +238,7 @@ export default function GuestHomeScreen() {
                 ),
               },
               {
-                icon: "notifications" as IconName,
+                icon: "notifications",
                 title: t("transport.home.guest.benefits.notifications.title", {
                   defaultValue: "Notificaciones",
                 }),
@@ -241,7 +248,7 @@ export default function GuestHomeScreen() {
                 ),
               },
               {
-                icon: "card" as IconName,
+                icon: "credit_card",
                 title: t("transport.home.guest.benefits.payment.title", {
                   defaultValue: "Pagos seguros",
                 }),
@@ -257,7 +264,11 @@ export default function GuestHomeScreen() {
               >
                 <View className="flex-row items-center">
                   <View className="w-10 h-10 bg-blue-100 rounded-lg items-center justify-center mr-4">
-                    <Ionicons name={benefit.icon} size={20} color="#007AFF" />
+                    <MaterialSymbol
+                      name={benefit.icon}
+                      size={20}
+                      color="text-blue-500"
+                    />
                   </View>
                   <View className="flex-1">
                     <Text className="text-lg font-semibold text-gray-800">
@@ -273,7 +284,7 @@ export default function GuestHomeScreen() {
 
         {/* Call to Action */}
         <View className="bg-blue-600 p-6 rounded-lg mt-4 mb-6 items-center">
-          <Ionicons name="star" size={32} color="white" />
+          <MaterialSymbol name="star" size={32} color="text-white" />
           <Text className="text-white text-xl font-bold text-center mt-2">
             {t("transport.home.guest.ctaTitle", {
               defaultValue: "¿Listo para reservar tu transporte?",

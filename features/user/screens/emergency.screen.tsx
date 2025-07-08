@@ -5,8 +5,7 @@ import {
   ScrollView,
   Linking,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { IconName } from "@/types/navigation";
+import { MaterialSymbol } from "@/components/material-symbol";
 
 export default function UserEmergencyScreen() {
   const handleCall = (phoneNumber: string) => {
@@ -25,7 +24,7 @@ export default function UserEmergencyScreen() {
             className="bg-red-500 p-6 rounded-lg mb-4 items-center"
             onPress={() => handleCall("1-800-EMERGENCY")}
           >
-            <Ionicons name="call" size={48} color="white" />
+            <MaterialSymbol name="call" size={48} color="text-white" />
             <Text className="text-white font-bold text-xl mt-2">
               Llamar Ahora
             </Text>
@@ -43,25 +42,25 @@ export default function UserEmergencyScreen() {
               {
                 type: "Avería en Carretera",
                 description: "Vehículo no arranca o se avería",
-                icon: "warning" as IconName,
+                icon: "warning",
                 color: "bg-red-500",
               },
               {
                 type: "Accidente",
                 description: "Accidente de tráfico",
-                icon: "alert-circle" as IconName,
+                icon: "error",
                 color: "bg-red-600",
               },
               {
                 type: "Pérdida de Combustible",
                 description: "Se quedó sin gasolina",
-                icon: "water" as IconName,
+                icon: "local_gas_station",
                 color: "bg-orange-500",
               },
               {
                 type: "Neumático Pinchado",
                 description: "Neumático desinflado",
-                icon: "car" as IconName,
+                icon: "tire_repair",
                 color: "bg-yellow-500",
               },
             ].map((emergency, index) => (
@@ -73,7 +72,11 @@ export default function UserEmergencyScreen() {
                   <View
                     className={`w-12 h-12 ${emergency.color} rounded-lg items-center justify-center mr-4`}
                   >
-                    <Ionicons name={emergency.icon} size={24} color="white" />
+                    <MaterialSymbol
+                      name={emergency.icon}
+                      size={24}
+                      color="text-white"
+                    />
                   </View>
                   <View className="flex-1">
                     <Text className="text-lg font-semibold text-gray-800">
@@ -83,7 +86,11 @@ export default function UserEmergencyScreen() {
                       {emergency.description}
                     </Text>
                   </View>
-                  <Ionicons name="chevron-forward" size={20} color="#8E8E93" />
+                  <MaterialSymbol
+                    name="chevron_right"
+                    size={20}
+                    color="text-gray-400"
+                  />
                 </View>
               </TouchableOpacity>
             ))}
@@ -97,7 +104,11 @@ export default function UserEmergencyScreen() {
           </Text>
           <View className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
             <View className="flex-row items-center mb-4">
-              <Ionicons name="location" size={24} color="#007AFF" />
+              <MaterialSymbol
+                name="location_on"
+                size={24}
+                color="text-blue-500"
+              />
               <Text className="text-lg font-semibold ml-2 text-gray-800">
                 Ubicación Actual
               </Text>
