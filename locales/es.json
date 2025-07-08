@@ -20,6 +20,8 @@
       "dashboard": "Dashboard",
       "search": "Buscar",
       "history": "Historial",
+      "about": "Acerca de",
+      "auth": "Cuenta",
       "orders": "Órdenes",
       "vehicles": "Vehículos",
       "earnings": "Ganancias",
@@ -195,6 +197,123 @@
         "thisMonth": "Este Mes"
       }
     },
+    "about": {
+      "title": "Acerca de Mecapal",
+      "subtitle": "Conectamos usuarios con transportistas confiables",
+      "guest": {
+        "loginPrompt": "¿Listo para empezar?",
+        "loginSubtitle": "Crea una cuenta para acceder a todos los servicios",
+        "register": "Crear Cuenta"
+      },
+      "whatIs": {
+        "title": "¿Qué es Mecapal?",
+        "description": "Mecapal es una plataforma que conecta usuarios que necesitan servicios de transporte con transportistas profesionales y confiables. Ofrecemos una solución segura, rápida y eficiente para todas tus necesidades de transporte."
+      },
+      "howItWorks": {
+        "title": "¿Cómo funciona?",
+        "step1": {
+          "title": "Busca tu servicio",
+          "description": "Describe lo que necesitas transportar y desde dónde hasta dónde"
+        },
+        "step2": {
+          "title": "Compara opciones",
+          "description": "Revisa precios, calificaciones y disponibilidad de transportistas"
+        },
+        "step3": {
+          "title": "Reserva y paga",
+          "description": "Selecciona tu transportista preferido y realiza el pago seguro"
+        },
+        "step4": {
+          "title": "¡Disfruta el servicio!",
+          "description": "Tu transportista llegará en el momento acordado"
+        }
+      },
+      "services": {
+        "title": "Nuestros Servicios",
+        "mudanzas": {
+          "name": "Mudanzas Residenciales",
+          "description": "Mudanzas completas para hogares y oficinas"
+        },
+        "carga": {
+          "name": "Transporte de Carga",
+          "description": "Transporte seguro de mercancías y productos"
+        },
+        "construccion": {
+          "name": "Materiales de Construcción",
+          "description": "Entrega de materiales para construcción"
+        },
+        "urgente": {
+          "name": "Entrega Urgente",
+          "description": "Servicios de entrega rápida y urgente"
+        }
+      },
+      "benefits": {
+        "title": "¿Por qué elegir Mecapal?",
+        "secure": {
+          "title": "Seguro y Confiable",
+          "description": "Todos nuestros transportistas están verificados y asegurados"
+        },
+        "fast": {
+          "title": "Rápido y Eficiente",
+          "description": "Encuentra transportistas disponibles en minutos"
+        },
+        "transparent": {
+          "title": "Precios Transparentes",
+          "description": "Sin sorpresas, precios claros desde el inicio"
+        },
+        "support": {
+          "title": "Soporte 24/7",
+          "description": "Estamos aquí para ayudarte en cualquier momento"
+        }
+      },
+      "cta": {
+        "title": "¿Listo para empezar?",
+        "subtitle": "Únete a miles de usuarios que ya confían en Mecapal",
+        "register": "Crear Cuenta",
+        "login": "Iniciar Sesión"
+      }
+    },
+    "auth": {
+      "title": "Únete a Mecapal",
+      "subtitle": "Crea tu cuenta y accede a todos los servicios",
+      "welcome": {
+        "title": "¡Bienvenido a Mecapal!",
+        "subtitle": "La plataforma de transporte más confiable"
+      },
+      "createAccount": {
+        "title": "Crear Cuenta Gratis",
+        "subtitle": "Regístrate en menos de 2 minutos"
+      },
+      "signIn": {
+        "title": "Ya tengo cuenta",
+        "subtitle": "Inicia sesión en tu cuenta"
+      },
+      "benefits": {
+        "title": "¿Por qué crear una cuenta?",
+        "secure": {
+          "title": "Seguridad Garantizada",
+          "description": "Todos nuestros transportistas están verificados"
+        },
+        "fast": {
+          "title": "Reservas Rápidas",
+          "description": "Reserva tu transporte en segundos"
+        },
+        "payment": {
+          "title": "Pagos Seguros",
+          "description": "Múltiples métodos de pago disponibles"
+        },
+        "notifications": {
+          "title": "Notificaciones en Tiempo Real",
+          "description": "Sigue tu transporte en tiempo real"
+        }
+      },
+      "quickActions": {
+        "title": "Acciones Rápidas",
+        "explore": "Explorar Servicios",
+        "learnMore": "Conoce Más Sobre Mecapal"
+      },
+      "socialProof": "Únete a miles de usuarios que ya confían en Mecapal"
+    },
     "profile": {
       "title": "Mi Perfil",
       "subtitle": "Gestiona tu información personal",
@@ -303,6 +422,11 @@
       "email": "Correo electrónico",
       "password": "Contraseña",
       "confirmPassword": "Confirmar Contraseña",
+      "selectRole": "Tipo de cuenta",
+      "userRole": "Usuario",
+      "transporterRole": "Transportista",
+      "success": "¡Registro exitoso!",
+      "redirecting": "Redirigiendo al login...",
       "register": "Registrarse",
       "hasAccount": "¿Ya tienes cuenta? Inicia sesión",
       "continueAsGuest": "Continuar como invitado"

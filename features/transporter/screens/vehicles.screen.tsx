@@ -1,19 +1,18 @@
+import { MaterialSymbol } from "@/components/material-symbol";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { ScreenHeader } from "@/components/screen-header";
 
 export default function TransporterVehiclesScreen() {
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">Mis Vehículos</Text>
-        <Text className="text-gray-600 mt-1">
-          Gestiona tu flota de vehículos
-        </Text>
-      </View>
+      <ScreenHeader
+        title="Mis Vehículos"
+        subtitle="Gestiona tu flota de vehículos"
+      />
 
       <View className="p-4">
         <TouchableOpacity className="bg-blue-500 p-4 rounded-lg mb-6 items-center">
-          <Ionicons name="add" size={24} color="white" />
+          <MaterialSymbol name="add" size={24} color="text-white" />
           <Text className="text-white font-semibold mt-2">
             Agregar Vehículo
           </Text>
@@ -23,56 +22,79 @@ export default function TransporterVehiclesScreen() {
           Vehículos Registrados
         </Text>
 
-        <View className="space-y-3">
+        <View className="space-y-4">
           {[
             {
               id: "1",
               type: "Camión",
+              model: "Toyota Hilux",
+              year: "2020",
               plate: "ABC-123",
-              capacity: "5 toneladas",
-              status: "Activo",
+              status: "Disponible",
+              capacity: "1.5 toneladas",
             },
             {
               id: "2",
-              type: "Furgoneta",
+              type: "Furgón",
+              model: "Ford Transit",
+              year: "2019",
               plate: "XYZ-789",
+              status: "En Servicio",
               capacity: "2 toneladas",
-              status: "En mantenimiento",
             },
             {
               id: "3",
               type: "Pickup",
+              model: "Nissan Frontier",
+              year: "2021",
               plate: "DEF-456",
+              status: "Mantenimiento",
               capacity: "1 tonelada",
-              status: "Activo",
             },
           ].map((vehicle) => (
             <View
               key={vehicle.id}
               className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
             >
-              <View className="flex-row justify-between items-center">
-                <View>
+              <View className="flex-row justify-between items-start mb-3">
+                <View className="flex-1">
                   <Text className="text-lg font-semibold text-gray-800">
-                    {vehicle.type}
+                    {vehicle.model}
                   </Text>
-                  <Text className="text-gray-600">Placa: {vehicle.plate}</Text>
-                  <Text className="text-gray-500 text-sm">
-                    Capacidad: {vehicle.capacity}
-                  </Text>
+                  <Text className="text-gray-600">{vehicle.year}</Text>
                 </View>
                 <View className="items-end">
+                  <Text className="text-lg font-bold text-blue-600">
+                    {vehicle.plate}
+                  </Text>
                   <Text
-                    className={`text-sm font-medium ${
-                      vehicle.status === "Activo"
-                        ? "text-green-600"
-                        : "text-yellow-600"
+                    className={`px-3 py-1 rounded-full text-sm font-medium ${
+                      vehicle.status === "Disponible"
+                        ? "bg-green-100 text-green-800"
+                        : vehicle.status === "En Servicio"
+                        ? "bg-blue-100 text-blue-800"
+                        : "bg-yellow-100 text-yellow-800"
                     }`}
                   >
                     {vehicle.status}
                   </Text>
-                  <Ionicons name="chevron-forward" size={16} color="#8E8E93" />
                 </View>
+              </View>
+
+              <View className="flex-row justify-between items-center">
+                <View>
+                  <Text className="text-gray-600">Tipo: {vehicle.type}</Text>
+                  <Text className="text-gray-600">
+                    Capacidad: {vehicle.capacity}
+                  </Text>
+                </View>
+                <TouchableOpacity className="bg-gray-100 p-2 rounded-lg">
+                  <MaterialSymbol
+                    name="chevron_right"
+                    size={16}
+                    color="text-gray-400"
+                  />
+                </TouchableOpacity>
               </View>
             </View>
           ))}

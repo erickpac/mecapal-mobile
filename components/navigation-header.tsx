@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialSymbol } from "@/components/material-symbol";
 import { router } from "expo-router";
 import { ReactNode } from "react";
 
@@ -14,37 +14,32 @@ interface NavigationHeaderProps {
 }
 
 /**
- * Reusable Navigation Header Component
+ * Navigation Header Component
  *
  * @example
- * // Basic usage with back button
+ * // Basic usage
  * <NavigationHeader title="Mi Pantalla" />
  *
  * @example
- * // Without back button
- * <NavigationHeader title="Dashboard" showBackButton={false} />
- *
- * @example
- * // With custom colors
+ * // With back button
  * <NavigationHeader
- *   title="Emergencia"
- *   backgroundColor="bg-red-500"
- *   textColor="text-white"
- *   backButtonColor="white"
+ *   title="Detalles"
+ *   showBackButton={true}
+ *   onBackPress={() => router.back()}
  * />
  *
  * @example
- * // With right component (e.g., settings button)
+ * // With custom styling and right component
  * <NavigationHeader
- *   title="Perfil"
+ *   title="Configuración"
+ *   backgroundColor="bg-blue-500"
+ *   textColor="text-white"
  *   rightComponent={
- *     <TouchableOpacity onPress={handleSettings}>
- *       <Ionicons name="settings" size={24} color="#007AFF" />
- *     </TouchableOpacity>
+ *     <MaterialSymbol name="settings" size={24} color="text-white" />
  *   }
  * />
  */
-const NavigationHeader = ({
+export const NavigationHeader = ({
   title,
   showBackButton = true,
   onBackPress,
@@ -62,30 +57,28 @@ const NavigationHeader = ({
   };
 
   return (
-    <View className={`${backgroundColor} p-4 border-b border-gray-200`}>
-      <View className="flex-row items-center justify-between">
-        <View className="flex-row items-center flex-1">
-          {showBackButton && (
-            <TouchableOpacity
-              onPress={handleBackPress}
-              className="flex-row items-center"
-            >
-              <Ionicons name="arrow-back" size={24} color={backButtonColor} />
-              <Text className={`text-lg font-semibold ml-2 ${textColor}`}>
-                {title}
-              </Text>
-            </TouchableOpacity>
-          )}
-          {!showBackButton && (
-            <Text className={`text-lg font-semibold ${textColor}`}>
-              {title}
-            </Text>
-          )}
-        </View>
-        {rightComponent && <View className="ml-4">{rightComponent}</View>}
+    <View
+      className={`${backgroundColor} px-4 py-3 flex-row items-center justify-between border-b border-gray-200`}
+    >
+      <View className="flex-row items-center flex-1">
+        {showBackButton && (
+          <TouchableOpacity onPress={handleBackPress} className="mr-3 p-1">
+            <MaterialSymbol
+              name="arrow_back_ios"
+              size={24}
+              color={
+                backButtonColor === "#007AFF"
+                  ? "text-blue-500"
+                  : `text-[${backButtonColor}]`
+              }
+            />
+          </TouchableOpacity>
+        )}
+        <Text className={`text-lg font-semibold ${textColor} flex-1`}>
+          {title}
+        </Text>
       </View>
+      {rightComponent && <View className="ml-2">{rightComponent}</View>}
     </View>
   );
 };
-
-export default NavigationHeader;

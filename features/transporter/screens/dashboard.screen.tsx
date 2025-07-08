@@ -1,6 +1,6 @@
 import { useStore } from "@/store/useStore";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialSymbol } from "@/components/material-symbol";
 import { useTranslation } from "react-i18next";
 import {
   navigateToOrders,
@@ -8,6 +8,7 @@ import {
   navigateToEarnings,
   navigateTo,
 } from "@/utils/navigation";
+import { ScreenHeader } from "@/components/screen-header";
 
 export default function TransporterDashboardScreen() {
   const { user } = useStore();
@@ -15,14 +16,10 @@ export default function TransporterDashboardScreen() {
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">
-          {t("transport.dashboard.title")}
-        </Text>
-        <Text className="text-gray-600 mt-1">
-          {t("transport.home.greeting", { name: user?.name })}
-        </Text>
-      </View>
+      <ScreenHeader
+        title={t("transport.dashboard.title")}
+        subtitle={t("transport.home.greeting", { name: user?.name })}
+      />
 
       <View className="p-4">
         {/* Quick Statistics */}
@@ -33,7 +30,11 @@ export default function TransporterDashboardScreen() {
           <View className="flex-row flex-wrap justify-between">
             <View className="bg-white p-4 rounded-lg w-[48%] mb-4 shadow-sm">
               <View className="items-center">
-                <Ionicons name="list" size={32} color="#007AFF" />
+                <MaterialSymbol
+                  name="receipt_long"
+                  size={32}
+                  color="text-blue-500"
+                />
                 <Text className="text-2xl font-bold text-gray-800 mt-2">
                   12
                 </Text>
@@ -45,7 +46,11 @@ export default function TransporterDashboardScreen() {
 
             <View className="bg-white p-4 rounded-lg w-[48%] mb-4 shadow-sm">
               <View className="items-center">
-                <Ionicons name="checkmark-circle" size={32} color="#34C759" />
+                <MaterialSymbol
+                  name="check_circle"
+                  size={32}
+                  color="text-green-500"
+                />
                 <Text className="text-2xl font-bold text-gray-800 mt-2">8</Text>
                 <Text className="text-gray-600">
                   {t("transport.dashboard.stats.completedOrders")}
@@ -55,7 +60,11 @@ export default function TransporterDashboardScreen() {
 
             <View className="bg-white p-4 rounded-lg w-[48%] mb-4 shadow-sm">
               <View className="items-center">
-                <Ionicons name="car" size={32} color="#FF9500" />
+                <MaterialSymbol
+                  name="directions_car"
+                  size={32}
+                  color="text-orange-500"
+                />
                 <Text className="text-2xl font-bold text-gray-800 mt-2">3</Text>
                 <Text className="text-gray-600">
                   {t("transport.dashboard.stats.availableVehicles")}
@@ -65,7 +74,11 @@ export default function TransporterDashboardScreen() {
 
             <View className="bg-white p-4 rounded-lg w-[48%] mb-4 shadow-sm">
               <View className="items-center">
-                <Ionicons name="cash" size={32} color="#FF3B30" />
+                <MaterialSymbol
+                  name="account_balance_wallet"
+                  size={32}
+                  color="text-red-500"
+                />
                 <Text className="text-2xl font-bold text-gray-800 mt-2">
                   $2,450
                 </Text>
@@ -138,8 +151,8 @@ export default function TransporterDashboardScreen() {
                     >
                       {t(`transport.orders.status.${order.status}`)}
                     </Text>
-                    <Ionicons
-                      name="chevron-forward"
+                    <MaterialSymbol
+                      name="chevron_right"
                       size={16}
                       color="#8E8E93"
                     />
@@ -160,7 +173,11 @@ export default function TransporterDashboardScreen() {
               onPress={navigateToOrders}
               className="bg-blue-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="list" size={32} color="white" />
+              <MaterialSymbol
+                name="receipt_long"
+                size={32}
+                color="text-white"
+              />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.dashboard.quickActions.viewOrders")}
               </Text>
@@ -170,7 +187,11 @@ export default function TransporterDashboardScreen() {
               onPress={navigateToVehicles}
               className="bg-green-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="car" size={32} color="white" />
+              <MaterialSymbol
+                name="directions_car"
+                size={32}
+                color="text-white"
+              />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.dashboard.quickActions.manageVehicles")}
               </Text>
@@ -180,7 +201,11 @@ export default function TransporterDashboardScreen() {
               onPress={navigateToEarnings}
               className="bg-purple-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="cash" size={32} color="white" />
+              <MaterialSymbol
+                name="account_balance_wallet"
+                size={32}
+                color="text-white"
+              />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.dashboard.quickActions.viewEarnings")}
               </Text>
@@ -188,9 +213,9 @@ export default function TransporterDashboardScreen() {
 
             <TouchableOpacity
               onPress={() => navigateTo("/profile")}
-              className="bg-orange-500 p-4 rounded-lg w-[48%] mb-4 items-center"
+              className="bg-gray-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="person" size={32} color="white" />
+              <MaterialSymbol name="person" size={32} color="text-white" />
               <Text className="text-white font-semibold mt-2">
                 {t("navigation.tabs.profile")}
               </Text>

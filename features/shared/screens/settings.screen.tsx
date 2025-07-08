@@ -1,131 +1,175 @@
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialSymbol } from "@/components/material-symbol";
+import { ScreenHeader } from "@/components/screen-header";
 
-export default function SharedSettingsScreen() {
+export default function SettingsScreen() {
   const { user, logout } = useStore();
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">Settings</Text>
-        <Text className="text-gray-600 mt-1">
-          Manage your preferences and account
-        </Text>
-      </View>
+      <ScreenHeader
+        title="Configuración"
+        subtitle="Gestiona tus preferencias"
+      />
 
       <View className="p-4">
-        {/* General Settings */}
-        <View className="space-y-3 mb-6">
-          <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-            <View className="flex-row items-center">
-              <Ionicons name="person" size={24} color="#007AFF" />
-              <Text className="text-lg font-semibold ml-4 text-gray-800">
-                Edit Profile
-              </Text>
-              <Ionicons
-                name="chevron-forward"
-                size={20}
-                color="#8E8E93"
-                style={{ marginLeft: "auto" }}
-              />
+        {/* Profile Info */}
+        <View className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mb-6">
+          <View className="flex-row items-center mb-4">
+            <View className="w-16 h-16 bg-blue-100 rounded-full items-center justify-center mr-4">
+              <MaterialSymbol name="person" size={24} color="text-blue-500" />
             </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-            <View className="flex-row items-center">
-              <Ionicons name="lock-closed" size={24} color="#007AFF" />
-              <Text className="text-lg font-semibold ml-4 text-gray-800">
-                Change Password
+            <View className="flex-1">
+              <Text className="text-xl font-semibold text-gray-800">
+                {user?.name || "Usuario"}
               </Text>
-              <Ionicons
-                name="chevron-forward"
-                size={20}
-                color="#8E8E93"
-                style={{ marginLeft: "auto" }}
-              />
+              <Text className="text-gray-600">{user?.email}</Text>
             </View>
-          </TouchableOpacity>
+          </View>
         </View>
 
-        {/* Role-specific Settings */}
-        {user?.role === UserRole.USER && (
-          <View className="space-y-3 mb-6">
-            <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-              <View className="flex-row items-center">
-                <Ionicons name="notifications" size={24} color="#007AFF" />
-                <Text className="text-lg font-semibold ml-4 text-gray-800">
-                  Notifications
-                </Text>
-                <Ionicons
-                  name="chevron-forward"
-                  size={20}
-                  color="#8E8E93"
-                  style={{ marginLeft: "auto" }}
-                />
+        {/* Menu Items */}
+        <View className="space-y-3">
+          <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <View className="flex-row items-center">
+              <View className="w-10 h-10 bg-blue-100 rounded-lg items-center justify-center mr-4">
+                <MaterialSymbol name="person" size={24} color="text-blue-500" />
               </View>
-            </TouchableOpacity>
-            <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-              <View className="flex-row items-center">
-                <Ionicons name="help-circle" size={24} color="#007AFF" />
-                <Text className="text-lg font-semibold ml-4 text-gray-800">
-                  Help & Support
+              <View className="flex-1">
+                <Text className="text-lg font-semibold text-gray-800">
+                  Información Personal
                 </Text>
-                <Ionicons
-                  name="chevron-forward"
-                  size={20}
-                  color="#8E8E93"
-                  style={{ marginLeft: "auto" }}
-                />
+                <Text className="text-gray-600">Edita tu perfil</Text>
               </View>
-            </TouchableOpacity>
-          </View>
-        )}
-        {user?.role === UserRole.TRANSPORTER && (
-          <View className="space-y-3 mb-6">
-            <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-              <View className="flex-row items-center">
-                <Ionicons name="car" size={24} color="#007AFF" />
-                <Text className="text-lg font-semibold ml-4 text-gray-800">
-                  Vehicle Settings
-                </Text>
-                <Ionicons
-                  name="chevron-forward"
-                  size={20}
-                  color="#8E8E93"
-                  style={{ marginLeft: "auto" }}
-                />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-              <View className="flex-row items-center">
-                <Ionicons name="cash" size={24} color="#007AFF" />
-                <Text className="text-lg font-semibold ml-4 text-gray-800">
-                  Earnings & Payments
-                </Text>
-                <Ionicons
-                  name="chevron-forward"
-                  size={20}
-                  color="#8E8E93"
-                  style={{ marginLeft: "auto" }}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
-        )}
+              <MaterialSymbol
+                name="chevron_right"
+                size={20}
+                color="text-gray-400"
+              />
+            </View>
+          </TouchableOpacity>
 
-        {/* Logout */}
+          <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <View className="flex-row items-center">
+              <View className="w-10 h-10 bg-green-100 rounded-lg items-center justify-center mr-4">
+                <MaterialSymbol name="lock" size={24} color="text-green-500" />
+              </View>
+              <View className="flex-1">
+                <Text className="text-lg font-semibold text-gray-800">
+                  Seguridad
+                </Text>
+                <Text className="text-gray-600">Cambia tu contraseña</Text>
+              </View>
+              <MaterialSymbol
+                name="chevron_right"
+                size={20}
+                color="text-gray-400"
+              />
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <View className="flex-row items-center">
+              <View className="w-10 h-10 bg-purple-100 rounded-lg items-center justify-center mr-4">
+                <MaterialSymbol
+                  name="notifications"
+                  size={24}
+                  color="text-purple-500"
+                />
+              </View>
+              <View className="flex-1">
+                <Text className="text-lg font-semibold text-gray-800">
+                  Notificaciones
+                </Text>
+                <Text className="text-gray-600">Configura alertas</Text>
+              </View>
+              <MaterialSymbol
+                name="chevron_right"
+                size={20}
+                color="text-gray-400"
+              />
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <View className="flex-row items-center">
+              <View className="w-10 h-10 bg-yellow-100 rounded-lg items-center justify-center mr-4">
+                <MaterialSymbol name="help" size={24} color="text-yellow-500" />
+              </View>
+              <View className="flex-1">
+                <Text className="text-lg font-semibold text-gray-800">
+                  Ayuda y Soporte
+                </Text>
+                <Text className="text-gray-600">Contacta soporte</Text>
+              </View>
+              <MaterialSymbol
+                name="chevron_right"
+                size={20}
+                color="text-gray-400"
+              />
+            </View>
+          </TouchableOpacity>
+
+          {user?.role === UserRole.TRANSPORTER && (
+            <>
+              <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                <View className="flex-row items-center">
+                  <View className="w-10 h-10 bg-orange-100 rounded-lg items-center justify-center mr-4">
+                    <MaterialSymbol
+                      name="directions_car"
+                      size={24}
+                      color="text-orange-500"
+                    />
+                  </View>
+                  <View className="flex-1">
+                    <Text className="text-lg font-semibold text-gray-800">
+                      Mis Vehículos
+                    </Text>
+                    <Text className="text-gray-600">Gestiona tu flota</Text>
+                  </View>
+                  <MaterialSymbol
+                    name="chevron_right"
+                    size={20}
+                    color="text-gray-400"
+                  />
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                <View className="flex-row items-center">
+                  <View className="w-10 h-10 bg-green-100 rounded-lg items-center justify-center mr-4">
+                    <MaterialSymbol
+                      name="account_balance_wallet"
+                      size={24}
+                      color="text-green-500"
+                    />
+                  </View>
+                  <View className="flex-1">
+                    <Text className="text-lg font-semibold text-gray-800">
+                      Ganancias
+                    </Text>
+                    <Text className="text-gray-600">Revisa tus ingresos</Text>
+                  </View>
+                  <MaterialSymbol
+                    name="chevron_right"
+                    size={20}
+                    color="text-gray-400"
+                  />
+                </View>
+              </TouchableOpacity>
+            </>
+          )}
+        </View>
+
+        {/* Logout Button */}
         <TouchableOpacity
           onPress={logout}
-          className="bg-red-500 p-4 rounded-lg mt-6"
+          className="bg-red-500 p-4 rounded-lg mt-6 items-center"
         >
-          <View className="flex-row items-center justify-center">
-            <Ionicons name="log-out" size={24} color="white" />
-            <Text className="text-white text-center font-semibold text-lg ml-2">
-              Log Out
-            </Text>
-          </View>
+          <MaterialSymbol name="logout" size={24} color="text-white" />
+          <Text className="text-white font-semibold mt-2">Cerrar Sesión</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

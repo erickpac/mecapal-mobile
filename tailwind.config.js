@@ -7,7 +7,13 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "material-symbols-outlined": ["MaterialSymbolsOutlined"],
+        "material-symbols-rounded": ["MaterialSymbolsRounded"],
+        "material-symbols-sharp": ["MaterialSymbolsSharp"],
+      },
+    },
   },
   plugins: [],
 };

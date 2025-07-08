@@ -1,14 +1,13 @@
 import { Text, View, ScrollView } from "react-native";
+import { ScreenHeader } from "@/components/screen-header";
 
 export default function TransporterOrdersScreen() {
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">Mis Pedidos</Text>
-        <Text className="text-gray-600 mt-1">
-          Gestiona tus pedidos de transporte
-        </Text>
-      </View>
+      <ScreenHeader
+        title="Mis Pedidos"
+        subtitle="Gestiona tus pedidos de transporte"
+      />
 
       <View className="p-4">
         <Text className="text-lg font-semibold mb-4 text-gray-800">

@@ -17,20 +17,18 @@ export const useAuth = () => {
       setAccessToken(response.access_token);
       setRefreshToken(response.refresh_token);
     },
+    retry: false,
   });
 
   const register = useMutation({
     mutationFn: authService.register,
-    onSuccess: (response) => {
-      setUser(response.user);
-      setAccessToken(response.access_token);
-      setRefreshToken(response.refresh_token);
-    },
+    retry: false,
   });
 
   const changePassword = useMutation({
     mutationFn: (credentials: ChangePasswordCredentials) =>
       authService.changePassword(credentials),
+    retry: false,
   });
 
   return {
@@ -39,7 +37,10 @@ export const useAuth = () => {
       register.mutate(credentials),
     changePassword: (credentials: ChangePasswordCredentials) =>
       changePassword.mutate(credentials),
-    isLoading: login.isPending || register.isPending,
-    error: login.error || register.error,
+    isLoading:
+      login.isPending || register.isPending || changePassword.isPending,
+    error: login.error || register.error || changePassword.error,
+    isSuccess:
+      login.isSuccess || register.isSuccess || changePassword.isSuccess,
   };
 };

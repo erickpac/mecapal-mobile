@@ -20,6 +20,8 @@
       "dashboard": "Dashboard",
       "search": "Search",
       "history": "History",
+      "about": "About",
+      "auth": "Account",
       "orders": "Orders",
       "vehicles": "Vehicles",
       "earnings": "Earnings",
@@ -195,6 +197,123 @@
         "thisMonth": "This Month"
       }
     },
+    "about": {
+      "title": "About Mecapal",
+      "subtitle": "We connect users with reliable transporters",
+      "guest": {
+        "loginPrompt": "Ready to get started?",
+        "loginSubtitle": "Create an account to access all services",
+        "register": "Create Account"
+      },
+      "whatIs": {
+        "title": "What is Mecapal?",
+        "description": "Mecapal is a platform that connects users who need transportation services with professional and reliable transporters. We offer a secure, fast, and efficient solution for all your transportation needs."
+      },
+      "howItWorks": {
+        "title": "How does it work?",
+        "step1": {
+          "title": "Search for your service",
+          "description": "Describe what you need to transport and from where to where"
+        },
+        "step2": {
+          "title": "Compare options",
+          "description": "Review prices, ratings, and transporter availability"
+        },
+        "step3": {
+          "title": "Book and pay",
+          "description": "Select your preferred transporter and make secure payment"
+        },
+        "step4": {
+          "title": "Enjoy the service!",
+          "description": "Your transporter will arrive at the agreed time"
+        }
+      },
+      "services": {
+        "title": "Our Services",
+        "mudanzas": {
+          "name": "Residential Moving",
+          "description": "Complete moving services for homes and offices"
+        },
+        "carga": {
+          "name": "Cargo Transport",
+          "description": "Secure transport of goods and products"
+        },
+        "construccion": {
+          "name": "Construction Materials",
+          "description": "Delivery of construction materials"
+        },
+        "urgente": {
+          "name": "Urgent Delivery",
+          "description": "Fast and urgent delivery services"
+        }
+      },
+      "benefits": {
+        "title": "Why choose Mecapal?",
+        "secure": {
+          "title": "Secure and Reliable",
+          "description": "All our transporters are verified and insured"
+        },
+        "fast": {
+          "title": "Fast and Efficient",
+          "description": "Find available transporters in minutes"
+        },
+        "transparent": {
+          "title": "Transparent Pricing",
+          "description": "No surprises, clear prices from the start"
+        },
+        "support": {
+          "title": "24/7 Support",
+          "description": "We're here to help you anytime"
+        }
+      },
+      "cta": {
+        "title": "Ready to get started?",
+        "subtitle": "Join thousands of users who already trust Mecapal",
+        "register": "Create Account",
+        "login": "Sign In"
+      }
+    },
+    "auth": {
+      "title": "Join Mecapal",
+      "subtitle": "Create your account and access all services",
+      "welcome": {
+        "title": "Welcome to Mecapal!",
+        "subtitle": "The most reliable transportation platform"
+      },
+      "createAccount": {
+        "title": "Create Free Account",
+        "subtitle": "Sign up in less than 2 minutes"
+      },
+      "signIn": {
+        "title": "I already have an account",
+        "subtitle": "Sign in to your account"
+      },
+      "benefits": {
+        "title": "Why create an account?",
+        "secure": {
+          "title": "Guaranteed Security",
+          "description": "All our transporters are verified"
+        },
+        "fast": {
+          "title": "Quick Bookings",
+          "description": "Book your transportation in seconds"
+        },
+        "payment": {
+          "title": "Secure Payments",
+          "description": "Multiple payment methods available"
+        },
+        "notifications": {
+          "title": "Real-time Notifications",
+          "description": "Track your transportation in real-time"
+        }
+      },
+      "quickActions": {
+        "title": "Quick Actions",
+        "explore": "Explore Services",
+        "learnMore": "Learn More About Mecapal"
+      },
+      "socialProof": "Join thousands of users who already trust Mecapal"
+    },
     "profile": {
       "title": "My Profile",
       "subtitle": "Manage your personal information",
@@ -303,6 +422,11 @@
       "email": "Email",
       "password": "Password",
       "confirmPassword": "Confirm Password",
+      "selectRole": "Account type",
+      "userRole": "User",
+      "transporterRole": "Transporter",
+      "success": "Registration successful!",
+      "redirecting": "Redirecting to login...",
       "register": "Register",
       "hasAccount": "Already have an account? Login",
       "continueAsGuest": "Continue as guest"

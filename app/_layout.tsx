@@ -27,6 +27,9 @@ export default function RootLayout() {
 
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    MaterialSymbolsOutlined: require("../assets/fonts/MaterialSymbolsOutlined.ttf"),
+    MaterialSymbolsRounded: require("../assets/fonts/MaterialSymbolsRounded.ttf"),
+    MaterialSymbolsSharp: require("../assets/fonts/MaterialSymbolsSharp.ttf"),
   });
 
   useEffect(() => {
@@ -46,7 +49,6 @@ export default function RootLayout() {
           <Stack
             screenOptions={{
               headerShown: false,
-              animation: "fade",
               contentStyle: { backgroundColor: "white" },
             }}
           />

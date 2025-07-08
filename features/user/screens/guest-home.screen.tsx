@@ -1,30 +1,22 @@
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialSymbol } from "@/components/material-symbol";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/utils/navigation";
-import { useStore } from "@/store/useStore";
-
-// Type for Ionicons icons
-type IconName = keyof typeof Ionicons.glyphMap;
+import { ScreenHeader } from "@/components/screen-header";
 
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
-  const { enterGuestMode } = useStore();
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">
-          {t("transport.home.guestGreeting", {
-            defaultValue: "¡Bienvenido a Mecapal!",
-          })}
-        </Text>
-        <Text className="text-gray-600 mt-1">
-          {t("transport.home.guestSubtitle", {
-            defaultValue: "Encuentra el transporte que necesitas",
-          })}
-        </Text>
-      </View>
+      <ScreenHeader
+        title={t("transport.home.guestGreeting", {
+          defaultValue: "¡Bienvenido a Mecapal!",
+        })}
+        subtitle={t("transport.home.guestSubtitle", {
+          defaultValue: "Encuentra el transporte que necesitas",
+        })}
+      />
 
       {/* Login/Register Banner */}
       <View className="bg-blue-50 p-4 border-b border-blue-200">
@@ -44,7 +36,7 @@ export default function GuestHomeScreen() {
           </View>
           <View className="flex-row space-x-2">
             <TouchableOpacity
-              onPress={() => navigateTo("/login")}
+              onPress={() => navigateTo("/auth")}
               className="bg-blue-500 px-4 py-2 rounded-lg"
             >
               <Text className="text-white font-semibold">
@@ -54,7 +46,7 @@ export default function GuestHomeScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigateTo("/register")}
+              onPress={() => navigateTo("/auth/register")}
               className="bg-green-500 px-4 py-2 rounded-lg"
             >
               <Text className="text-white font-semibold">
@@ -77,7 +69,7 @@ export default function GuestHomeScreen() {
             onPress={() => navigateTo("/search")}
             className="bg-blue-500 p-4 rounded-lg items-center"
           >
-            <Ionicons name="search" size={32} color="white" />
+            <MaterialSymbol name="search" size={32} color="text-white" />
             <Text className="text-white font-semibold mt-2 text-lg">
               {t("transport.home.quickSearch.button")}
             </Text>
@@ -99,7 +91,7 @@ export default function GuestHomeScreen() {
                 nameKey: "transport.home.serviceTypes.mudanzas.name",
                 descriptionKey:
                   "transport.home.serviceTypes.mudanzas.description",
-                icon: "home" as IconName,
+                icon: "home",
                 color: "bg-blue-500",
               },
               {
@@ -107,7 +99,7 @@ export default function GuestHomeScreen() {
                 nameKey: "transport.home.serviceTypes.cargaGeneral.name",
                 descriptionKey:
                   "transport.home.serviceTypes.cargaGeneral.description",
-                icon: "cube" as IconName,
+                icon: "inventory_2",
                 color: "bg-green-500",
               },
               {
@@ -116,7 +108,7 @@ export default function GuestHomeScreen() {
                   "transport.home.serviceTypes.materialesConstruccion.name",
                 descriptionKey:
                   "transport.home.serviceTypes.materialesConstruccion.description",
-                icon: "construct" as IconName,
+                icon: "construction",
                 color: "bg-orange-500",
               },
               {
@@ -124,7 +116,7 @@ export default function GuestHomeScreen() {
                 nameKey: "transport.home.serviceTypes.entregaRecoleccion.name",
                 descriptionKey:
                   "transport.home.serviceTypes.entregaRecoleccion.description",
-                icon: "swap-horizontal" as IconName,
+                icon: "swap_horiz",
                 color: "bg-purple-500",
               },
             ].map((service) => (
@@ -137,7 +129,11 @@ export default function GuestHomeScreen() {
                   <View
                     className={`w-12 h-12 ${service.color} rounded-lg items-center justify-center mr-4`}
                   >
-                    <Ionicons name={service.icon} size={24} color="white" />
+                    <MaterialSymbol
+                      name={service.icon}
+                      size={24}
+                      color="text-white"
+                    />
                   </View>
                   <View className="flex-1">
                     <Text className="text-lg font-semibold text-gray-800">
@@ -147,7 +143,11 @@ export default function GuestHomeScreen() {
                       {t(service.descriptionKey)}
                     </Text>
                   </View>
-                  <Ionicons name="chevron-forward" size={20} color="#8E8E93" />
+                  <MaterialSymbol
+                    name="chevron_right"
+                    size={20}
+                    color="text-gray-400"
+                  />
                 </View>
               </TouchableOpacity>
             ))}
@@ -164,17 +164,17 @@ export default function GuestHomeScreen() {
               onPress={() => navigateTo("/search")}
               className="bg-blue-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="search" size={32} color="white" />
+              <MaterialSymbol name="search" size={32} color="text-white" />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.home.quickActions.searchTransport")}
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigateTo("/login")}
+              onPress={() => navigateTo("/auth")}
               className="bg-green-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="person-add" size={32} color="white" />
+              <MaterialSymbol name="person_add" size={32} color="text-white" />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.home.guest.createAccount", {
                   defaultValue: "Crear Cuenta",
@@ -183,10 +183,10 @@ export default function GuestHomeScreen() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigateTo("/login")}
+              onPress={() => navigateTo("/auth")}
               className="bg-purple-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="log-in" size={32} color="white" />
+              <MaterialSymbol name="login" size={32} color="text-white" />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.home.guest.login", {
                   defaultValue: "Iniciar Sesión",
@@ -198,7 +198,7 @@ export default function GuestHomeScreen() {
               onPress={() => navigateTo("/settings")}
               className="bg-gray-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <Ionicons name="settings" size={32} color="white" />
+              <MaterialSymbol name="settings" size={32} color="text-white" />
               <Text className="text-white font-semibold mt-2">
                 {t("transport.home.quickActions.settings")}
               </Text>
@@ -216,7 +216,7 @@ export default function GuestHomeScreen() {
           <View className="space-y-3">
             {[
               {
-                icon: "star" as IconName,
+                icon: "star",
                 title: t("transport.home.guest.benefits.history.title", {
                   defaultValue: "Historial de viajes",
                 }),
@@ -228,7 +228,7 @@ export default function GuestHomeScreen() {
                 ),
               },
               {
-                icon: "heart" as IconName,
+                icon: "favorite",
                 title: t("transport.home.guest.benefits.favorites.title", {
                   defaultValue: "Favoritos",
                 }),
@@ -238,7 +238,7 @@ export default function GuestHomeScreen() {
                 ),
               },
               {
-                icon: "notifications" as IconName,
+                icon: "notifications",
                 title: t("transport.home.guest.benefits.notifications.title", {
                   defaultValue: "Notificaciones",
                 }),
@@ -248,7 +248,7 @@ export default function GuestHomeScreen() {
                 ),
               },
               {
-                icon: "card" as IconName,
+                icon: "credit_card",
                 title: t("transport.home.guest.benefits.payment.title", {
                   defaultValue: "Pagos seguros",
                 }),
@@ -264,7 +264,11 @@ export default function GuestHomeScreen() {
               >
                 <View className="flex-row items-center">
                   <View className="w-10 h-10 bg-blue-100 rounded-lg items-center justify-center mr-4">
-                    <Ionicons name={benefit.icon} size={20} color="#007AFF" />
+                    <MaterialSymbol
+                      name={benefit.icon}
+                      size={20}
+                      color="text-blue-500"
+                    />
                   </View>
                   <View className="flex-1">
                     <Text className="text-lg font-semibold text-gray-800">
@@ -279,27 +283,40 @@ export default function GuestHomeScreen() {
         </View>
 
         {/* Call to Action */}
-        <View className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-lg">
-          <Text className="text-white text-xl font-bold text-center mb-2">
-            {t("transport.home.guest.cta.title", {
-              defaultValue: "¿Listo para empezar?",
+        <View className="bg-blue-600 p-6 rounded-lg mt-4 mb-6 items-center">
+          <MaterialSymbol name="star" size={32} color="text-white" />
+          <Text className="text-white text-xl font-bold text-center mt-2">
+            {t("transport.home.guest.ctaTitle", {
+              defaultValue: "¿Listo para reservar tu transporte?",
             })}
           </Text>
-          <Text className="text-blue-100 text-center mb-4">
-            {t("transport.home.guest.cta.subtitle", {
-              defaultValue: "Crea tu cuenta y disfruta de todos los beneficios",
+          <Text className="text-blue-100 text-center mt-1 mb-2">
+            {t("transport.home.guest.ctaSubtitle", {
+              defaultValue: "Crea tu cuenta y accede a todos los beneficios",
             })}
           </Text>
-          <TouchableOpacity
-            onPress={() => navigateTo("/register")}
-            className="bg-white p-4 rounded-lg"
-          >
-            <Text className="text-blue-600 font-bold text-center text-lg">
-              {t("transport.home.guest.cta.button", {
-                defaultValue: "Crear Cuenta Gratis",
-              })}
-            </Text>
-          </TouchableOpacity>
+          <View className="flex-row space-x-3 mt-2">
+            <TouchableOpacity
+              onPress={() => navigateTo("/auth/register")}
+              className="flex-1 bg-white p-3 rounded-lg"
+            >
+              <Text className="text-blue-600 font-semibold text-center">
+                {t("transport.home.guest.ctaRegister", {
+                  defaultValue: "Crear Cuenta",
+                })}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigateTo("/auth")}
+              className="flex-1 bg-transparent border border-white p-3 rounded-lg"
+            >
+              <Text className="text-white font-semibold text-center">
+                {t("transport.home.guest.ctaLogin", {
+                  defaultValue: "Iniciar Sesión",
+                })}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </ScrollView>

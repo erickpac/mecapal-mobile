@@ -9,7 +9,7 @@ export default function OnboardingScreen() {
 
   const handleComplete = () => {
     setHasCompletedOnboarding(true);
-    router.replace("/login");
+    router.replace("/auth");
   };
 
   return (
