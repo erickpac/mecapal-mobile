@@ -81,28 +81,12 @@ export default function LoginScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => router.push("/auth/register")}
-            className="mb-2"
-          >
-            <Text className="text-blue-600 text-center">
-              {t("auth.login.noAccount")}
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
             onPress={() => router.push("/auth/forgot-password")}
           >
             <Text className="text-blue-600 text-center">
               {t("auth.login.forgotPassword")}
             </Text>
           </TouchableOpacity>
-
-          {/* Divider */}
-          <View className="flex-row items-center my-6">
-            <View className="flex-1 h-px bg-gray-300" />
-            <Text className="mx-4 text-gray-500">o</Text>
-            <View className="flex-1 h-px bg-gray-300" />
-          </View>
         </View>
       </View>
     </KeyboardAvoidingView>
