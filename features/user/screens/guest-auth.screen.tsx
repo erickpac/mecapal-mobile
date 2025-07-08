@@ -36,10 +36,10 @@ export default function GuestAuthScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigateTo("/auth/login")}
+            onPress={() => navigateTo("/auth")}
             className="bg-blue-500 p-4 rounded-lg items-center"
           >
-            <MaterialSymbol name="login" size={32} color="text-blue-500" />
+            <MaterialSymbol name="login" size={32} color="text-white" />
             <Text className="text-white font-semibold mt-2 text-lg">
               Iniciar Sesión
             </Text>
@@ -144,7 +144,7 @@ export default function GuestAuthScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigateTo("/auth/login")}
+              onPress={() => navigateTo("/auth")}
               className="flex-1 bg-transparent border border-white p-3 rounded-lg"
             >
               <Text className="text-white font-semibold text-center">

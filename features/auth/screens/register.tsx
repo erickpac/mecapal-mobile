@@ -30,7 +30,7 @@ export default function RegisterScreen() {
       // Show success message for 1.5 seconds, then navigate to login
       const timer = setTimeout(() => {
         setShowSuccess(false);
-        router.replace("/auth/login");
+        router.replace("/auth");
       }, 1500);
       return () => clearTimeout(timer);
     }

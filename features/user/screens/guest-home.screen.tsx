@@ -36,7 +36,7 @@ export default function GuestHomeScreen() {
           </View>
           <View className="flex-row space-x-2">
             <TouchableOpacity
-              onPress={() => navigateTo("/auth/login")}
+              onPress={() => navigateTo("/auth")}
               className="bg-blue-500 px-4 py-2 rounded-lg"
             >
               <Text className="text-white font-semibold">
@@ -171,7 +171,7 @@ export default function GuestHomeScreen() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigateTo("/auth/login")}
+              onPress={() => navigateTo("/auth")}
               className="bg-green-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
               <MaterialSymbol name="person_add" size={32} color="text-white" />
@@ -183,7 +183,7 @@ export default function GuestHomeScreen() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigateTo("/auth/login")}
+              onPress={() => navigateTo("/auth")}
               className="bg-purple-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
               <MaterialSymbol name="login" size={32} color="text-white" />
@@ -307,7 +307,7 @@ export default function GuestHomeScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigateTo("/auth/login")}
+              onPress={() => navigateTo("/auth")}
               className="flex-1 bg-transparent border border-white p-3 rounded-lg"
             >
               <Text className="text-white font-semibold text-center">

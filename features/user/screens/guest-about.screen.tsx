@@ -210,7 +210,7 @@ export default function GuestAboutScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigateTo("/auth/login")}
+              onPress={() => navigateTo("/auth")}
               className="flex-1 bg-transparent border border-white p-3 rounded-lg"
             >
               <Text className="text-white font-semibold text-center">
