@@ -24,7 +24,7 @@ interface ScreenHeaderProps {
  *   className="bg-blue-50"
  * />
  */
-const ScreenHeader = ({
+export const ScreenHeader = ({
   title,
   subtitle,
   className = "",
@@ -36,5 +36,3 @@ const ScreenHeader = ({
     </View>
   );
 };
-
-export default ScreenHeader;

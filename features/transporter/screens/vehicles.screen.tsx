@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import ScreenHeader from "@/components/screen-header";
+import { ScreenHeader } from "@/components/screen-header";
 
 export default function TransporterVehiclesScreen() {
   return (

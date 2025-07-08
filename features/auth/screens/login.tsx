@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useLocalizedError } from "@/hooks/useLocalizedError";
-import NavigationHeader from "@/components/navigation-header";
+import { NavigationHeader } from "@/components/navigation-header";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");

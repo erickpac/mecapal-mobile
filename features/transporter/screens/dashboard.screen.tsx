@@ -8,7 +8,7 @@ import {
   navigateToEarnings,
   navigateTo,
 } from "@/utils/navigation";
-import ScreenHeader from "@/components/screen-header";
+import { ScreenHeader } from "@/components/screen-header";
 
 export default function TransporterDashboardScreen() {
   const { user } = useStore();

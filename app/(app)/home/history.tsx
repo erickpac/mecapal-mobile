@@ -1,6 +1,6 @@
 import UserHistoryScreen from "@/features/user/screens/history.screen";
 import { SafeAreaView } from "react-native-safe-area-context";
-import NavigationHeader from "@/components/navigation-header";
+import { NavigationHeader } from "@/components/navigation-header";
 
 export default function History() {
   return (

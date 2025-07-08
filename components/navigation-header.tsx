@@ -44,7 +44,7 @@ interface NavigationHeaderProps {
  *   }
  * />
  */
-const NavigationHeader = ({
+export const NavigationHeader = ({
   title,
   showBackButton = true,
   onBackPress,
@@ -87,5 +87,3 @@ const NavigationHeader = ({
     </View>
   );
 };
-
-export default NavigationHeader;

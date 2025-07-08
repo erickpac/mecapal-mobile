@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useTranslation } from "react-i18next";
 import { UserRole } from "@/features/auth/types/user";
-import NavigationHeader from "@/components/navigation-header";
+import { NavigationHeader } from "@/components/navigation-header";
 
 export default function RegisterScreen() {
   const [name, setName] = useState("");

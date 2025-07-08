@@ -1,5 +1,5 @@
 import { Text, View, ScrollView } from "react-native";
-import ScreenHeader from "@/components/screen-header";
+import { ScreenHeader } from "@/components/screen-header";
 
 export default function TransporterOrdersScreen() {
   return (

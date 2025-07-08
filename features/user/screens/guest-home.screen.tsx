@@ -3,7 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/utils/navigation";
 import { IconName } from "@/types/navigation";
-import ScreenHeader from "@/components/screen-header";
+import { ScreenHeader } from "@/components/screen-header";
 
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
