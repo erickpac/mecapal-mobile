@@ -76,6 +76,7 @@ export const TRANSPORTER_HIDDEN_ROUTES = [
   "settings",
   "earnings",
   "auth",
+  "about",
 ];
 export const USER_HIDDEN_ROUTES = [
   "orders",
