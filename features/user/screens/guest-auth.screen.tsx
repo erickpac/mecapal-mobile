@@ -1,141 +1,95 @@
+import { MaterialSymbol } from "@/components/material-symbol";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { useTranslation } from "react-i18next";
-import { navigateTo } from "@/utils/navigation";
 import { ScreenHeader } from "@/components/screen-header";
+import { navigateTo } from "@/utils/navigation";
 
 export default function GuestAuthScreen() {
-  const { t } = useTranslation();
-
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <ScreenHeader
-        title={t("transport.auth.title", {
-          defaultValue: "Únete a Mecapal",
-        })}
-        subtitle={t("transport.auth.subtitle", {
-          defaultValue: "Crea tu cuenta y accede a todos los servicios",
-        })}
-      />
+      <ScreenHeader title="Acceso" subtitle="Inicia sesión o crea tu cuenta" />
 
       <View className="p-4">
-        {/* Welcome Section */}
+        {/* Welcome Banner */}
         <View className="bg-blue-600 p-6 rounded-lg mb-6 items-center">
-          <Ionicons name="rocket" size={48} color="white" />
-          <Text className="text-white text-xl font-bold text-center mt-4">
-            {t("transport.auth.welcome.title", {
-              defaultValue: "¡Bienvenido a Mecapal!",
-            })}
+          <MaterialSymbol name="rocket_launch" size={48} color="text-white" />
+          <Text className="text-white text-xl font-bold text-center mt-2">
+            ¡Bienvenido a Mecapal!
           </Text>
-          <Text className="text-blue-100 text-center mt-2">
-            {t("transport.auth.welcome.subtitle", {
-              defaultValue: "La plataforma de transporte más confiable",
-            })}
+          <Text className="text-blue-100 text-center mt-1">
+            Conectamos usuarios con transportistas confiables
           </Text>
         </View>
 
-        {/* Main CTA Buttons */}
-        <View className="mb-6">
+        {/* Auth Options */}
+        <View className="space-y-4 mb-6">
           <TouchableOpacity
             onPress={() => navigateTo("/auth/register")}
-            className="bg-blue-500 p-4 rounded-lg mb-4 items-center"
+            className="bg-green-500 p-4 rounded-lg items-center"
           >
-            <Ionicons name="person-add" size={32} color="white" />
-            <Text className="text-white font-bold text-lg mt-2">
-              {t("transport.auth.createAccount.title", {
-                defaultValue: "Crear Cuenta Gratis",
-              })}
+            <MaterialSymbol name="person_add" size={32} color="text-white" />
+            <Text className="text-white font-semibold mt-2 text-lg">
+              Crear Cuenta
             </Text>
-            <Text className="text-blue-100 text-center mt-1">
-              {t("transport.auth.createAccount.subtitle", {
-                defaultValue: "Regístrate en menos de 2 minutos",
-              })}
+            <Text className="text-green-100 mt-1 text-center">
+              Únete a nuestra comunidad
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => navigateTo("/auth/login")}
-            className="bg-white border-2 border-blue-500 p-4 rounded-lg items-center"
+            className="bg-blue-500 p-4 rounded-lg items-center"
           >
-            <Ionicons name="log-in" size={32} color="#007AFF" />
-            <Text className="text-blue-500 font-bold text-lg mt-2">
-              {t("transport.auth.signIn.title", {
-                defaultValue: "Ya tengo cuenta",
-              })}
+            <MaterialSymbol name="login" size={32} color="text-blue-500" />
+            <Text className="text-white font-semibold mt-2 text-lg">
+              Iniciar Sesión
             </Text>
-            <Text className="text-gray-600 text-center mt-1">
-              {t("transport.auth.signIn.subtitle", {
-                defaultValue: "Inicia sesión en tu cuenta",
-              })}
+            <Text className="text-blue-100 mt-1 text-center">
+              Accede a tu cuenta existente
             </Text>
           </TouchableOpacity>
         </View>
 
-        {/* Benefits Section */}
+        {/* Benefits */}
         <View className="mb-6">
-          <Text className="text-xl font-semibold mb-4 text-gray-800">
-            {t("transport.auth.benefits.title", {
-              defaultValue: "¿Por qué crear una cuenta?",
-            })}
+          <Text className="text-lg font-semibold mb-4 text-gray-800">
+            Beneficios de registrarte
           </Text>
           <View className="space-y-3">
             {[
               {
-                icon: "shield-checkmark",
-                title: t("transport.auth.benefits.secure.title", {
-                  defaultValue: "Seguridad Garantizada",
-                }),
-                description: t("transport.auth.benefits.secure.description", {
-                  defaultValue:
-                    "Todos nuestros transportistas están verificados",
-                }),
-                color: "text-green-600",
+                icon: "star",
+                title: "Acceso completo",
+                description: "Reserva servicios sin restricciones",
               },
               {
-                icon: "flash",
-                title: t("transport.auth.benefits.fast.title", {
-                  defaultValue: "Reservas Rápidas",
-                }),
-                description: t("transport.auth.benefits.fast.description", {
-                  defaultValue: "Reserva tu transporte en segundos",
-                }),
-                color: "text-blue-600",
+                icon: "history",
+                title: "Historial personal",
+                description: "Revisa todos tus servicios anteriores",
               },
               {
-                icon: "card",
-                title: t("transport.auth.benefits.payment.title", {
-                  defaultValue: "Pagos Seguros",
-                }),
-                description: t("transport.auth.benefits.payment.description", {
-                  defaultValue: "Múltiples métodos de pago disponibles",
-                }),
-                color: "text-orange-600",
+                icon: "favorite",
+                title: "Favoritos",
+                description: "Guarda tus transportistas preferidos",
               },
               {
                 icon: "notifications",
-                title: t("transport.auth.benefits.notifications.title", {
-                  defaultValue: "Notificaciones en Tiempo Real",
-                }),
-                description: t(
-                  "transport.auth.benefits.notifications.description",
-                  {
-                    defaultValue: "Sigue tu transporte en tiempo real",
-                  }
-                ),
-                color: "text-purple-600",
+                title: "Notificaciones",
+                description: "Recibe actualizaciones en tiempo real",
               },
             ].map((benefit, index) => (
               <View
                 key={index}
                 className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
               >
-                <View className="flex-row items-start">
-                  <Ionicons
-                    name={benefit.icon as any}
-                    size={24}
-                    className={benefit.color}
-                  />
-                  <View className="flex-1 ml-4">
+                <View className="flex-row items-center">
+                  <View className="w-10 h-10 bg-blue-100 rounded-lg items-center justify-center mr-4">
+                    <MaterialSymbol
+                      name={benefit.icon}
+                      size={20}
+                      color="text-blue-500"
+                    />
+                  </View>
+                  <View className="flex-1">
                     <Text className="text-lg font-semibold text-gray-800">
                       {benefit.title}
                     </Text>
@@ -150,74 +104,53 @@ export default function GuestAuthScreen() {
         {/* Quick Actions */}
         <View className="mb-6">
           <Text className="text-lg font-semibold mb-4 text-gray-800">
-            {t("transport.auth.quickActions.title", {
-              defaultValue: "Acciones Rápidas",
-            })}
+            Acciones Rápidas
           </Text>
-          <View className="space-y-3">
+          <View className="flex-row flex-wrap justify-between">
             <TouchableOpacity
               onPress={() => navigateTo("/search")}
-              className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+              className="bg-blue-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <View className="flex-row items-center">
-                <Ionicons name="search" size={24} color="#007AFF" />
-                <Text className="text-lg font-semibold ml-4 text-gray-800">
-                  {t("transport.auth.quickActions.explore", {
-                    defaultValue: "Explorar Servicios",
-                  })}
-                </Text>
-                <Ionicons
-                  name="chevron-forward"
-                  size={20}
-                  color="#8E8E93"
-                  style={{ marginLeft: "auto" }}
-                />
-              </View>
+              <MaterialSymbol name="search" size={24} color="text-blue-500" />
+              <Text className="text-white font-semibold mt-2">Explorar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => navigateTo("/about")}
-              className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+              className="bg-gray-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
-              <View className="flex-row items-center">
-                <Ionicons name="information-circle" size={24} color="#007AFF" />
-                <Text className="text-lg font-semibold ml-4 text-gray-800">
-                  {t("transport.auth.quickActions.learnMore", {
-                    defaultValue: "Conoce Más Sobre Mecapal",
-                  })}
-                </Text>
-                <Ionicons
-                  name="chevron-forward"
-                  size={20}
-                  color="#8E8E93"
-                  style={{ marginLeft: "auto" }}
-                />
-              </View>
+              <MaterialSymbol name="info" size={24} color="text-gray-500" />
+              <Text className="text-white font-semibold mt-2">Acerca de</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* Social Proof */}
-        <View className="bg-gray-50 p-4 rounded-lg mb-6">
-          <Text className="text-center text-gray-600 mb-2">
-            {t("transport.auth.socialProof", {
-              defaultValue:
-                "Únete a miles de usuarios que ya confían en Mecapal",
-            })}
+        {/* Call to Action */}
+        <View className="bg-blue-600 p-6 rounded-lg items-center">
+          <MaterialSymbol name="star" size={32} color="text-white" />
+          <Text className="text-white text-xl font-bold text-center mt-2">
+            ¿Listo para empezar?
           </Text>
-          <View className="flex-row justify-center space-x-4">
-            <View className="items-center">
-              <Text className="text-2xl font-bold text-blue-600">10K+</Text>
-              <Text className="text-gray-600 text-sm">Usuarios</Text>
-            </View>
-            <View className="items-center">
-              <Text className="text-2xl font-bold text-green-600">4.8★</Text>
-              <Text className="text-gray-600 text-sm">Calificación</Text>
-            </View>
-            <View className="items-center">
-              <Text className="text-2xl font-bold text-purple-600">24/7</Text>
-              <Text className="text-gray-600 text-sm">Soporte</Text>
-            </View>
+          <Text className="text-blue-100 text-center mt-1 mb-4">
+            Crea tu cuenta y accede a todos los beneficios
+          </Text>
+          <View className="flex-row space-x-3">
+            <TouchableOpacity
+              onPress={() => navigateTo("/auth/register")}
+              className="flex-1 bg-white p-3 rounded-lg"
+            >
+              <Text className="text-blue-600 font-semibold text-center">
+                Crear Cuenta
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigateTo("/auth/login")}
+              className="flex-1 bg-transparent border border-white p-3 rounded-lg"
+            >
+              <Text className="text-white font-semibold text-center">
+                Iniciar Sesión
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
