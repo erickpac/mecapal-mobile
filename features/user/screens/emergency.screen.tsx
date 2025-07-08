@@ -6,9 +6,7 @@ import {
   Linking,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
-// Type for Ionicons icons
-type IconName = keyof typeof Ionicons.glyphMap;
+import { IconName } from "@/types/navigation";
 
 export default function UserEmergencyScreen() {
   const handleCall = (phoneNumber: string) => {

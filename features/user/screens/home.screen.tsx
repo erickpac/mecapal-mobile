@@ -3,9 +3,7 @@ import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/utils/navigation";
-
-// Type for Ionicons icons
-type IconName = keyof typeof Ionicons.glyphMap;
+import { IconName } from "@/types/navigation";
 
 export default function UserHomeScreen() {
   const { user } = useStore();

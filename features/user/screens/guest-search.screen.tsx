@@ -41,7 +41,7 @@ export default function GuestSearchScreen() {
             </Text>
           </View>
           <TouchableOpacity
-            onPress={() => navigateTo("/login")}
+            onPress={() => navigateTo("/auth/login")}
             className="bg-blue-500 px-4 py-2 rounded-lg"
           >
             <Text className="text-white font-semibold">
@@ -147,7 +147,7 @@ export default function GuestSearchScreen() {
                 </View>
                 <View className="flex-row mt-4 space-x-2">
                   <TouchableOpacity
-                    onPress={() => navigateTo("/login")}
+                    onPress={() => navigateTo("/auth/login")}
                     className="flex-1 bg-blue-500 p-3 rounded-lg"
                   >
                     <Text className="text-white text-center font-semibold">
@@ -157,7 +157,7 @@ export default function GuestSearchScreen() {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    onPress={() => navigateTo("/login")}
+                    onPress={() => navigateTo("/auth/login")}
                     className="flex-1 bg-gray-500 p-3 rounded-lg"
                   >
                     <Text className="text-white text-center font-semibold">
@@ -194,7 +194,7 @@ export default function GuestSearchScreen() {
             ].map((category, index) => (
               <TouchableOpacity
                 key={index}
-                onPress={() => navigateTo("/login")}
+                onPress={() => navigateTo("/auth/login")}
                 className="w-[48%] bg-white p-4 rounded-lg mb-4 shadow-sm border border-gray-100"
               >
                 <View className="items-center">
@@ -232,7 +232,7 @@ export default function GuestSearchScreen() {
           </Text>
           <View className="flex-row space-x-3 mt-2">
             <TouchableOpacity
-              onPress={() => navigateTo("/register")}
+              onPress={() => navigateTo("/auth/register")}
               className="flex-1 bg-white p-3 rounded-lg"
             >
               <Text className="text-blue-600 font-semibold text-center">
@@ -242,7 +242,7 @@ export default function GuestSearchScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigateTo("/login")}
+              onPress={() => navigateTo("/auth/login")}
               className="flex-1 bg-transparent border border-white p-3 rounded-lg"
             >
               <Text className="text-white font-semibold text-center">

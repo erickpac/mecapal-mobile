@@ -38,7 +38,7 @@ export default function GuestAboutScreen() {
             </Text>
           </View>
           <TouchableOpacity
-            onPress={() => navigateTo("/register")}
+            onPress={() => navigateTo("/auth/register")}
             className="bg-blue-500 px-4 py-2 rounded-lg"
           >
             <Text className="text-white font-semibold">
@@ -331,7 +331,7 @@ export default function GuestAboutScreen() {
           </Text>
           <View className="flex-row space-x-3">
             <TouchableOpacity
-              onPress={() => navigateTo("/register")}
+              onPress={() => navigateTo("/auth/register")}
               className="flex-1 bg-white p-3 rounded-lg"
             >
               <Text className="text-blue-600 font-semibold text-center">
@@ -341,7 +341,7 @@ export default function GuestAboutScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigateTo("/login")}
+              onPress={() => navigateTo("/auth/login")}
               className="flex-1 bg-transparent border border-white p-3 rounded-lg"
             >
               <Text className="text-white font-semibold text-center">

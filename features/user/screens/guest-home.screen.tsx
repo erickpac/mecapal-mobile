@@ -2,14 +2,10 @@ import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/utils/navigation";
-import { useStore } from "@/store/useStore";
-
-// Type for Ionicons icons
-type IconName = keyof typeof Ionicons.glyphMap;
+import { IconName } from "@/types/navigation";
 
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
-  const { enterGuestMode } = useStore();
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
@@ -44,7 +40,7 @@ export default function GuestHomeScreen() {
           </View>
           <View className="flex-row space-x-2">
             <TouchableOpacity
-              onPress={() => navigateTo("/login")}
+              onPress={() => navigateTo("/auth/login")}
               className="bg-blue-500 px-4 py-2 rounded-lg"
             >
               <Text className="text-white font-semibold">
@@ -54,7 +50,7 @@ export default function GuestHomeScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigateTo("/register")}
+              onPress={() => navigateTo("/auth/register")}
               className="bg-green-500 px-4 py-2 rounded-lg"
             >
               <Text className="text-white font-semibold">
@@ -171,7 +167,7 @@ export default function GuestHomeScreen() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigateTo("/login")}
+              onPress={() => navigateTo("/auth/login")}
               className="bg-green-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
               <Ionicons name="person-add" size={32} color="white" />
@@ -183,7 +179,7 @@ export default function GuestHomeScreen() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigateTo("/login")}
+              onPress={() => navigateTo("/auth/login")}
               className="bg-purple-500 p-4 rounded-lg w-[48%] mb-4 items-center"
             >
               <Ionicons name="log-in" size={32} color="white" />
@@ -293,7 +289,7 @@ export default function GuestHomeScreen() {
           </Text>
           <View className="flex-row space-x-3 mt-2">
             <TouchableOpacity
-              onPress={() => navigateTo("/register")}
+              onPress={() => navigateTo("/auth/register")}
               className="flex-1 bg-white p-3 rounded-lg"
             >
               <Text className="text-blue-600 font-semibold text-center">
@@ -303,7 +299,7 @@ export default function GuestHomeScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigateTo("/login")}
+              onPress={() => navigateTo("/auth/login")}
               className="flex-1 bg-transparent border border-white p-3 rounded-lg"
             >
               <Text className="text-white font-semibold text-center">

@@ -40,7 +40,7 @@ export default function GuestAuthScreen() {
         {/* Main CTA Buttons */}
         <View className="mb-6">
           <TouchableOpacity
-            onPress={() => navigateTo("/register")}
+            onPress={() => navigateTo("/auth/register")}
             className="bg-blue-500 p-4 rounded-lg mb-4 items-center"
           >
             <Ionicons name="person-add" size={32} color="white" />
@@ -57,7 +57,7 @@ export default function GuestAuthScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigateTo("/login")}
+            onPress={() => navigateTo("/auth/login")}
             className="bg-white border-2 border-blue-500 p-4 rounded-lg items-center"
           >
             <Ionicons name="log-in" size={32} color="#007AFF" />
