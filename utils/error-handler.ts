@@ -10,8 +10,6 @@ export class ErrorHandler {
     // If it's an API error, map it
     const apiError = this.parseApiError(error);
 
-    console.log(apiError);
-
     // Map specific error codes
     switch (apiError.status) {
       case 401:
