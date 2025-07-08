@@ -1,5 +1,4 @@
 import { useAuth } from "@/features/auth/hooks/useAuth";
-import { useStore } from "@/store/useStore";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import {
@@ -18,16 +17,11 @@ export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error, isSuccess } = useAuth();
-  const { enterGuestMode } = useStore();
   const { t } = useTranslation();
   const { handleError } = useLocalizedError();
 
   const handleLogin = () => {
     login({ email, password });
-  };
-
-  const handleContinueAsGuest = () => {
-    enterGuestMode();
   };
 
   // Navigate to home after successful login
@@ -109,18 +103,6 @@ export default function LoginScreen() {
             <Text className="mx-4 text-gray-500">o</Text>
             <View className="flex-1 h-px bg-gray-300" />
           </View>
-
-          {/* Continue as Guest Button */}
-          <TouchableOpacity
-            onPress={handleContinueAsGuest}
-            className="py-3 rounded-lg border border-gray-300"
-          >
-            <Text className="text-gray-700 text-center font-medium">
-              {t("auth.login.continueAsGuest", {
-                defaultValue: "Continuar como invitado",
-              })}
-            </Text>
-          </TouchableOpacity>
         </View>
       </View>
     </KeyboardAvoidingView>

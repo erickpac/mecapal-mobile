@@ -1,5 +1,4 @@
 import { useAuth } from "@/features/auth/hooks/useAuth";
-import { useStore } from "@/store/useStore";
 import { router } from "expo-router";
 import { useState, useEffect } from "react";
 import {
@@ -21,7 +20,6 @@ export default function RegisterScreen() {
   const [selectedRole, setSelectedRole] = useState<UserRole>(UserRole.USER);
   const [showSuccess, setShowSuccess] = useState(false);
   const { register, isLoading, error, isSuccess } = useAuth();
-  const { enterGuestMode } = useStore();
   const { t } = useTranslation();
 
   // Handle successful registration
@@ -50,10 +48,6 @@ export default function RegisterScreen() {
       password,
       role: selectedRole,
     });
-  };
-
-  const handleContinueAsGuest = () => {
-    enterGuestMode();
   };
 
   // Show success message if registration was successful
@@ -199,18 +193,6 @@ export default function RegisterScreen() {
           <Text className="mx-4 text-gray-500">o</Text>
           <View className="flex-1 h-px bg-gray-300" />
         </View>
-
-        {/* Continue as Guest Button */}
-        <TouchableOpacity
-          onPress={handleContinueAsGuest}
-          className="py-3 rounded-lg border border-gray-300"
-        >
-          <Text className="text-gray-700 text-center font-medium">
-            {t("auth.register.continueAsGuest", {
-              defaultValue: "Continuar como invitado",
-            })}
-          </Text>
-        </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   );
