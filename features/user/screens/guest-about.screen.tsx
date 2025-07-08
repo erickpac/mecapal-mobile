@@ -2,24 +2,21 @@ import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/utils/navigation";
+import ScreenHeader from "@/components/screen-header";
 
 export default function GuestAboutScreen() {
   const { t } = useTranslation();
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">
-          {t("transport.about.title", {
-            defaultValue: "Acerca de Mecapal",
-          })}
-        </Text>
-        <Text className="text-gray-600 mt-1">
-          {t("transport.about.subtitle", {
-            defaultValue: "Conectamos usuarios con transportistas confiables",
-          })}
-        </Text>
-      </View>
+      <ScreenHeader
+        title={t("transport.about.title", {
+          defaultValue: "Acerca de Mecapal",
+        })}
+        subtitle={t("transport.about.subtitle", {
+          defaultValue: "Conectamos usuarios con transportistas confiables",
+        })}
+      />
 
       {/* Login Banner */}
       <View className="bg-blue-50 p-4 border-b border-blue-200">

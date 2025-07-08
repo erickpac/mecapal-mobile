@@ -3,24 +3,21 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/utils/navigation";
 import { IconName } from "@/types/navigation";
+import ScreenHeader from "@/components/screen-header";
 
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">
-          {t("transport.home.guestGreeting", {
-            defaultValue: "¡Bienvenido a Mecapal!",
-          })}
-        </Text>
-        <Text className="text-gray-600 mt-1">
-          {t("transport.home.guestSubtitle", {
-            defaultValue: "Encuentra el transporte que necesitas",
-          })}
-        </Text>
-      </View>
+      <ScreenHeader
+        title={t("transport.home.guestGreeting", {
+          defaultValue: "¡Bienvenido a Mecapal!",
+        })}
+        subtitle={t("transport.home.guestSubtitle", {
+          defaultValue: "Encuentra el transporte que necesitas",
+        })}
+      />
 
       {/* Login/Register Banner */}
       <View className="bg-blue-50 p-4 border-b border-blue-200">

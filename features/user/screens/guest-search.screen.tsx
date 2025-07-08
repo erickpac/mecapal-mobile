@@ -9,6 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/utils/navigation";
 import { useState } from "react";
+import ScreenHeader from "@/components/screen-header";
 
 export default function GuestSearchScreen() {
   const { t } = useTranslation();
@@ -16,14 +17,10 @@ export default function GuestSearchScreen() {
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">
-          {t("transport.search.title")}
-        </Text>
-        <Text className="text-gray-600 mt-1">
-          {t("transport.search.subtitle")}
-        </Text>
-      </View>
+      <ScreenHeader
+        title={t("transport.search.title")}
+        subtitle={t("transport.search.subtitle")}
+      />
 
       {/* Login Banner */}
       <View className="bg-blue-50 p-4 border-b border-blue-200">

@@ -1,15 +1,14 @@
 import { Text, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import ScreenHeader from "@/components/screen-header";
 
 export default function TransporterEarningsScreen() {
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">Mis Ganancias</Text>
-        <Text className="text-gray-600 mt-1">
-          Revisa tus ingresos y estadísticas
-        </Text>
-      </View>
+      <ScreenHeader
+        title="Mis Ganancias"
+        subtitle="Revisa tus ingresos y estadísticas"
+      />
 
       <View className="p-4">
         {/* Resumen de Ganancias */}

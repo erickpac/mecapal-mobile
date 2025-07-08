@@ -1,15 +1,14 @@
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import ScreenHeader from "@/components/screen-header";
 
 export default function TransporterVehiclesScreen() {
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">Mis Vehículos</Text>
-        <Text className="text-gray-600 mt-1">
-          Gestiona tu flota de vehículos
-        </Text>
-      </View>
+      <ScreenHeader
+        title="Mis Vehículos"
+        subtitle="Gestiona tu flota de vehículos"
+      />
 
       <View className="p-4">
         <TouchableOpacity className="bg-blue-500 p-4 rounded-lg mb-6 items-center">

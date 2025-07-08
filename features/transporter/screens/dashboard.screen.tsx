@@ -8,6 +8,7 @@ import {
   navigateToEarnings,
   navigateTo,
 } from "@/utils/navigation";
+import ScreenHeader from "@/components/screen-header";
 
 export default function TransporterDashboardScreen() {
   const { user } = useStore();
@@ -15,14 +16,10 @@ export default function TransporterDashboardScreen() {
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">
-          {t("transport.dashboard.title")}
-        </Text>
-        <Text className="text-gray-600 mt-1">
-          {t("transport.home.greeting", { name: user?.name })}
-        </Text>
-      </View>
+      <ScreenHeader
+        title={t("transport.dashboard.title")}
+        subtitle={t("transport.home.greeting", { name: user?.name })}
+      />
 
       <View className="p-4">
         {/* Quick Statistics */}

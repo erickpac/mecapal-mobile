@@ -1,18 +1,17 @@
 import { useStore } from "@/store/useStore";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import ScreenHeader from "@/components/screen-header";
 
 export default function UserProfileScreen() {
   const { user, logout } = useStore();
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">Mi Perfil</Text>
-        <Text className="text-gray-600 mt-1">
-          Gestiona tu información personal
-        </Text>
-      </View>
+      <ScreenHeader
+        title="Mi Perfil"
+        subtitle="Gestiona tu información personal"
+      />
 
       <View className="p-4">
         {/* Información del Usuario */}

@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/utils/navigation";
 import { IconName } from "@/types/navigation";
+import ScreenHeader from "@/components/screen-header";
 
 export default function UserHomeScreen() {
   const { user } = useStore();
@@ -11,14 +12,10 @@ export default function UserHomeScreen() {
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">
-          {t("transport.home.greeting", { name: user?.name })}
-        </Text>
-        <Text className="text-gray-600 mt-1">
-          {t("transport.home.subtitle")}
-        </Text>
-      </View>
+      <ScreenHeader
+        title={t("transport.home.greeting", { name: user?.name })}
+        subtitle={t("transport.home.subtitle")}
+      />
 
       <View className="p-4">
         {/* Quick Search */}

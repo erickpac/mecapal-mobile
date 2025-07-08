@@ -2,24 +2,21 @@ import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/utils/navigation";
+import ScreenHeader from "@/components/screen-header";
 
 export default function GuestAuthScreen() {
   const { t } = useTranslation();
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      <View className="bg-white p-4 border-b border-gray-200">
-        <Text className="text-2xl font-bold text-gray-800">
-          {t("transport.auth.title", {
-            defaultValue: "Únete a Mecapal",
-          })}
-        </Text>
-        <Text className="text-gray-600 mt-1">
-          {t("transport.auth.subtitle", {
-            defaultValue: "Crea tu cuenta y accede a todos los servicios",
-          })}
-        </Text>
-      </View>
+      <ScreenHeader
+        title={t("transport.auth.title", {
+          defaultValue: "Únete a Mecapal",
+        })}
+        subtitle={t("transport.auth.subtitle", {
+          defaultValue: "Crea tu cuenta y accede a todos los servicios",
+        })}
+      />
 
       <View className="p-4">
         {/* Welcome Section */}
