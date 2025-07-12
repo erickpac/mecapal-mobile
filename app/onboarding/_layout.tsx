@@ -26,6 +26,24 @@ export default function OnboardingLayout() {
           title: "Get Started",
         }}
       />
+
+      {/* Auth Modal Screens */}
+      <Stack.Screen
+        name="login"
+        options={{
+          title: "Login",
+          presentation: "modal",
+          gestureEnabled: true,
+        }}
+      />
+      <Stack.Screen
+        name="register"
+        options={{
+          title: "Register",
+          presentation: "modal",
+          gestureEnabled: true,
+        }}
+      />
     </Stack>
   );
 }

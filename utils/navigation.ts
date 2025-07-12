@@ -14,7 +14,10 @@ export const ROUTES = {
   ONBOARDING: "/onboarding",
   ONBOARDING_USER_TYPE: "/onboarding/user-type-selection",
   ONBOARDING_AUTH_OPTIONS: "/onboarding/auth-options",
-  // Auth routes
+  // Modal Auth routes (from onboarding)
+  ONBOARDING_LOGIN: "/onboarding/login",
+  ONBOARDING_REGISTER: "/onboarding/register",
+  // Direct Auth routes
   AUTH: "/auth",
   AUTH_REGISTER: "/auth/register",
   AUTH_FORGOT_PASSWORD: "/auth/forgot-password",
@@ -50,7 +53,13 @@ export const navigateToUserTypeSelection = () =>
 export const navigateToAuthOptions = () =>
   navigateTo(ROUTES.ONBOARDING_AUTH_OPTIONS);
 
-// Auth navigation functions
+// Modal Auth navigation functions (from onboarding)
+export const navigateToOnboardingLogin = () =>
+  navigateTo(ROUTES.ONBOARDING_LOGIN);
+export const navigateToOnboardingRegister = () =>
+  navigateTo(ROUTES.ONBOARDING_REGISTER);
+
+// Direct Auth navigation functions
 export const navigateToAuth = () => navigateTo(ROUTES.AUTH);
 export const navigateToRegister = () => navigateTo(ROUTES.AUTH_REGISTER);
 export const navigateToForgotPassword = () =>

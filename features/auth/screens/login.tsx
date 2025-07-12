@@ -15,10 +15,12 @@ import { useLocalizedError } from "@/hooks/useLocalizedError";
 import { NavigationHeader } from "@/components/navigation-header";
 import {
   navigateToRegister,
+  navigateToOnboardingRegister,
   navigateToForgotPassword,
   replaceRoute,
   ROUTES,
 } from "@/utils/navigation";
+import { usePathname } from "expo-router";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -27,6 +29,10 @@ export default function LoginScreen() {
   const { setHasCompletedOnboarding } = useStore();
   const { t } = useTranslation();
   const { handleError } = useLocalizedError();
+  const pathname = usePathname();
+
+  // Check if we're in modal mode (from onboarding)
+  const isModalMode = pathname.includes("/onboarding/");
 
   const handleLogin = () => {
     login({ email, password });
@@ -96,7 +102,11 @@ export default function LoginScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigateToRegister()}
+            onPress={() =>
+              isModalMode
+                ? navigateToOnboardingRegister()
+                : navigateToRegister()
+            }
             className="mt-4"
           >
             <Text className="text-gray-600 text-center">

@@ -4,8 +4,8 @@ import { router } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
-  navigateToAuth,
-  navigateToRegister,
+  navigateToOnboardingLogin,
+  navigateToOnboardingRegister,
   replaceRoute,
   ROUTES,
 } from "@/utils/navigation";
@@ -14,13 +14,13 @@ export default function AuthOptionsScreen() {
   const { selectedUserType, setHasCompletedOnboarding } = useStore();
 
   const handleSignIn = () => {
-    // Navigate to login screen
-    navigateToAuth();
+    // Navigate to modal login screen
+    navigateToOnboardingLogin();
   };
 
   const handleCreateAccount = () => {
-    // Navigate to register screen
-    navigateToRegister();
+    // Navigate to modal register screen
+    navigateToOnboardingRegister();
   };
 
   const handleSkipAuth = () => {

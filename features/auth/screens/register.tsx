@@ -1,6 +1,6 @@
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { useStore } from "@/store/useStore";
-import { router } from "expo-router";
+import { usePathname } from "expo-router";
 import { useState, useEffect } from "react";
 import {
   KeyboardAvoidingView,
@@ -13,7 +13,12 @@ import {
 import { useTranslation } from "react-i18next";
 import { UserRole } from "@/features/auth/types/user";
 import { NavigationHeader } from "@/components/navigation-header";
-import { navigateToAuth, replaceRoute, ROUTES } from "@/utils/navigation";
+import {
+  navigateToAuth,
+  navigateToOnboardingLogin,
+  replaceRoute,
+  ROUTES,
+} from "@/utils/navigation";
 
 export default function RegisterScreen() {
   const [name, setName] = useState("");
@@ -24,6 +29,10 @@ export default function RegisterScreen() {
   const { register, isLoading, error, isSuccess } = useAuth();
   const { selectedUserType, setHasCompletedOnboarding } = useStore();
   const { t } = useTranslation();
+  const pathname = usePathname();
+
+  // Check if we're in modal mode (from onboarding)
+  const isModalMode = pathname.includes("/onboarding/");
 
   // Use selectedUserType from store, fallback to USER if not set
   const selectedRole = selectedUserType || UserRole.USER;
@@ -171,7 +180,12 @@ export default function RegisterScreen() {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigateToAuth()} className="mt-4">
+          <TouchableOpacity
+            onPress={() =>
+              isModalMode ? navigateToOnboardingLogin() : navigateToAuth()
+            }
+            className="mt-4"
+          >
             <Text className="text-gray-600 text-center">
               {t("auth.register.hasAccount", {
                 defaultValue: "¿Ya tienes cuenta?",
