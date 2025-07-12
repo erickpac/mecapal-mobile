@@ -1,21 +1,28 @@
 import { useStore } from "@/store/useStore";
-import { router } from "expo-router";
 import { useEffect } from "react";
 import { LoadingScreen } from "@/components/loading-screen";
+import { replaceRoute, ROUTES } from "@/utils/navigation";
 
 export default function Index() {
-  const { isAuthenticated, isGuestMode } = useStore();
+  const { isAuthenticated, isGuestMode, hasCompletedOnboarding } = useStore();
 
   useEffect(() => {
     const navigate = async () => {
       try {
+        // If user hasn't completed onboarding, show onboarding
+        if (!hasCompletedOnboarding) {
+          replaceRoute(ROUTES.ONBOARDING);
+          return;
+        }
+
+        // If user has completed onboarding, check authentication
         if (isAuthenticated) {
-          router.replace("/home");
+          replaceRoute(ROUTES.HOME);
         } else if (isGuestMode) {
-          router.replace("/home");
+          replaceRoute(ROUTES.HOME);
         } else {
-          // Si no está autenticado y no está en modo invitado, entrar como invitado
-          router.replace("/home");
+          // Enter guest mode by default
+          replaceRoute(ROUTES.HOME);
         }
       } catch (error) {
         console.error("Navigation error:", error);
@@ -23,7 +30,7 @@ export default function Index() {
     };
 
     navigate();
-  }, [isAuthenticated, isGuestMode]);
+  }, [isAuthenticated, isGuestMode, hasCompletedOnboarding]);
 
   return <LoadingScreen />;
 }

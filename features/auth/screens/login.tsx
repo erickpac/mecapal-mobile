@@ -1,4 +1,5 @@
 import { useAuth } from "@/features/auth/hooks/useAuth";
+import { useStore } from "@/store/useStore";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import {
@@ -12,11 +13,18 @@ import {
 import { useTranslation } from "react-i18next";
 import { useLocalizedError } from "@/hooks/useLocalizedError";
 import { NavigationHeader } from "@/components/navigation-header";
+import {
+  navigateToRegister,
+  navigateToForgotPassword,
+  replaceRoute,
+  ROUTES,
+} from "@/utils/navigation";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error, isSuccess } = useAuth();
+  const { setHasCompletedOnboarding } = useStore();
   const { t } = useTranslation();
   const { handleError } = useLocalizedError();
 
@@ -24,12 +32,13 @@ export default function LoginScreen() {
     login({ email, password });
   };
 
-  // Navigate to home after successful login
+  // Navigate to home after successful login and complete onboarding
   useEffect(() => {
     if (isSuccess) {
-      router.replace("/home");
+      setHasCompletedOnboarding(true);
+      replaceRoute(ROUTES.HOME);
     }
-  }, [isSuccess]);
+  }, [isSuccess, setHasCompletedOnboarding]);
 
   return (
     <KeyboardAvoidingView
@@ -80,11 +89,23 @@ export default function LoginScreen() {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => router.push("/auth/forgot-password")}
-          >
+          <TouchableOpacity onPress={() => navigateToForgotPassword()}>
             <Text className="text-blue-600 text-center">
               {t("auth.login.forgotPassword")}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigateToRegister()}
+            className="mt-4"
+          >
+            <Text className="text-gray-600 text-center">
+              {t("auth.login.noAccount", {
+                defaultValue: "¿No tienes cuenta?",
+              })}{" "}
+              <Text className="text-blue-600 font-medium">
+                {t("auth.login.signUp", { defaultValue: "Regístrate" })}
+              </Text>
             </Text>
           </TouchableOpacity>
         </View>

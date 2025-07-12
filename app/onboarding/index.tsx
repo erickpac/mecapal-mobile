@@ -1,5 +1,5 @@
-import OnboardingScreen from "@/features/onboarding/screens/onboarding.screen";
+import OnboardingWelcomeScreen from "@/features/onboarding/screens/onboarding-welcome.screen";
 
 export default function Onboarding() {
-  return <OnboardingScreen />;
+  return <OnboardingWelcomeScreen />;
 }
