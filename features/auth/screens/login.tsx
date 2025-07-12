@@ -98,8 +98,8 @@ export default function LoginScreen() {
           <TouchableOpacity
             onPress={() => {
               if (isModalMode) {
-                // Navigate to register within modal
-                router.push("/onboarding/auth/register");
+                // Close modal and return to onboarding to select register option
+                router.dismiss();
               } else {
                 navigateToRegister();
               }

@@ -168,11 +168,14 @@ export default function RegisterScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() =>
-              isModalMode
-                ? router.replace("/onboarding/auth/login")
-                : navigateToAuth()
-            }
+            onPress={() => {
+              if (isModalMode) {
+                // Close modal and return to onboarding to select login option
+                router.dismiss();
+              } else {
+                navigateToAuth();
+              }
+            }}
             className="mt-4"
           >
             <Text className="text-gray-600 text-center">
