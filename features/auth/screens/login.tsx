@@ -96,11 +96,14 @@ export default function LoginScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() =>
-              isModalMode
-                ? router.replace("/onboarding/auth/register")
-                : navigateToRegister()
-            }
+            onPress={() => {
+              if (isModalMode) {
+                // Navigate to register within modal
+                router.push("/onboarding/auth/register");
+              } else {
+                navigateToRegister();
+              }
+            }}
             className="mt-4"
           >
             <Text className="text-gray-600 text-center">
