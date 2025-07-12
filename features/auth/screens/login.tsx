@@ -1,6 +1,6 @@
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { useStore } from "@/store/useStore";
-import { router } from "expo-router";
+import { router, usePathname } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   KeyboardAvoidingView,
@@ -12,14 +12,12 @@ import {
 } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useLocalizedError } from "@/hooks/useLocalizedError";
-import { NavigationHeader } from "@/components/navigation-header";
 import {
   navigateToRegister,
   navigateToForgotPassword,
   replaceRoute,
   ROUTES,
 } from "@/utils/navigation";
-import { usePathname } from "expo-router";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -50,9 +48,6 @@ export default function LoginScreen() {
       className="flex-1 bg-white"
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <NavigationHeader
-        title={t("auth.login.title", { defaultValue: "Login" })}
-      />
       <View className="flex-1 justify-center items-center px-4">
         <View className="w-full max-w-md bg-white rounded-2xl p-6 shadow">
           <Text className="text-3xl font-bold mb-6 text-center">
@@ -103,7 +98,7 @@ export default function LoginScreen() {
           <TouchableOpacity
             onPress={() =>
               isModalMode
-                ? router.push("/onboarding/auth/register")
+                ? router.replace("/onboarding/auth/register")
                 : navigateToRegister()
             }
             className="mt-4"

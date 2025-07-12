@@ -12,7 +12,6 @@ import {
 } from "react-native";
 import { useTranslation } from "react-i18next";
 import { UserRole } from "@/features/auth/types/user";
-import { NavigationHeader } from "@/components/navigation-header";
 import { navigateToAuth, replaceRoute, ROUTES } from "@/utils/navigation";
 
 export default function RegisterScreen() {
@@ -65,10 +64,6 @@ export default function RegisterScreen() {
   if (showSuccess) {
     return (
       <View className="flex-1 bg-white">
-        <NavigationHeader
-          title={t("auth.register.title", { defaultValue: "Crear Cuenta" })}
-          showBackButton={false}
-        />
         <View className="flex-1 justify-center items-center px-4">
           <View className="w-full max-w-md bg-white rounded-2xl p-6 shadow items-center">
             <Text className="text-3xl font-bold mb-4 text-center text-green-600">
@@ -89,9 +84,6 @@ export default function RegisterScreen() {
 
   return (
     <View className="flex-1 bg-white">
-      <NavigationHeader
-        title={t("auth.register.title", { defaultValue: "Crear Cuenta" })}
-      />
       <KeyboardAvoidingView
         className="flex-1 justify-center items-center px-4"
         behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -178,7 +170,7 @@ export default function RegisterScreen() {
           <TouchableOpacity
             onPress={() =>
               isModalMode
-                ? router.push("/onboarding/auth/login")
+                ? router.replace("/onboarding/auth/login")
                 : navigateToAuth()
             }
             className="mt-4"

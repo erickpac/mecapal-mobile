@@ -31,9 +31,9 @@ export default function OnboardingLayout() {
       <Stack.Screen
         name="auth"
         options={{
-          title: "Authentication",
           presentation: "modal",
           gestureEnabled: true,
+          headerShown: false,
         }}
       />
     </Stack>
