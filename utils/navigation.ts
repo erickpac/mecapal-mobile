@@ -15,8 +15,9 @@ export const ROUTES = {
   ONBOARDING_USER_TYPE: "/onboarding/user-type-selection",
   ONBOARDING_AUTH_OPTIONS: "/onboarding/auth-options",
   // Modal Auth routes (from onboarding)
-  ONBOARDING_LOGIN: "/onboarding/login",
-  ONBOARDING_REGISTER: "/onboarding/register",
+  ONBOARDING_AUTH: "/onboarding/auth",
+  ONBOARDING_LOGIN: "/onboarding/auth/login",
+  ONBOARDING_REGISTER: "/onboarding/auth/register",
   // Direct Auth routes
   AUTH: "/auth",
   AUTH_REGISTER: "/auth/register",
@@ -54,6 +55,8 @@ export const navigateToAuthOptions = () =>
   navigateTo(ROUTES.ONBOARDING_AUTH_OPTIONS);
 
 // Modal Auth navigation functions (from onboarding)
+export const navigateToOnboardingAuth = () =>
+  navigateTo(ROUTES.ONBOARDING_AUTH);
 export const navigateToOnboardingLogin = () =>
   navigateTo(ROUTES.ONBOARDING_LOGIN);
 export const navigateToOnboardingRegister = () =>

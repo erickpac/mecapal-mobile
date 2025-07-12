@@ -1,6 +1,6 @@
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { useStore } from "@/store/useStore";
-import { usePathname } from "expo-router";
+import { usePathname, router } from "expo-router";
 import { useState, useEffect } from "react";
 import {
   KeyboardAvoidingView,
@@ -13,12 +13,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { UserRole } from "@/features/auth/types/user";
 import { NavigationHeader } from "@/components/navigation-header";
-import {
-  navigateToAuth,
-  navigateToOnboardingLogin,
-  replaceRoute,
-  ROUTES,
-} from "@/utils/navigation";
+import { navigateToAuth, replaceRoute, ROUTES } from "@/utils/navigation";
 
 export default function RegisterScreen() {
   const [name, setName] = useState("");
@@ -182,7 +177,9 @@ export default function RegisterScreen() {
 
           <TouchableOpacity
             onPress={() =>
-              isModalMode ? navigateToOnboardingLogin() : navigateToAuth()
+              isModalMode
+                ? router.push("/onboarding/auth/login")
+                : navigateToAuth()
             }
             className="mt-4"
           >

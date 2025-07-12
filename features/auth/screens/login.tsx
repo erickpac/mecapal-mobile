@@ -15,7 +15,6 @@ import { useLocalizedError } from "@/hooks/useLocalizedError";
 import { NavigationHeader } from "@/components/navigation-header";
 import {
   navigateToRegister,
-  navigateToOnboardingRegister,
   navigateToForgotPassword,
   replaceRoute,
   ROUTES,
@@ -104,7 +103,7 @@ export default function LoginScreen() {
           <TouchableOpacity
             onPress={() =>
               isModalMode
-                ? navigateToOnboardingRegister()
+                ? router.push("/onboarding/auth/register")
                 : navigateToRegister()
             }
             className="mt-4"

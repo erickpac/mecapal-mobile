@@ -27,19 +27,11 @@ export default function OnboardingLayout() {
         }}
       />
 
-      {/* Auth Modal Screens */}
+      {/* Auth Modal Stack */}
       <Stack.Screen
-        name="login"
+        name="auth"
         options={{
-          title: "Login",
-          presentation: "modal",
-          gestureEnabled: true,
-        }}
-      />
-      <Stack.Screen
-        name="register"
-        options={{
-          title: "Register",
+          title: "Authentication",
           presentation: "modal",
           gestureEnabled: true,
         }}
