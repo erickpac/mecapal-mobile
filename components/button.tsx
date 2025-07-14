@@ -1,18 +1,14 @@
 import React from "react";
-import {
-  TouchableOpacity,
-  Text,
-  ActivityIndicator,
-  GestureResponderEvent,
-} from "react-native";
+import { GestureResponderEvent } from "react-native";
+import { Button as PaperButton } from "react-native-paper";
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
 
 interface ButtonProps {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
-  colorClassName?: string; // override for bg color
-  textClassName?: string; // override for text color
+  colorClassName?: string; // override for bg color (tailwind)
+  textClassName?: string; // override for text color (tailwind)
   loading?: boolean;
   disabled?: boolean;
   fullWidth?: boolean;
@@ -22,8 +18,6 @@ interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({
   title,
   onPress,
-  colorClassName,
-  textClassName,
   loading = false,
   disabled = false,
   fullWidth = true,
@@ -32,30 +26,31 @@ export const Button: React.FC<ButtonProps> = ({
   const { user, selectedUserType } = useStore();
   const role = user?.role || selectedUserType;
 
-  // Default colors based on role
-  let bg = "bg-primary-500";
-  let text = "text-white";
+  // Default colors based on role (tailwind classes for styling, but pass hex to PaperButton)
+  let buttonColor = "#ef6e30"; // primary-500
+  let textColor = "#fff";
   if (role === UserRole.TRANSPORTER) {
-    bg = "bg-secondary-500";
-    text = "text-white";
+    buttonColor = "#28a389"; // secondary-500
+    textColor = "#fff";
   }
 
+  // Allow override via className (for tailwind styling) but PaperButton needs color props
   return (
-    <TouchableOpacity
+    <PaperButton
+      mode="contained"
       onPress={onPress}
-      disabled={disabled || loading}
-      className={`rounded-lg py-4 px-8 items-center justify-center shadow-md ${
-        fullWidth ? "w-full" : ""
-      } ${colorClassName || bg} ${disabled ? "opacity-50" : ""} ${className}`}
-      activeOpacity={0.85}
+      loading={loading}
+      disabled={disabled}
+      buttonColor={buttonColor}
+      textColor={textColor}
+      style={
+        fullWidth ? { width: "100%", borderRadius: 8 } : { borderRadius: 8 }
+      }
+      contentStyle={{ height: 42 }}
+      labelStyle={{ fontSize: 14, fontWeight: "600" }}
+      className={className}
     >
-      {loading ? (
-        <ActivityIndicator color={textClassName ? undefined : "#fff"} />
-      ) : (
-        <Text className={`text-lg font-semibold ${textClassName || text}`}>
-          {title}
-        </Text>
-      )}
-    </TouchableOpacity>
+      {title}
+    </PaperButton>
   );
 };
