@@ -2,6 +2,8 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { MaterialSymbol } from "@/components/material-symbol";
 import { router } from "expo-router";
 import { ReactNode } from "react";
+import { useStore } from "@/store/useStore";
+import { UserRole } from "@/features/auth/types/user";
 
 interface NavigationHeaderProps {
   title: string;
@@ -44,27 +46,36 @@ export const NavigationHeader = ({
   showBackButton = true,
   onBackPress,
   rightComponent,
-  backgroundColor = "bg-white",
-  textColor = "text-gray-800",
+  backgroundColor,
+  textColor,
   backButtonColor = "#007AFF",
 }: NavigationHeaderProps) => {
-  const handleBackPress = () => {
-    if (onBackPress) {
-      onBackPress();
-    } else {
-      router.back();
-    }
-  };
+  const { user, selectedUserType } = useStore();
+  // Determine role: prefer user.role if logged in, else selectedUserType from onboarding
+  const role = user?.role || selectedUserType;
+
+  // Default colors based on role
+  let defaultBg = "bg-primary-500";
+  let defaultText = "text-white";
+  if (role === UserRole.TRANSPORTER) {
+    defaultBg = "bg-secondary-500";
+    defaultText = "text-white";
+  }
 
   return (
     <View
-      className={`${backgroundColor} px-4 py-3 flex-row items-center justify-between border-b border-gray-200`}
+      className={`${
+        backgroundColor || defaultBg
+      } px-4 py-3 flex-row items-center justify-between border-b border-gray-200`}
     >
       <View className="flex-row items-center flex-1">
         {showBackButton && (
-          <TouchableOpacity onPress={handleBackPress} className="mr-3 p-1">
+          <TouchableOpacity
+            onPress={onBackPress || router.back}
+            className="mr-3 p-1"
+          >
             <MaterialSymbol
-              name="arrow_back_ios"
+              name="arrow_back"
               size={24}
               color={
                 backButtonColor === "#007AFF"
@@ -74,7 +85,9 @@ export const NavigationHeader = ({
             />
           </TouchableOpacity>
         )}
-        <Text className={`text-lg font-semibold ${textColor} flex-1`}>
+        <Text
+          className={`text-lg font-semibold ${textColor || defaultText} flex-1`}
+        >
           {title}
         </Text>
       </View>
