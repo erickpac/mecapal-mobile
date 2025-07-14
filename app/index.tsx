@@ -10,20 +10,13 @@ export default function Index() {
     const navigate = async () => {
       try {
         // If user hasn't completed onboarding, show onboarding
-        if (true) {
+        if (!hasCompletedOnboarding) {
           replaceRoute(ROUTES.ONBOARDING);
           return;
         }
 
-        // If user has completed onboarding, check authentication
-        if (isAuthenticated) {
-          replaceRoute(ROUTES.HOME);
-        } else if (isGuestMode) {
-          replaceRoute(ROUTES.HOME);
-        } else {
-          // Enter guest mode by default
-          replaceRoute(ROUTES.HOME);
-        }
+        // If user has completed onboarding, go to home
+        replaceRoute(ROUTES.HOME);
       } catch (error) {
         console.error("Navigation error:", error);
       }
