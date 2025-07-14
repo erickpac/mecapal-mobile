@@ -1,85 +1,56 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  navigateToUserTypeSelection,
-  replaceRoute,
-  ROUTES,
-} from "@/utils/navigation";
+import { Button } from "@/components/button";
+import { navigateToUserTypeSelection } from "@/utils/navigation";
+import { CarRental } from "@/components/svg/car-rental";
 
 export default function OnboardingWelcomeScreen() {
   const handleContinue = () => {
     navigateToUserTypeSelection();
   };
 
-  const handleSkip = () => {
-    // Skip onboarding and go to guest mode
-    replaceRoute(ROUTES.HOME);
-  };
-
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <View className="flex-1 justify-between p-6">
-        {/* Skip button */}
-        <View className="flex-row justify-end">
-          <TouchableOpacity onPress={handleSkip}>
-            <Text className="text-gray-500 text-base">Skip</Text>
-          </TouchableOpacity>
+      <View className="flex-1 px-6 pt-8 pb-4 justify-between">
+        <View className="items-center mt-12 mb-6">
+          <Text className="text-5xl font-plus-jakarta-extrabold text-primary-500 mb-6">
+            Mekapal
+          </Text>
+          <CarRental width={252} height={135} />
         </View>
 
-        {/* Main content */}
-        <View className="flex-1 justify-center items-center">
-          <View className="w-32 h-32 bg-blue-100 rounded-full items-center justify-center mb-8">
-            <Text className="text-4xl">🚛</Text>
-          </View>
-
-          <Text className="text-3xl font-bold text-center mb-4 text-gray-900">
-            Welcome to Mecapal
+        <View className="mb-10">
+          <Text className="text-2xl font-plus-jakarta-bold text-center text-text-active mb-2">
+            ¡Bienvenido a Mekapal!
           </Text>
-
-          <Text className="text-lg text-center text-gray-600 mb-8 leading-relaxed">
-            Your trusted platform for connecting with reliable transporters.
-            Safe, fast, and efficient transportation services.
+          <Text className="text-base text-center text-text-idle mb-4">
+            Tu plataforma de confianza para conectar con transportistas. Seguro,
+            rápido y eficiente.
           </Text>
-
-          {/* Features */}
-          <View className="w-full space-y-4 mb-8">
+          <View className="space-y-3 mt-2">
             <View className="flex-row items-center">
-              <View className="w-8 h-8 bg-green-100 rounded-full items-center justify-center mr-3">
-                <Text className="text-green-600 text-lg">✓</Text>
-              </View>
-              <Text className="text-gray-700 flex-1">
-                Quick and reliable service
+              <Text className="text-2xl mr-2 text-success-500">✓</Text>
+              <Text className="text-base text-text-active">
+                Rápido y de confianza
               </Text>
             </View>
-
             <View className="flex-row items-center">
-              <View className="w-8 h-8 bg-green-100 rounded-full items-center justify-center mr-3">
-                <Text className="text-green-600 text-lg">✓</Text>
-              </View>
-              <Text className="text-gray-700 flex-1">
-                Secure payment system
+              <Text className="text-2xl mr-2 text-success-500">✓</Text>
+              <Text className="text-base text-text-active">
+                Sistema de pago seguro
               </Text>
             </View>
-
             <View className="flex-row items-center">
-              <View className="w-8 h-8 bg-green-100 rounded-full items-center justify-center mr-3">
-                <Text className="text-green-600 text-lg">✓</Text>
-              </View>
-              <Text className="text-gray-700 flex-1">Real-time tracking</Text>
+              <Text className="text-2xl mr-2 text-success-500">✓</Text>
+              <Text className="text-base text-text-active">
+                Seguimiento en tiempo real
+              </Text>
             </View>
           </View>
         </View>
 
-        {/* Continue button */}
-        <View>
-          <TouchableOpacity
-            onPress={handleContinue}
-            className="bg-blue-600 py-4 px-8 rounded-full items-center shadow-lg"
-          >
-            <Text className="text-white text-lg font-semibold">
-              Get Started
-            </Text>
-          </TouchableOpacity>
+        <View className="mb-2">
+          <Button title="Empezar" onPress={handleContinue} />
         </View>
       </View>
     </SafeAreaView>
