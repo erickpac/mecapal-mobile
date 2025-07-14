@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { PaperProvider } from "react-native-paper";
 import { Stack } from "expo-router";
 import { View } from "react-native";
 import "../global.css";
@@ -45,14 +46,16 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <I18nextProvider i18n={i18n} defaultNS={"translation"}>
-        <View className="flex-1 bg-white">
-          <Stack
-            screenOptions={{
-              headerShown: false,
-              contentStyle: { backgroundColor: "white" },
-            }}
-          />
-        </View>
+        <PaperProvider>
+          <View className="flex-1 bg-white">
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                contentStyle: { backgroundColor: "white" },
+              }}
+            />
+          </View>
+        </PaperProvider>
       </I18nextProvider>
     </QueryClientProvider>
   );
