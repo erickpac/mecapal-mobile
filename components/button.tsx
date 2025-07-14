@@ -27,10 +27,11 @@ export const Button: React.FC<ButtonProps> = ({
   const role = user?.role || selectedUserType;
 
   // Default colors based on role (tailwind classes for styling, but pass hex to PaperButton)
-  let buttonColor = "#ef6e30"; // primary-500
+  let buttonColor = "#28a389"; // secondary-500
   let textColor = "#fff";
+
   if (role === UserRole.TRANSPORTER) {
-    buttonColor = "#28a389"; // secondary-500
+    buttonColor = "#ef6e30"; // primary-500
     textColor = "#fff";
   }
 

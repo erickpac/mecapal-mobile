@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "@/components/button";
 import { navigateToUserTypeSelection } from "@/utils/navigation";
-import { CarRental } from "@/components/svg/car-rental";
+import { CarRental, CheckCircle } from "@/components/svg";
 
 export default function OnboardingWelcomeScreen() {
   const handleContinue = () => {
@@ -27,22 +27,22 @@ export default function OnboardingWelcomeScreen() {
             Tu plataforma de confianza para conectar con transportistas. Seguro,
             rápido y eficiente.
           </Text>
-          <View className="space-y-3 mt-2">
+          <View className="space-y-4 mt-2">
             <View className="flex-row items-center">
-              <Text className="text-2xl mr-2 text-success-500">✓</Text>
-              <Text className="text-base text-text-active">
+              <CheckCircle width={24} height={24} />
+              <Text className="text-base ml-2 text-text-active">
                 Rápido y de confianza
               </Text>
             </View>
             <View className="flex-row items-center">
-              <Text className="text-2xl mr-2 text-success-500">✓</Text>
-              <Text className="text-base text-text-active">
+              <CheckCircle width={24} height={24} />
+              <Text className="text-base ml-2 text-text-active">
                 Sistema de pago seguro
               </Text>
             </View>
             <View className="flex-row items-center">
-              <Text className="text-2xl mr-2 text-success-500">✓</Text>
-              <Text className="text-base text-text-active">
+              <CheckCircle width={24} height={24} />
+              <Text className="text-base ml-2 text-text-active">
                 Seguimiento en tiempo real
               </Text>
             </View>
