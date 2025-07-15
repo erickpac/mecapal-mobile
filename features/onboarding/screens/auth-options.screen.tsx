@@ -1,124 +1,75 @@
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
-import { router } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  navigateToOnboardingAuth,
-  replaceRoute,
-  ROUTES,
-} from "@/utils/navigation";
+import { NavigationHeader } from "@/components/navigation-header";
+import { ContentContainer } from "@/components/content-container";
+import { navigateTo, ROUTES } from "@/utils/navigation";
+import { CarAccesories, FreeShipping, Logo } from "@/components/svg";
+import { Button } from "@/components/button";
+import { useMemo } from "react";
 
 export default function AuthOptionsScreen() {
-  const { selectedUserType, setHasCompletedOnboarding } = useStore();
+  const { selectedUserType } = useStore();
 
-  const handleSignIn = () => {
-    // Navigate to modal auth stack (will default to login)
-    navigateToOnboardingAuth();
-  };
+  const isUser = selectedUserType === UserRole.USER;
 
-  const handleCreateAccount = () => {
-    // Navigate directly to register in modal auth stack
-    router.push("/onboarding/auth/register");
-  };
-
-  const handleSkipAuth = () => {
-    // Complete onboarding and go to guest mode
-    setHasCompletedOnboarding(true);
-    replaceRoute(ROUTES.HOME);
-  };
-
-  const handleBack = () => {
-    router.back();
-  };
-
-  const getUserTypeInfo = () => {
-    if (selectedUserType === UserRole.USER) {
-      return {
-        title: "Ready to find transporters?",
-        description:
-          "Create an account to start requesting transportation services",
-        icon: "👤",
-        color: "blue",
-      };
-    } else {
-      return {
-        title: "Ready to start transporting?",
-        description:
-          "Create an account to start offering your transportation services",
-        icon: "🚛",
-        color: "green",
-      };
-    }
-  };
-
-  const userTypeInfo = getUserTypeInfo();
+  const content = useMemo(() => {
+    return {
+      illustration: isUser ? (
+        <CarAccesories width="100%" height="100%" />
+      ) : (
+        <FreeShipping width="100%" height="100%" />
+      ),
+      title: isUser
+        ? "Mueve lo que quieras, sin complicarte"
+        : "Haz que tu medio de transporte trabaje por ti",
+      description: isUser
+        ? "Explora transportistas disponibles según ruta, tipo de camión y tarifa. Coordina todo por WhatsApp y haz seguimiento fácilmente."
+        : "Registra tus rutas, muestra tus tarifas y recibe clientes directos interesados en tus servicios.",
+      aspectRatio: isUser ? "aspect-[342.66/227]" : "aspect-[287/206]",
+    };
+  }, [isUser]);
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <View className="flex-1 justify-between p-6">
-        {/* Back button */}
-        <View className="flex-row justify-start">
-          <TouchableOpacity onPress={handleBack}>
-            <Text className="text-blue-600 text-base">← Back</Text>
+    <>
+      <NavigationHeader showBackButton={true} />
+      <ContentContainer>
+        <View className="flex-1">
+          <View className="items-center mt-4 mb-8">
+            <Logo width={160} />
+          </View>
+          <View className="items-center mb-8 px-4">
+            <View className={`w-full ${content.aspectRatio}`}>
+              {content.illustration}
+            </View>
+          </View>
+
+          <View className="items-center text-center px-6">
+            <Text className="text-2xl font-plus-jakarta-bold text-text-active text-center mb-4">
+              {content.title}
+            </Text>
+            <Text className="text-base font-plus-jakarta-regular text-text-active text-center">
+              {content.description}
+            </Text>
+          </View>
+        </View>
+
+        <View className="px-6 pb-6 space-y-4">
+          <Button
+            title="Crea tu Cuenta"
+            onPress={() => navigateTo(ROUTES.ONBOARDING_REGISTER)}
+          />
+          <Button
+            title="Ya tengo cuenta"
+            onPress={() => navigateTo(ROUTES.ONBOARDING_LOGIN)}
+          />
+          <TouchableOpacity className="items-center">
+            <Text className="text-primary-500 font-plus-jakarta-semibold">
+              Saltar
+            </Text>
           </TouchableOpacity>
         </View>
-
-        {/* Main content */}
-        <View className="flex-1 justify-center items-center">
-          <View
-            className={`w-20 h-20 bg-${userTypeInfo.color}-100 rounded-full items-center justify-center mb-6`}
-          >
-            <Text className="text-4xl">{userTypeInfo.icon}</Text>
-          </View>
-
-          <Text className="text-3xl font-bold text-center mb-4 text-gray-900">
-            {userTypeInfo.title}
-          </Text>
-
-          <Text className="text-lg text-center text-gray-600 mb-12 leading-relaxed">
-            {userTypeInfo.description}
-          </Text>
-
-          {/* Auth options */}
-          <View className="w-full space-y-4">
-            {/* Create Account */}
-            <TouchableOpacity
-              onPress={handleCreateAccount}
-              className="bg-blue-600 py-4 px-8 rounded-full items-center shadow-lg"
-            >
-              <Text className="text-white text-lg font-semibold">
-                Create Account
-              </Text>
-            </TouchableOpacity>
-
-            {/* Sign In */}
-            <TouchableOpacity
-              onPress={handleSignIn}
-              className="bg-white border-2 border-blue-600 py-4 px-8 rounded-full items-center"
-            >
-              <Text className="text-blue-600 text-lg font-semibold">
-                I already have an account
-              </Text>
-            </TouchableOpacity>
-
-            {/* Skip for now */}
-            <TouchableOpacity
-              onPress={handleSkipAuth}
-              className="py-4 px-8 items-center"
-            >
-              <Text className="text-gray-500 text-base">Skip for now</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/* Progress indicator */}
-        <View className="flex-row justify-center items-center space-x-2">
-          <View className="w-8 h-2 bg-gray-300 rounded-full" />
-          <View className="w-8 h-2 bg-gray-300 rounded-full" />
-          <View className="w-8 h-2 bg-blue-600 rounded-full" />
-        </View>
-      </View>
-    </SafeAreaView>
+      </ContentContainer>
+    </>
   );
 }

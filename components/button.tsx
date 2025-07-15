@@ -28,11 +28,11 @@ export const Button: React.FC<ButtonProps> = ({
   const role = user?.role || selectedUserType;
 
   // Default colors based on role (tailwind classes for styling, but pass hex to PaperButton)
-  let buttonColor: string = COLORS.secondary;
+  let buttonColor: string = COLORS.primary;
   let textColor: string = "#fff";
 
   if (role === UserRole.TRANSPORTER) {
-    buttonColor = COLORS.primary;
+    buttonColor = COLORS.secondary;
   }
 
   // Allow override via className (for tailwind styling) but PaperButton needs color props
