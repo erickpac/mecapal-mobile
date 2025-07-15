@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { View, Text, TouchableOpacity, ViewStyle } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { MaterialSymbol } from "@/components/material-symbol";
 import { router } from "expo-router";
 import { useStore } from "@/store/useStore";
@@ -18,8 +18,6 @@ interface NavigationHeaderProps {
   backButtonColor?: string;
   children?: ReactNode;
   borderBottom?: boolean;
-  style?: ViewStyle;
-  includeSafeArea?: boolean;
 }
 
 export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
@@ -33,12 +31,10 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   backButtonColor,
   children,
   borderBottom = true,
-  style,
-  includeSafeArea = true,
 }) => {
   const insets = useSafeAreaInsets();
   const { user, selectedUserType } = useStore();
-  const role = user?.role || selectedUserType;
+  const role = user?.role ?? selectedUserType;
 
   const defaultBgColor =
     role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
@@ -46,9 +42,8 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   const finalBgColor = backgroundColor ?? defaultBgColor;
   const finalTextColor = textColor ?? defaultTextColor;
   const finalBackButtonColor = backButtonColor ?? defaultTextColor;
-
-  const headerHeight = includeSafeArea ? 56 + insets.top : 56;
-  const paddingTop = includeSafeArea ? insets.top : 0;
+  const headerHeight = 56 + insets.top;
+  const paddingTop = insets.top;
 
   return (
     <View
@@ -57,14 +52,11 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
         borderBottom ? "border-b border-gray-200" : "",
       ].join(" ")}
       pointerEvents="box-none"
-      style={[
-        {
-          height: headerHeight,
-          paddingTop,
-          backgroundColor: finalBgColor,
-        },
-        style,
-      ]}
+      style={{
+        height: headerHeight,
+        paddingTop,
+        backgroundColor: finalBgColor,
+      }}
     >
       <View className="flex-row items-center flex-1">
         {showBackButton && canGoBack && (
