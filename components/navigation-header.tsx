@@ -47,7 +47,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   return (
     <View
       className={[
-        "px-4 flex-row items-center justify-between",
+        "flex-row items-center justify-between px-4",
         borderBottom ? "border-b border-gray-200" : "",
       ].join(" ")}
       pointerEvents="box-none"
@@ -57,7 +57,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
         backgroundColor: finalBgColor,
       }}
     >
-      <View className="flex-row items-center flex-1">
+      <View className="flex-1 flex-row items-center">
         {showBackButton && canGoBack && (
           <TouchableOpacity
             onPress={onBackPress || router.back}
@@ -71,7 +71,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
           </TouchableOpacity>
         )}
         <Text
-          className={`text-lg font-semibold flex-1 ${finalTextColor}`}
+          className={`flex-1 text-lg font-semibold ${finalTextColor}`}
           numberOfLines={1}
         >
           {title}

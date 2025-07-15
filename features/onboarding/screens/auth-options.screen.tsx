@@ -33,24 +33,24 @@ export default function AuthOptionsScreen() {
   return (
     <>
       <NavigationHeader showBackButton={true} />
-      <ContentContainer className="px-4 justify-between">
+      <ContentContainer className="justify-between px-4">
         <View className="flex-1 pt-8">
-          <View className="items-center mb-2">
-            <Text className="text-5xl font-plus-jakarta-extrabold text-primary-500 mb-4">
+          <View className="mb-2 items-center">
+            <Text className="mb-4 font-plus-jakarta-extrabold text-5xl text-primary-500">
               Mekapal
             </Text>
           </View>
-          <View className="items-center mb-6">
+          <View className="mb-6 items-center">
             <View className={`w-full ${content.aspectRatio}`}>
               {content.illustration}
             </View>
           </View>
 
           <View className="items-center text-center">
-            <Text className="text-2xl font-plus-jakarta-bold text-text-active text-center mb-4">
+            <Text className="mb-4 text-center font-plus-jakarta-bold text-2xl text-text-active">
               {content.title}
             </Text>
-            <Text className="text-base font-plus-jakarta-regular text-text-active text-center">
+            <Text className="font-plus-jakarta-regular text-center text-base text-text-active">
               {content.description}
             </Text>
           </View>

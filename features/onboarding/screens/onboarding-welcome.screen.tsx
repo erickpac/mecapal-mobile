@@ -19,41 +19,41 @@ export default function OnboardingWelcomeScreen() {
         backgroundColor={COLORS.primary}
       />
 
-      <ContentContainer className="px-4 justify-between">
+      <ContentContainer className="justify-between px-4">
         <View className="flex-1 pt-8">
-          <View className="items-center mb-12">
-            <Text className="text-5xl font-plus-jakarta-extrabold text-primary-500 mb-4">
+          <View className="mb-12 items-center">
+            <Text className="mb-4 font-plus-jakarta-extrabold text-5xl text-primary-500">
               Mekapal
             </Text>
-            <View className="w-full aspect-[252/135]">
+            <View className="aspect-[252/135] w-full">
               <CarRental width="100%" height="100%" />
             </View>
           </View>
 
           <View className="gap-4">
-            <Text className="text-2xl font-plus-jakarta-bold text-text-active text-center">
+            <Text className="text-center font-plus-jakarta-bold text-2xl text-text-active">
               Bienvenido a Mekapal
             </Text>
-            <Text className="text-base font-plus-jakarta-regular text-text-active text-center">
+            <Text className="font-plus-jakarta-regular text-center text-base text-text-active">
               Tu plataforma de confianza para conectar con transportistas.
               Seguro, rápido y eficiente.
             </Text>
             <View className="gap-2">
               <View className="flex-row items-center">
                 <CheckCircle width={24} height={24} />
-                <Text className="ml-2 text-text-active text-base font-plus-jakarta-regular">
+                <Text className="font-plus-jakarta-regular ml-2 text-base text-text-active">
                   Rápido y de confianza
                 </Text>
               </View>
               <View className="flex-row items-center">
                 <CheckCircle width={24} height={24} />
-                <Text className="ml-2 text-text-active text-base font-plus-jakarta-regular">
+                <Text className="font-plus-jakarta-regular ml-2 text-base text-text-active">
                   Sistema de pago seguro
                 </Text>
               </View>
               <View className="flex-row items-center">
                 <CheckCircle width={24} height={24} />
-                <Text className="ml-2 text-text-active text-base font-plus-jakarta-regular">
+                <Text className="font-plus-jakarta-regular ml-2 text-base text-text-active">
                   Seguimiento en tiempo real
                 </Text>
               </View>

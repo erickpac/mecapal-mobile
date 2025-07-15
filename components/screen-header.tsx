@@ -47,7 +47,7 @@ export const ScreenHeader = ({
   icon,
 }: ScreenHeaderProps) => {
   return (
-    <View className={`bg-white p-4 border-b border-gray-200 ${className}`}>
+    <View className={`border-b border-gray-200 bg-white p-4 ${className}`}>
       <View className="flex-row items-center space-x-3">
         {icon && (
           <MaterialSymbol
@@ -59,7 +59,7 @@ export const ScreenHeader = ({
         )}
         <View className="flex-1">
           <Text className="text-2xl font-bold text-gray-800">{title}</Text>
-          {subtitle && <Text className="text-gray-600 mt-1">{subtitle}</Text>}
+          {subtitle && <Text className="mt-1 text-gray-600">{subtitle}</Text>}
         </View>
       </View>
     </View>
