@@ -35,12 +35,12 @@ export default function AuthOptionsScreen() {
       <NavigationHeader showBackButton={true} />
       <ContentContainer className="px-4 justify-between">
         <View className="flex-1 pt-8">
-          <View className="items-center mb-6">
+          <View className="items-center mb-2">
             <Text className="text-5xl font-plus-jakarta-extrabold text-primary-500 mb-4">
               Mekapal
             </Text>
           </View>
-          <View className="items-center mb-8 px-4">
+          <View className="items-center mb-6 px-4">
             <View className={`w-full ${content.aspectRatio}`}>
               {content.illustration}
             </View>
@@ -56,7 +56,7 @@ export default function AuthOptionsScreen() {
           </View>
         </View>
 
-        <View className="flex flex-col gap-4">
+        <View className="gap-4">
           <Button
             title="Crea tu Cuenta"
             onPress={() => navigateTo(ROUTES.ONBOARDING_REGISTER)}
