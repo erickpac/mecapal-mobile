@@ -14,31 +14,19 @@ interface ScreenHeaderProps {
 }
 
 /**
- * Reusable Screen Header Component
+ * Renders a screen header with an optional icon, title, and subtitle.
  *
- * @example
- * // Basic usage
- * <ScreenHeader
- *   title="Acerca de Mecapal"
- *   subtitle="Conectamos usuarios con transportistas confiables"
- * />
+ * @param {ScreenHeaderProps} props - The props for the ScreenHeader component.
+ * @param {string} props.title - The main title to display in the header.
+ * @param {string} [props.subtitle] - An optional subtitle to display below the title.
+ * @param {string} [props.className] - Additional class names for custom styling.
+ * @param {Object} [props.icon] - Optional icon configuration to display alongside the title.
+ * @param {string} props.icon.name - The name of the icon to display.
+ * @param {string} [props.icon.color] - The color of the icon (defaults to "text-gray-600").
+ * @param {number} [props.icon.size] - The size of the icon (defaults to 28).
+ * @param {"outlined" | "rounded" | "sharp"} [props.icon.variant] - The variant style of the icon (defaults to "outlined").
  *
- * @example
- * // With icon
- * <ScreenHeader
- *   title="Mi Perfil"
- *   subtitle="Gestiona tu información personal"
- *   icon={{ name: "person", color: "text-blue-500" }}
- * />
- *
- * @example
- * // With custom styling
- * <ScreenHeader
- *   title="Mi Perfil"
- *   subtitle="Gestiona tu información personal"
- *   className="bg-blue-50"
- *   icon={{ name: "settings", color: "text-gray-600", variant: "rounded" }}
- * />
+ * @returns {JSX.Element} The rendered screen header component.
  */
 export const ScreenHeader = ({
   title,

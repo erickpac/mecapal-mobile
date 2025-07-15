@@ -6,18 +6,16 @@ interface ContentContainerProps {
   className?: string;
 }
 
-// ContentContainer - Designed to work with NavigationHeader
-//
-// This component handles safe areas for the main content area when used with NavigationHeader.
-// NavigationHeader handles the top safe area, this handles bottom/left/right.
-//
-// Usage:
-// <>
-//   <NavigationHeader title="Screen Title" />
-//   <ContentContainer className="px-4">
-//     {/* Your content */}
-//   </ContentContainer>
-// </>
+/**
+ * A reusable container component that wraps its children in a `SafeAreaView` to ensure
+ * content is displayed within the safe area boundaries of a device.
+ *
+ * @param {ContentContainerProps} props - The props for the ContentContainer component.
+ * @param {ReactNode} props.children - The content to be rendered inside the container.
+ * @param {string} [props.className] - Optional additional Tailwind CSS class names to apply to the container.
+ *
+ * @returns {JSX.Element} A `SafeAreaView` component with the specified children and styling.
+ */
 export const ContentContainer: React.FC<ContentContainerProps> = ({
   children,
   className = "",

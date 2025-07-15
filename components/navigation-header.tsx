@@ -20,6 +20,23 @@ interface NavigationHeaderProps {
   borderBottom?: boolean;
 }
 
+/**
+ * Renders a navigation header with a title, optional back button, and right component.
+ *
+ * @param {NavigationHeaderProps} props - The props for the NavigationHeader component.
+ * @param {string} [props.title] - The title to display in the header.
+ * @param {boolean} [props.showBackButton=true] - Whether to show the back button.
+ * @param {function} [props.onBackPress] - Callback function for back button press.
+ * @param {boolean} [props.canGoBack=true] - Whether the navigation can go back.
+ * @param {ReactNode} [props.rightComponent] - Optional component to display on the right side of the header.
+ * @param {string} [props.backgroundColor] - Background color of the header.
+ * @param {string} [props.textColor="text-white"] - Text color of the title.
+ * @param {string} [props.backButtonColor="text-white"] - Color of the back button icon.
+ * @param {ReactNode} [props.children] - Additional components to render in the header.
+ * @param {boolean} [props.borderBottom=true] - Whether to show a bottom border on the header.
+ *
+ * @returns {JSX.Element} The rendered navigation header component.
+ */
 export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   title = "",
   showBackButton = true,
