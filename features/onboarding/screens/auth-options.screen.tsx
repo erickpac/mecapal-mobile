@@ -1,6 +1,6 @@
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
 import { navigateTo, ROUTES, replaceRoute } from "@/utils/navigation";
@@ -26,7 +26,7 @@ export default function AuthOptionsScreen() {
       description: isUser
         ? "Explora transportistas disponibles según ruta, tipo de camión y tarifa. Coordina todo por WhatsApp y haz seguimiento fácilmente."
         : "Registra tus rutas, muestra tus tarifas y recibe clientes directos interesados en tus servicios.",
-      aspectRatio: isUser ? "aspect-[342.66/227]" : "aspect-[287/206]",
+      aspectRatio: isUser ? "aspect-[342/227]" : "aspect-[287/206]",
     };
   }, [isUser]);
 
@@ -40,13 +40,13 @@ export default function AuthOptionsScreen() {
               Mekapal
             </Text>
           </View>
-          <View className="items-center mb-6 px-4">
+          <View className="items-center mb-6">
             <View className={`w-full ${content.aspectRatio}`}>
               {content.illustration}
             </View>
           </View>
 
-          <View className="items-center text-center px-6">
+          <View className="items-center text-center">
             <Text className="text-2xl font-plus-jakarta-bold text-text-active text-center mb-4">
               {content.title}
             </Text>
@@ -58,7 +58,7 @@ export default function AuthOptionsScreen() {
 
         <View className="gap-4">
           <Button
-            title="Crea tu Cuenta"
+            title="Crea tu cuenta"
             onPress={() => navigateTo(ROUTES.ONBOARDING_REGISTER)}
           />
           <Button

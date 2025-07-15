@@ -33,9 +33,7 @@ export const Button: React.FC<ButtonProps> = ({
   const defaultButtonColor =
     role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
   const finalButtonColor = buttonColor ?? defaultButtonColor;
-
   const isContained = variant === "contained";
-
   const textColor = isContained ? "#fff" : finalButtonColor;
 
   return (

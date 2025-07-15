@@ -25,10 +25,12 @@ export default function OnboardingWelcomeScreen() {
             <Text className="text-5xl font-plus-jakarta-extrabold text-primary-500 mb-4">
               Mekapal
             </Text>
-            <CarRental width={252} height={135} />
+            <View className="w-full aspect-[252/135]">
+              <CarRental width="100%" height="100%" />
+            </View>
           </View>
 
-          <View className="flex flex-col gap-4">
+          <View className="gap-4">
             <Text className="text-2xl font-plus-jakarta-bold text-text-active text-center">
               Bienvenido a Mekapal
             </Text>
@@ -36,7 +38,7 @@ export default function OnboardingWelcomeScreen() {
               Tu plataforma de confianza para conectar con transportistas.
               Seguro, rápido y eficiente.
             </Text>
-            <View className="flex flex-col gap-2">
+            <View className="gap-2">
               <View className="flex-row items-center">
                 <CheckCircle width={24} height={24} />
                 <Text className="ml-2 text-text-active text-base font-plus-jakarta-regular">
