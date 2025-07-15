@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
 import { navigateTo, ROUTES } from "@/utils/navigation";
-import { CarAccesories, FreeShipping, Logo } from "@/components/svg";
+import { CarAccesories, FreeShipping } from "@/components/svg";
 import { Button } from "@/components/button";
 import { useMemo } from "react";
 
@@ -34,9 +34,11 @@ export default function AuthOptionsScreen() {
     <>
       <NavigationHeader showBackButton={true} />
       <ContentContainer>
-        <View className="flex-1">
-          <View className="items-center mt-4 mb-8">
-            <Logo width={160} height={24} />
+        <View className="flex-1 pt-8">
+          <View className="items-center mb-6">
+            <Text className="text-5xl font-plus-jakarta-extrabold text-primary-500 mb-4">
+              Mekapal
+            </Text>
           </View>
           <View className="items-center mb-8 px-4">
             <View className={`w-full ${content.aspectRatio}`}>

@@ -14,6 +14,7 @@ interface ButtonProps {
   disabled?: boolean;
   fullWidth?: boolean;
   className?: string;
+  buttonColor?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -23,26 +24,22 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   fullWidth = true,
   className = "",
+  buttonColor,
 }) => {
   const { user, selectedUserType } = useStore();
-  const role = user?.role || selectedUserType;
+  const role = user?.role ?? selectedUserType;
+  const defaultButtonColor =
+    role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
+  const finalButtonColor = buttonColor ?? defaultButtonColor;
+  const textColor = "#fff";
 
-  // Default colors based on role (tailwind classes for styling, but pass hex to PaperButton)
-  let buttonColor: string = COLORS.primary;
-  let textColor: string = "#fff";
-
-  if (role === UserRole.TRANSPORTER) {
-    buttonColor = COLORS.secondary;
-  }
-
-  // Allow override via className (for tailwind styling) but PaperButton needs color props
   return (
     <PaperButton
       mode="contained"
       onPress={onPress}
       loading={loading}
       disabled={disabled}
-      buttonColor={buttonColor}
+      buttonColor={finalButtonColor}
       textColor={textColor}
       style={
         fullWidth ? { width: "100%", borderRadius: 8 } : { borderRadius: 8 }

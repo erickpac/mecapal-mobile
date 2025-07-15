@@ -59,7 +59,12 @@ export default function OnboardingWelcomeScreen() {
           </View>
         </View>
 
-        <Button title="Empezar" onPress={handleContinue} fullWidth />
+        <Button
+          title="Empezar"
+          onPress={handleContinue}
+          fullWidth
+          buttonColor={COLORS.primary}
+        />
       </ContentContainer>
     </>
   );

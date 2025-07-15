@@ -56,7 +56,7 @@ export default function UserTypeSelectionScreen() {
               className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm h-45 flex justify-center"
             >
               <View className="items-center">
-                <View className="w-32 aspect-[100/49] mb-4">
+                <View className="w-32 aspect-[108/45] mb-4">
                   <Car width="100%" height="100%" />
                 </View>
                 <Text className="text-xl font-plus-jakarta-semibold text-text-active mb-2">

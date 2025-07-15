@@ -35,7 +35,6 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   const insets = useSafeAreaInsets();
   const { user, selectedUserType } = useStore();
   const role = user?.role ?? selectedUserType;
-
   const defaultBgColor =
     role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
   const defaultTextColor = "text-white";
