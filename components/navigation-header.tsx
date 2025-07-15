@@ -1,11 +1,5 @@
 import React, { ReactNode } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  ViewStyle,
-} from "react-native";
+import { View, Text, TouchableOpacity, ViewStyle } from "react-native";
 import { MaterialSymbol } from "@/components/material-symbol";
 import { router } from "expo-router";
 import { useStore } from "@/store/useStore";
@@ -53,13 +47,8 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   const finalTextColor = textColor ?? defaultTextColor;
   const finalBackButtonColor = backButtonColor ?? defaultTextColor;
 
-  const headerContainerStyle = StyleSheet.create({
-    base: {
-      height: 56 + (includeSafeArea ? insets.top : 0),
-      paddingTop: includeSafeArea ? insets.top : 0,
-      backgroundColor: finalBgColor,
-    },
-  });
+  const headerHeight = includeSafeArea ? 56 + insets.top : 56;
+  const paddingTop = includeSafeArea ? insets.top : 0;
 
   return (
     <View
@@ -68,7 +57,14 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
         borderBottom ? "border-b border-gray-200" : "",
       ].join(" ")}
       pointerEvents="box-none"
-      style={[headerContainerStyle.base, style]}
+      style={[
+        {
+          height: headerHeight,
+          paddingTop,
+          backgroundColor: finalBgColor,
+        },
+        style,
+      ]}
     >
       <View className="flex-row items-center flex-1">
         {showBackButton && canGoBack && (
