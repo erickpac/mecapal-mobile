@@ -4,7 +4,7 @@ import { Button } from "@/components/button";
 import { navigateToUserTypeSelection } from "@/utils/navigation";
 import { CarRental, CheckCircle } from "@/components/svg";
 import { NavigationHeader } from "@/components/navigation-header";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { ContentContainer } from "@/components/content-container";
 
 export default function OnboardingWelcomeScreen() {
   const handleContinue = () => {
@@ -15,10 +15,7 @@ export default function OnboardingWelcomeScreen() {
     <>
       <NavigationHeader showBackButton={false} />
 
-      <SafeAreaView
-        className="flex-1 bg-white px-4 justify-between"
-        edges={["bottom", "left", "right"]}
-      >
+      <ContentContainer className="px-4 justify-between">
         <View className="flex-1 mt-12">
           <View className="items-center mb-12">
             <Text className="text-5xl font-plus-jakarta-extrabold text-primary-500">
@@ -59,7 +56,7 @@ export default function OnboardingWelcomeScreen() {
         </View>
 
         <Button title="Empezar" onPress={handleContinue} fullWidth />
-      </SafeAreaView>
+      </ContentContainer>
     </>
   );
 }
