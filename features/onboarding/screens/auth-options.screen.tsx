@@ -3,7 +3,7 @@ import { UserRole } from "@/features/auth/types/user";
 import { Text, TouchableOpacity, View } from "react-native";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
-import { navigateTo, ROUTES } from "@/utils/navigation";
+import { navigateTo, ROUTES, replaceRoute } from "@/utils/navigation";
 import { CarAccesories, FreeShipping } from "@/components/svg";
 import { Button } from "@/components/button";
 import { useMemo } from "react";
@@ -33,7 +33,7 @@ export default function AuthOptionsScreen() {
   return (
     <>
       <NavigationHeader showBackButton={true} />
-      <ContentContainer>
+      <ContentContainer className="px-4 justify-between">
         <View className="flex-1 pt-8">
           <View className="items-center mb-6">
             <Text className="text-5xl font-plus-jakarta-extrabold text-primary-500 mb-4">
@@ -56,20 +56,21 @@ export default function AuthOptionsScreen() {
           </View>
         </View>
 
-        <View className="px-6 pb-6 space-y-4">
+        <View className="flex flex-col gap-4">
           <Button
             title="Crea tu Cuenta"
             onPress={() => navigateTo(ROUTES.ONBOARDING_REGISTER)}
           />
           <Button
             title="Ya tengo cuenta"
+            variant="outlined"
             onPress={() => navigateTo(ROUTES.ONBOARDING_LOGIN)}
           />
-          <TouchableOpacity className="items-center">
-            <Text className="text-primary-500 font-plus-jakarta-semibold">
-              Saltar
-            </Text>
-          </TouchableOpacity>
+          <Button
+            title="Saltar"
+            variant="text"
+            onPress={() => replaceRoute(ROUTES.HOME)}
+          />
         </View>
       </ContentContainer>
     </>

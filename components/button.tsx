@@ -15,6 +15,7 @@ interface ButtonProps {
   fullWidth?: boolean;
   className?: string;
   buttonColor?: string;
+  variant?: "contained" | "outlined" | "text";
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -25,24 +26,41 @@ export const Button: React.FC<ButtonProps> = ({
   fullWidth = true,
   className = "",
   buttonColor,
+  variant = "contained",
 }) => {
   const { user, selectedUserType } = useStore();
   const role = user?.role ?? selectedUserType;
   const defaultButtonColor =
     role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
   const finalButtonColor = buttonColor ?? defaultButtonColor;
-  const textColor = "#fff";
+
+  const isContained = variant === "contained";
+
+  const textColor = isContained ? "#fff" : finalButtonColor;
 
   return (
     <PaperButton
-      mode="contained"
+      mode={variant}
       onPress={onPress}
       loading={loading}
       disabled={disabled}
-      buttonColor={finalButtonColor}
+      buttonColor={isContained ? finalButtonColor : "transparent"}
       textColor={textColor}
       style={
-        fullWidth ? { width: "100%", borderRadius: 8 } : { borderRadius: 8 }
+        fullWidth
+          ? {
+              width: "100%",
+              borderRadius: 8,
+              borderWidth: variant === "outlined" ? 1 : 0,
+              borderColor:
+                variant === "outlined" ? finalButtonColor : "transparent",
+            }
+          : {
+              borderRadius: 8,
+              borderWidth: variant === "outlined" ? 1 : 0,
+              borderColor:
+                variant === "outlined" ? finalButtonColor : "transparent",
+            }
       }
       contentStyle={{ height: 42 }}
       labelStyle={{ fontSize: 14, fontWeight: "600" }}
