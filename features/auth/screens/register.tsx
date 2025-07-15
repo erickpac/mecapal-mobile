@@ -1,5 +1,6 @@
 import { useAuth } from "@/features/auth/hooks/useAuth";
-import { router } from "expo-router";
+import { useStore } from "@/store/useStore";
+import { usePathname, router } from "expo-router";
 import { useState, useEffect } from "react";
 import {
   KeyboardAvoidingView,
@@ -11,30 +12,38 @@ import {
 } from "react-native";
 import { useTranslation } from "react-i18next";
 import { UserRole } from "@/features/auth/types/user";
-import { NavigationHeader } from "@/components/navigation-header";
+import { navigateToAuth, replaceRoute, ROUTES } from "@/utils/navigation";
 
 export default function RegisterScreen() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [selectedRole, setSelectedRole] = useState<UserRole>(UserRole.USER);
   const [showSuccess, setShowSuccess] = useState(false);
   const { register, isLoading, error, isSuccess } = useAuth();
+  const { selectedUserType, setHasCompletedOnboarding } = useStore();
   const { t } = useTranslation();
+  const pathname = usePathname();
+
+  // Check if we're in modal mode (from onboarding)
+  const isModalMode = pathname.includes("/onboarding/");
+
+  // Use selectedUserType from store, fallback to USER if not set
+  const selectedRole = selectedUserType || UserRole.USER;
 
   // Handle successful registration
   useEffect(() => {
     if (isSuccess && !showSuccess) {
       setShowSuccess(true);
-      // Show success message for 1.5 seconds, then navigate to login
+      // Complete onboarding and navigate to home after successful registration
       const timer = setTimeout(() => {
         setShowSuccess(false);
-        router.replace("/auth");
+        setHasCompletedOnboarding(true);
+        replaceRoute(ROUTES.HOME);
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, [isSuccess, showSuccess]);
+  }, [isSuccess, showSuccess, setHasCompletedOnboarding]);
 
   const handleRegister = () => {
     // Validate passwords match
@@ -55,10 +64,6 @@ export default function RegisterScreen() {
   if (showSuccess) {
     return (
       <View className="flex-1 bg-white">
-        <NavigationHeader
-          title={t("auth.register.title", { defaultValue: "Crear Cuenta" })}
-          showBackButton={false}
-        />
         <View className="flex-1 justify-center items-center px-4">
           <View className="w-full max-w-md bg-white rounded-2xl p-6 shadow items-center">
             <Text className="text-3xl font-bold mb-4 text-center text-green-600">
@@ -79,9 +84,6 @@ export default function RegisterScreen() {
 
   return (
     <View className="flex-1 bg-white">
-      <NavigationHeader
-        title={t("auth.register.title", { defaultValue: "Crear Cuenta" })}
-      />
       <KeyboardAvoidingView
         className="flex-1 justify-center items-center px-4"
         behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -135,52 +137,21 @@ export default function RegisterScreen() {
             onChangeText={setConfirmPassword}
           />
 
-          {/* Role Selector */}
+          {/* Role Display */}
           <View className="mb-6">
             <Text className="text-gray-700 font-medium mb-3">
-              {t("auth.register.selectRole", {
+              {t("auth.register.accountType", {
                 defaultValue: "Tipo de cuenta",
               })}
             </Text>
-            <View className="flex-row space-x-3">
-              <TouchableOpacity
-                onPress={() => setSelectedRole(UserRole.USER)}
-                className={`flex-1 py-3 px-4 rounded-lg border-2 ${
-                  selectedRole === UserRole.USER
-                    ? "border-blue-600 bg-blue-50"
-                    : "border-gray-300 bg-white"
-                }`}
-              >
-                <Text
-                  className={`text-center font-medium ${
-                    selectedRole === UserRole.USER
-                      ? "text-blue-600"
-                      : "text-gray-600"
-                  }`}
-                >
-                  {t("auth.register.userRole", { defaultValue: "Usuario" })}
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => setSelectedRole(UserRole.TRANSPORTER)}
-                className={`flex-1 py-3 px-4 rounded-lg border-2 ${
-                  selectedRole === UserRole.TRANSPORTER
-                    ? "border-blue-600 bg-blue-50"
-                    : "border-gray-300 bg-white"
-                }`}
-              >
-                <Text
-                  className={`text-center font-medium ${
-                    selectedRole === UserRole.TRANSPORTER
-                      ? "text-blue-600"
-                      : "text-gray-600"
-                  }`}
-                >
-                  {t("auth.register.transporterRole", {
-                    defaultValue: "Transportista",
-                  })}
-                </Text>
-              </TouchableOpacity>
+            <View className="py-3 px-4 rounded-lg border-2 border-blue-600 bg-blue-50">
+              <Text className="text-center font-medium text-blue-600">
+                {selectedRole === UserRole.USER
+                  ? t("auth.register.userRole", { defaultValue: "Usuario" })
+                  : t("auth.register.transporterRole", {
+                      defaultValue: "Transportista",
+                    })}
+              </Text>
             </View>
           </View>
 
@@ -193,6 +164,27 @@ export default function RegisterScreen() {
           >
             <Text className="text-white text-center font-semibold text-lg">
               {isLoading ? t("common.loading") : t("auth.register.register")}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              if (isModalMode) {
+                // Close modal and return to onboarding to select login option
+                router.dismiss();
+              } else {
+                navigateToAuth();
+              }
+            }}
+            className="mt-4"
+          >
+            <Text className="text-gray-600 text-center">
+              {t("auth.register.hasAccount", {
+                defaultValue: "¿Ya tienes cuenta?",
+              })}{" "}
+              <Text className="text-blue-600 font-medium">
+                {t("auth.register.signIn", { defaultValue: "Iniciar sesión" })}
+              </Text>
             </Text>
           </TouchableOpacity>
         </View>

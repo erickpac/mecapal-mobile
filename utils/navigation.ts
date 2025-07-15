@@ -10,6 +10,18 @@ export const ROUTES = {
   ORDERS: "/orders",
   VEHICLES: "/vehicles",
   EARNINGS: "/earnings",
+  // Onboarding routes
+  ONBOARDING: "/onboarding",
+  ONBOARDING_USER_TYPE: "/onboarding/user-type-selection",
+  ONBOARDING_AUTH_OPTIONS: "/onboarding/auth-options",
+  // Modal Auth routes (from onboarding)
+  ONBOARDING_AUTH: "/onboarding/auth",
+  ONBOARDING_LOGIN: "/onboarding/auth/login",
+  ONBOARDING_REGISTER: "/onboarding/auth/register",
+  // Direct Auth routes
+  AUTH: "/auth",
+  AUTH_REGISTER: "/auth/register",
+  AUTH_FORGOT_PASSWORD: "/auth/forgot-password",
 } as const;
 
 // Helper function for typed navigation
@@ -34,3 +46,29 @@ export const navigateToSettings = () => navigateTo(ROUTES.SETTINGS);
 export const navigateToOrders = () => navigateTo(ROUTES.ORDERS);
 export const navigateToVehicles = () => navigateTo(ROUTES.VEHICLES);
 export const navigateToEarnings = () => navigateTo(ROUTES.EARNINGS);
+
+// Onboarding navigation functions
+export const navigateToOnboarding = () => navigateTo(ROUTES.ONBOARDING);
+export const navigateToUserTypeSelection = () =>
+  navigateTo(ROUTES.ONBOARDING_USER_TYPE);
+export const navigateToAuthOptions = () =>
+  navigateTo(ROUTES.ONBOARDING_AUTH_OPTIONS);
+
+// Modal Auth navigation functions (from onboarding)
+export const navigateToOnboardingAuth = () =>
+  navigateTo(ROUTES.ONBOARDING_AUTH);
+export const navigateToOnboardingLogin = () =>
+  navigateTo(ROUTES.ONBOARDING_LOGIN);
+export const navigateToOnboardingRegister = () =>
+  navigateTo(ROUTES.ONBOARDING_REGISTER);
+
+// Direct Auth navigation functions
+export const navigateToAuth = () => navigateTo(ROUTES.AUTH);
+export const navigateToRegister = () => navigateTo(ROUTES.AUTH_REGISTER);
+export const navigateToForgotPassword = () =>
+  navigateTo(ROUTES.AUTH_FORGOT_PASSWORD);
+
+// Helper function for replace navigation
+export const replaceRoute = (route: string) => {
+  router.replace(route as any);
+};

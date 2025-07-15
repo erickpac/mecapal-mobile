@@ -1,5 +1,6 @@
 import { useAuth } from "@/features/auth/hooks/useAuth";
-import { router } from "expo-router";
+import { useStore } from "@/store/useStore";
+import { router, usePathname } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   KeyboardAvoidingView,
@@ -11,34 +12,42 @@ import {
 } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useLocalizedError } from "@/hooks/useLocalizedError";
-import { NavigationHeader } from "@/components/navigation-header";
+import {
+  navigateToRegister,
+  navigateToForgotPassword,
+  replaceRoute,
+  ROUTES,
+} from "@/utils/navigation";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error, isSuccess } = useAuth();
+  const { setHasCompletedOnboarding } = useStore();
   const { t } = useTranslation();
   const { handleError } = useLocalizedError();
+  const pathname = usePathname();
+
+  // Check if we're in modal mode (from onboarding)
+  const isModalMode = pathname.includes("/onboarding/");
 
   const handleLogin = () => {
     login({ email, password });
   };
 
-  // Navigate to home after successful login
+  // Navigate to home after successful login and complete onboarding
   useEffect(() => {
     if (isSuccess) {
-      router.replace("/home");
+      setHasCompletedOnboarding(true);
+      replaceRoute(ROUTES.HOME);
     }
-  }, [isSuccess]);
+  }, [isSuccess, setHasCompletedOnboarding]);
 
   return (
     <KeyboardAvoidingView
       className="flex-1 bg-white"
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <NavigationHeader
-        title={t("auth.login.title", { defaultValue: "Login" })}
-      />
       <View className="flex-1 justify-center items-center px-4">
         <View className="w-full max-w-md bg-white rounded-2xl p-6 shadow">
           <Text className="text-3xl font-bold mb-6 text-center">
@@ -80,11 +89,30 @@ export default function LoginScreen() {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => router.push("/auth/forgot-password")}
-          >
+          <TouchableOpacity onPress={() => navigateToForgotPassword()}>
             <Text className="text-blue-600 text-center">
               {t("auth.login.forgotPassword")}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              if (isModalMode) {
+                // Close modal and return to onboarding to select register option
+                router.dismiss();
+              } else {
+                navigateToRegister();
+              }
+            }}
+            className="mt-4"
+          >
+            <Text className="text-gray-600 text-center">
+              {t("auth.login.noAccount", {
+                defaultValue: "¿No tienes cuenta?",
+              })}{" "}
+              <Text className="text-blue-600 font-medium">
+                {t("auth.login.signUp", { defaultValue: "Regístrate" })}
+              </Text>
             </Text>
           </TouchableOpacity>
         </View>

@@ -1,4 +1,4 @@
-import { User } from "@/features/auth/types/user";
+import { User, UserRole } from "@/features/auth/types/user";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import { create } from "zustand";
@@ -12,10 +12,12 @@ interface AppState {
   isAuthenticated: boolean;
   isGuestMode: boolean;
   hasCompletedOnboarding: boolean;
+  selectedUserType: UserRole | null;
   setUser: (user: User | null) => void;
   setAccessToken: (accessToken: string | null) => void;
   setRefreshToken: (refreshToken: string | null) => void;
   setHasCompletedOnboarding: (completed: boolean) => void;
+  setSelectedUserType: (userType: UserRole | null) => void;
   setGuestMode: (isGuest: boolean) => void;
   logout: () => void;
   enterGuestMode: () => void;
@@ -30,6 +32,7 @@ export const useStore = create<AppState>()(
       isAuthenticated: false,
       isGuestMode: false,
       hasCompletedOnboarding: false,
+      selectedUserType: null,
       setUser: (user) =>
         set({ user, isAuthenticated: !!user, isGuestMode: false }),
       setAccessToken: (accessToken: string | null) => {
@@ -43,6 +46,7 @@ export const useStore = create<AppState>()(
       setRefreshToken: (refreshToken: string | null) => set({ refreshToken }),
       setHasCompletedOnboarding: (completed) =>
         set({ hasCompletedOnboarding: completed }),
+      setSelectedUserType: (userType) => set({ selectedUserType: userType }),
       setGuestMode: (isGuest) => set({ isGuestMode: isGuest }),
       logout: () => {
         TokenManager.clearToken();

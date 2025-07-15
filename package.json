@@ -13,9 +13,10 @@
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
     "@react-native-async-storage/async-storage": "2.1.2",
+    "@react-native-vector-icons/material-design-icons": "^12.1.0",
     "@tanstack/react-query": "^5.79.0",
     "axios": "^1.9.0",
-    "expo": "~53.0.18",
+    "expo": "~53.0.19",
     "expo-blur": "~14.1.4",
     "expo-constants": "~17.1.7",
     "expo-font": "~13.3.2",
@@ -36,9 +37,11 @@
     "react-i18next": "^15.5.3",
     "react-native": "0.79.5",
     "react-native-gesture-handler": "~2.24.0",
+    "react-native-paper": "^5.14.5",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
+    "react-native-svg": "^15.12.0",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
     "tailwindcss": "^3.4.17",
@@ -50,6 +53,8 @@
     "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~9.2.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "typescript": "~5.8.3"
   },
   "private": true
