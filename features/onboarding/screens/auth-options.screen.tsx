@@ -36,7 +36,7 @@ export default function AuthOptionsScreen() {
       <ContentContainer>
         <View className="flex-1">
           <View className="items-center mt-4 mb-8">
-            <Logo width={160} />
+            <Logo width={160} height={24} />
           </View>
           <View className="items-center mb-8 px-4">
             <View className={`w-full ${content.aspectRatio}`}>

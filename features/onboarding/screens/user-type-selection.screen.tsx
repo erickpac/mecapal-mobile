@@ -5,6 +5,7 @@ import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
 import { navigateToAuthOptions } from "@/utils/navigation";
 import { UserRisingHand, Car } from "@/components/svg";
+import { COLORS } from "@/consts/colors";
 
 export default function UserTypeSelectionScreen() {
   const { setSelectedUserType } = useStore();
@@ -16,7 +17,10 @@ export default function UserTypeSelectionScreen() {
 
   return (
     <>
-      <NavigationHeader showBackButton={true} />
+      <NavigationHeader
+        showBackButton={true}
+        backgroundColor={COLORS.primary}
+      />
 
       <ContentContainer className="px-4 justify-between">
         <View className="flex-1 pt-8">

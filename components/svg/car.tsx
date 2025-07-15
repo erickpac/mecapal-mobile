@@ -2,7 +2,7 @@ import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 
 export const Car = (props: SvgProps) => (
-  <Svg fill="none" {...props}>
+  <Svg fill="none" viewBox="0 0 108 45" {...props}>
     <Path fill="#28A389" d="M6.944 19.581h93.216v14.58H6.944v-14.58Z" />
     <Path
       fill="#000"

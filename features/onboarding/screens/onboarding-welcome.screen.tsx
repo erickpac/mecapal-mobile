@@ -5,6 +5,7 @@ import { navigateToUserTypeSelection } from "@/utils/navigation";
 import { CarRental, CheckCircle } from "@/components/svg";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
+import { COLORS } from "@/consts/colors";
 
 export default function OnboardingWelcomeScreen() {
   const handleContinue = () => {
@@ -13,7 +14,10 @@ export default function OnboardingWelcomeScreen() {
 
   return (
     <>
-      <NavigationHeader showBackButton={false} />
+      <NavigationHeader
+        showBackButton={false}
+        backgroundColor={COLORS.primary}
+      />
 
       <ContentContainer className="px-4 justify-between">
         <View className="flex-1 pt-8">

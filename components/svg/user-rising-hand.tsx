@@ -2,7 +2,7 @@ import * as React from "react";
 import Svg, { SvgProps, Path } from "react-native-svg";
 
 export const UserRisingHand = (props: SvgProps) => (
-  <Svg fill="none" {...props}>
+  <Svg fill="none" viewBox="0 0 123 87" {...props}>
     <Path
       fill="#263238"
       d="M103.708 85.653c0 .032-23.218.059-51.852.059C23.222 85.712 0 85.685 0 85.653c0-.031 23.211-.051 51.854-.051s51.854.017 51.854.051Z"
