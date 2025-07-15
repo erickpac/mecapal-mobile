@@ -29,24 +29,24 @@ export default function RootLayout() {
   useStatusBar();
 
   const [loaded] = useFonts({
-    MaterialSymbolsOutlined: require("../assets/fonts/MaterialSymbolsOutlined.ttf"),
-    MaterialSymbolsRounded: require("../assets/fonts/MaterialSymbolsRounded.ttf"),
-    MaterialSymbolsSharp: require("../assets/fonts/MaterialSymbolsSharp.ttf"),
+    MaterialSymbolsOutlined: require("../assets/fonts/material_symbols_outlined.ttf"),
+    MaterialSymbolsRounded: require("../assets/fonts/material_symbols_rounded.ttf"),
+    MaterialSymbolsSharp: require("../assets/fonts/material_symbols_sharp.ttf"),
     // Plus Jakarta Sans font family
-    PlusJakartaSansRegular: require("../assets/fonts/PlusJakartaSans-Regular.ttf"),
-    PlusJakartaSansExtraLight: require("../assets/fonts/PlusJakartaSans-ExtraLight.ttf"),
-    PlusJakartaSansExtraLightItalic: require("../assets/fonts/PlusJakartaSans-ExtraLightItalic.ttf"),
-    PlusJakartaSansLight: require("../assets/fonts/PlusJakartaSans-Light.ttf"),
-    PlusJakartaSansLightItalic: require("../assets/fonts/PlusJakartaSans-LightItalic.ttf"),
-    PlusJakartaSansItalic: require("../assets/fonts/PlusJakartaSans-Italic.ttf"),
-    PlusJakartaSansMedium: require("../assets/fonts/PlusJakartaSans-Medium.ttf"),
-    PlusJakartaSansMediumItalic: require("../assets/fonts/PlusJakartaSans-MediumItalic.ttf"),
-    PlusJakartaSansSemiBold: require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
-    PlusJakartaSansSemiBoldItalic: require("../assets/fonts/PlusJakartaSans-SemiBoldItalic.ttf"),
-    PlusJakartaSansBold: require("../assets/fonts/PlusJakartaSans-Bold.ttf"),
-    PlusJakartaSansBoldItalic: require("../assets/fonts/PlusJakartaSans-BoldItalic.ttf"),
-    PlusJakartaSansExtraBold: require("../assets/fonts/PlusJakartaSans-ExtraBold.ttf"),
-    PlusJakartaSansExtraBoldItalic: require("../assets/fonts/PlusJakartaSans-ExtraBoldItalic.ttf"),
+    PlusJakartaSansRegular: require("../assets/fonts/plus_jakarta_sans_regular.ttf"),
+    PlusJakartaSansExtraLight: require("../assets/fonts/plus_jakarta_sans_extra_light.ttf"),
+    PlusJakartaSansExtraLightItalic: require("../assets/fonts/plus_jakarta_sans_extra_light_italic.ttf"),
+    PlusJakartaSansLight: require("../assets/fonts/plus_jakarta_sans_light.ttf"),
+    PlusJakartaSansLightItalic: require("../assets/fonts/plus_jakarta_sans_light_italic.ttf"),
+    PlusJakartaSansItalic: require("../assets/fonts/plus_jakarta_sans_italic.ttf"),
+    PlusJakartaSansMedium: require("../assets/fonts/plus_jakarta_sans_medium.ttf"),
+    PlusJakartaSansMediumItalic: require("../assets/fonts/plus_jakarta_sans_medium_italic.ttf"),
+    PlusJakartaSansSemiBold: require("../assets/fonts/plus_jakarta_sans_semi_bold.ttf"),
+    PlusJakartaSansSemiBoldItalic: require("../assets/fonts/plus_jakarta_sans_semi_bold_italic.ttf"),
+    PlusJakartaSansBold: require("../assets/fonts/plus_jakarta_sans_bold.ttf"),
+    PlusJakartaSansBoldItalic: require("../assets/fonts/plus_jakarta_sans_bold_italic.ttf"),
+    PlusJakartaSansExtraBold: require("../assets/fonts/plus_jakarta_sans_extra_bold.ttf"),
+    PlusJakartaSansExtraBoldItalic: require("../assets/fonts/plus_jakarta_sans_extra_bold_italic.ttf"),
   });
 
   useEffect(() => {

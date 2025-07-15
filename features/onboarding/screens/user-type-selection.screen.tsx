@@ -46,7 +46,7 @@ export default function UserTypeSelectionScreen() {
                   Necesito servicio de transporte
                 </Text>
                 <Text className="font-plus-jakarta-regular text-center text-sm text-text-idle">
-                  esit Para enviar mis productos y mercancías
+                  Para enviar mis productos y mercancías
                 </Text>
               </View>
             </TouchableOpacity>
