@@ -3,6 +3,7 @@ import { GestureResponderEvent } from "react-native";
 import { Button as PaperButton } from "react-native-paper";
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
+import { COLORS } from "@/consts/colors";
 
 interface ButtonProps {
   title: string;
@@ -27,12 +28,11 @@ export const Button: React.FC<ButtonProps> = ({
   const role = user?.role || selectedUserType;
 
   // Default colors based on role (tailwind classes for styling, but pass hex to PaperButton)
-  let buttonColor = "#28a389"; // secondary-500
-  let textColor = "#fff";
+  let buttonColor: string = COLORS.secondary;
+  let textColor: string = "#fff";
 
   if (role === UserRole.TRANSPORTER) {
-    buttonColor = "#ef6e30"; // primary-500
-    textColor = "#fff";
+    buttonColor = COLORS.primary;
   }
 
   // Allow override via className (for tailwind styling) but PaperButton needs color props

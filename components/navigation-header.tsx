@@ -57,6 +57,7 @@ export const NavigationHeader = ({
   // Default colors based on role
   let defaultBg = "bg-primary-500";
   let defaultText = "text-white";
+
   if (role === UserRole.TRANSPORTER) {
     defaultBg = "bg-secondary-500";
     defaultText = "text-white";
