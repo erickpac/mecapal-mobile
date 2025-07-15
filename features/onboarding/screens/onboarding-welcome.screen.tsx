@@ -22,7 +22,7 @@ export default function OnboardingWelcomeScreen() {
       <ContentContainer className="justify-between px-4">
         <View className="flex-1 pt-8">
           <View className="mb-12 items-center">
-            <Text className="mb-4 font-plus-jakarta-extrabold text-5xl text-primary-500">
+            <Text className="mb-4 font-plus-jakarta-extrabold text-5xl leading-[64px] text-primary-500">
               Mekapal
             </Text>
             <View className="aspect-[252/135] w-full">

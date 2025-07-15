@@ -22,7 +22,7 @@ export default function AuthOptionsScreen() {
       ),
       title: isUser
         ? "Mueve lo que quieras, sin complicarte"
-        : "Haz que tu medio de transporte trabaje por ti",
+        : "Haz que tu medio de transporte trabaje para ti",
       description: isUser
         ? "Explora transportistas disponibles según ruta, tipo de camión y tarifa. Coordina todo por WhatsApp y haz seguimiento fácilmente."
         : "Registra tus rutas, muestra tus tarifas y recibe clientes directos interesados en tus servicios.",
@@ -36,7 +36,7 @@ export default function AuthOptionsScreen() {
       <ContentContainer className="justify-between px-4">
         <View className="flex-1 pt-8">
           <View className="mb-2 items-center">
-            <Text className="mb-4 font-plus-jakarta-extrabold text-5xl text-primary-500">
+            <Text className="mb-4 font-plus-jakarta-extrabold text-5xl leading-[64px] text-primary-500">
               Mekapal
             </Text>
           </View>

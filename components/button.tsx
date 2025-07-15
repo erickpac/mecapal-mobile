@@ -75,7 +75,7 @@ export const Button: React.FC<ButtonProps> = ({
                 variant === "outlined" ? finalButtonColor : "transparent",
             }
       }
-      contentStyle={{ height: 42 }}
+      contentStyle={{ height: variant === "outlined" ? 42 : 44 }}
       labelStyle={{ fontSize: 14, fontWeight: "600" }}
       className={className}
     >
