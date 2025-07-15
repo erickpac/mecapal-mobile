@@ -1,76 +1,77 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import React, { ReactNode } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ViewStyle,
+} from "react-native";
 import { MaterialSymbol } from "@/components/material-symbol";
 import { router } from "expo-router";
-import { ReactNode } from "react";
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { COLORS } from "@/consts/colors";
 
 interface NavigationHeaderProps {
-  title: string;
+  title?: string;
   showBackButton?: boolean;
   onBackPress?: () => void;
+  canGoBack?: boolean;
   rightComponent?: ReactNode;
   backgroundColor?: string;
   textColor?: string;
   backButtonColor?: string;
+  children?: ReactNode;
+  borderBottom?: boolean;
+  style?: ViewStyle;
+  includeSafeArea?: boolean;
 }
 
-/**
- * Navigation Header Component
- *
- * @example
- * // Basic usage
- * <NavigationHeader title="Mi Pantalla" />
- *
- * @example
- * // With back button
- * <NavigationHeader
- *   title="Detalles"
- *   showBackButton={true}
- *   onBackPress={() => router.back()}
- * />
- *
- * @example
- * // With custom styling and right component
- * <NavigationHeader
- *   title="Configuración"
- *   backgroundColor="bg-blue-500"
- *   textColor="text-white"
- *   rightComponent={
- *     <MaterialSymbol name="settings" size={24} color="text-white" />
- *   }
- * />
- */
-export const NavigationHeader = ({
-  title,
+export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
+  title = "",
   showBackButton = true,
   onBackPress,
+  canGoBack = true,
   rightComponent,
   backgroundColor,
-  textColor,
-  backButtonColor = "#007AFF",
-}: NavigationHeaderProps) => {
+  textColor = "text-white",
+  backButtonColor,
+  children,
+  borderBottom = true,
+  style,
+  includeSafeArea = true,
+}) => {
+  const insets = useSafeAreaInsets();
   const { user, selectedUserType } = useStore();
-  // Determine role: prefer user.role if logged in, else selectedUserType from onboarding
   const role = user?.role || selectedUserType;
 
-  // Default colors based on role
-  let defaultBg = "bg-primary-500";
-  let defaultText = "text-white";
+  const defaultBgColor =
+    role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
+  const defaultTextColor = "text-white";
+  const finalBgColor = backgroundColor ?? defaultBgColor;
+  const finalTextColor = textColor ?? defaultTextColor;
+  const finalBackButtonColor = backButtonColor ?? defaultTextColor;
 
-  if (role === UserRole.TRANSPORTER) {
-    defaultBg = "bg-secondary-500";
-    defaultText = "text-white";
-  }
+  const headerContainerStyle = StyleSheet.create({
+    base: {
+      height: 56 + (includeSafeArea ? insets.top : 0),
+      paddingTop: includeSafeArea ? insets.top : 0,
+      backgroundColor: finalBgColor,
+    },
+  });
 
   return (
     <View
-      className={`${
-        backgroundColor || defaultBg
-      } px-4 py-3 flex-row items-center justify-between border-b border-gray-200`}
+      className={[
+        "px-4 flex-row items-center justify-between",
+        borderBottom ? "border-b border-gray-200" : "",
+      ].join(" ")}
+      pointerEvents="box-none"
+      style={[headerContainerStyle.base, style]}
     >
       <View className="flex-row items-center flex-1">
-        {showBackButton && (
+        {showBackButton && canGoBack && (
           <TouchableOpacity
             onPress={onBackPress || router.back}
             className="mr-3 p-1"
@@ -78,19 +79,17 @@ export const NavigationHeader = ({
             <MaterialSymbol
               name="arrow_back"
               size={24}
-              color={
-                backButtonColor === "#007AFF"
-                  ? "text-blue-500"
-                  : `text-[${backButtonColor}]`
-              }
+              color={finalBackButtonColor}
             />
           </TouchableOpacity>
         )}
         <Text
-          className={`text-lg font-semibold ${textColor || defaultText} flex-1`}
+          className={`text-lg font-semibold flex-1 ${finalTextColor}`}
+          numberOfLines={1}
         >
           {title}
         </Text>
+        {children}
       </View>
       {rightComponent && <View className="ml-2">{rightComponent}</View>}
     </View>

@@ -6,4 +6,5 @@ export const COLORS = {
   info: "#24a8f9",
   error: "#f25b36",
   success: "#06b21a",
+  white: "#ffffff",
 } as const;

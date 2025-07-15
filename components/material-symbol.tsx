@@ -16,7 +16,6 @@ export const MaterialSymbol = ({
   className = "",
   variant = "outlined",
 }: MaterialSymbolProps) => {
-  // Map variant to Tailwind font family class
   const fontFamilyMap = {
     outlined: "font-material-symbols-outlined",
     rounded: "font-material-symbols-rounded",

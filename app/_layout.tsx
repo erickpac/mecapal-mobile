@@ -10,6 +10,7 @@ import { API_CONFIG } from "@/services/api/config/constants";
 import { I18nextProvider } from "react-i18next";
 import i18n from "@/locales/i18n";
 import { useEffect } from "react";
+import { useStatusBar } from "@/hooks/useStatusBar";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,6 +26,7 @@ const queryClient = new QueryClient({
 export default function RootLayout() {
   // Initialize TokenManager with persisted token
   useTokenInitialization();
+  useStatusBar();
 
   const [loaded] = useFonts({
     MaterialSymbolsOutlined: require("../assets/fonts/MaterialSymbolsOutlined.ttf"),
