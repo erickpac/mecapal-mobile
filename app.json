@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "mecapal-app",
-    "slug": "mecapal-app",
+    "name": "mekapal-app",
+    "slug": "mekapal-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "mecapalapp",
+    "scheme": "mekapalapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

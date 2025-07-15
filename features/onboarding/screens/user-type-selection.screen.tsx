@@ -1,19 +1,37 @@
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
 import { navigateToAuthOptions } from "@/utils/navigation";
 import { UserRisingHand, Car } from "@/components/svg";
 import { COLORS } from "@/consts/colors";
+import { useState } from "react";
+import { UserTypeOption } from "@/features/onboarding/components/user-type-option";
 
 export default function UserTypeSelectionScreen() {
   const { setSelectedUserType } = useStore();
+  const [pressedOption, setPressedOption] = useState<UserRole | null>(null);
 
   const handleUserTypeSelect = (userType: UserRole) => {
     setSelectedUserType(userType);
     navigateToAuthOptions();
   };
+
+  const userTypeOptions = [
+    {
+      userType: UserRole.USER,
+      title: "Necesito servicio de transporte",
+      description: "Para enviar mis productos y mercancías",
+      icon: <UserRisingHand width="100%" height="100%" />,
+    },
+    {
+      userType: UserRole.TRANSPORTER,
+      title: "Puedo brindar servicios de transporte",
+      description: "Para transportar productos y mercancías",
+      icon: <Car width="100%" height="100%" />,
+    },
+  ];
 
   return (
     <>
@@ -34,39 +52,19 @@ export default function UserTypeSelectionScreen() {
           </View>
 
           <View className="flex flex-col gap-4">
-            <TouchableOpacity
-              onPress={() => handleUserTypeSelect(UserRole.USER)}
-              className="h-45 flex justify-center rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
-            >
-              <View className="items-center">
-                <View className="mb-4 aspect-[123/87] w-32">
-                  <UserRisingHand width="100%" height="100%" />
-                </View>
-                <Text className="mb-2 font-plus-jakarta-semibold text-xl text-text-active">
-                  Necesito servicio de transporte
-                </Text>
-                <Text className="font-plus-jakarta-regular text-center text-sm text-text-idle">
-                  Para enviar mis productos y mercancías
-                </Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => handleUserTypeSelect(UserRole.TRANSPORTER)}
-              className="h-45 flex justify-center rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
-            >
-              <View className="items-center">
-                <View className="mb-4 aspect-[108/45] w-32">
-                  <Car width="100%" height="100%" />
-                </View>
-                <Text className="mb-2 font-plus-jakarta-semibold text-xl text-text-active">
-                  Puedo brindar servicios de transporte
-                </Text>
-                <Text className="font-plus-jakarta-regular text-center text-sm text-text-idle">
-                  Para transportar productos y mercancías
-                </Text>
-              </View>
-            </TouchableOpacity>
+            {userTypeOptions.map((option) => (
+              <UserTypeOption
+                key={option.userType}
+                userType={option.userType}
+                title={option.title}
+                description={option.description}
+                icon={option.icon}
+                isPressed={pressedOption === option.userType}
+                onPressIn={() => setPressedOption(option.userType)}
+                onPressOut={() => setPressedOption(null)}
+                onPress={() => handleUserTypeSelect(option.userType)}
+              />
+            ))}
           </View>
         </View>
 
