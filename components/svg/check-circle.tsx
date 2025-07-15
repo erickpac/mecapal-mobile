@@ -1,8 +1,12 @@
 import * as React from "react";
 import Svg, { SvgProps, Path, Mask, G } from "react-native-svg";
 
-export const CheckCircle = (props: SvgProps) => (
-  <Svg width={24} height={24} fill="none" {...props}>
+export const CheckCircle = ({
+  width = 24,
+  height = 24,
+  ...props
+}: SvgProps) => (
+  <Svg width={width} height={height} fill="none" {...props}>
     <Mask
       id="a"
       width={24}

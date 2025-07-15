@@ -16,7 +16,7 @@ export default function OnboardingWelcomeScreen() {
       <NavigationHeader showBackButton={false} />
 
       <ContentContainer className="px-4 justify-between">
-        <View className="flex-1 mt-12">
+        <View className="flex-1 pt-8">
           <View className="items-center mb-12">
             <Text className="text-5xl font-plus-jakarta-extrabold text-primary-500 mb-4">
               Mekapal

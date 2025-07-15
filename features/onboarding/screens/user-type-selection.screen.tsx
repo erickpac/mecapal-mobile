@@ -1,9 +1,10 @@
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
-import { router } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { NavigationHeader } from "@/components/navigation-header";
+import { ContentContainer } from "@/components/content-container";
 import { navigateToAuthOptions } from "@/utils/navigation";
+import { UserRisingHand, Car } from "@/components/svg";
 
 export default function UserTypeSelectionScreen() {
   const { setSelectedUserType } = useStore();
@@ -13,77 +14,64 @@ export default function UserTypeSelectionScreen() {
     navigateToAuthOptions();
   };
 
-  const handleBack = () => {
-    router.back();
-  };
-
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <View className="flex-1 justify-between p-6">
-        {/* Back button */}
-        <View className="flex-row justify-start">
-          <TouchableOpacity onPress={handleBack}>
-            <Text className="text-blue-600 text-base">← Back</Text>
-          </TouchableOpacity>
-        </View>
+    <>
+      <NavigationHeader showBackButton={true} />
 
-        {/* Main content */}
-        <View className="flex-1 justify-center items-center">
-          <Text className="text-3xl font-bold text-center mb-4 text-gray-900">
-            What type of user are you?
-          </Text>
+      <ContentContainer className="px-4 justify-between">
+        <View className="flex-1 pt-8">
+          <View className="mb-6">
+            <Text className="text-2xl font-plus-jakarta-bold text-text-active text-center mb-4">
+              ¿Qué tipo de usuario eres?
+            </Text>
+            <Text className="text-base font-plus-jakarta-regular text-text-active text-center">
+              Elije tu rol para una experiencia personalizada.
+            </Text>
+          </View>
 
-          <Text className="text-lg text-center text-gray-600 mb-12 leading-relaxed">
-            Choose your role to get a personalized experience
-          </Text>
-
-          {/* User type options */}
-          <View className="w-full space-y-4">
-            {/* User option */}
+          <View className="flex flex-col gap-4">
             <TouchableOpacity
               onPress={() => handleUserTypeSelect(UserRole.USER)}
-              className="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-sm"
+              className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm h-45 flex justify-center"
             >
               <View className="items-center">
-                <View className="w-16 h-16 bg-blue-100 rounded-full items-center justify-center mb-4">
-                  <Text className="text-3xl">👤</Text>
+                <View className="w-32 aspect-[123/87] mb-4">
+                  <UserRisingHand width="100%" height="100%" />
                 </View>
-                <Text className="text-xl font-semibold text-gray-900 mb-2">
-                  User
+                <Text className="text-xl font-plus-jakarta-semibold text-text-active mb-2">
+                  Necesito servicio de transporte
                 </Text>
-                <Text className="text-gray-600 text-center">
-                  I need transportation services for my goods
+                <Text className="text-sm font-plus-jakarta-regular text-text-idle text-center">
+                  esit Para enviar mis productos y mercancías
                 </Text>
               </View>
             </TouchableOpacity>
 
-            {/* Transporter option */}
             <TouchableOpacity
               onPress={() => handleUserTypeSelect(UserRole.TRANSPORTER)}
-              className="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-sm"
+              className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm h-45 flex justify-center"
             >
               <View className="items-center">
-                <View className="w-16 h-16 bg-green-100 rounded-full items-center justify-center mb-4">
-                  <Text className="text-3xl">🚛</Text>
+                <View className="w-32 aspect-[100/49] mb-4">
+                  <Car width="100%" height="100%" />
                 </View>
-                <Text className="text-xl font-semibold text-gray-900 mb-2">
-                  Transporter
+                <Text className="text-xl font-plus-jakarta-semibold text-text-active mb-2">
+                  Puedo brindar servicios de transporte
                 </Text>
-                <Text className="text-gray-600 text-center">
-                  I provide transportation services
+                <Text className="text-sm font-plus-jakarta-regular text-text-idle text-center">
+                  Para transportar productos y mercancías
                 </Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* Progress indicator */}
-        <View className="flex-row justify-center items-center space-x-2">
+        <View className="flex-row justify-center items-center gap-2 pb-4">
           <View className="w-8 h-2 bg-gray-300 rounded-full" />
-          <View className="w-8 h-2 bg-blue-600 rounded-full" />
+          <View className="w-8 h-2 bg-primary-500 rounded-full" />
           <View className="w-8 h-2 bg-gray-300 rounded-full" />
         </View>
-      </View>
-    </SafeAreaView>
+      </ContentContainer>
+    </>
   );
 }
