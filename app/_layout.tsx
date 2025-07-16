@@ -24,9 +24,8 @@ const queryClient = new QueryClient({
 });
 
 export default function RootLayout() {
-  // Initialize TokenManager with persisted token
-  useTokenInitialization();
   useStatusBar();
+  useTokenInitialization();
 
   const [loaded] = useFonts({
     "Material Symbols Outlined Regular": require("../assets/fonts/material_symbols_outlined.ttf"),
