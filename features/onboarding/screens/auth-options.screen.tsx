@@ -3,14 +3,14 @@ import { UserRole } from "@/features/auth/types/user";
 import { Text, View } from "react-native";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
-import { navigateTo, ROUTES, replaceRoute } from "@/utils/navigation";
+import { navigateTo, ROUTES } from "@/utils/navigation";
 import { CarAccesories, FreeShipping } from "@/components/svg";
 import { Button } from "@/components/button";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function AuthOptionsScreen() {
-  const { selectedUserType } = useStore();
+  const { selectedUserType, setHasCompletedOnboarding } = useStore();
   const { t } = useTranslation();
   const isUser = selectedUserType === UserRole.USER;
   const content = useMemo(() => {
@@ -71,7 +71,7 @@ export default function AuthOptionsScreen() {
           <Button
             title={t("onboarding.authOptions.skip")}
             variant="text"
-            onPress={() => replaceRoute(ROUTES.HOME)}
+            onPress={() => setHasCompletedOnboarding(true)}
             userType={selectedUserType}
           />
         </View>

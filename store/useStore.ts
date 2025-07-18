@@ -1,9 +1,9 @@
 import { User, UserRole } from "@/features/auth/types/user";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { router } from "expo-router";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import TokenManager from "@/features/auth/services/token-manager";
+import { ROUTES, replaceRoute } from "@/utils/navigation";
 
 interface AppState {
   user: User | null;
@@ -44,8 +44,10 @@ export const useStore = create<AppState>()(
         set({ accessToken });
       },
       setRefreshToken: (refreshToken: string | null) => set({ refreshToken }),
-      setHasCompletedOnboarding: (completed) =>
-        set({ hasCompletedOnboarding: completed }),
+      setHasCompletedOnboarding: (completed) => {
+        set({ hasCompletedOnboarding: completed });
+        replaceRoute(ROUTES.HOME);
+      },
       setSelectedUserType: (userType) => set({ selectedUserType: userType }),
       setGuestMode: (isGuest) => set({ isGuestMode: isGuest }),
       logout: () => {
@@ -57,7 +59,7 @@ export const useStore = create<AppState>()(
           isAuthenticated: false,
           isGuestMode: false,
         });
-        router.replace("/home");
+        replaceRoute(ROUTES.HOME);
       },
       enterGuestMode: () => {
         set({
@@ -67,7 +69,7 @@ export const useStore = create<AppState>()(
           accessToken: null,
           refreshToken: null,
         });
-        router.replace("/home");
+        replaceRoute(ROUTES.HOME);
       },
     }),
     {

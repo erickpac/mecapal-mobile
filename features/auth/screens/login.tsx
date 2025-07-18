@@ -118,7 +118,13 @@ export default function LoginScreen() {
             title={`${t("auth.login.noAccount")}`}
             variant="text"
             className="mt-2"
-            onPress={() => replaceRoute(ROUTES.ONBOARDING_REGISTER)}
+            onPress={() => {
+              if (isModalMode) {
+                router.dismiss();
+              } else {
+                replaceRoute(ROUTES.ONBOARDING_REGISTER);
+              }
+            }}
             userType={selectedUserType}
           />
         </KeyboardAvoidingView>
