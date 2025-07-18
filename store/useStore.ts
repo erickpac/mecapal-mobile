@@ -12,12 +12,12 @@ interface AppState {
   isAuthenticated: boolean;
   isGuestMode: boolean;
   hasCompletedOnboarding: boolean;
-  selectedUserType: UserRole | null;
+  selectedUserType: UserRole | undefined;
   setUser: (user: User | null) => void;
   setAccessToken: (accessToken: string | null) => void;
   setRefreshToken: (refreshToken: string | null) => void;
   setHasCompletedOnboarding: (completed: boolean) => void;
-  setSelectedUserType: (userType: UserRole | null) => void;
+  setSelectedUserType: (userType: UserRole | undefined) => void;
   setGuestMode: (isGuest: boolean) => void;
   logout: () => void;
   enterGuestMode: () => void;
@@ -32,7 +32,7 @@ export const useStore = create<AppState>()(
       isAuthenticated: false,
       isGuestMode: false,
       hasCompletedOnboarding: false,
-      selectedUserType: null,
+      selectedUserType: undefined,
       setUser: (user) =>
         set({ user, isAuthenticated: !!user, isGuestMode: false }),
       setAccessToken: (accessToken: string | null) => {
@@ -73,6 +73,6 @@ export const useStore = create<AppState>()(
     {
       name: "app-storage",
       storage: createJSONStorage(() => AsyncStorage),
-    }
-  )
+    },
+  ),
 );

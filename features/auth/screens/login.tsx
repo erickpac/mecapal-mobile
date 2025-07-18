@@ -29,7 +29,6 @@ export default function LoginScreen() {
   const { handleError } = useLocalizedError();
   const pathname = usePathname();
   const isModalMode = pathname.includes("/onboarding/");
-
   const { emailError, passwordError, isValid } = useLoginValidation(
     email,
     password,
@@ -103,6 +102,7 @@ export default function LoginScreen() {
                 className="mb-4 mt-1 text-right text-[13px]"
                 onPress={navigateToForgotPassword}
                 title="¿Olvidaste tu contraseña?"
+                userType={selectedUserType}
               />
             </View>
           </View>

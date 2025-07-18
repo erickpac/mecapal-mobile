@@ -1,24 +1,32 @@
-import React from "react";
+import React, { memo } from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { UserRole } from "@/features/auth/types/user";
-import { useStore } from "@/store/useStore";
 
 interface ActionLinkProps {
   title: string;
   className?: string;
   onPress?: () => void;
+  userType?: UserRole;
 }
 
-export const ActionLink = ({
+const getUserTypeColorClass = (userType: UserRole | undefined) => {
+  switch (userType) {
+    case UserRole.USER:
+      return "text-primary-500";
+    case UserRole.TRANSPORTER:
+      return "text-secondary-500";
+    default:
+      return "text-tertiary-500";
+  }
+};
+
+const ActionLinkComponent = ({
   title,
   onPress,
   className = "",
+  userType,
 }: ActionLinkProps) => {
-  const { selectedUserType } = useStore();
-  const color =
-    selectedUserType === UserRole.USER
-      ? "text-primary-500"
-      : "text-secondary-500";
+  const color = getUserTypeColorClass(userType);
 
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
@@ -30,3 +38,5 @@ export const ActionLink = ({
     </TouchableOpacity>
   );
 };
+
+export const ActionLink = memo(ActionLinkComponent);

@@ -10,9 +10,7 @@ import { useMemo } from "react";
 
 export default function AuthOptionsScreen() {
   const { selectedUserType } = useStore();
-
   const isUser = selectedUserType === UserRole.USER;
-
   const content = useMemo(() => {
     return {
       illustration: isUser ? (
@@ -60,16 +58,19 @@ export default function AuthOptionsScreen() {
           <Button
             title="Crea tu cuenta"
             onPress={() => navigateTo(ROUTES.ONBOARDING_REGISTER)}
+            userType={selectedUserType}
           />
           <Button
             title="Ya tengo cuenta"
             variant="outlined"
             onPress={() => navigateTo(ROUTES.ONBOARDING_LOGIN)}
+            userType={selectedUserType}
           />
           <Button
             title="Saltar"
             variant="text"
             onPress={() => replaceRoute(ROUTES.HOME)}
+            userType={selectedUserType}
           />
         </View>
       </ContentContainer>
