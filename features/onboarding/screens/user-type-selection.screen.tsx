@@ -8,10 +8,12 @@ import { UserRisingHand, Car } from "@/components/svg";
 import { COLORS } from "@/consts/colors";
 import { useState } from "react";
 import { UserTypeOption } from "@/features/onboarding/components/user-type-option";
+import { useTranslation } from "react-i18next";
 
 export default function UserTypeSelectionScreen() {
   const { setSelectedUserType } = useStore();
   const [pressedOption, setPressedOption] = useState<UserRole | null>(null);
+  const { t } = useTranslation();
 
   const handleUserTypeSelect = (userType: UserRole) => {
     setSelectedUserType(userType);
@@ -21,14 +23,14 @@ export default function UserTypeSelectionScreen() {
   const userTypeOptions = [
     {
       userType: UserRole.USER,
-      title: "Necesito servicio de transporte",
-      description: "Para enviar mis productos y mercancías",
+      title: t("onboarding.userType.optionUser.title"),
+      description: t("onboarding.userType.optionUser.description"),
       icon: <UserRisingHand width="100%" height="100%" />,
     },
     {
       userType: UserRole.TRANSPORTER,
-      title: "Puedo brindar servicios de transporte",
-      description: "Para transportar productos y mercancías",
+      title: t("onboarding.userType.optionTransporter.title"),
+      description: t("onboarding.userType.optionTransporter.description"),
       icon: <Car width="100%" height="100%" />,
     },
   ];
@@ -44,10 +46,10 @@ export default function UserTypeSelectionScreen() {
         <View className="flex-1 pt-8">
           <View className="mb-6">
             <Text className="mb-4 text-center font-plus-jakarta-bold text-2xl text-text-active">
-              ¿Qué tipo de usuario eres?
+              {t("onboarding.userType.title")}
             </Text>
             <Text className="font-plus-jakarta-regular text-center text-base text-text-active">
-              Elije tu rol para una experiencia personalizada.
+              {t("onboarding.userType.subtitle")}
             </Text>
           </View>
 

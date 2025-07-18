@@ -456,36 +456,33 @@
   },
   "onboarding": {
     "welcome": {
-      "title": "Bienvenido a Mecapal",
-      "subtitle": "Conecta con transportistas confiables",
-      "description": "Encuentra el transporte que necesitas de forma rápida y segura",
-      "getStarted": "Comenzar"
-    },
-    "features": {
-      "title": "Características principales",
-      "search": {
-        "title": "Búsqueda rápida",
-        "description": "Encuentra transportistas disponibles en tu área"
-      },
-      "secure": {
-        "title": "Pagos seguros",
-        "description": "Transacciones seguras y confiables"
-      },
-      "tracking": {
-        "title": "Seguimiento en tiempo real",
-        "description": "Monitorea tu envío en tiempo real"
-      }
+      "title": "Bienvenido a Mekapal!",
+      "subtitle": "Tu plataforma de confianza para conectar con transportistas. Seguro, rápido y eficiente.",
+      "fast": "Rápido y de confianza",
+      "securePayment": "Sistema de pago seguro",
+      "realtimeTracking": "Seguimiento en tiempo real",
+      "start": "Empezar"
     },
     "userType": {
       "title": "¿Qué tipo de usuario eres?",
-      "client": {
-        "title": "Cliente",
-        "description": "Necesito transportar cosas"
+      "subtitle": "Elije tu rol para una experiencia personalizada.",
+      "optionUser": {
+        "title": "Necesito servicio de transporte",
+        "description": "Para enviar mis productos y mercancías"
       },
-      "transporter": {
-        "title": "Transportista",
-        "description": "Ofrezco servicios de transporte"
+      "optionTransporter": {
+        "title": "Puedo brindar servicios de transporte",
+        "description": "Para transportar productos y mercancías"
       }
+    },
+    "authOptions": {
+      "titleUser": "Mueve lo que quieras, sin complicarte",
+      "titleTransporter": "Haz que tu medio de transporte trabaje para ti",
+      "descUser": "Explora transportistas disponibles según ruta, tipo de camión y tarifa. Coordina todo por WhatsApp y haz seguimiento fácilmente.",
+      "descTransporter": "Registra tus rutas, muestra tus tarifas y recibe clientes directos interesados en tus servicios.",
+      "createAccount": "Crea tu cuenta",
+      "haveAccount": "Ya tengo cuenta",
+      "skip": "Saltar"
     }
   },
   "home": {
