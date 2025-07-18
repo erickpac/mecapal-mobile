@@ -77,7 +77,7 @@ export default function LoginScreen() {
           <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
             Inicio de Sesión
           </Text>
-          <View className="mb-2 gap-2">
+          <View className="mb-2">
             <Input
               label="Correo Electrónico*"
               type="email"
@@ -99,7 +99,7 @@ export default function LoginScreen() {
                 onSubmitEditing={handleLogin}
               />
               <Text
-                className="font-plus-jakarta-regular mb-2 mt-1 text-right text-[13px] text-orange-500"
+                className="font-plus-jakarta-regular mb-4 mt-1 text-right text-[13px] text-orange-500"
                 onPress={navigateToForgotPassword}
               >
                 ¿Olvidaste tu contraseña?
@@ -114,15 +114,12 @@ export default function LoginScreen() {
             loading={isLoading}
           />
 
-          <Text className="font-plus-jakarta-regular mt-4 text-center text-orange-500">
-            ¿No tienes cuenta?{" "}
-            <Text
-              className="font-bold"
-              onPress={() => replaceRoute(ROUTES.ONBOARDING_REGISTER)}
-            >
-              Regístrate aquí
-            </Text>
-          </Text>
+          <Button
+            title="¿No tienes cuenta? Regístrate aquí"
+            variant="text"
+            className="mt-2"
+            onPress={() => replaceRoute(ROUTES.ONBOARDING_REGISTER)}
+          />
         </KeyboardAvoidingView>
       </ContentContainer>
     </>

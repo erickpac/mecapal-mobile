@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, memo } from "react";
 import {
   View,
   Text,
@@ -16,7 +16,19 @@ export interface InputProps
   helperText?: string;
 }
 
-export const Input: React.FC<InputProps> = ({
+const inputContentStyle = {
+  height: 54,
+  paddingVertical: 0,
+  fontSize: 16,
+  lineHeight: 22,
+  fontFamily: "Plus Jakarta Sans Regular",
+};
+const inputStyle = { backgroundColor: "white" };
+const defaultOutline = "#dedede";
+const errorOutline = "#f25b36";
+const successOutline = "#06b21a";
+
+const InputComponent: React.FC<InputProps> = ({
   label,
   error,
   success,
@@ -29,7 +41,7 @@ export const Input: React.FC<InputProps> = ({
   const [showPassword, setShowPassword] = useState(false);
   const [touched, setTouched] = useState(false);
 
-  const getKeyboardType = () => {
+  const getKeyboardType = useCallback(() => {
     switch (type) {
       case "email":
         return "email-address";
@@ -40,23 +52,19 @@ export const Input: React.FC<InputProps> = ({
       default:
         return "default";
     }
-  };
+  }, [type]);
 
-  const getRightIcon = () => {
+  const getRightIcon = useCallback(() => {
     if (type === "password") {
       return (
         <TextInput.Icon
           icon={showPassword ? "eye-off" : "eye"}
-          onPress={() => setShowPassword(!showPassword)}
+          onPress={() => setShowPassword((prev) => !prev)}
         />
       );
     }
     return props.right;
-  };
-
-  const defaultOutline = "#dedede";
-  const errorOutline = "#f25b36";
-  const successOutline = "#06b21a";
+  }, [type, showPassword, props.right]);
 
   const getOutlineColor = () => {
     if (!value) return defaultOutline;
@@ -99,14 +107,8 @@ export const Input: React.FC<InputProps> = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         error={!!error && touched}
-        contentStyle={{
-          height: 54,
-          paddingVertical: 0,
-          fontSize: 16,
-          lineHeight: 22,
-          fontFamily: "Plus Jakarta Sans Regular",
-        }}
-        style={{ backgroundColor: "white" }}
+        contentStyle={inputContentStyle}
+        style={inputStyle}
         {...props}
       />
 
@@ -122,3 +124,5 @@ export const Input: React.FC<InputProps> = ({
     </View>
   );
 };
+
+export const Input = memo(InputComponent);
