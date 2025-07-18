@@ -409,12 +409,11 @@
   "auth": {
     "login": {
       "title": "Iniciar sesión",
-      "email": "Correo electrónico",
-      "password": "Contraseña",
+      "email": "Correo electrónico*",
+      "password": "Contraseña*",
       "login": "Iniciar sesión",
-      "noAccount": "¿No tienes cuenta? Regístrate",
-      "forgotPassword": "¿Olvidaste tu contraseña?",
-      "continueAsGuest": "Continuar como invitado"
+      "noAccount": "¿No tienes cuenta? Regístrate aquí",
+      "forgotPassword": "¿Olvidaste tu contraseña?"
     },
     "register": {
       "title": "Registrarse",

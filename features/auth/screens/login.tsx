@@ -75,11 +75,11 @@ export default function LoginScreen() {
             </View>
           </View>
           <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
-            Inicio de Sesión
+            {t("auth.login.title")}
           </Text>
           <View className="mb-2">
             <Input
-              label="Correo Electrónico*"
+              label={t("auth.login.email")}
               type="email"
               value={email}
               onChangeText={setEmail}
@@ -88,7 +88,7 @@ export default function LoginScreen() {
             />
             <View>
               <Input
-                label="Contraseña*"
+                label={t("auth.login.password")}
                 type="password"
                 value={password}
                 onChangeText={setPassword}
@@ -101,21 +101,21 @@ export default function LoginScreen() {
               <ActionLink
                 className="mb-4 mt-1 text-right text-[13px]"
                 onPress={navigateToForgotPassword}
-                title="¿Olvidaste tu contraseña?"
+                title={t("auth.login.forgotPassword")}
                 userType={selectedUserType}
               />
             </View>
           </View>
 
           <Button
-            title="Iniciar Sesión"
+            title={t("auth.login.login")}
             onPress={handleLogin}
             disabled={!isValid || isLoading}
             loading={isLoading}
           />
 
           <Button
-            title="¿No tienes cuenta? Regístrate aquí"
+            title={`${t("auth.login.noAccount")}`}
             variant="text"
             className="mt-2"
             onPress={() => replaceRoute(ROUTES.ONBOARDING_REGISTER)}

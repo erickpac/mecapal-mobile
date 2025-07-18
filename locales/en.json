@@ -409,12 +409,11 @@
   "auth": {
     "login": {
       "title": "Login",
-      "email": "Email",
-      "password": "Password",
+      "email": "Email*",
+      "password": "Password*",
       "login": "Login",
-      "noAccount": "No account? Register",
-      "forgotPassword": "Forgot password?",
-      "continueAsGuest": "Continue as guest"
+      "noAccount": "No account? Register here",
+      "forgotPassword": "Forgot password?"
     },
     "register": {
       "title": "Register",
