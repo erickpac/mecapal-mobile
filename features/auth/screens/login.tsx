@@ -18,6 +18,7 @@ import { LoginUser, LoginTransporter } from "@/components/svg";
 import { Input } from "@/components/input";
 import { useLoginValidation } from "@/features/auth/hooks/useLoginValidation";
 import { UserRole } from "@/features/auth/types/user";
+import { ActionLink } from "@/components/action-link";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -98,12 +99,11 @@ export default function LoginScreen() {
                 returnKeyType="done"
                 onSubmitEditing={handleLogin}
               />
-              <Text
-                className="font-plus-jakarta-regular mb-4 mt-1 text-right text-[13px] text-orange-500"
+              <ActionLink
+                className="mb-4 mt-1 text-right text-[13px]"
                 onPress={navigateToForgotPassword}
-              >
-                ¿Olvidaste tu contraseña?
-              </Text>
+                title="¿Olvidaste tu contraseña?"
+              />
             </View>
           </View>
 
