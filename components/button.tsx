@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { GestureResponderEvent } from "react-native";
 import { Button as PaperButton } from "react-native-paper";
 import { UserRole } from "@/features/auth/types/user";
@@ -7,8 +7,6 @@ import { COLORS } from "@/consts/colors";
 interface ButtonProps {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
-  colorClassName?: string;
-  textClassName?: string;
   loading?: boolean;
   disabled?: boolean;
   fullWidth?: boolean;
@@ -16,6 +14,7 @@ interface ButtonProps {
   buttonColor?: string;
   variant?: "contained" | "outlined" | "text";
   userType?: UserRole;
+  [key: string]: any; // for ...props
 }
 
 const getButtonColor = (userType: UserRole) => {
@@ -27,7 +26,9 @@ const getButtonColor = (userType: UserRole) => {
   }
 };
 
-export const Button: React.FC<ButtonProps> = ({
+const baseButtonStyle = { borderRadius: 8 };
+
+const ButtonComponent: React.FC<ButtonProps> = ({
   title,
   onPress,
   loading = false,
@@ -37,6 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
   buttonColor,
   variant = "contained",
   userType = UserRole.USER,
+  ...props
 }) => {
   const finalButtonColor = buttonColor ?? getButtonColor(userType);
   const isContained = variant === "contained";
@@ -50,17 +52,18 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       buttonColor={isContained ? finalButtonColor : "transparent"}
       textColor={textColor}
+      rippleColor={variant === "text" ? "transparent" : undefined}
       style={
         fullWidth
           ? {
               width: "100%",
-              borderRadius: 8,
+              ...baseButtonStyle,
               borderWidth: variant === "outlined" ? 1 : 0,
               borderColor:
                 variant === "outlined" ? finalButtonColor : "transparent",
             }
           : {
-              borderRadius: 8,
+              ...baseButtonStyle,
               borderWidth: variant === "outlined" ? 1 : 0,
               borderColor:
                 variant === "outlined" ? finalButtonColor : "transparent",
@@ -69,8 +72,11 @@ export const Button: React.FC<ButtonProps> = ({
       contentStyle={{ height: variant === "outlined" ? 42 : 44 }}
       labelStyle={{ fontSize: 14, fontWeight: "600" }}
       className={className}
+      {...props}
     >
       {title}
     </PaperButton>
   );
 };
+
+export const Button = memo(ButtonComponent);

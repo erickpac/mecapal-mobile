@@ -119,6 +119,7 @@ export default function LoginScreen() {
             variant="text"
             className="mt-2"
             onPress={() => replaceRoute(ROUTES.ONBOARDING_REGISTER)}
+            userType={selectedUserType}
           />
         </KeyboardAvoidingView>
       </ContentContainer>
