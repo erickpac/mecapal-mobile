@@ -7,3 +7,5 @@ export * from "./car-accesories";
 export * from "./free-shipping";
 export * from "./login-user";
 export * from "./login-transporter";
+export * from "./register-user";
+export * from "./register-transporter";

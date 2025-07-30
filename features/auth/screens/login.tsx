@@ -112,6 +112,7 @@ export default function LoginScreen() {
             onPress={handleLogin}
             disabled={!isValid || isLoading}
             loading={isLoading}
+            userType={selectedUserType}
           />
 
           <Button

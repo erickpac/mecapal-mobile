@@ -17,13 +17,16 @@ export interface InputProps
 }
 
 const inputContentStyle = {
-  height: 54,
-  paddingVertical: 0,
   fontSize: 16,
   lineHeight: 22,
   fontFamily: "Plus Jakarta Sans Regular",
 };
-const inputStyle = { backgroundColor: "white" };
+const inputStyle = {
+  backgroundColor: "white",
+};
+const inputOutlineStyle = {
+  borderWidth: 1,
+};
 const defaultOutline = "#dedede";
 const errorOutline = "#f25b36";
 const successOutline = "#06b21a";
@@ -59,6 +62,7 @@ const InputComponent: React.FC<InputProps> = ({
       return (
         <TextInput.Icon
           icon={showPassword ? "eye-off" : "eye"}
+          size={22}
           onPress={() => setShowPassword((prev) => !prev)}
         />
       );
@@ -98,7 +102,7 @@ const InputComponent: React.FC<InputProps> = ({
         mode="outlined"
         outlineColor={getOutlineColor()}
         activeOutlineColor={getActiveOutlineColor()}
-        outlineStyle={{ borderWidth: 1 }}
+        outlineStyle={inputOutlineStyle}
         keyboardType={getKeyboardType()}
         autoCapitalize={type === "email" ? "none" : "sentences"}
         autoCorrect={type === "email" ? false : true}
