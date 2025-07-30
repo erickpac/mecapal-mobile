@@ -2,7 +2,7 @@ import { useStore } from "@/store/useStore";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { MaterialSymbol } from "@/components/material-symbol";
 import { useTranslation } from "react-i18next";
-import { navigateTo } from "@/utils/navigation";
+import { navigateTo } from "@/features/shared/routes";
 import { ScreenHeader } from "@/components/screen-header";
 
 export default function UserHomeScreen() {
@@ -19,18 +19,18 @@ export default function UserHomeScreen() {
       <View className="p-4">
         {/* Quick Search */}
         <View className="mb-6">
-          <Text className="text-xl font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-xl font-semibold text-gray-800">
             {t("transport.home.quickSearch.title")}
           </Text>
           <TouchableOpacity
             onPress={() => navigateTo("/search")}
-            className="bg-blue-500 p-4 rounded-lg items-center"
+            className="items-center rounded-lg bg-blue-500 p-4"
           >
             <MaterialSymbol name="search" size={32} color="text-white" />
-            <Text className="text-white font-semibold mt-2 text-lg">
+            <Text className="mt-2 text-lg font-semibold text-white">
               {t("transport.home.quickSearch.button")}
             </Text>
-            <Text className="text-blue-100 mt-1 text-center">
+            <Text className="mt-1 text-center text-blue-100">
               {t("transport.home.quickSearch.subtitle")}
             </Text>
           </TouchableOpacity>
@@ -38,7 +38,7 @@ export default function UserHomeScreen() {
 
         {/* Service Types */}
         <View className="mb-6">
-          <Text className="text-xl font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-xl font-semibold text-gray-800">
             {t("transport.home.serviceTypes.title")}
           </Text>
           <View className="space-y-3">
@@ -80,11 +80,11 @@ export default function UserHomeScreen() {
               <TouchableOpacity
                 key={service.id}
                 onPress={() => navigateTo("/search")}
-                className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+                className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm"
               >
                 <View className="flex-row items-center">
                   <View
-                    className={`w-12 h-12 ${service.color} rounded-lg items-center justify-center mr-4`}
+                    className={`h-12 w-12 ${service.color} mr-4 items-center justify-center rounded-lg`}
                   >
                     <MaterialSymbol
                       name={service.icon}
@@ -113,46 +113,46 @@ export default function UserHomeScreen() {
 
         {/* Quick Actions */}
         <View className="mb-6">
-          <Text className="text-xl font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-xl font-semibold text-gray-800">
             {t("transport.home.quickActions.title")}
           </Text>
           <View className="flex-row flex-wrap justify-between">
             <TouchableOpacity
               onPress={() => navigateTo("/search")}
-              className="bg-blue-500 p-4 rounded-lg w-[48%] mb-4 items-center"
+              className="mb-4 w-[48%] items-center rounded-lg bg-blue-500 p-4"
             >
               <MaterialSymbol name="search" size={32} color="text-white" />
-              <Text className="text-white font-semibold mt-2">
+              <Text className="mt-2 font-semibold text-white">
                 {t("transport.home.quickActions.searchTransport")}
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => navigateTo("/history")}
-              className="bg-green-500 p-4 rounded-lg w-[48%] mb-4 items-center"
+              className="mb-4 w-[48%] items-center rounded-lg bg-green-500 p-4"
             >
               <MaterialSymbol name="history" size={32} color="text-white" />
-              <Text className="text-white font-semibold mt-2">
+              <Text className="mt-2 font-semibold text-white">
                 {t("transport.home.quickActions.myHistory")}
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => navigateTo("/profile")}
-              className="bg-purple-500 p-4 rounded-lg w-[48%] mb-4 items-center"
+              className="mb-4 w-[48%] items-center rounded-lg bg-purple-500 p-4"
             >
               <MaterialSymbol name="person" size={32} color="text-white" />
-              <Text className="text-white font-semibold mt-2">
+              <Text className="mt-2 font-semibold text-white">
                 {t("transport.home.quickActions.myProfile")}
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => navigateTo("/settings")}
-              className="bg-gray-500 p-4 rounded-lg w-[48%] mb-4 items-center"
+              className="mb-4 w-[48%] items-center rounded-lg bg-gray-500 p-4"
             >
               <MaterialSymbol name="settings" size={32} color="text-white" />
-              <Text className="text-white font-semibold mt-2">
+              <Text className="mt-2 font-semibold text-white">
                 {t("transport.home.quickActions.settings")}
               </Text>
             </TouchableOpacity>
@@ -161,14 +161,14 @@ export default function UserHomeScreen() {
 
         {/* Recent Activity */}
         <View className="mb-6">
-          <Text className="text-xl font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-xl font-semibold text-gray-800">
             {t("transport.home.recentActivity.title")}
           </Text>
-          <View className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-            <Text className="text-gray-600 text-center">
+          <View className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
+            <Text className="text-center text-gray-600">
               {t("transport.home.recentActivity.noActivity")}
             </Text>
-            <Text className="text-gray-500 text-center text-sm mt-1">
+            <Text className="mt-1 text-center text-sm text-gray-500">
               {t("transport.home.recentActivity.subtitle")}
             </Text>
           </View>

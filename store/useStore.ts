@@ -3,7 +3,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import TokenManager from "@/features/auth/services/token-manager";
-import { ROUTES, replaceRoute } from "@/utils/navigation";
+import { replaceRoute } from "@/features/shared/routes";
+import { USER_ROUTES } from "@/features/user/routes";
 
 interface AppState {
   user: User | null;
@@ -46,7 +47,7 @@ export const useStore = create<AppState>()(
       setRefreshToken: (refreshToken: string | null) => set({ refreshToken }),
       setHasCompletedOnboarding: (completed) => {
         set({ hasCompletedOnboarding: completed });
-        replaceRoute(ROUTES.HOME);
+        replaceRoute(USER_ROUTES.HOME);
       },
       setSelectedUserType: (userType) => set({ selectedUserType: userType }),
       setGuestMode: (isGuest) => set({ isGuestMode: isGuest }),
@@ -59,7 +60,7 @@ export const useStore = create<AppState>()(
           isAuthenticated: false,
           isGuestMode: false,
         });
-        replaceRoute(ROUTES.HOME);
+        replaceRoute(USER_ROUTES.HOME);
       },
       enterGuestMode: () => {
         set({
@@ -69,7 +70,7 @@ export const useStore = create<AppState>()(
           accessToken: null,
           refreshToken: null,
         });
-        replaceRoute(ROUTES.HOME);
+        replaceRoute(USER_ROUTES.HOME);
       },
     }),
     {

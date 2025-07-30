@@ -1,7 +1,9 @@
 import { useStore } from "@/store/useStore";
 import { useEffect } from "react";
 import { LoadingScreen } from "@/components/loading-screen";
-import { replaceRoute, ROUTES } from "@/utils/navigation";
+import { replaceRoute } from "@/features/shared/routes";
+import { ONBOARDING_ROUTES } from "@/features/onboarding/routes";
+import { USER_ROUTES } from "@/features/user/routes";
 
 export default function Index() {
   const { isAuthenticated, isGuestMode, hasCompletedOnboarding } = useStore();
@@ -10,13 +12,13 @@ export default function Index() {
     const navigate = async () => {
       try {
         // If user hasn't completed onboarding, show onboarding
-        if (!hasCompletedOnboarding) {
-          replaceRoute(ROUTES.ONBOARDING);
+        if (hasCompletedOnboarding) {
+          replaceRoute(ONBOARDING_ROUTES.ONBOARDING);
           return;
         }
 
         // If user has completed onboarding, go to home
-        replaceRoute(ROUTES.HOME);
+        replaceRoute(USER_ROUTES.HOME);
       } catch (error) {
         console.error("Navigation error:", error);
       }

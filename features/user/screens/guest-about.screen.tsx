@@ -1,7 +1,7 @@
 import { MaterialSymbol } from "@/components/material-symbol";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { ScreenHeader } from "@/components/screen-header";
-import { navigateTo } from "@/utils/navigation";
+import { navigateTo } from "@/features/shared/routes";
 
 export default function GuestAboutScreen() {
   return (

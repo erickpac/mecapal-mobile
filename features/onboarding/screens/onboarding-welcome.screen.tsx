@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { Button } from "@/components/button";
-import { navigateToUserTypeSelection } from "@/utils/navigation";
+import { navigateToUserTypeSelection } from "../routes";
 import { CarRental, CheckCircle } from "@/components/svg";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";

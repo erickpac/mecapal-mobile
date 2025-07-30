@@ -3,7 +3,10 @@ import { UserRole } from "@/features/auth/types/user";
 import { Text, View } from "react-native";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
-import { navigateTo, ROUTES } from "@/utils/navigation";
+import {
+  navigateToOnboardingRegister,
+  navigateToOnboardingLogin,
+} from "../routes";
 import { CarAccesories, FreeShipping } from "@/components/svg";
 import { Button } from "@/components/button";
 import { useMemo } from "react";
@@ -59,13 +62,13 @@ export default function AuthOptionsScreen() {
         <View className="gap-4">
           <Button
             title={t("onboarding.authOptions.createAccount")}
-            onPress={() => navigateTo(ROUTES.ONBOARDING_REGISTER)}
+            onPress={() => navigateToOnboardingRegister()}
             userType={selectedUserType}
           />
           <Button
             title={t("onboarding.authOptions.haveAccount")}
             variant="outlined"
-            onPress={() => navigateTo(ROUTES.ONBOARDING_LOGIN)}
+            onPress={() => navigateToOnboardingLogin()}
             userType={selectedUserType}
           />
           <Button

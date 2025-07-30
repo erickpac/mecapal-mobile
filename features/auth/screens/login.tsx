@@ -5,11 +5,10 @@ import { useEffect, useState } from "react";
 import { KeyboardAvoidingView, Platform, Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useLocalizedError } from "@/hooks/useLocalizedError";
-import {
-  navigateToForgotPassword,
-  replaceRoute,
-  ROUTES,
-} from "@/utils/navigation";
+import { navigateToForgotPassword } from "../routes";
+import { replaceRoute } from "@/features/shared/routes";
+import { USER_ROUTES } from "@/features/user/routes";
+import { ONBOARDING_ROUTES } from "@/features/onboarding/routes";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
 import { IconButton } from "@/components/icon-button";
@@ -42,7 +41,7 @@ export default function LoginScreen() {
   useEffect(() => {
     if (isSuccess) {
       setHasCompletedOnboarding(true);
-      replaceRoute(ROUTES.HOME);
+      replaceRoute(USER_ROUTES.HOME);
     }
   }, [isSuccess, setHasCompletedOnboarding]);
 
@@ -123,7 +122,7 @@ export default function LoginScreen() {
               if (isModalMode) {
                 router.dismiss();
               } else {
-                replaceRoute(ROUTES.ONBOARDING_REGISTER);
+                replaceRoute(ONBOARDING_ROUTES.ONBOARDING_REGISTER);
               }
             }}
             userType={selectedUserType}

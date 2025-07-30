@@ -3,7 +3,7 @@ import { UserRole } from "@/features/auth/types/user";
 import { Text, View } from "react-native";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
-import { navigateToAuthOptions } from "@/utils/navigation";
+import { navigateToAuthOptions } from "../routes";
 import { UserRisingHand, Car } from "@/components/svg";
 import { COLORS } from "@/consts/colors";
 import { useState } from "react";

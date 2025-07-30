@@ -7,7 +7,7 @@ import {
   navigateToVehicles,
   navigateToEarnings,
   navigateTo,
-} from "@/utils/navigation";
+} from "@/features/shared/routes";
 import { ScreenHeader } from "@/components/screen-header";
 
 export default function TransporterDashboardScreen() {
