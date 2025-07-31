@@ -5,7 +5,9 @@ import { useState, useEffect } from "react";
 import { KeyboardAvoidingView, Platform, Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { UserRole } from "@/features/auth/types/user";
-import { replaceRoute, ROUTES } from "@/utils/navigation";
+import { replaceRoute } from "@/features/shared/routes";
+import { USER_ROUTES } from "@/features/user/routes";
+import { ONBOARDING_ROUTES } from "@/features/onboarding/routes";
 import { ContentContainer } from "@/components/content-container";
 import { RegisterUser, RegisterTransporter } from "@/components/svg";
 import { NavigationHeader } from "@/components/navigation-header";
@@ -34,7 +36,7 @@ export default function RegisterScreen() {
       const timer = setTimeout(() => {
         setShowSuccess(false);
         setHasCompletedOnboarding(true);
-        replaceRoute(ROUTES.HOME);
+        replaceRoute(USER_ROUTES.HOME);
       }, 1500);
       return () => clearTimeout(timer);
     }
@@ -102,7 +104,7 @@ export default function RegisterScreen() {
               if (isModalMode) {
                 router.dismiss();
               } else {
-                replaceRoute(ROUTES.ONBOARDING_LOGIN);
+                replaceRoute(ONBOARDING_ROUTES.ONBOARDING_LOGIN);
               }
             }}
           />
