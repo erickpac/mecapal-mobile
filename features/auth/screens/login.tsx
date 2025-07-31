@@ -2,121 +2,133 @@ import { useAuth } from "@/features/auth/hooks/useAuth";
 import { useStore } from "@/store/useStore";
 import { router, usePathname } from "expo-router";
 import { useEffect, useState } from "react";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { KeyboardAvoidingView, Platform, Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useLocalizedError } from "@/hooks/useLocalizedError";
-import {
-  navigateToRegister,
-  navigateToForgotPassword,
-  replaceRoute,
-  ROUTES,
-} from "@/utils/navigation";
+import { navigateToForgotPassword } from "../routes";
+import { replaceRoute } from "@/features/shared/routes";
+import { USER_ROUTES } from "@/features/user/routes";
+import { ONBOARDING_ROUTES } from "@/features/onboarding/routes";
+import { NavigationHeader } from "@/components/navigation-header";
+import { ContentContainer } from "@/components/content-container";
+import { IconButton } from "@/components/icon-button";
+import { Button } from "@/components/button";
+import { LoginUser, LoginTransporter } from "@/components/svg";
+import { Input } from "@/components/input";
+import { useLoginValidation } from "@/features/auth/hooks/useLoginValidation";
+import { UserRole } from "@/features/auth/types/user";
+import { ActionLink } from "@/components/action-link";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error, isSuccess } = useAuth();
-  const { setHasCompletedOnboarding } = useStore();
+  const { setHasCompletedOnboarding, selectedUserType } = useStore();
   const { t } = useTranslation();
   const { handleError } = useLocalizedError();
   const pathname = usePathname();
-
-  // Check if we're in modal mode (from onboarding)
   const isModalMode = pathname.includes("/onboarding/");
+  const { emailError, passwordError, isValid } = useLoginValidation(
+    email,
+    password,
+  );
 
   const handleLogin = () => {
+    if (!isValid) return;
     login({ email, password });
   };
 
-  // Navigate to home after successful login and complete onboarding
   useEffect(() => {
     if (isSuccess) {
       setHasCompletedOnboarding(true);
-      replaceRoute(ROUTES.HOME);
+      replaceRoute(USER_ROUTES.HOME);
     }
   }, [isSuccess, setHasCompletedOnboarding]);
 
   return (
-    <KeyboardAvoidingView
-      className="flex-1 bg-white"
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-    >
-      <View className="flex-1 justify-center items-center px-4">
-        <View className="w-full max-w-md bg-white rounded-2xl p-6 shadow">
-          <Text className="text-3xl font-bold mb-6 text-center">
+    <>
+      <NavigationHeader
+        showBackButton={!isModalMode}
+        rightComponent={
+          isModalMode ? (
+            <IconButton
+              icon="close"
+              color="text-white"
+              onPress={() => router.dismiss()}
+            />
+          ) : undefined
+        }
+      />
+      <ContentContainer className="flex-1 px-4">
+        <KeyboardAvoidingView
+          className="flex-1 pt-8"
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
+        >
+          <View className="mb-6 mt-2 items-center">
+            <View className="aspect-[287/206] w-64 max-w-full">
+              {selectedUserType === UserRole.USER ? (
+                <LoginUser width="100%" height="100%" />
+              ) : (
+                <LoginTransporter width="100%" height="100%" />
+              )}
+            </View>
+          </View>
+          <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
             {t("auth.login.title")}
           </Text>
+          <View className="mb-2">
+            <Input
+              label={t("auth.login.email")}
+              type="email"
+              value={email}
+              onChangeText={setEmail}
+              error={emailError}
+              returnKeyType="next"
+            />
+            <View>
+              <Input
+                label={t("auth.login.password")}
+                type="password"
+                value={password}
+                onChangeText={setPassword}
+                error={
+                  passwordError || (error ? handleError(error) : undefined)
+                }
+                returnKeyType="done"
+                onSubmitEditing={handleLogin}
+              />
+              <ActionLink
+                className="mb-4 mt-1 text-right text-[13px]"
+                onPress={navigateToForgotPassword}
+                title={t("auth.login.forgotPassword")}
+                userType={selectedUserType}
+              />
+            </View>
+          </View>
 
-          {error && (
-            <Text className="text-red-500 text-center mb-4">
-              {handleError(error)}
-            </Text>
-          )}
-
-          <TextInput
-            className="border border-gray-300 rounded-lg p-4 mb-4 bg-gray-50 text-base"
-            placeholder={t("auth.login.email")}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            value={email}
-            onChangeText={setEmail}
-          />
-
-          <TextInput
-            className="border border-gray-300 rounded-lg p-4 mb-6 bg-gray-50 text-base"
-            placeholder={t("auth.login.password")}
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-
-          <TouchableOpacity
+          <Button
+            title={t("auth.login.login")}
             onPress={handleLogin}
-            disabled={isLoading}
-            className={`py-4 rounded-lg mb-4 ${
-              isLoading ? "bg-blue-300" : "bg-blue-600"
-            }`}
-          >
-            <Text className="text-white text-center font-semibold text-lg">
-              {isLoading ? t("common.loading") : t("auth.login.login")}
-            </Text>
-          </TouchableOpacity>
+            disabled={!isValid || isLoading}
+            loading={isLoading}
+            userType={selectedUserType}
+          />
 
-          <TouchableOpacity onPress={() => navigateToForgotPassword()}>
-            <Text className="text-blue-600 text-center">
-              {t("auth.login.forgotPassword")}
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
+          <Button
+            title={`${t("auth.login.noAccount")}`}
+            variant="text"
+            className="mt-2"
             onPress={() => {
               if (isModalMode) {
-                // Close modal and return to onboarding to select register option
                 router.dismiss();
               } else {
-                navigateToRegister();
+                replaceRoute(ONBOARDING_ROUTES.ONBOARDING_REGISTER);
               }
             }}
-            className="mt-4"
-          >
-            <Text className="text-gray-600 text-center">
-              {t("auth.login.noAccount", {
-                defaultValue: "¿No tienes cuenta?",
-              })}{" "}
-              <Text className="text-blue-600 font-medium">
-                {t("auth.login.signUp", { defaultValue: "Regístrate" })}
-              </Text>
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </KeyboardAvoidingView>
+            userType={selectedUserType}
+          />
+        </KeyboardAvoidingView>
+      </ContentContainer>
+    </>
   );
 }

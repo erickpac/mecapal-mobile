@@ -1,7 +1,7 @@
 import { MaterialSymbol } from "@/components/material-symbol";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import { ScreenHeader } from "@/components/screen-header";
-import { navigateTo } from "@/utils/navigation";
+import { navigateTo } from "@/features/shared/routes";
 
 export default function GuestAuthScreen() {
   return (
@@ -10,40 +10,40 @@ export default function GuestAuthScreen() {
 
       <View className="p-4">
         {/* Welcome Banner */}
-        <View className="bg-blue-600 p-6 rounded-lg mb-6 items-center">
+        <View className="mb-6 items-center rounded-lg bg-blue-600 p-6">
           <MaterialSymbol name="rocket_launch" size={48} color="text-white" />
-          <Text className="text-white text-xl font-bold text-center mt-2">
+          <Text className="mt-2 text-center text-xl font-bold text-white">
             ¡Bienvenido a Mecapal!
           </Text>
-          <Text className="text-blue-100 text-center mt-1">
+          <Text className="mt-1 text-center text-blue-100">
             Conectamos usuarios con transportistas confiables
           </Text>
         </View>
 
         {/* Auth Options */}
-        <View className="space-y-4 mb-6">
+        <View className="mb-6 space-y-4">
           <TouchableOpacity
             onPress={() => navigateTo("/auth/register")}
-            className="bg-green-500 p-4 rounded-lg items-center"
+            className="items-center rounded-lg bg-green-500 p-4"
           >
             <MaterialSymbol name="person_add" size={32} color="text-white" />
-            <Text className="text-white font-semibold mt-2 text-lg">
+            <Text className="mt-2 text-lg font-semibold text-white">
               Crear Cuenta
             </Text>
-            <Text className="text-green-100 mt-1 text-center">
+            <Text className="mt-1 text-center text-green-100">
               Únete a nuestra comunidad
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => navigateTo("/auth")}
-            className="bg-blue-500 p-4 rounded-lg items-center"
+            className="items-center rounded-lg bg-blue-500 p-4"
           >
             <MaterialSymbol name="login" size={32} color="text-white" />
-            <Text className="text-white font-semibold mt-2 text-lg">
+            <Text className="mt-2 text-lg font-semibold text-white">
               Iniciar Sesión
             </Text>
-            <Text className="text-blue-100 mt-1 text-center">
+            <Text className="mt-1 text-center text-blue-100">
               Accede a tu cuenta existente
             </Text>
           </TouchableOpacity>
@@ -51,7 +51,7 @@ export default function GuestAuthScreen() {
 
         {/* Benefits */}
         <View className="mb-6">
-          <Text className="text-lg font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-lg font-semibold text-gray-800">
             Beneficios de registrarte
           </Text>
           <View className="space-y-3">
@@ -79,10 +79,10 @@ export default function GuestAuthScreen() {
             ].map((benefit, index) => (
               <View
                 key={index}
-                className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+                className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm"
               >
                 <View className="flex-row items-center">
-                  <View className="w-10 h-10 bg-blue-100 rounded-lg items-center justify-center mr-4">
+                  <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-blue-100">
                     <MaterialSymbol
                       name={benefit.icon}
                       size={20}
@@ -103,51 +103,51 @@ export default function GuestAuthScreen() {
 
         {/* Quick Actions */}
         <View className="mb-6">
-          <Text className="text-lg font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-lg font-semibold text-gray-800">
             Acciones Rápidas
           </Text>
           <View className="flex-row flex-wrap justify-between">
             <TouchableOpacity
               onPress={() => navigateTo("/search")}
-              className="bg-blue-500 p-4 rounded-lg w-[48%] mb-4 items-center"
+              className="mb-4 w-[48%] items-center rounded-lg bg-blue-500 p-4"
             >
               <MaterialSymbol name="search" size={24} color="text-blue-500" />
-              <Text className="text-white font-semibold mt-2">Explorar</Text>
+              <Text className="mt-2 font-semibold text-white">Explorar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => navigateTo("/about")}
-              className="bg-gray-500 p-4 rounded-lg w-[48%] mb-4 items-center"
+              className="mb-4 w-[48%] items-center rounded-lg bg-gray-500 p-4"
             >
               <MaterialSymbol name="info" size={24} color="text-gray-500" />
-              <Text className="text-white font-semibold mt-2">Acerca de</Text>
+              <Text className="mt-2 font-semibold text-white">Acerca de</Text>
             </TouchableOpacity>
           </View>
         </View>
 
         {/* Call to Action */}
-        <View className="bg-blue-600 p-6 rounded-lg items-center">
+        <View className="items-center rounded-lg bg-blue-600 p-6">
           <MaterialSymbol name="star" size={32} color="text-white" />
-          <Text className="text-white text-xl font-bold text-center mt-2">
+          <Text className="mt-2 text-center text-xl font-bold text-white">
             ¿Listo para empezar?
           </Text>
-          <Text className="text-blue-100 text-center mt-1 mb-4">
+          <Text className="mb-4 mt-1 text-center text-blue-100">
             Crea tu cuenta y accede a todos los beneficios
           </Text>
           <View className="flex-row space-x-3">
             <TouchableOpacity
               onPress={() => navigateTo("/auth/register")}
-              className="flex-1 bg-white p-3 rounded-lg"
+              className="flex-1 rounded-lg bg-white p-3"
             >
-              <Text className="text-blue-600 font-semibold text-center">
+              <Text className="text-center font-semibold text-blue-600">
                 Crear Cuenta
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigateTo("/auth")}
-              className="flex-1 bg-transparent border border-white p-3 rounded-lg"
+              className="flex-1 rounded-lg border border-white bg-transparent p-3"
             >
-              <Text className="text-white font-semibold text-center">
+              <Text className="text-center font-semibold text-white">
                 Iniciar Sesión
               </Text>
             </TouchableOpacity>

@@ -8,32 +8,15 @@ export default function OnboardingLayout() {
         contentStyle: { backgroundColor: "white" },
       }}
     >
-      <Stack.Screen
-        name="index"
-        options={{
-          title: "Welcome",
-        }}
-      />
-      <Stack.Screen
-        name="user-type-selection"
-        options={{
-          title: "Select User Type",
-        }}
-      />
-      <Stack.Screen
-        name="auth-options"
-        options={{
-          title: "Get Started",
-        }}
-      />
+      <Stack.Screen name="index" />
+      <Stack.Screen name="user-type-selection" />
+      <Stack.Screen name="auth-options" />
 
       {/* Auth Modal Stack */}
       <Stack.Screen
         name="auth"
         options={{
           presentation: "fullScreenModal",
-          gestureEnabled: true,
-          headerShown: false,
         }}
       />
     </Stack>

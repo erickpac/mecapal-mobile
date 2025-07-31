@@ -1,9 +1,10 @@
 import { User, UserRole } from "@/features/auth/types/user";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { router } from "expo-router";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import TokenManager from "@/features/auth/services/token-manager";
+import { replaceRoute } from "@/features/shared/routes";
+import { USER_ROUTES } from "@/features/user/routes";
 
 interface AppState {
   user: User | null;
@@ -12,12 +13,12 @@ interface AppState {
   isAuthenticated: boolean;
   isGuestMode: boolean;
   hasCompletedOnboarding: boolean;
-  selectedUserType: UserRole | null;
+  selectedUserType: UserRole | undefined;
   setUser: (user: User | null) => void;
   setAccessToken: (accessToken: string | null) => void;
   setRefreshToken: (refreshToken: string | null) => void;
   setHasCompletedOnboarding: (completed: boolean) => void;
-  setSelectedUserType: (userType: UserRole | null) => void;
+  setSelectedUserType: (userType: UserRole | undefined) => void;
   setGuestMode: (isGuest: boolean) => void;
   logout: () => void;
   enterGuestMode: () => void;
@@ -32,7 +33,7 @@ export const useStore = create<AppState>()(
       isAuthenticated: false,
       isGuestMode: false,
       hasCompletedOnboarding: false,
-      selectedUserType: null,
+      selectedUserType: undefined,
       setUser: (user) =>
         set({ user, isAuthenticated: !!user, isGuestMode: false }),
       setAccessToken: (accessToken: string | null) => {
@@ -44,8 +45,10 @@ export const useStore = create<AppState>()(
         set({ accessToken });
       },
       setRefreshToken: (refreshToken: string | null) => set({ refreshToken }),
-      setHasCompletedOnboarding: (completed) =>
-        set({ hasCompletedOnboarding: completed }),
+      setHasCompletedOnboarding: (completed) => {
+        set({ hasCompletedOnboarding: completed });
+        replaceRoute(USER_ROUTES.HOME);
+      },
       setSelectedUserType: (userType) => set({ selectedUserType: userType }),
       setGuestMode: (isGuest) => set({ isGuestMode: isGuest }),
       logout: () => {
@@ -57,7 +60,7 @@ export const useStore = create<AppState>()(
           isAuthenticated: false,
           isGuestMode: false,
         });
-        router.replace("/home");
+        replaceRoute(USER_ROUTES.HOME);
       },
       enterGuestMode: () => {
         set({
@@ -67,12 +70,12 @@ export const useStore = create<AppState>()(
           accessToken: null,
           refreshToken: null,
         });
-        router.replace("/home");
+        replaceRoute(USER_ROUTES.HOME);
       },
     }),
     {
       name: "app-storage",
       storage: createJSONStorage(() => AsyncStorage),
-    }
-  )
+    },
+  ),
 );

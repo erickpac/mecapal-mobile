@@ -409,12 +409,11 @@
   "auth": {
     "login": {
       "title": "Login",
-      "email": "Email",
-      "password": "Password",
+      "email": "Email*",
+      "password": "Password*",
       "login": "Login",
-      "noAccount": "No account? Register",
-      "forgotPassword": "Forgot password?",
-      "continueAsGuest": "Continue as guest"
+      "noAccount": "No account? Register here",
+      "forgotPassword": "Forgot password?"
     },
     "register": {
       "title": "Register",
@@ -457,36 +456,33 @@
   },
   "onboarding": {
     "welcome": {
-      "title": "Welcome to Mecapal",
-      "subtitle": "Connect with reliable transporters",
-      "description": "Find the transportation you need quickly and safely",
-      "getStarted": "Get Started"
-    },
-    "features": {
-      "title": "Main features",
-      "search": {
-        "title": "Quick search",
-        "description": "Find available transporters in your area"
-      },
-      "secure": {
-        "title": "Secure payments",
-        "description": "Secure and reliable transactions"
-      },
-      "tracking": {
-        "title": "Real-time tracking",
-        "description": "Monitor your shipment in real time"
-      }
+      "title": "Welcome to Mekapal!",
+      "subtitle": "Your trusted platform to connect with transporters. Safe, fast, and efficient.",
+      "fast": "Fast and reliable",
+      "securePayment": "Secure payment system",
+      "realtimeTracking": "Real-time tracking",
+      "start": "Get started"
     },
     "userType": {
       "title": "What type of user are you?",
-      "client": {
-        "title": "Client",
-        "description": "I need to transport things"
+      "subtitle": "Choose your role for a personalized experience.",
+      "optionUser": {
+        "title": "I need transportation service",
+        "description": "To send my products and goods"
       },
-      "transporter": {
-        "title": "Transporter",
-        "description": "I offer transportation services"
+      "optionTransporter": {
+        "title": "I can provide transportation services",
+        "description": "To transport products and goods"
       }
+    },
+    "authOptions": {
+      "titleUser": "Move whatever you want, hassle-free",
+      "titleTransporter": "Make your vehicle work for you",
+      "descUser": "Explore available transporters by route, truck type, and rate. Coordinate everything via WhatsApp and easily track your shipments.",
+      "descTransporter": "Register your routes, show your rates, and receive direct clients interested in your services.",
+      "createAccount": "Create your account",
+      "haveAccount": "I already have an account",
+      "skip": "Skip"
     }
   },
   "home": {

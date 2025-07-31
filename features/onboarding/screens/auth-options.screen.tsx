@@ -3,16 +3,19 @@ import { UserRole } from "@/features/auth/types/user";
 import { Text, View } from "react-native";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
-import { navigateTo, ROUTES, replaceRoute } from "@/utils/navigation";
+import {
+  navigateToOnboardingRegister,
+  navigateToOnboardingLogin,
+} from "../routes";
 import { CarAccesories, FreeShipping } from "@/components/svg";
 import { Button } from "@/components/button";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function AuthOptionsScreen() {
-  const { selectedUserType } = useStore();
-
+  const { selectedUserType, setHasCompletedOnboarding } = useStore();
+  const { t } = useTranslation();
   const isUser = selectedUserType === UserRole.USER;
-
   const content = useMemo(() => {
     return {
       illustration: isUser ? (
@@ -21,14 +24,14 @@ export default function AuthOptionsScreen() {
         <FreeShipping width="100%" height="100%" />
       ),
       title: isUser
-        ? "Mueve lo que quieras, sin complicarte"
-        : "Haz que tu medio de transporte trabaje para ti",
+        ? t("onboarding.authOptions.titleUser")
+        : t("onboarding.authOptions.titleTransporter"),
       description: isUser
-        ? "Explora transportistas disponibles según ruta, tipo de camión y tarifa. Coordina todo por WhatsApp y haz seguimiento fácilmente."
-        : "Registra tus rutas, muestra tus tarifas y recibe clientes directos interesados en tus servicios.",
+        ? t("onboarding.authOptions.descUser")
+        : t("onboarding.authOptions.descTransporter"),
       aspectRatio: isUser ? "aspect-[342/227]" : "aspect-[287/206]",
     };
-  }, [isUser]);
+  }, [isUser, t]);
 
   return (
     <>
@@ -58,18 +61,21 @@ export default function AuthOptionsScreen() {
 
         <View className="gap-4">
           <Button
-            title="Crea tu cuenta"
-            onPress={() => navigateTo(ROUTES.ONBOARDING_REGISTER)}
+            title={t("onboarding.authOptions.createAccount")}
+            onPress={() => navigateToOnboardingRegister()}
+            userType={selectedUserType}
           />
           <Button
-            title="Ya tengo cuenta"
+            title={t("onboarding.authOptions.haveAccount")}
             variant="outlined"
-            onPress={() => navigateTo(ROUTES.ONBOARDING_LOGIN)}
+            onPress={() => navigateToOnboardingLogin()}
+            userType={selectedUserType}
           />
           <Button
-            title="Saltar"
+            title={t("onboarding.authOptions.skip")}
             variant="text"
-            onPress={() => replaceRoute(ROUTES.HOME)}
+            onPress={() => setHasCompletedOnboarding(true)}
+            userType={selectedUserType}
           />
         </View>
       </ContentContainer>

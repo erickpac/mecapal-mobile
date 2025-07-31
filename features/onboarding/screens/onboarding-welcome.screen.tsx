@@ -1,13 +1,15 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { Button } from "@/components/button";
-import { navigateToUserTypeSelection } from "@/utils/navigation";
+import { navigateToUserTypeSelection } from "../routes";
 import { CarRental, CheckCircle } from "@/components/svg";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
 import { COLORS } from "@/consts/colors";
+import { useTranslation } from "react-i18next";
 
 export default function OnboardingWelcomeScreen() {
+  const { t } = useTranslation();
   const handleContinue = () => {
     navigateToUserTypeSelection();
   };
@@ -32,29 +34,28 @@ export default function OnboardingWelcomeScreen() {
 
           <View className="gap-4">
             <Text className="text-center font-plus-jakarta-bold text-2xl text-text-active">
-              Bienvenido a Mekapal
+              {t("onboarding.welcome.title")}
             </Text>
             <Text className="font-plus-jakarta-regular text-center text-base text-text-active">
-              Tu plataforma de confianza para conectar con transportistas.
-              Seguro, rápido y eficiente.
+              {t("onboarding.welcome.subtitle")}
             </Text>
             <View className="gap-2">
               <View className="flex-row items-center">
                 <CheckCircle width={24} height={24} />
                 <Text className="font-plus-jakarta-regular ml-2 text-base text-text-active">
-                  Rápido y de confianza
+                  {t("onboarding.welcome.fast")}
                 </Text>
               </View>
               <View className="flex-row items-center">
                 <CheckCircle width={24} height={24} />
                 <Text className="font-plus-jakarta-regular ml-2 text-base text-text-active">
-                  Sistema de pago seguro
+                  {t("onboarding.welcome.securePayment")}
                 </Text>
               </View>
               <View className="flex-row items-center">
                 <CheckCircle width={24} height={24} />
                 <Text className="font-plus-jakarta-regular ml-2 text-base text-text-active">
-                  Seguimiento en tiempo real
+                  {t("onboarding.welcome.realtimeTracking")}
                 </Text>
               </View>
             </View>
@@ -62,7 +63,7 @@ export default function OnboardingWelcomeScreen() {
         </View>
 
         <Button
-          title="Empezar"
+          title={t("onboarding.welcome.start")}
           onPress={handleContinue}
           fullWidth
           buttonColor={COLORS.primary}
