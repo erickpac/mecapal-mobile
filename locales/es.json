@@ -438,7 +438,9 @@
       "email": "Correo electrónico",
       "submit": "Enviar nueva contraseña",
       "backToLogin": "Cancelar",
-      "continueAsGuest": "Continuar como invitado"
+      "continueAsGuest": "Continuar como invitado",
+      "successTitle": "¡Revisa tu correo!",
+      "successDescription": "Te hemos enviado una nueva contraseña. Confirma el correo y vuelve a iniciar sesión para seguir usando Mekapal."
     },
     "changePassword": {
       "title": "Cambiar contraseña",

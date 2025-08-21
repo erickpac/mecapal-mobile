@@ -437,7 +437,9 @@
       "email": "Email",
       "submit": "Send Reset Link",
       "backToLogin": "Back to Login",
-      "continueAsGuest": "Continue as guest"
+      "continueAsGuest": "Continue as guest",
+      "successTitle": "Check your email!",
+      "successDescription": "We've sent you a new password. Confirm the email and log in again to continue using Mekapal."
     },
     "changePassword": {
       "title": "Change Password",

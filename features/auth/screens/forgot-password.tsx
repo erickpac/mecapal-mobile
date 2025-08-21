@@ -10,15 +10,43 @@ import { useStore } from "@/store/useStore";
 import { IconButton } from "@/components/icon-button";
 import { Button } from "@/components/button";
 import { useState } from "react";
+import { navigateToForgotPasswordSuccessMessage } from "../routes";
 
 export default function ForgotPasswordScreen() {
   const { t } = useTranslation();
   const { selectedUserType } = useStore();
   const pathname = usePathname();
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   // Check if we're in modal mode (from onboarding)
   const isModalMode = pathname.includes("/onboarding/");
+
+  // Email validation function
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleValidateEmail = (email: string) => {
+    // Reset previous errors
+    setEmailError("");
+
+    // Validate email
+    if (!email.trim()) {
+      setEmailError(t("auth.errors.emailRequired") || "Email is required");
+      return false;
+    } else if (!validateEmail(email)) {
+      setEmailError(t("auth.errors.invalidEmail") || "Invalid email format");
+      return false;
+    }
+  };
+
+  // Handle form submission
+  const handleSubmit = () => {
+    console.log("Submitting reset password for:", email);
+    return true;
+  };
 
   return (
     <>
@@ -56,15 +84,20 @@ export default function ForgotPasswordScreen() {
           <View className="gap-2">
             <Input
               label={t("auth.register.email")}
-              type="text"
+              type="email"
               value={email}
-              onChangeText={setEmail}
-              error={""}
+              onChangeText={(text) => {
+                setEmail(text);
+                handleValidateEmail(text);
+              }}
+              error={emailError}
               returnKeyType="next"
+              keyboardType="email-address"
+              autoCapitalize="none"
             />
             <Button
               title={t("auth.forgotPassword.submit")}
-              onPress={() => {}}
+              onPress={navigateToForgotPasswordSuccessMessage}
               // userType={selectedUserType}
             />
 
