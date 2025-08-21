@@ -1,46 +1,85 @@
-import { router } from "expo-router";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { router, usePathname } from "expo-router";
+import { KeyboardAvoidingView, Platform, Text, View } from "react-native";
+
 import { useTranslation } from "react-i18next";
+import { NavigationHeader } from "@/components/navigation-header";
+import { Input } from "@/components/input";
+import { ContentContainer } from "@/components/content-container";
+import { ForgetPasswordImageClient } from "@/components/svg";
+import { useStore } from "@/store/useStore";
+import { IconButton } from "@/components/icon-button";
+import { Button } from "@/components/button";
+import { useState } from "react";
 
 export default function ForgotPasswordScreen() {
   const { t } = useTranslation();
+  const { selectedUserType } = useStore();
+  const pathname = usePathname();
+  const [email, setEmail] = useState("");
+
+  // Check if we're in modal mode (from onboarding)
+  const isModalMode = pathname.includes("/onboarding/");
 
   return (
-    <KeyboardAvoidingView
-      className="flex-1 justify-center items-center bg-white px-4"
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-    >
-      <View className="w-full max-w-md bg-white rounded-2xl p-6 shadow">
-        <Text className="text-3xl font-bold mb-6 text-center">
-          {t("auth.forgotPassword.title")}
-        </Text>
+    <>
+      <NavigationHeader
+        showBackButton={!isModalMode}
+        rightComponent={
+          isModalMode ? (
+            <IconButton
+              icon="close"
+              color="text-white"
+              onPress={() => router.dismiss()}
+            />
+          ) : undefined
+        }
+      />
+      <ContentContainer className="flex-1 px-4">
+        <KeyboardAvoidingView
+          className="flex-1 gap-6 pt-8"
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
+        >
+          <View className="mb-6 mt-2 items-center">
+            <View className="aspect-[287/206] w-64 max-w-full">
+              <ForgetPasswordImageClient />
+            </View>
+          </View>
+          <View className="mt-6">
+            <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
+              {t("auth.forgotPassword.title2")}
+            </Text>
+            <Text className="mx-6 text-center font-plus-jakarta text-base text-text-active">
+              No te preocupes, ingresa tu correo electrónico a continuación y te
+              enviaremos una nueva contraseña para iniciar sesión.
+            </Text>
+          </View>
+          <View className="gap-2">
+            <Input
+              label={t("auth.register.email")}
+              type="text"
+              value={email}
+              onChangeText={setEmail}
+              error={""}
+              returnKeyType="next"
+            />
+            <Button
+              title={t("auth.forgotPassword.submit")}
+              onPress={() => {}}
+              // userType={selectedUserType}
+            />
 
-        <Text className="text-gray-600 text-center mb-6">
-          {t("auth.forgotPassword.description", {
-            defaultValue:
-              "Esta funcionalidad estará disponible próximamente. Por favor, contacta al soporte técnico si necesitas recuperar tu contraseña.",
-          })}
-        </Text>
-
-        <TouchableOpacity onPress={() => router.back()} className="mb-4">
-          <Text className="text-blue-600 text-center font-medium">
-            {t("auth.forgotPassword.backToLogin")}
-          </Text>
-        </TouchableOpacity>
-
-        {/* Divider */}
-        <View className="flex-row items-center my-6">
-          <View className="flex-1 h-px bg-gray-300" />
-          <Text className="mx-4 text-gray-500">o</Text>
-          <View className="flex-1 h-px bg-gray-300" />
-        </View>
-      </View>
-    </KeyboardAvoidingView>
+            <Button
+              title={`${t("auth.forgotPassword.backToLogin")}`}
+              variant="text"
+              className="mt-2"
+              onPress={() => {
+                router.dismiss();
+              }}
+              userType={selectedUserType}
+            />
+          </View>
+        </KeyboardAvoidingView>
+      </ContentContainer>
+    </>
   );
 }

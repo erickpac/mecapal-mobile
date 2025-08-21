@@ -13,10 +13,17 @@ import { RegisterUser, RegisterTransporter } from "@/components/svg";
 import { NavigationHeader } from "@/components/navigation-header";
 import { IconButton } from "@/components/icon-button";
 import { Button } from "@/components/button";
+import { Input } from "@/components/input";
+import { SelectInput } from "@/components/SelectInput";
+import { useRegisterValidation } from "../hooks/useRegisterValidation";
 
 export default function RegisterScreen() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [userType, setUserType] = useState(
+    UserRole.USER ? "client" : "transporter",
+  );
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
@@ -24,6 +31,14 @@ export default function RegisterScreen() {
   const { selectedUserType, setHasCompletedOnboarding } = useStore();
   const { t } = useTranslation();
   const pathname = usePathname();
+  const { errors, validateForm } = useRegisterValidation({
+    name,
+    email,
+    phone,
+    userType,
+    password,
+    confirmPassword,
+  });
 
   // Check if we're in modal mode (from onboarding)
   const isModalMode = pathname.includes("/onboarding/");
@@ -43,6 +58,12 @@ export default function RegisterScreen() {
   }, [isSuccess, showSuccess, setHasCompletedOnboarding]);
 
   const handleRegister = () => {
+    // Validate form
+    console.log("validateForm()", validateForm());
+    if (!validateForm()) {
+      return;
+    }
+
     // Validate passwords match
     if (password !== confirmPassword) {
       // Handle password mismatch error
@@ -88,9 +109,61 @@ export default function RegisterScreen() {
           <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
             Registro
           </Text>
-
+          <View className="mb-2">
+            <Input
+              label={t("auth.register.name")}
+              type="text"
+              value={name}
+              onChangeText={setName}
+              error={errors.name}
+              returnKeyType="next"
+            />
+            <Input
+              label={t("auth.register.phone")}
+              type="text"
+              value={phone}
+              onChangeText={setPhone}
+              error={errors.phone}
+              returnKeyType="next"
+            />
+            <Input
+              label={t("auth.register.email")}
+              type="text"
+              value={email}
+              onChangeText={setEmail}
+              error={errors.email}
+              returnKeyType="next"
+            />
+            <SelectInput
+              label="Tipo de Usuario"
+              value={userType}
+              onValueChange={setUserType}
+              options={[
+                { label: "Cliente", value: "client" },
+                { label: "Transportista", value: "transporter" },
+              ]}
+              error={""}
+              placeholder="Select a country"
+            />
+            <Input
+              label={t("auth.register.password")}
+              type="password"
+              value={password}
+              onChangeText={setPassword}
+              error={errors.password}
+              returnKeyType="next"
+            />
+            <Input
+              label={t("auth.register.confirmPassword")}
+              type="password"
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              error={errors.confirmPassword}
+              returnKeyType="done"
+            />
+          </View>
           <Button
-            title="Regístrate"
+            title={t("auth.register.title")}
             onPress={handleRegister}
             userType={selectedUserType}
           />

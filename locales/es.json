@@ -417,10 +417,11 @@
     },
     "register": {
       "title": "Registrarse",
-      "name": "Nombre completo",
-      "email": "Correo electrónico",
-      "password": "Contraseña",
-      "confirmPassword": "Confirmar Contraseña",
+      "name": "Nombre completo*",
+      "email": "Correo electrónico*",
+      "phone": "Número de teléfono*",
+      "password": "Contraseña*",
+      "confirmPassword": "Confirmar Contraseña*",
       "selectRole": "Tipo de cuenta",
       "userRole": "Usuario",
       "transporterRole": "Transportista",
@@ -432,10 +433,11 @@
     },
     "forgotPassword": {
       "title": "Olvidé mi contraseña",
-      "description": "Esta funcionalidad estará disponible próximamente. Por favor, contacta al soporte técnico si necesitas recuperar tu contraseña.",
+      "title2": "¿Olvidaste tu contraseña?",
+      "description": "No te preocupes, ingresa tu correo electrónico a continuación y  te enviaremos una nueva contraseña para iniciar sesión..",
       "email": "Correo electrónico",
-      "submit": "Enviar enlace de restablecimiento",
-      "backToLogin": "Volver al inicio de sesión",
+      "submit": "Enviar nueva contraseña",
+      "backToLogin": "Cancelar",
       "continueAsGuest": "Continuar como invitado"
     },
     "changePassword": {
@@ -553,6 +555,19 @@
     "notFound": "El recurso solicitado no fue encontrado",
     "validationError": "Los datos proporcionados no son válidos",
     "serverError": "Error interno del servidor. Por favor, inténtelo más tarde",
-    "networkError": "Error de conexión. Verifique su conexión a internet"
+    "networkError": "Error de conexión. Verifique su conexión a internet",
+    "auth": {
+      "register": {
+        "nameRequired": "Nombre es requerido",
+        "emailRequired": "Email es requerido",
+        "emailInvalid": "Ingresa un email válido",
+        "phoneRequired": "Número de telefono es requerido",
+        "phoneInvalid": "Ingresa los 8 dígitos de tu número de celular.",
+        "passwordRequired": "Contraseña es requerida",
+        "passwordTooShort": "Contraseña debe tener al menos 6 caracteres",
+        "confirmPasswordRequired": "Por favor confirma tu contraseña",
+        "passwordsMismatch": "Las contraseñas no coinciden"
+      }
+    }
   }
 }

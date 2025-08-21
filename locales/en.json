@@ -432,7 +432,8 @@
     },
     "forgotPassword": {
       "title": "Forgot Password",
-      "description": "This functionality will be available soon. Please contact technical support if you need to recover your password.",
+      "title2": "Forgot your password?",
+      "description": "Don’t worry, enter your email below and we’ll send you a new password to log in.",
       "email": "Email",
       "submit": "Send Reset Link",
       "backToLogin": "Back to Login",
@@ -553,6 +554,19 @@
     "notFound": "The requested resource was not found",
     "validationError": "The provided data is not valid",
     "serverError": "Internal server error. Please try again later",
-    "networkError": "Connection error. Please check your internet connection"
+    "networkError": "Connection error. Please check your internet connection",
+    "auth": {
+      "register": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email",
+        "phoneRequired": "Phone number is required",
+        "phoneInvalid": "Please enter a valid phone number",
+        "passwordRequired": "Password is required",
+        "passwordTooShort": "Password must be at least 6 characters",
+        "confirmPasswordRequired": "Please confirm your password",
+        "passwordsMismatch": "Passwords do not match"
+      }
+    }
   }
 }
