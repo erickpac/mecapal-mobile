@@ -3,9 +3,17 @@ import { MaterialSymbol } from "@/components/material-symbol";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/features/shared/routes";
 import { ScreenHeader } from "@/components/screen-header";
+import { useStore } from "@/store/useStore";
+import { UserRole } from "@/features/auth/types/user";
 
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
+  const { setSelectedUserType } = useStore();
+
+  const handleClickLogin = () => {
+    setSelectedUserType(UserRole.USER);
+    navigateTo("/auth");
+  };
 
   return (
     <ScrollView className="flex-1 bg-gray-50">
@@ -36,7 +44,7 @@ export default function GuestHomeScreen() {
           </View>
           <View className="flex-row space-x-2">
             <TouchableOpacity
-              onPress={() => navigateTo("/auth")}
+              onPress={handleClickLogin}
               className="rounded-lg bg-blue-500 px-4 py-2"
             >
               <Text className="font-semibold text-white">

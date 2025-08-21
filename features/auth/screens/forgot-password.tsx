@@ -34,7 +34,9 @@ export default function ForgotPasswordScreen() {
 
     // Validate email
     if (!email.trim()) {
-      setEmailError(t("auth.errors.emailRequired") || "Email is required");
+      setEmailError(
+        t("errors.auth.register.emailRequired") || "Email is required",
+      );
       return false;
     } else if (!validateEmail(email)) {
       setEmailError(t("auth.errors.invalidEmail") || "Invalid email format");
@@ -44,6 +46,7 @@ export default function ForgotPasswordScreen() {
 
   // Handle form submission
   const handleSubmit = () => {
+    // @TODO Logic for the reset password should be here
     console.log("Submitting reset password for:", email);
     return true;
   };
@@ -81,7 +84,7 @@ export default function ForgotPasswordScreen() {
               enviaremos una nueva contraseña para iniciar sesión.
             </Text>
           </View>
-          <View className="gap-2">
+          <View className="gap-4">
             <Input
               label={t("auth.register.email")}
               type="email"
@@ -98,7 +101,8 @@ export default function ForgotPasswordScreen() {
             <Button
               title={t("auth.forgotPassword.submit")}
               onPress={navigateToForgotPasswordSuccessMessage}
-              // userType={selectedUserType}
+              disabled={emailError.length > 0 || email.length <= 0}
+              userType={selectedUserType}
             />
 
             <Button

@@ -21,14 +21,13 @@ export default function RegisterScreen() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [userType, setUserType] = useState(
-    UserRole.USER ? "client" : "transporter",
-  );
+  const [userType, setUserType] = useState(UserRole.USER);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
   const { register, isLoading, error, isSuccess } = useAuth();
-  const { selectedUserType, setHasCompletedOnboarding } = useStore();
+  const { selectedUserType, setHasCompletedOnboarding, setSelectedUserType } =
+    useStore();
   const { t } = useTranslation();
   const pathname = usePathname();
   const { errors, validateForm } = useRegisterValidation({
@@ -57,9 +56,13 @@ export default function RegisterScreen() {
     }
   }, [isSuccess, showSuccess, setHasCompletedOnboarding]);
 
+  const handleSelectUserType = (value: string) => {
+    setSelectedUserType(value as UserRole);
+    setUserType(value as UserRole);
+  };
+
   const handleRegister = () => {
     // Validate form
-    console.log("validateForm()", validateForm());
     if (!validateForm()) {
       return;
     }
@@ -137,13 +140,13 @@ export default function RegisterScreen() {
             <SelectInput
               label="Tipo de Usuario"
               value={userType}
-              onValueChange={setUserType}
+              onValueChange={handleSelectUserType}
               options={[
-                { label: "Cliente", value: "client" },
-                { label: "Transportista", value: "transporter" },
+                { label: "Cliente", value: UserRole.USER },
+                { label: "Transportista", value: UserRole.TRANSPORTER },
               ]}
               error={""}
-              placeholder="Select a country"
+              placeholder="Selecciona un tipo de usuario"
             />
             <Input
               label={t("auth.register.password")}
