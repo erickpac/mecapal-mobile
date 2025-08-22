@@ -10,7 +10,7 @@ import { useStore } from "@/store/useStore";
 import { IconButton } from "@/components/icon-button";
 import { Button } from "@/components/button";
 import { useState } from "react";
-import { navigateToForgotPasswordSuccessMessage } from "../routes";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 
 export default function ForgotPasswordScreen() {
   const { t } = useTranslation();
@@ -18,6 +18,7 @@ export default function ForgotPasswordScreen() {
   const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  const { recoverPassword, isLoading, error, isSuccess } = useAuth();
 
   // Check if we're in modal mode (from onboarding)
   const isModalMode = pathname.includes("/onboarding/");
@@ -46,8 +47,7 @@ export default function ForgotPasswordScreen() {
 
   // Handle form submission
   const handleSubmit = () => {
-    // @TODO Logic for the reset password should be here
-    console.log("Submitting reset password for:", email);
+    recoverPassword(email);
     return true;
   };
 
@@ -100,8 +100,8 @@ export default function ForgotPasswordScreen() {
             />
             <Button
               title={t("auth.forgotPassword.submit")}
-              onPress={navigateToForgotPasswordSuccessMessage}
-              disabled={emailError.length > 0 || email.length <= 0}
+              onPress={handleSubmit}
+              disabled={emailError.length > 0 || email.length <= 0 || isLoading}
               userType={selectedUserType}
             />
 

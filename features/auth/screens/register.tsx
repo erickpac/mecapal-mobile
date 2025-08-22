@@ -169,6 +169,7 @@ export default function RegisterScreen() {
             title={t("auth.register.title")}
             onPress={handleRegister}
             userType={selectedUserType}
+            loading={isLoading}
           />
 
           <Button

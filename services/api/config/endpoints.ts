@@ -3,4 +3,5 @@ export const AUTH_ENDPOINTS = {
   REGISTER: "auth/register",
   REFRESH_TOKEN: "auth/refresh",
   CHANGE_PASSWORD: "auth/change-password",
+  RECOVER_PASSWORD: "auth/recovery-password",
 };
