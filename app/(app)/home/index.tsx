@@ -9,7 +9,7 @@ export default function HomeIndex() {
   const { user, isAuthenticated } = useStore();
 
   return (
-    <SafeAreaView className="flex-1 bg-white" edges={["top", "left", "right"]}>
+    <>
       {/* If not authenticated, show guest home */}
       {!isAuthenticated ? (
         <GuestHomeScreen />
@@ -19,6 +19,6 @@ export default function HomeIndex() {
       ) : (
         <UserHomeScreen />
       )}
-    </SafeAreaView>
+    </>
   );
 }

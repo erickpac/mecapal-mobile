@@ -11,6 +11,7 @@ export interface RegisterCredentials {
   email: string;
   password: string;
   role: UserRole;
+  phone?: string | number | null;
 }
 
 export interface LoginCredentials {
