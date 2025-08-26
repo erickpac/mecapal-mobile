@@ -2,7 +2,13 @@ import { useAuth } from "@/features/auth/hooks/useAuth";
 import { useStore } from "@/store/useStore";
 import { usePathname, router } from "expo-router";
 import { useState, useEffect } from "react";
-import { KeyboardAvoidingView, Platform, Text, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { useTranslation } from "react-i18next";
 import { UserRole } from "@/features/auth/types/user";
 import { replaceRoute } from "@/features/shared/routes";
@@ -100,91 +106,93 @@ export default function RegisterScreen() {
           className="flex-1 pt-8"
           behavior={Platform.OS === "ios" ? "padding" : undefined}
         >
-          <View className="mb-6 mt-2 items-center">
-            <View className="aspect-[287/206] w-64 max-w-full">
-              {selectedUserType === UserRole.USER ? (
-                <RegisterUser width="100%" height="100%" />
-              ) : (
-                <RegisterTransporter width="100%" height="100%" />
-              )}
+          <ScrollView>
+            <View className="mb-6 mt-2 items-center">
+              <View className="aspect-[287/206] w-64 max-w-full">
+                {selectedUserType === UserRole.USER ? (
+                  <RegisterUser width="100%" height="100%" />
+                ) : (
+                  <RegisterTransporter width="100%" height="100%" />
+                )}
+              </View>
             </View>
-          </View>
-          <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
-            Registro
-          </Text>
-          <View className="mb-2">
-            <Input
-              label={t("auth.register.name")}
-              type="text"
-              value={name}
-              onChangeText={setName}
-              error={errors.name}
-              returnKeyType="next"
+            <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
+              Registro 2
+            </Text>
+            <View className="mb-2">
+              <Input
+                label={t("auth.register.name")}
+                type="text"
+                value={name}
+                onChangeText={setName}
+                error={errors.name}
+                returnKeyType="next"
+              />
+              <Input
+                label={t("auth.register.phone")}
+                type="text"
+                value={phone}
+                onChangeText={setPhone}
+                error={errors.phone}
+                returnKeyType="next"
+              />
+              <Input
+                label={t("auth.register.email")}
+                type="text"
+                value={email}
+                onChangeText={setEmail}
+                error={errors.email}
+                returnKeyType="next"
+              />
+              <SelectInput
+                label="Tipo de Usuario"
+                value={userType}
+                onValueChange={handleSelectUserType}
+                options={[
+                  { label: "Cliente", value: UserRole.USER },
+                  { label: "Transportista", value: UserRole.TRANSPORTER },
+                ]}
+                error={""}
+                placeholder="Selecciona un tipo de usuario"
+              />
+              <Input
+                label={t("auth.register.password")}
+                type="password"
+                value={password}
+                onChangeText={setPassword}
+                error={errors.password}
+                returnKeyType="next"
+              />
+              <Input
+                label={t("auth.register.confirmPassword")}
+                type="password"
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                error={errors.confirmPassword}
+                returnKeyType="done"
+              />
+            </View>
+            <Button
+              title={t("auth.register.title")}
+              onPress={handleRegister}
+              userType={selectedUserType}
+              loading={isLoading}
             />
-            <Input
-              label={t("auth.register.phone")}
-              type="text"
-              value={phone}
-              onChangeText={setPhone}
-              error={errors.phone}
-              returnKeyType="next"
-            />
-            <Input
-              label={t("auth.register.email")}
-              type="text"
-              value={email}
-              onChangeText={setEmail}
-              error={errors.email}
-              returnKeyType="next"
-            />
-            <SelectInput
-              label="Tipo de Usuario"
-              value={userType}
-              onValueChange={handleSelectUserType}
-              options={[
-                { label: "Cliente", value: UserRole.USER },
-                { label: "Transportista", value: UserRole.TRANSPORTER },
-              ]}
-              error={""}
-              placeholder="Selecciona un tipo de usuario"
-            />
-            <Input
-              label={t("auth.register.password")}
-              type="password"
-              value={password}
-              onChangeText={setPassword}
-              error={errors.password}
-              returnKeyType="next"
-            />
-            <Input
-              label={t("auth.register.confirmPassword")}
-              type="password"
-              value={confirmPassword}
-              onChangeText={setConfirmPassword}
-              error={errors.confirmPassword}
-              returnKeyType="done"
-            />
-          </View>
-          <Button
-            title={t("auth.register.title")}
-            onPress={handleRegister}
-            userType={selectedUserType}
-            loading={isLoading}
-          />
 
-          <Button
-            title="Ya tienes cuenta? Inicia sesión aquí"
-            variant="text"
-            className="mt-2"
-            userType={selectedUserType}
-            onPress={() => {
-              if (isModalMode) {
-                router.dismiss();
-              } else {
-                replaceRoute(ONBOARDING_ROUTES.ONBOARDING_LOGIN);
-              }
-            }}
-          />
+            <Button
+              title="Ya tienes cuenta? Inicia sesión aquí"
+              variant="text"
+              className="mt-2"
+              userType={selectedUserType}
+              onPress={() => {
+                if (isModalMode) {
+                  router.dismiss();
+                } else {
+                  replaceRoute(ONBOARDING_ROUTES.ONBOARDING_LOGIN);
+                }
+              }}
+            />
+          </ScrollView>
         </KeyboardAvoidingView>
       </ContentContainer>
     </>

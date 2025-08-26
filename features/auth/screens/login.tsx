@@ -2,7 +2,13 @@ import { useAuth } from "@/features/auth/hooks/useAuth";
 import { useStore } from "@/store/useStore";
 import { router, usePathname } from "expo-router";
 import { useEffect, useState } from "react";
-import { KeyboardAvoidingView, Platform, Text, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { useTranslation } from "react-i18next";
 import { useLocalizedError } from "@/hooks/useLocalizedError";
 import { navigateToForgotPassword } from "../routes";
@@ -64,69 +70,71 @@ export default function LoginScreen() {
           className="flex-1 pt-8"
           behavior={Platform.OS === "ios" ? "padding" : undefined}
         >
-          <View className="mb-6 mt-2 items-center">
-            <View className="aspect-[287/206] w-64 max-w-full">
-              {selectedUserType === UserRole.USER ? (
-                <LoginUser width="100%" height="100%" />
-              ) : (
-                <LoginTransporter width="100%" height="100%" />
-              )}
+          <ScrollView>
+            <View className="mb-6 mt-2 items-center">
+              <View className="aspect-[287/206] w-64 max-w-full">
+                {selectedUserType === UserRole.USER ? (
+                  <LoginUser width="100%" height="100%" />
+                ) : (
+                  <LoginTransporter width="100%" height="100%" />
+                )}
+              </View>
             </View>
-          </View>
-          <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
-            {t("auth.login.title")}
-          </Text>
-          <View className="mb-2">
-            <Input
-              label={t("auth.login.email")}
-              type="email"
-              value={email}
-              onChangeText={setEmail}
-              error={emailError}
-              returnKeyType="next"
-            />
-            <View>
+            <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
+              {t("auth.login.title")}
+            </Text>
+            <View className="mb-2">
               <Input
-                label={t("auth.login.password")}
-                type="password"
-                value={password}
-                onChangeText={setPassword}
-                error={
-                  passwordError || (error ? handleError(error) : undefined)
-                }
-                returnKeyType="done"
-                onSubmitEditing={handleLogin}
+                label={t("auth.login.email")}
+                type="email"
+                value={email}
+                onChangeText={setEmail}
+                error={emailError}
+                returnKeyType="next"
               />
-              <ActionLink
-                className="mb-4 mt-1 text-right text-[13px]"
-                onPress={navigateToForgotPassword}
-                title={t("auth.login.forgotPassword")}
-                userType={selectedUserType}
-              />
+              <View>
+                <Input
+                  label={t("auth.login.password")}
+                  type="password"
+                  value={password}
+                  onChangeText={setPassword}
+                  error={
+                    passwordError || (error ? handleError(error) : undefined)
+                  }
+                  returnKeyType="done"
+                  onSubmitEditing={handleLogin}
+                />
+                <ActionLink
+                  className="mb-4 mt-1 text-right text-[13px]"
+                  onPress={navigateToForgotPassword}
+                  title={t("auth.login.forgotPassword")}
+                  userType={selectedUserType}
+                />
+              </View>
             </View>
-          </View>
 
-          <Button
-            title={t("auth.login.login")}
-            onPress={handleLogin}
-            disabled={!isValid || isLoading}
-            loading={isLoading}
-            userType={selectedUserType}
-          />
+            <Button
+              title={t("auth.login.login")}
+              onPress={handleLogin}
+              disabled={!isValid || isLoading}
+              loading={isLoading}
+              userType={selectedUserType}
+            />
 
-          <Button
-            title={`${t("auth.login.noAccount")}`}
-            variant="text"
-            className="mt-2"
-            onPress={() => {
-              if (isModalMode) {
-                router.dismiss();
-              } else {
-                replaceRoute(ONBOARDING_ROUTES.ONBOARDING_REGISTER);
-              }
-            }}
-            userType={selectedUserType}
-          />
+            <Button
+              title={`${t("auth.login.noAccount")}`}
+              variant="text"
+              className="mt-2"
+              onPress={() => {
+                if (isModalMode) {
+                  router.dismiss();
+                } else {
+                  replaceRoute(ONBOARDING_ROUTES.ONBOARDING_REGISTER);
+                }
+              }}
+              userType={selectedUserType}
+            />
+          </ScrollView>
         </KeyboardAvoidingView>
       </ContentContainer>
     </>

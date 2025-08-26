@@ -27,7 +27,7 @@ const inputStyle = {
 const inputOutlineStyle = {
   borderWidth: 1,
 };
-const defaultOutline = "#dedede";
+const defaultOutline = "#000";
 const errorOutline = "#f25b36";
 const successOutline = "#06b21a";
 

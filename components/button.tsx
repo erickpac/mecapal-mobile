@@ -42,7 +42,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
 }) => {
   const finalButtonColor = buttonColor ?? getButtonColor(userType);
   const isContained = variant === "contained";
-  const textColor = isContained ? "#fff" : finalButtonColor;
+  const textColor = isContained ? "#0D88FF" : finalButtonColor;
 
   return (
     <PaperButton

@@ -1,9 +1,7 @@
-import { Text, TouchableOpacity, View, ScrollView } from "react-native";
+import { Text, View, ScrollView, Image } from "react-native";
 import { Header } from "@/components/header";
-import { MaterialSymbol } from "@/components/material-symbol";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/features/shared/routes";
-import { ScreenHeader } from "@/components/screen-header";
 import { useStore } from "@/store/useStore";
 import { UserRole } from "@/features/auth/types/user";
 import WelcomeHero from "@/components/welcome-hero";
@@ -45,19 +43,26 @@ export default function GuestHomeScreen() {
             onPress={() => navigateTo("/search")}
           />
         </View>
-        <View className="mx-8 mt-6 items-center rounded-lg bg-slate-700 px-6 py-10">
-          <Text className="text-xl font-bold text-white">
-            ¿Eres transportista?
-          </Text>
-          <Text className="text-[16px] font-normal text-white">
-            Haz que tu vehiculo trabaje para ti
-          </Text>
-          <View className="mt-5">
-            <Button
-              title={"Crea tu cuenta"}
-              onPress={() => handleClickLogin(UserRole.TRANSPORTER)}
-              userType={UserRole.TRANSPORTER}
-            />
+        <View className="mx-8 mt-6 rounded-lg">
+          <Image
+            source={require("../../../assets/images/CTA-background.png")}
+            className="absolute inset-0 h-full w-full rounded-lg"
+            resizeMode="cover"
+          />
+          <View className="mx-8 mt-3 items-center px-6 pb-12 pt-8">
+            <Text className="text-xl font-bold text-white">
+              ¿Eres transportista?
+            </Text>
+            <Text className="text-[16px] font-normal text-white">
+              Haz que tu vehiculo trabaje para ti
+            </Text>
+            <View className="mt-5">
+              <Button
+                title={"Crea tu cuenta"}
+                onPress={() => handleClickLogin(UserRole.TRANSPORTER)}
+                userType={UserRole.TRANSPORTER}
+              />
+            </View>
           </View>
         </View>
         <View className="mx-8 mt-6 items-center">
