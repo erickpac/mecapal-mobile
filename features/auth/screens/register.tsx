@@ -14,6 +14,7 @@ import { UserRole } from "@/features/auth/types/user";
 import { replaceRoute } from "@/features/shared/routes";
 import { USER_ROUTES } from "@/features/user/routes";
 import { ONBOARDING_ROUTES } from "@/features/onboarding/routes";
+import { AUTH_ROUTES } from "@/features/auth/routes";
 import { ContentContainer } from "@/components/content-container";
 import { RegisterUser, RegisterTransporter } from "@/components/svg";
 import { NavigationHeader } from "@/components/navigation-header";
@@ -46,7 +47,7 @@ export default function RegisterScreen() {
   });
 
   // Check if we're in modal mode (from onboarding)
-  const isModalMode = pathname.includes("/onboarding/");
+  const isOnboardingFlow = pathname.includes("/onboarding/");
 
   // Handle successful registration
   useEffect(() => {
@@ -86,13 +87,12 @@ export default function RegisterScreen() {
       role: selectedUserType ?? UserRole.USER,
     });
   };
-
   return (
     <>
       <NavigationHeader
-        showBackButton={!isModalMode}
+        showBackButton={!isOnboardingFlow}
         rightComponent={
-          isModalMode ? (
+          isOnboardingFlow ? (
             <IconButton
               icon="close"
               color="text-white"
@@ -185,10 +185,11 @@ export default function RegisterScreen() {
               className="mt-2"
               userType={selectedUserType}
               onPress={() => {
-                if (isModalMode) {
+                if (isOnboardingFlow) {
+                  replaceRoute(ONBOARDING_ROUTES.ONBOARDING_LOGIN);
                   router.dismiss();
                 } else {
-                  replaceRoute(ONBOARDING_ROUTES.ONBOARDING_LOGIN);
+                  replaceRoute(AUTH_ROUTES.AUTH);
                 }
               }}
             />

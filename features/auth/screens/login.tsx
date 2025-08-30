@@ -12,9 +12,12 @@ import {
 import { useTranslation } from "react-i18next";
 import { useLocalizedError } from "@/hooks/useLocalizedError";
 import { navigateToForgotPassword } from "../routes";
+import {
+  navigateToForgotPassword as navigateToOnboardingForgotPassword,
+  ONBOARDING_ROUTES,
+} from "@/features/onboarding/routes";
 import { replaceRoute } from "@/features/shared/routes";
 import { USER_ROUTES } from "@/features/user/routes";
-import { ONBOARDING_ROUTES } from "@/features/onboarding/routes";
 import { NavigationHeader } from "@/components/navigation-header";
 import { ContentContainer } from "@/components/content-container";
 import { IconButton } from "@/components/icon-button";
@@ -33,7 +36,7 @@ export default function LoginScreen() {
   const { t } = useTranslation();
   const { handleError } = useLocalizedError();
   const pathname = usePathname();
-  const isModalMode = pathname.includes("/onboarding/");
+  const isOnboardingFlow = pathname.includes("/onboarding/");
   const { emailError, passwordError, isValid } = useLoginValidation(
     email,
     password,
@@ -54,9 +57,9 @@ export default function LoginScreen() {
   return (
     <>
       <NavigationHeader
-        showBackButton={!isModalMode}
+        showBackButton={!isOnboardingFlow}
         rightComponent={
-          isModalMode ? (
+          isOnboardingFlow ? (
             <IconButton
               icon="close"
               color="text-white"
@@ -106,7 +109,13 @@ export default function LoginScreen() {
                 />
                 <ActionLink
                   className="mb-4 mt-1 text-right text-[13px]"
-                  onPress={navigateToForgotPassword}
+                  onPress={() => {
+                    if (isOnboardingFlow) {
+                      navigateToOnboardingForgotPassword();
+                    } else {
+                      navigateToForgotPassword();
+                    }
+                  }}
                   title={t("auth.login.forgotPassword")}
                   userType={selectedUserType}
                 />
@@ -126,10 +135,10 @@ export default function LoginScreen() {
               variant="text"
               className="mt-2"
               onPress={() => {
-                if (isModalMode) {
-                  router.dismiss();
-                } else {
+                if (isOnboardingFlow) {
                   replaceRoute(ONBOARDING_ROUTES.ONBOARDING_REGISTER);
+                } else {
+                  router.dismiss();
                 }
               }}
               userType={selectedUserType}

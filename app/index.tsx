@@ -12,7 +12,7 @@ export default function Index() {
     const navigate = async () => {
       try {
         // If user hasn't completed onboarding, show onboarding
-        if (hasCompletedOnboarding) {
+        if (true) {
           replaceRoute(ONBOARDING_ROUTES.ONBOARDING);
           return;
         }

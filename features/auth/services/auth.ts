@@ -28,7 +28,6 @@ export const authService = {
   },
 
   recoverPassword: async (email: string): Promise<{ message: string }> => {
-    console.log("email", email);
     await api.post(AUTH_ENDPOINTS.RECOVER_PASSWORD, { email });
 
     return {
