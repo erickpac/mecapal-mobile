@@ -18,7 +18,7 @@ export const TRANSPORTER_TABS: TabConfig[] = [
     icon: "directions_car",
   },
   {
-    name: "profile",
+    name: "profile/index",
     titleKey: "navigation.tabs.profile",
     icon: "person",
   },

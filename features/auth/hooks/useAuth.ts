@@ -7,10 +7,13 @@ import {
 import { useStore } from "@/store/useStore";
 import { useMutation } from "@tanstack/react-query";
 import { navigateToForgotPasswordSuccessMessage } from "../routes";
-import { router } from "expo-router";
+import { router, usePathname } from "expo-router";
+import { USER_ROUTES } from "@/features/user/routes";
 
 export const useAuth = () => {
   const { setUser, setAccessToken, setRefreshToken } = useStore();
+  const pathname = usePathname();
+  const isOnboardingFlow = pathname.includes("/onboarding/");
 
   const login = useMutation({
     mutationFn: authService.login,
@@ -26,7 +29,11 @@ export const useAuth = () => {
     mutationFn: authService.register,
     retry: false,
     onSuccess: () => {
-      router.dismissAll();
+      if (isOnboardingFlow) {
+        router.replace(USER_ROUTES.HOME);
+      } else {
+        router.dismissAll();
+      }
     },
   });
 

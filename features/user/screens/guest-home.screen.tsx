@@ -24,7 +24,7 @@ export default function GuestHomeScreen() {
   return (
     <>
       <Header />
-      <ScrollView className="flex-1 bg-gray-50">
+      <ScrollView className="flex-1 bg-gray-50 pb-8">
         <WelcomeHero />
         <View className="-mt-16 w-full flex-row items-center justify-between px-3">
           <Card
@@ -84,6 +84,9 @@ export default function GuestHomeScreen() {
               userType={UserRole.USER}
               variant="outlined"
             />
+          </View>
+          <View className="h-12">
+            {/**Just to blank space */}
           </View>
         </View>
       </ScrollView>

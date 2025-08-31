@@ -6,6 +6,7 @@ import { NavigationHeader } from "@/components/navigation-header";
 import MaterialIcon from "@/components/material-icon";
 import { COLORS } from "@/consts/colors";
 import { useTranslation } from "react-i18next";
+import { navigateToHelp } from "../../routes";
 
 export default function UserProfileScreen() {
   const { user, logout } = useStore();
@@ -13,13 +14,13 @@ export default function UserProfileScreen() {
 
   return (
     <>
-      <NavigationHeader title="" showBackButton={false} />
-      <View className="flex-1 bg-white">
-        <View className="flex-1">
-          <View className="h-52 bg-orange-600">
+      <NavigationHeader title="" showBackButton={false} borderBottom={false} />
+      <View className="flex-1 bg-white m-0 p-">
+        <View className="flex-1 m-0 p-0">
+          <View className="h-48 border-0 bg-blue-900">
             <Image
-              source={require("../../../assets/images/profile-background.png")}
-              className="absolute inset-0 h-full w-full rounded-lg"
+              source={require("../../../../assets/images/profile-background.png")}
+              className="absolute inset-0 h-full w-full "
               resizeMode="cover"
             />
           </View>
@@ -39,7 +40,7 @@ export default function UserProfileScreen() {
                   className="absolute bottom-0 right-0 h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-gray-100 shadow-md"
                   onPress={() => {
                     // Add your edit avatar logic here
-                  //@TODO
+                    //@TODO
                     console.log("Edit avatar pressed");
                   }}
                 >
@@ -83,7 +84,7 @@ export default function UserProfileScreen() {
                 </View>
                 <View className="flex-1">
                   <Text className="text-lg font-semibold text-gray-800">
-                  {t("profile.personalInfo.title")}
+                    {t("profile.personalInfo.title")}
                   </Text>
                   <Text className="text-gray-600">{t("profile.personalInfo.subtitle")}</Text>
                 </View>
@@ -163,7 +164,7 @@ export default function UserProfileScreen() {
                 />
               </View>
             </TouchableOpacity>
-            <TouchableOpacity className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
+            <TouchableOpacity onPress={() => navigateToHelp()} className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
                   <MaterialSymbol

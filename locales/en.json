@@ -406,6 +406,15 @@
       "noEarnings": "No earnings recorded"
     }
   },
+  "user": {
+    "home": {
+      "ctaDiscount": {
+        "title": "Save 15% discount",
+        "subtitle": "When you contract your first transporter.",
+        "action1": "Get discount"
+      }
+    }
+  },
   "auth": {
     "login": {
       "title": "Login",
@@ -515,7 +524,7 @@
     "ctaTransporter": {
       "title": "Are you a transporter?",
       "subtitle": "Make your vehicle work for you",
-      "action1": "Create your account"  
+      "action1": "Create your account"
     },
     "ctaUser": {
       "title": "Ready to move your things?",
@@ -546,7 +555,33 @@
     },
     "help": {
       "title": "Help",
-      "subtitle": "Contact Support"
+      "subtitle": "Contact Support",
+      "subtitle2": "Here you can find useful links",
+      "option1": "Privacy Policy",
+      "option2": "Terms and Conditions",
+      "option3": "Frequently Asked Questions",
+      "option4": "Contact",
+      "contact": {
+        "title": "Contact",
+        "subtitle": "You can contact us through the following channels:",
+        "email": "Email",
+        "phone": "Phone Number",
+        "website": "Website",
+        "socialMedia": "Social Media"
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "question1": "What types of cargo transportation do they handle?",
+        "answer1": "We handle 3 types: Express cargo, Light cargo and Heavy cargo."
+      },
+      "terms": {
+        "title": "Terms and Conditions",
+        "description": "Please read the terms and conditions before continuing."
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "description": "Please read the privacy policy before continuing."
+      }
     },
     "preferences": {
       "title": "Preferences",

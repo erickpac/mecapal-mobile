@@ -41,11 +41,11 @@ export default function UserHomeScreen() {
         </View>
         <View className="mx-4 mt-6 rounded-lg bg-primary-50 border border-primary-500">
           <View className="mx-8 mt-3 items-center px-6 pb-6 pt-6">
-            <Text className="text-xl font-bold text-black">Ahorra 15% de descuento</Text>
-            <Text className="text-base font-medium text-black">Al contratar a tu primer transportista.</Text>
+            <Text className="text-xl font-bold text-black">{t("user.home.ctaDiscount.title")}</Text>
+            <Text className="text-base font-medium text-black">{t("user.home.ctaDiscount.subtitle")}</Text>
             <View className="mt-5">
               <Button
-                title="Obtener descuento"
+                title={t("user.home.ctaDiscount.action1")}
                 onPress={() => { }}
                 userType={user?.role}
               />
@@ -68,27 +68,26 @@ export default function UserHomeScreen() {
               </Text>
             </View>
           </View>
-
-          <View className="mx-4 mt-6 rounded-lg">
-            <Image
-              source={require("../../../assets/images/CTA-background.png")}
-              className="absolute inset-0 h-full w-full rounded-lg"
-              resizeMode="cover"
-            />
-            <View className="mx-8 mt-3 items-center px-6 pb-12 pt-8">
-              <Text className="text-xl font-bold text-white">
-                {t("home.ctaTransporter.title")}
-              </Text>
-              <Text className="text-[16px] font-normal text-white">
-                {t("home.ctaTransporter.subtitle")}
-              </Text>
-              <View className="mt-5">
-                <Button
-                  title={t("home.ctaTransporter.action1")}
-                  onPress={() => { }}
-                  userType={UserRole.TRANSPORTER}
-                />
-              </View>
+        </View>
+        <View className="mx-4 mt-6 rounded-lg">
+          <Image
+            source={require("../../../assets/images/CTA-background.png")}
+            className="absolute inset-0 h-full w-full rounded-lg"
+            resizeMode="cover"
+          />
+          <View className="mx-8 mt-3 items-center px-6 pb-12 pt-8">
+            <Text className="text-xl font-bold text-white">
+              {t("home.ctaTransporter.title")}
+            </Text>
+            <Text className="text-[16px] font-normal text-white">
+              {t("home.ctaTransporter.subtitle")}
+            </Text>
+            <View className="mt-5">
+              <Button
+                title={t("home.ctaTransporter.action1")}
+                onPress={() => { }}
+                userType={UserRole.TRANSPORTER}
+              />
             </View>
           </View>
         </View>

@@ -406,6 +406,15 @@
       "noEarnings": "No hay ganancias registradas"
     }
   },
+  "user": {
+    "home": {
+      "ctaDiscount": {
+        "title": "Ahorra 15% de descuento",
+        "subtitle": "Al contratar a tu primer transportista.",
+        "action1": "Obtener descuento"
+      }
+    }
+  },
   "auth": {
     "login": {
       "title": "Iniciar sesión",
@@ -546,7 +555,33 @@
     },
     "help": {
       "title": "Ayuda",
-      "subtitle": "Contacta soporte"
+      "subtitle": "Contacta soporte",
+      "subtitle2": "Aquí puedes encontrar enlaces útiles",
+      "option1": "Política de Privacidad",
+      "option2": "Términos y Condiciones",
+      "option3": "Preguntas Frecuentes",
+      "option4": "Contacto",
+      "contact": {
+        "title": "Contacto",
+        "subtitle": "Puedes contactarnos en los siguientes canales:",
+        "email": "Correo",
+        "phone": "Número de Telefono",
+        "website": "Sitio Web",
+        "socialMedia": "Redes Sociales"
+      },
+      "faq": {
+        "title": "Preguntas Frecuentes",
+        "question1": "¿Qué tipo de envío de cargas manejan?",
+        "answer1": "Manejamos 3 tipos: Envío express, Carga Ligera y Carga Pesada.",
+      },
+      "terms": {
+        "title": "Términos y Condiciones",
+        "description": "Por favor, lea los términos y condiciones antes de continuar.",
+      },
+      "privacy": {
+        "title": "Política de Privacidad",
+        "description": "Por favor, lea la política de privacidad antes de continuar.",
+      }
     },
     "preferences": {
       "title": "Preferencias",
