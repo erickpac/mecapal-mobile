@@ -20,10 +20,10 @@ const WelcomeHero = (props: Props) => {
       <View className="relative z-10 px-8 py-4">
         {/* <Text>{t("transport.home.guestGreeting", { name })}</Text> */}
         <Text className="font-plus-jakarta-bold text-2xl font-bold text-white">
-          Bienvenido, {name}
+          {t("home.greeting")} {name}
         </Text>
         <Text className="mt-2 text-lg font-normal text-white">
-          ¡Movemos tus chivas por ti!
+          {t("home.slogan")}
         </Text>
       </View>
     </View>

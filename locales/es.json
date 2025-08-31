@@ -434,7 +434,7 @@
     "forgotPassword": {
       "title": "Olvidé mi contraseña",
       "title2": "¿Olvidaste tu contraseña?",
-      "description": "No te preocupes, ingresa tu correo electrónico a continuación y  te enviaremos una nueva contraseña para iniciar sesión..",
+      "description": "No te preocupes, ingresa tu correo electrónico a continuación y  te enviaremos una nueva contraseña para iniciar sesión.",
       "email": "Correo electrónico",
       "submit": "Enviar nueva contraseña",
       "backToLogin": "Cancelar",
@@ -490,8 +490,14 @@
     }
   },
   "home": {
+    "actions": {
+      "heavyLoad": "Carga Pesada",
+      "express": "Envíos Express",
+      "lightLoad": "Carga Liviana"
+    },
     "title": "Inicio",
-    "greeting": "Hola, {{name}}",
+    "greeting": "Bienvenido,",
+    "slogan": "¡Movemos tus chivas por ti!",
     "balance": {
       "title": "Saldo actual",
       "available": "Disponible",
@@ -505,15 +511,42 @@
     "recentTransactions": {
       "title": "Transacciones recientes",
       "noTransactions": "Aún no hay transacciones"
+    },
+    "ctaTransporter": {
+      "title": "¿Eres transportista?",
+      "subtitle": "Haz que tu vehiculo trabaje para ti",
+      "action1": "Crear tu cuenta"
+    },
+    "ctaUser": {
+      "title": "¿Listo para mover tus chivas?",
+      "action1": "Crear tu cuenta",
+      "action2": "Iniciar Sesión"
     }
   },
   "profile": {
-    "title": "Perfil",
+    "title": "Mi Perfil",
     "personalInfo": {
-      "title": "Información personal",
+      "title": "Información Personal",
+      "subtitle": "Edita tu perfil",
       "name": "Nombre",
       "email": "Correo electrónico",
       "phone": "Teléfono"
+    },
+    "paymentMethods": {
+      "title": "Métodos de Pago",
+      "subtitle": "Edita formas de pago"
+    },
+    "address": {
+      "title": "Mis Direcciones",
+      "subtitle": "Agrega tus direcciones"
+    },
+    "security": {
+      "title": "Seguridad",
+      "subtitle": "Cambia tu contraseña"
+    },
+    "help": {
+      "title": "Ayuda",
+      "subtitle": "Contacta soporte"
     },
     "preferences": {
       "title": "Preferencias",

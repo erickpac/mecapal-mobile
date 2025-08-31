@@ -80,8 +80,7 @@ export default function ForgotPasswordScreen() {
               {t("auth.forgotPassword.title2")}
             </Text>
             <Text className="mx-6 text-center font-plus-jakarta text-base text-text-active">
-              No te preocupes, ingresa tu correo electrónico a continuación y te
-              enviaremos una nueva contraseña para iniciar sesión.
+              {t("auth.forgotPassword.description")}
             </Text>
           </View>
           <View className="gap-4">

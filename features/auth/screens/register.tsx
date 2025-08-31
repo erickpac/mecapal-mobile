@@ -117,7 +117,7 @@ export default function RegisterScreen() {
               </View>
             </View>
             <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
-              Registro 2
+              {t("auth.register.title")}
             </Text>
             <View className="mb-2">
               <Input

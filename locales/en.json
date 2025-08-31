@@ -417,10 +417,11 @@
     },
     "register": {
       "title": "Register",
-      "name": "Full name",
-      "email": "Email",
-      "password": "Password",
-      "confirmPassword": "Confirm Password",
+      "name": "Full name*",
+      "email": "Email*",
+      "phone": "Phone*",
+      "password": "Password*",
+      "confirmPassword": "Confirm Password*",
       "selectRole": "Account type",
       "userRole": "User",
       "transporterRole": "Transporter",
@@ -489,8 +490,14 @@
     }
   },
   "home": {
+    "actions": {
+      "heavyLoad": "Heavy Load",
+      "express": "Express",
+      "lightLoad": "Light Load"
+    },
     "title": "Home",
-    "greeting": "Hello, {{name}}",
+    "greeting": "Welcome,",
+    "slogan": "Move your things for you!",
     "balance": {
       "title": "Current Balance",
       "available": "Available",
@@ -504,15 +511,42 @@
     "recentTransactions": {
       "title": "Recent Transactions",
       "noTransactions": "No transactions yet"
+    },
+    "ctaTransporter": {
+      "title": "Are you a transporter?",
+      "subtitle": "Make your vehicle work for you",
+      "action1": "Create your account"  
+    },
+    "ctaUser": {
+      "title": "Ready to move your things?",
+      "action1": "Create my account",
+      "action2": "Login"
     }
   },
   "profile": {
-    "title": "Profile",
+    "title": "My profile",
     "personalInfo": {
       "title": "Personal Information",
+      "subtitle": "Edit your profile",
       "name": "Name",
       "email": "Email",
       "phone": "Phone"
+    },
+    "paymentMethods": {
+      "title": "Payment Methods",
+      "subtitle": "Edit your payment methods"
+    },
+    "address": {
+      "title": "My Addresses",
+      "subtitle": "Add your address"
+    },
+    "security": {
+      "title": "Security",
+      "subtitle": "Change your password"
+    },
+    "help": {
+      "title": "Help",
+      "subtitle": "Contact Support"
     },
     "preferences": {
       "title": "Preferences",

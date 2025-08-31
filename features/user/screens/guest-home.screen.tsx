@@ -29,17 +29,17 @@ export default function GuestHomeScreen() {
         <View className="-mt-16 w-full flex-row items-center justify-between px-3">
           <Card
             icon={<Motorcycle />}
-            title="Carga Pesada"
+            title={t("home.actions.heavyLoad")}
             onPress={() => navigateTo("/search")}
           />
           <Card
             icon={<Truck />}
-            title="Envíos Express"
+            title={t("home.actions.express")}
             onPress={() => navigateTo("/search")}
           />
           <Card
             icon={<Shuttle />}
-            title="Carga Liviana"
+            title={t("home.actions.lightLoad")}
             onPress={() => navigateTo("/search")}
           />
         </View>
@@ -51,14 +51,14 @@ export default function GuestHomeScreen() {
           />
           <View className="mx-8 mt-3 items-center px-6 pb-12 pt-8">
             <Text className="text-xl font-bold text-white">
-              ¿Eres transportista?
+              {t("home.ctaTransporter.title")}
             </Text>
             <Text className="text-[16px] font-normal text-white">
-              Haz que tu vehiculo trabaje para ti
+              {t("home.ctaTransporter.subtitle")}
             </Text>
             <View className="mt-5">
               <Button
-                title={"Crea tu cuenta"}
+                title={t("home.ctaTransporter.action1")}
                 onPress={() => handleClickLogin(UserRole.TRANSPORTER)}
                 userType={UserRole.TRANSPORTER}
               />
@@ -70,16 +70,16 @@ export default function GuestHomeScreen() {
             <Amico />
           </View>
           <Text className="text-center font-plus-jakarta-semibold text-xl font-semibold">
-            ¿Listo para mover tus chivas?
+            {t("home.ctaUser.title")}
           </Text>
           <View className="mt-4 flex w-72 flex-col items-center justify-center gap-5">
             <Button
-              title={"Crear mi cuenta"}
+              title={t("home.ctaUser.action1")}
               onPress={() => navigateTo("/auth/register")}
               userType={UserRole.USER}
             />
             <Button
-              title={"Iniciar Sesión"}
+              title={t("home.ctaUser.action2")}
               onPress={() => handleClickLogin(UserRole.USER)}
               userType={UserRole.USER}
               variant="outlined"

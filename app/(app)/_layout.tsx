@@ -9,29 +9,36 @@ import {
   GUEST_HIDDEN_ROUTES,
 } from "@/consts/navigation";
 import { useTabConfigurations } from "@/hooks/useTabConfigurations";
+import { COLORS } from "@/consts/colors";
 
 export default function AppLayout() {
   const { user, isAuthenticated } = useStore();
+
+  // @TODO
   const { TRANSPORTER_TABS, USER_TABS, GUEST_TABS } = useTabConfigurations();
 
   // Determine which tabs to show based on authentication and user role
   let activeTabs;
   let hiddenRoutes;
-
-  if (!isAuthenticated) {
+  // console.log("isAuthenticated", isAuthenticated);
+  if (false) {
     // Guest mode - show basic tabs
     activeTabs = GUEST_TABS;
     hiddenRoutes = GUEST_HIDDEN_ROUTES;
-  } else if (user?.role === UserRole.TRANSPORTER) {
-    // Authenticated transporter
-    activeTabs = TRANSPORTER_TABS;
-    hiddenRoutes = TRANSPORTER_HIDDEN_ROUTES;
+    // } else if (user?.role === UserRole.TRANSPORTER) {
+    //   // Authenticated transporter
+    //   activeTabs = TRANSPORTER_TABS;
+    //   hiddenRoutes = TRANSPORTER_HIDDEN_ROUTES;
   } else {
     // Authenticated user
     activeTabs = USER_TABS;
     hiddenRoutes = USER_HIDDEN_ROUTES;
   }
-
+  const orangeText = user
+    ? user.role === UserRole.TRANSPORTER
+      ? "text-black"
+      : "text-orange-800"
+    : "text-orange-800";
   return (
     <Tabs screenOptions={TAB_SCREEN_OPTIONS}>
       {/* Render active tabs */}
@@ -41,12 +48,14 @@ export default function AppLayout() {
           name={tab.name}
           options={{
             title: tab.title,
+            tabBarActiveTintColor: COLORS.primary,
+            tabBarInactiveTintColor: "#9ca3af",
             tabBarIcon: ({ focused, size }) => (
               <MaterialSymbol
                 name={tab.icon}
                 size={size}
-                color={focused ? "text-blue-500" : "text-gray-400"}
-                variant="outlined"
+                color={focused ? orangeText : "text-gray-400"}
+                variant="sharp"
               />
             ),
           }}
