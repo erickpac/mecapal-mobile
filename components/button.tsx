@@ -56,18 +56,18 @@ const ButtonComponent: React.FC<ButtonProps> = ({
       style={
         fullWidth
           ? {
-              width: "100%",
-              ...baseButtonStyle,
-              borderWidth: variant === "outlined" ? 1 : 0,
-              borderColor:
-                variant === "outlined" ? finalButtonColor : "transparent",
-            }
+            width: "100%",
+            ...baseButtonStyle,
+            borderWidth: variant === "outlined" ? 1 : 0,
+            borderColor:
+              variant === "outlined" ? finalButtonColor : "transparent",
+          }
           : {
-              ...baseButtonStyle,
-              borderWidth: variant === "outlined" ? 1 : 0,
-              borderColor:
-                variant === "outlined" ? finalButtonColor : "transparent",
-            }
+            ...baseButtonStyle,
+            borderWidth: variant === "outlined" ? 1 : 0,
+            borderColor:
+              variant === "outlined" ? finalButtonColor : "transparent",
+          }
       }
       contentStyle={{ height: variant === "outlined" ? 42 : 44 }}
       labelStyle={{ fontSize: 14, fontWeight: "600" }}

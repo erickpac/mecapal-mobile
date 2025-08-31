@@ -20,15 +20,14 @@ export default function AppLayout() {
   // Determine which tabs to show based on authentication and user role
   let activeTabs;
   let hiddenRoutes;
-  // console.log("isAuthenticated", isAuthenticated);
   if (false) {
     // Guest mode - show basic tabs
     activeTabs = GUEST_TABS;
     hiddenRoutes = GUEST_HIDDEN_ROUTES;
-    // } else if (user?.role === UserRole.TRANSPORTER) {
-    //   // Authenticated transporter
-    //   activeTabs = TRANSPORTER_TABS;
-    //   hiddenRoutes = TRANSPORTER_HIDDEN_ROUTES;
+  } else if (user?.role === UserRole.TRANSPORTER) {
+    // Authenticated transporter
+    activeTabs = TRANSPORTER_TABS;
+      hiddenRoutes = TRANSPORTER_HIDDEN_ROUTES;
   } else {
     // Authenticated user
     activeTabs = USER_TABS;

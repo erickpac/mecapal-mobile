@@ -1,179 +1,98 @@
 import { useStore } from "@/store/useStore";
-import { Text, TouchableOpacity, View, ScrollView } from "react-native";
+import { Text, TouchableOpacity, View, ScrollView, Image } from "react-native";
 import { MaterialSymbol } from "@/components/material-symbol";
 import { useTranslation } from "react-i18next";
 import { navigateTo } from "@/features/shared/routes";
+import { Header } from "@/components/header";
 import { ScreenHeader } from "@/components/screen-header";
+import WelcomeHero from "@/components/welcome-hero";
+import Card from "@/components/card";
+import Truck from "@/components/svg/truck";
+import Shuttle from "@/components/svg/shuttle";
+import Motorcycle from "@/components/svg/motorcycle";
+import { Button } from "@/components/button";
+import { UserRole } from "@/features/auth/types/user";
+
 
 export default function UserHomeScreen() {
   const { user } = useStore();
   const { t } = useTranslation();
-
   return (
-    <ScrollView className="flex-1 bg-gray-50">
-      <ScreenHeader
-        title={t("transport.home.greeting", { name: user?.name })}
-        subtitle={t("transport.home.subtitle")}
-      />
-
-      <View className="p-4">
-        {/* Quick Search */}
-        <View className="mb-6">
-          <Text className="mb-4 text-xl font-semibold text-gray-800">
-            {t("transport.home.quickSearch.title")}
-          </Text>
-          <TouchableOpacity
+    <>
+      <Header />
+      <ScrollView className="flex-1 bg-gray-50">
+        <WelcomeHero name={user?.name} />
+        <View className="-mt-16 w-full flex-row items-center justify-between px-3">
+          <Card
+            icon={<Motorcycle />}
+            title={t("home.actions.heavyLoad")}
             onPress={() => navigateTo("/search")}
-            className="items-center rounded-lg bg-blue-500 p-4"
-          >
-            <MaterialSymbol name="search" size={32} color="text-white" />
-            <Text className="mt-2 text-lg font-semibold text-white">
-              {t("transport.home.quickSearch.button")}
-            </Text>
-            <Text className="mt-1 text-center text-blue-100">
-              {t("transport.home.quickSearch.subtitle")}
-            </Text>
-          </TouchableOpacity>
+          />
+          <Card
+            icon={<Truck />}
+            title={t("home.actions.express")}
+            onPress={() => navigateTo("/search")}
+          />
+          <Card
+            icon={<Shuttle />}
+            title={t("home.actions.lightLoad")}
+            onPress={() => navigateTo("/search")}
+          />
         </View>
-
-        {/* Service Types */}
-        <View className="mb-6">
-          <Text className="mb-4 text-xl font-semibold text-gray-800">
-            {t("transport.home.serviceTypes.title")}
-          </Text>
-          <View className="space-y-3">
-            {[
-              {
-                id: "1",
-                nameKey: "transport.home.serviceTypes.mudanzas.name",
-                descriptionKey:
-                  "transport.home.serviceTypes.mudanzas.description",
-                icon: "home",
-                color: "bg-blue-500",
-              },
-              {
-                id: "2",
-                nameKey: "transport.home.serviceTypes.cargaGeneral.name",
-                descriptionKey:
-                  "transport.home.serviceTypes.cargaGeneral.description",
-                icon: "inventory_2",
-                color: "bg-green-500",
-              },
-              {
-                id: "3",
-                nameKey:
-                  "transport.home.serviceTypes.materialesConstruccion.name",
-                descriptionKey:
-                  "transport.home.serviceTypes.materialesConstruccion.description",
-                icon: "construction",
-                color: "bg-orange-500",
-              },
-              {
-                id: "4",
-                nameKey: "transport.home.serviceTypes.entregaRecoleccion.name",
-                descriptionKey:
-                  "transport.home.serviceTypes.entregaRecoleccion.description",
-                icon: "swap_horiz",
-                color: "bg-purple-500",
-              },
-            ].map((service) => (
-              <TouchableOpacity
-                key={service.id}
-                onPress={() => navigateTo("/search")}
-                className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm"
-              >
-                <View className="flex-row items-center">
-                  <View
-                    className={`h-12 w-12 ${service.color} mr-4 items-center justify-center rounded-lg`}
-                  >
-                    <MaterialSymbol
-                      name={service.icon}
-                      size={24}
-                      color="text-white"
-                    />
-                  </View>
-                  <View className="flex-1">
-                    <Text className="text-lg font-semibold text-gray-800">
-                      {t(service.nameKey)}
-                    </Text>
-                    <Text className="text-gray-600">
-                      {t(service.descriptionKey)}
-                    </Text>
-                  </View>
-                  <MaterialSymbol
-                    name="chevron_right"
-                    size={20}
-                    color="text-gray-400"
-                  />
-                </View>
-              </TouchableOpacity>
-            ))}
+        <View className="mx-4 mt-6 rounded-lg bg-primary-50 border border-primary-500">
+          <View className="mx-8 mt-3 items-center px-6 pb-6 pt-6">
+            <Text className="text-xl font-bold text-black">Ahorra 15% de descuento</Text>
+            <Text className="text-base font-medium text-black">Al contratar a tu primer transportista.</Text>
+            <View className="mt-5">
+              <Button
+                title="Obtener descuento"
+                onPress={() => { }}
+                userType={user?.role}
+              />
+            </View>
           </View>
         </View>
 
-        {/* Quick Actions */}
-        <View className="mb-6">
-          <Text className="mb-4 text-xl font-semibold text-gray-800">
-            {t("transport.home.quickActions.title")}
-          </Text>
-          <View className="flex-row flex-wrap justify-between">
-            <TouchableOpacity
-              onPress={() => navigateTo("/search")}
-              className="mb-4 w-[48%] items-center rounded-lg bg-blue-500 p-4"
-            >
-              <MaterialSymbol name="search" size={32} color="text-white" />
-              <Text className="mt-2 font-semibold text-white">
-                {t("transport.home.quickActions.searchTransport")}
+        <View className="p-4">
+          {/* Recent Activity */}
+          <View className="mb-6">
+            <Text className="mb-4 text-xl font-semibold text-gray-800">
+              {t("transport.home.recentActivity.title")}
+            </Text>
+            <View className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
+              <Text className="text-center text-gray-600">
+                {t("transport.home.recentActivity.noActivity")}
               </Text>
-            </TouchableOpacity>
+              <Text className="mt-1 text-center text-sm text-gray-500">
+                {t("transport.home.recentActivity.subtitle")}
+              </Text>
+            </View>
+          </View>
 
-            <TouchableOpacity
-              onPress={() => navigateTo("/history")}
-              className="mb-4 w-[48%] items-center rounded-lg bg-green-500 p-4"
-            >
-              <MaterialSymbol name="history" size={32} color="text-white" />
-              <Text className="mt-2 font-semibold text-white">
-                {t("transport.home.quickActions.myHistory")}
+          <View className="mx-4 mt-6 rounded-lg">
+            <Image
+              source={require("../../../assets/images/CTA-background.png")}
+              className="absolute inset-0 h-full w-full rounded-lg"
+              resizeMode="cover"
+            />
+            <View className="mx-8 mt-3 items-center px-6 pb-12 pt-8">
+              <Text className="text-xl font-bold text-white">
+                {t("home.ctaTransporter.title")}
               </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => navigateTo("/profile")}
-              className="mb-4 w-[48%] items-center rounded-lg bg-purple-500 p-4"
-            >
-              <MaterialSymbol name="person" size={32} color="text-white" />
-              <Text className="mt-2 font-semibold text-white">
-                {t("transport.home.quickActions.myProfile")}
+              <Text className="text-[16px] font-normal text-white">
+                {t("home.ctaTransporter.subtitle")}
               </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => navigateTo("/settings")}
-              className="mb-4 w-[48%] items-center rounded-lg bg-gray-500 p-4"
-            >
-              <MaterialSymbol name="settings" size={32} color="text-white" />
-              <Text className="mt-2 font-semibold text-white">
-                {t("transport.home.quickActions.settings")}
-              </Text>
-            </TouchableOpacity>
+              <View className="mt-5">
+                <Button
+                  title={t("home.ctaTransporter.action1")}
+                  onPress={() => { }}
+                  userType={UserRole.TRANSPORTER}
+                />
+              </View>
+            </View>
           </View>
         </View>
-
-        {/* Recent Activity */}
-        <View className="mb-6">
-          <Text className="mb-4 text-xl font-semibold text-gray-800">
-            {t("transport.home.recentActivity.title")}
-          </Text>
-          <View className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
-            <Text className="text-center text-gray-600">
-              {t("transport.home.recentActivity.noActivity")}
-            </Text>
-            <Text className="mt-1 text-center text-sm text-gray-500">
-              {t("transport.home.recentActivity.subtitle")}
-            </Text>
-          </View>
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 }

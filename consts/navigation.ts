@@ -103,7 +103,10 @@ export const TAB_SCREEN_OPTIONS = {
   tabBarInactiveTintColor: "#8E8E93",
   tabBarStyle: {
     backgroundColor: "#ffffff",
-    borderTopWidth: 1,
-    borderTopColor: "#e5e5e5",
+    elevation: 10, // Android shadow
+    shadowColor: '#000', // iOS shadow
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
   },
 };

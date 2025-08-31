@@ -11,7 +11,7 @@ interface Props {
 const Card = ({ title, icon, onPress }: Props) => {
   return (
     <Button onPress={onPress}>
-      <View className="flex h-28 w-32 flex-col items-center justify-center rounded-lg border border-gray-300 bg-slate-50 px-2">
+      <View className="flex h-28 w-32 flex-col items-center justify-center rounded-lg border border-gray-300 bg-white px-2">
         <View>{icon}</View>
         <Text
           className="w-14 text-center font-plus-jakarta text-xs font-medium leading-tight"

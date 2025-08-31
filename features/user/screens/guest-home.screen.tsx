@@ -43,7 +43,7 @@ export default function GuestHomeScreen() {
             onPress={() => navigateTo("/search")}
           />
         </View>
-        <View className="mx-8 mt-6 rounded-lg">
+        <View className="mx-4 mt-6 rounded-lg">
           <Image
             source={require("../../../assets/images/CTA-background.png")}
             className="absolute inset-0 h-full w-full rounded-lg"
