@@ -9,7 +9,7 @@ export default function ProfileIndex() {
 
   return (
     <>
-      {false ? (
+      {!isAuthenticated ? (
         <GuestAuthScreen />
       ) : /* If transporter, show transporter profile */
       user?.role === UserRole.TRANSPORTER ? (
