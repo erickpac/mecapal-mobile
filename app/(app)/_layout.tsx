@@ -45,7 +45,6 @@ export default function AppLayout() {
     <Tabs screenOptions={TAB_SCREEN_OPTIONS}>
       {/* Render active tabs */}
       {activeTabs.map((tab) => {
-        console.log("tab", tab)
         return (
           <Tabs.Screen
             key={tab.name}
