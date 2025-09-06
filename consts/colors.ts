@@ -8,4 +8,5 @@ export const COLORS = {
   success: "#06b21a",
   white: "#ffffff",
   gray: "#99a1af",
+  black: "#0f0e0e",
 } as const;

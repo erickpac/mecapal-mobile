@@ -6,7 +6,8 @@ import { NavigationHeader } from "@/components/navigation-header";
 import MaterialIcon from "@/components/material-icon";
 import { COLORS } from "@/consts/colors";
 import { useTranslation } from "react-i18next";
-import { navigateToHelp } from "../../routes";
+import { navigateToHelp, navigateToInfo, navigateToPayment } from "../../routes";
+import Avatar from "@/components/avatar";
 
 export default function UserProfileScreen() {
   const { user, logout } = useStore();
@@ -27,31 +28,7 @@ export default function UserProfileScreen() {
           {/* Profile Info */}
           <View className="-mt-20 mb-6 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
             <View className="items-center">
-              <View className="relative">
-                <View className="-mt-20 h-28 w-28 items-center justify-center rounded-full border-4 border-white bg-gray-100">
-                  <MaterialSymbol
-                    name="person"
-                    size={48}
-                    color="text-gray-500"
-                    variant="rounded"
-                  />
-                </View>
-                <TouchableOpacity
-                  className="absolute bottom-0 right-0 h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-gray-100 shadow-md"
-                  onPress={() => {
-                    // Add your edit avatar logic here
-                    //@TODO
-                    console.log("Edit avatar pressed");
-                  }}
-                >
-                  <MaterialSymbol
-                    name="edit"
-                    size={20}
-                    color="text-gray"
-                    variant="rounded"
-                  />
-                </TouchableOpacity>
-              </View>
+              <Avatar size={48} sizeEditButton={20} onPress={() => console.log("Edit avatar pressed")} className="-mt-20" />
               <View className="mt-4 items-center">
                 <Text className="text-xl font-semibold text-gray-800">
                   {user?.name || "Usuario"}
@@ -73,7 +50,7 @@ export default function UserProfileScreen() {
 
           {/* Menu Items */}
           <View className="space-y-3 px-4">
-            <TouchableOpacity className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
+            <TouchableOpacity onPress={() => navigateToInfo()} className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
                   <MaterialIcon
@@ -96,7 +73,7 @@ export default function UserProfileScreen() {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
+            <TouchableOpacity onPress={() => navigateToPayment()} className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
                   <MaterialIcon

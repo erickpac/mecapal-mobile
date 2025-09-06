@@ -1,5 +1,5 @@
 import { useStore } from "@/store/useStore";
-import UserHelpScreen from "@/features/user/screens/profile/help/help.screen";
+import InfoScreen from "@/features/user/screens/profile/info.screen";
 
 
 export default function ProfileIndex() {
@@ -8,7 +8,7 @@ export default function ProfileIndex() {
     return (
         <>
             {isAuthenticated && (
-                <UserHelpScreen />
+                <InfoScreen />
             )}
         </>
     );

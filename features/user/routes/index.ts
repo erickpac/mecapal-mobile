@@ -6,6 +6,8 @@ export const USER_ROUTES = {
   SEARCH: "/search",
   HISTORY: "/history",
   PROFILE: "/profile",
+  INFO: "/profile/info",
+  PAYMENT: "/profile/payment",
   HELP: "/profile/help",
   HELP_PRIVACY_POLICY: "/profile/help/privacy-policy",
   HELP_TERMS_CONDITION: "/profile/help/terms-condition",
@@ -18,6 +20,8 @@ export const navigateToHome = () => router.push(USER_ROUTES.HOME);
 export const navigateToSearch = () => router.push(USER_ROUTES.SEARCH);
 export const navigateToHistory = () => router.push(USER_ROUTES.HISTORY);
 export const navigateToProfile = () => router.push(USER_ROUTES.PROFILE);
+export const navigateToInfo = () => router.push(USER_ROUTES.INFO);
+export const navigateToPayment = () => router.push(USER_ROUTES.PAYMENT);
 export const navigateToHelp = () => router.push(USER_ROUTES.HELP);
 export const navigateToHelpPrivacyPolicy = () => router.push(USER_ROUTES.HELP_PRIVACY_POLICY);
 export const navigateToHelpTermsCondition = () => router.push(USER_ROUTES.HELP_TERMS_CONDITION);
