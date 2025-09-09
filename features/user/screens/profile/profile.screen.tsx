@@ -6,7 +6,7 @@ import { NavigationHeader } from "@/components/navigation-header";
 import MaterialIcon from "@/components/material-icon";
 import { COLORS } from "@/consts/colors";
 import { useTranslation } from "react-i18next";
-import { navigateToHelp, navigateToInfo, navigateToPayment } from "../../routes";
+import { navigateToHelp, navigateToInfo, navigateToPayment, navigateToAddresses, navigateToSecurity } from "../../routes";
 import Avatar from "@/components/avatar";
 
 export default function UserProfileScreen() {
@@ -60,7 +60,7 @@ export default function UserProfileScreen() {
                   />
                 </View>
                 <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-800">
+                  <Text className="text-lg font-plus-jakarta-bold font-semibold text-gray-800">
                     {t("profile.personalInfo.title")}
                   </Text>
                   <Text className="text-gray-600">{t("profile.personalInfo.subtitle")}</Text>
@@ -96,7 +96,7 @@ export default function UserProfileScreen() {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
+            <TouchableOpacity onPress={() => navigateToAddresses()} className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
                   <MaterialSymbol
@@ -119,7 +119,7 @@ export default function UserProfileScreen() {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
+            <TouchableOpacity onPress={() => navigateToSecurity()} className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
                   <MaterialSymbol

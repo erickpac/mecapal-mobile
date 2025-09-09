@@ -1,14 +1,13 @@
 import { useStore } from "@/store/useStore";
-import UserHelpScreen from "@/features/user/screens/profile/help/help.screen";
+import { SecurityScreen } from "@/features/user/screens/profile/security";
 
-
-export default function ProfileIndex() {
+export default function ChangePassword() {
     const { isAuthenticated } = useStore();
 
     return (
         <>
             {isAuthenticated && (
-                <UserHelpScreen />
+                <SecurityScreen />
             )}
         </>
     );

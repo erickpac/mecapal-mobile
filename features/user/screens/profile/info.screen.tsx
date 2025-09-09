@@ -70,7 +70,7 @@ const InfoScreen = (props: Props) => {
       <NavigationHeader title="" showBackButton={true} borderBottom={false} />
       <ScrollView className="flex-1 bg-white">
         <View className="px-8 py-4">
-          <Text className="text-2xl font-bold text-gray-800">{t("profile.personalInfo.title")}</Text>
+          <Text className="text-2xl font-plus-jakarta-bold font-bold text-gray-800">{t("profile.personalInfo.title")}</Text>
         </View>
         <View className="items-center">
           <Avatar size={48} sizeEditButton={20} onPress={() => console.log("Edit avatar pressed")} />
