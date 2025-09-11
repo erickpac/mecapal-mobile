@@ -11,6 +11,7 @@ import { IconButton } from "@/components/icon-button";
 import { Button } from "@/components/button";
 import { useState } from "react";
 import { useAuth } from "@/features/auth/hooks/useAuth";
+import { navigateToForgotPasswordSuccessMessage } from "../routes";
 
 export default function ForgotPasswordScreen() {
   const { t } = useTranslation();
@@ -47,7 +48,8 @@ export default function ForgotPasswordScreen() {
 
   // Handle form submission
   const handleSubmit = () => {
-    recoverPassword(email);
+    // recoverPassword(email);
+    navigateToForgotPasswordSuccessMessage();
     return true;
   };
 
