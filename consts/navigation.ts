@@ -5,17 +5,17 @@ export const TRANSPORTER_TABS: TabConfig[] = [
   {
     name: 'home',
     titleKey: 'navigation.tabs.dashboard',
-    icon: 'dashboard',
+    icon: 'home',
   },
   {
     name: 'orders',
     titleKey: 'navigation.tabs.orders',
-    icon: 'receipt_long',
+    icon: 'search',
   },
   {
     name: 'vehicles',
     titleKey: 'navigation.tabs.vehicles',
-    icon: 'directions_car',
+    icon: 'history',
   },
   {
     name: 'profile',
