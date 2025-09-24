@@ -21,7 +21,7 @@ import { NavigationHeader } from "@/components/navigation-header";
 import { IconButton } from "@/components/icon-button";
 import { Button } from "@/components/button";
 import { Input } from "@/components/input";
-import { SelectInput } from "@/components/SelectInput";
+import { NativePicker } from "@/components/NativePicker";
 import { useRegisterValidation } from "../hooks/useRegisterValidation";
 
 export default function RegisterScreen() {
@@ -144,15 +144,15 @@ export default function RegisterScreen() {
                 error={errors.email}
                 returnKeyType="next"
               />
-              <SelectInput
-                label="Tipo de Usuario"
+              <NativePicker
+                pickerLabel={"Tipo de usuario"}
                 value={userType}
                 onValueChange={handleSelectUserType}
                 options={[
                   { label: "Cliente", value: UserRole.USER },
                   { label: "Transportista", value: UserRole.TRANSPORTER },
                 ]}
-                error={""}
+                error={errors.userType}
                 placeholder="Selecciona un tipo de usuario"
               />
               <Input

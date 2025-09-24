@@ -49,6 +49,11 @@ export default function ForgotPasswordScreen() {
   // Handle form submission
   const handleSubmit = () => {
     // recoverPassword(email);
+    console.log("email", email);
+    console.log("email", pathname);
+    console.log(">>>>>");
+
+    debugger;
     navigateToForgotPasswordSuccessMessage();
     return true;
   };

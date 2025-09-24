@@ -16,7 +16,7 @@ export default function UserProfileScreen() {
   return (
     <>
       <NavigationHeader title="" showBackButton={false} borderBottom={false} />
-      <View className="flex-1 bg-white m-0 p-">
+      <View className="flex-1 bg-white m-0">
         <View className="flex-1 m-0 p-0">
           <View className="h-48 border-0 bg-blue-900">
             <Image
@@ -26,7 +26,7 @@ export default function UserProfileScreen() {
             />
           </View>
           {/* Profile Info */}
-          <View className="-mt-20 mb-6 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+          <View className="-mt-20 mb-6 rounded-2xl border border-gray-100 bg-white p-4">
             <View className="items-center">
               <Avatar size={48} sizeEditButton={20} onPress={() => console.log("Edit avatar pressed")} className="-mt-20" />
               <View className="mt-4 items-center">
@@ -37,7 +37,7 @@ export default function UserProfileScreen() {
               </View>
             </View>
           </View>
-          <View className="-mt-24 rounded-2xl bg-white p-4 shadow-sm">
+          <View className="-mt-24 rounded-2xl bg-white p-4">
             <View className="items-center">
               <View className="items-center">
                 <Text className="text-xl font-semibold text-gray-800">
@@ -50,7 +50,7 @@ export default function UserProfileScreen() {
 
           {/* Menu Items */}
           <View className="space-y-3 px-4">
-            <TouchableOpacity onPress={() => navigateToInfo()} className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
+            <TouchableOpacity onPress={() => navigateToInfo()} className=" border-b border-gray-300 bg-white p-4">
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
                   <MaterialIcon
@@ -73,7 +73,7 @@ export default function UserProfileScreen() {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigateToPayment()} className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
+            <TouchableOpacity onPress={() => navigateToPayment()} className=" border-b border-gray-300 bg-white p-4 ">
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
                   <MaterialIcon
@@ -96,7 +96,7 @@ export default function UserProfileScreen() {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigateToAddresses()} className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
+            <TouchableOpacity onPress={() => navigateToAddresses()} className=" border-b border-gray-300 bg-white p-4 ">
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
                   <MaterialSymbol
@@ -119,7 +119,7 @@ export default function UserProfileScreen() {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigateToSecurity()} className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
+            <TouchableOpacity onPress={() => navigateToSecurity()} className=" border-b border-gray-300 bg-white p-4">
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
                   <MaterialSymbol
@@ -141,7 +141,7 @@ export default function UserProfileScreen() {
                 />
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigateToHelp()} className="rounded-lg border-b border-gray-300 bg-white p-4 shadow-sm">
+            <TouchableOpacity onPress={() => navigateToHelp()} className=" border-b border-gray-300 bg-white p-4">
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
                   <MaterialSymbol
@@ -168,7 +168,7 @@ export default function UserProfileScreen() {
             {/* Logout Button */}
             <TouchableOpacity
               onPress={logout}
-              className="mt-6 flex flex-row items-center gap-2 rounded-lg p-4 align-middle"
+              className="mt-6 flex flex-row items-center gap-2  p-4 align-middle"
             >
               <MaterialIcon name="logout" size={24} color="#FF6B00" />
               <Text className="text-left text-base font-semibold text-primary-500">

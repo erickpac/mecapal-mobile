@@ -8,11 +8,8 @@ import { useStore } from '@/store/useStore';
 import { COLORS } from '@/consts/colors';
 import { MaterialSymbol } from '@/components/material-symbol';
 import { Input } from '@/components/input';
-import { UserRole } from '@/features/auth/types/user';
 
-type Props = {};
-
-const InfoScreen = (props: Props) => {
+const InfoScreen = () => {
   const { t } = useTranslation();
   const { user, setUser } = useStore();
 
@@ -53,15 +50,13 @@ const InfoScreen = (props: Props) => {
         className="absolute bottom-0 right-0 top-0 justify-center pr-2"
         onPress={() => handleEditPress(field)}
       >
-        {!isEditing && (
-          <View className="p-2">
-            <MaterialSymbol
-              name={'edit'}
-              size={20}
-              color={isEditing ? COLORS.primary : COLORS.black}
-            />
-          </View>
-        )}
+        <View className="p-2">
+          <MaterialSymbol
+            name={isEditing ? 'check' : 'edit'}
+            size={20}
+            color={isEditing ? COLORS.primary : COLORS.black}
+          />
+        </View>
       </Pressable>
     );
   };
@@ -142,49 +137,6 @@ const InfoScreen = (props: Props) => {
             </View>
             {renderEditButton('email')}
           </View>
-
-          {UserRole.TRANSPORTER && (
-            <View className="flex-row items-center">
-              <View className="flex-1">
-                <Input
-                  label="NIT"
-                  value={userEdit?.nit || ''}
-                  mode="flat"
-                  disabled={
-                    !editingFields.has('nit') && !editedFields.has('nit')
-                  }
-                  contentStyle={{ backgroundColor: COLORS.white }}
-                  style={{ backgroundColor: COLORS.white }}
-                  activeUnderlineColor="black"
-                  onChangeText={(value) =>
-                    setUserEdit({ ...userEdit, nit: value })
-                  }
-                />
-              </View>
-              {renderEditButton('nit')}
-            </View>
-          )}
-          {UserRole.TRANSPORTER && (
-            <View className="flex-row items-center">
-              <View className="flex-1">
-                <Input
-                  label="DPI"
-                  value={userEdit?.dpi || ''}
-                  mode="flat"
-                  disabled={
-                    !editingFields.has('dpi') && !editedFields.has('dpi')
-                  }
-                  contentStyle={{ backgroundColor: COLORS.white }}
-                  style={{ backgroundColor: COLORS.white }}
-                  activeUnderlineColor="black"
-                  onChangeText={(value) =>
-                    setUserEdit({ ...userEdit, dpi: value })
-                  }
-                />
-              </View>
-              {renderEditButton('dpi')}
-            </View>
-          )}
 
           <View className="flex-row items-center">
             <View className="flex-1">

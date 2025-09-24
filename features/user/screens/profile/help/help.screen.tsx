@@ -22,7 +22,7 @@ const UserHelpScreen = (props: Props) => {
             </Text>
             <Text className="text-base font-plus-jakarta font-normal text-gray-800 mt-4">{t("profile.help.subtitle2")}</Text>
           </View>
-          <TouchableOpacity onPress={() => navigateToHelpPrivacyPolicy()} className="rounded-lg border-b border-gray-300 bg-white py-4 px-8 shadow-sm">
+          <TouchableOpacity onPress={() => navigateToHelpPrivacyPolicy()} className="rounded-lg border-b border-gray-300 bg-white py-4 px-8 ">
             <View className="flex-row items-center">
               <View className="flex-1">
                 <Text className="font-plus-jakarta-bold text-base font-bold text-gray-800">
@@ -38,7 +38,7 @@ const UserHelpScreen = (props: Props) => {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigateToHelpTermsCondition()} className="rounded-lg border-b border-gray-300 bg-white py-4 px-8 shadow-sm">
+          <TouchableOpacity onPress={() => navigateToHelpTermsCondition()} className="rounded-lg border-b border-gray-300 bg-white py-4 px-8 ">
             <View className="flex-row items-center">
               <View className="flex-1">
                 <Text className="font-plus-jakarta-bold text-base font-bold text-gray-800">
@@ -54,7 +54,7 @@ const UserHelpScreen = (props: Props) => {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigateToHelpFaq()} className="rounded-lg border-b border-gray-300 bg-white py-4 px-8 shadow-sm">
+          <TouchableOpacity onPress={() => navigateToHelpFaq()} className="rounded-lg border-b border-gray-300 bg-white py-4 px-8 ">
             <View className="flex-row items-center">
               <View className="flex-1">
                 <Text className="font-plus-jakarta-bold text-base font-bold text-gray-800">
@@ -70,7 +70,7 @@ const UserHelpScreen = (props: Props) => {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigateToHelpContact()} className="rounded-lg border-b border-gray-300 bg-white py-4 px-8 shadow-sm">
+          <TouchableOpacity onPress={() => navigateToHelpContact()} className="rounded-lg border-b border-gray-300 bg-white py-4 px-8 ">
             <View className="flex-row items-center">
               <View className="flex-1">
                 <Text className="font-plus-jakarta-bold text-base font-bold text-gray-800">

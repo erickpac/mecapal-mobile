@@ -1,5 +1,5 @@
-import { MaterialDesignIcons } from "@react-native-vector-icons/material-design-icons";
-import { StyleProp, TextStyle } from "react-native";
+import { MaterialDesignIcons } from '@react-native-vector-icons/material-design-icons';
+import { StyleProp, TextStyle } from 'react-native';
 
 interface MaterialIconProps {
   name: string;
@@ -9,10 +9,10 @@ interface MaterialIconProps {
   onPress?: () => void;
 }
 
-export const MaterialIcon = ({
+const MaterialIcon = ({
   name,
   size = 24,
-  color = "#000000",
+  color = '#000000',
   style,
   onPress,
   ...props

@@ -1,15 +1,15 @@
-import { Tabs } from "expo-router";
-import { useStore } from "@/store/useStore";
-import { UserRole } from "@/features/auth/types/user";
-import { MaterialSymbol } from "@/components/material-symbol";
+import { Tabs } from 'expo-router';
+import { useStore } from '@/store/useStore';
+import { UserRole } from '@/features/auth/types/user';
+import { MaterialSymbol } from '@/components/material-symbol';
 import {
   TRANSPORTER_HIDDEN_ROUTES,
   USER_HIDDEN_ROUTES,
   TAB_SCREEN_OPTIONS,
   GUEST_HIDDEN_ROUTES,
-} from "@/consts/navigation";
-import { useTabConfigurations } from "@/hooks/useTabConfigurations";
-import { COLORS } from "@/consts/colors";
+} from '@/consts/navigation';
+import { useTabConfigurations } from '@/hooks/useTabConfigurations';
+import { COLORS } from '@/consts/colors';
 
 export default function AppLayout() {
   const { user, isAuthenticated } = useStore();
@@ -36,10 +36,9 @@ export default function AppLayout() {
 
   const orangeText = user
     ? user.role === UserRole.TRANSPORTER
-      ? "text-black"
-      : "text-orange-800"
-    : "text-orange-800";
-
+      ? 'text-black'
+      : 'text-orange-800'
+    : 'text-orange-800';
 
   return (
     <Tabs screenOptions={TAB_SCREEN_OPTIONS}>
@@ -51,19 +50,22 @@ export default function AppLayout() {
             name={tab.name}
             options={{
               title: tab.title,
-              tabBarActiveTintColor: COLORS.primary,
-              tabBarInactiveTintColor: "#9ca3af",
+              tabBarActiveTintColor:
+                user?.role === UserRole.TRANSPORTER
+                  ? COLORS.secondary
+                  : COLORS.primary,
+              tabBarInactiveTintColor: '#9ca3af',
               tabBarIcon: ({ focused, size }) => (
                 <MaterialSymbol
                   name={tab.icon}
                   size={size}
-                  color={focused ? orangeText : "text-gray-400"}
+                  color={focused ? orangeText : 'text-gray-400'}
                   variant="sharp"
                 />
               ),
             }}
           />
-        )
+        );
       })}
 
       {/* Render hidden routes */}
