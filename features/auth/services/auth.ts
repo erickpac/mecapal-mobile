@@ -18,12 +18,20 @@ export const authService = {
   },
 
   changePassword: async (
-    credentials: ChangePasswordCredentials
+    credentials: ChangePasswordCredentials,
   ): Promise<{ message: string }> => {
     await api.post(AUTH_ENDPOINTS.CHANGE_PASSWORD, credentials);
 
     return {
       message: "auth.changePassword.success",
+    };
+  },
+
+  recoverPassword: async (email: string): Promise<{ message: string }> => {
+    await api.post(AUTH_ENDPOINTS.RECOVER_PASSWORD, { email });
+
+    return {
+      message: "auth.recoverPassword.success",
     };
   },
 };

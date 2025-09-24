@@ -9,3 +9,5 @@ export * from "./login-user";
 export * from "./login-transporter";
 export * from "./register-user";
 export * from "./register-transporter";
+export * from "./forget-pwd-client";
+export * from "./check-your-email";

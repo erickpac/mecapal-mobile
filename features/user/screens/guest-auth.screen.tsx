@@ -7,7 +7,6 @@ export default function GuestAuthScreen() {
   return (
     <ScrollView className="flex-1 bg-gray-50">
       <ScreenHeader title="Acceso" subtitle="Inicia sesión o crea tu cuenta" />
-
       <View className="p-4">
         {/* Welcome Banner */}
         <View className="mb-6 items-center rounded-lg bg-blue-600 p-6">

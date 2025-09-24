@@ -35,7 +35,6 @@ export const MaterialSymbol = ({
   };
 
   const fontFamily = fontFamilyMap[variant];
-
   return (
     <Text
       className={`${fontFamily} ${color} ${className}`}
