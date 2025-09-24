@@ -1,5 +1,5 @@
 import { useStore } from '@/store/useStore';
-import { Text, TouchableOpacity, Image, View } from 'react-native';
+import { Text, TouchableOpacity, Image, View, ScrollView } from 'react-native';
 import { MaterialSymbol } from '@/components/material-symbol';
 import { NavigationHeader } from '@/components/navigation-header';
 import MaterialIcon from '@/components/material-icon';
@@ -11,6 +11,7 @@ import {
   navigateToTransporterInfo,
   navigateToEarnings,
 } from '@/features/transporter/routes';
+import StarsRating from '@/components/stars-rating';
 
 export default function TransporterProfileScreen() {
   const { user, logout } = useStore();
@@ -19,7 +20,7 @@ export default function TransporterProfileScreen() {
     <>
       <NavigationHeader title="" showBackButton={false} borderBottom={false} />
       <View className="m-0 flex-1 bg-white">
-        <View className="m-0 flex-1 p-0">
+        <View className="m-0 h-dvh flex-1 p-0">
           <View className="h-48 border-0 bg-blue-900">
             <Image
               source={require('../../../../assets/images/transporter_background.png')}
@@ -51,12 +52,15 @@ export default function TransporterProfileScreen() {
                   {t('profile.title')}
                 </Text>
                 <Text className="text-gray-600">{user?.name || 'Jom Doe'}</Text>
+                <View className="mt-2">
+                  <StarsRating rating={4.5} />
+                </View>
               </View>
             </View>
           </View>
 
           {/* Menu Items */}
-          <View className="space-y-3 px-4">
+          <ScrollView className="space-y-3 px-4">
             <TouchableOpacity
               onPress={() => {
                 navigateToTransporterInfo();
@@ -227,7 +231,7 @@ export default function TransporterProfileScreen() {
                 />
               </View>
             </TouchableOpacity>
-          </View>
+          </ScrollView>
           <View className="absolute bottom-0 left-0 right-0 bg-white p-4">
             {/* Logout Button */}
             <TouchableOpacity
