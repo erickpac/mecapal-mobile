@@ -522,9 +522,14 @@
       "noTransactions": "Aún no hay transacciones"
     },
     "ctaTransporter": {
-      "title": "¿Eres transportista?",
+      "title": "¿Quieres ser transportista?",
       "subtitle": "Haz que tu vehiculo trabaje para ti",
-      "action1": "Crear tu cuenta"
+      "action1": "Conoce Más"
+    },
+    "newsletter": {
+      "title": "Suscríbete a nuestro boletín",
+      "subtitle": "Sé el primero en acceder a promociones y noticias.",
+      "action1": "Suscribirme"
     },
     "ctaUser": {
       "title": "¿Listo para mover tus chivas?",
@@ -572,15 +577,15 @@
       "faq": {
         "title": "Preguntas Frecuentes",
         "question1": "¿Qué tipo de envío de cargas manejan?",
-        "answer1": "Manejamos 3 tipos: Envío express, Carga Ligera y Carga Pesada.",
+        "answer1": "Manejamos 3 tipos: Envío express, Carga Ligera y Carga Pesada."
       },
       "terms": {
         "title": "Términos y Condiciones",
-        "description": "Por favor, lea los términos y condiciones antes de continuar.",
+        "description": "Por favor, lea los términos y condiciones antes de continuar."
       },
       "privacy": {
         "title": "Política de Privacidad",
-        "description": "Por favor, lea la política de privacidad antes de continuar.",
+        "description": "Por favor, lea la política de privacidad antes de continuar."
       }
     },
     "preferences": {

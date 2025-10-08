@@ -10,23 +10,51 @@ import Shuttle from '@/components/svg/shuttle';
 import Motorcycle from '@/components/svg/motorcycle';
 import { Button } from '@/components/button';
 import { UserRole } from '@/features/auth/types/user';
+import ListItem from '@/components/list-item';
+import { Input } from '@/components/input';
 
 export default function UserHomeScreen() {
   const { user } = useStore();
   const { t } = useTranslation();
+
+  const listItemData = [
+    {
+      id: 1,
+      imageSource: require('../../../assets/images/home/motorcycle.png'),
+      title: 'Envíos Express',
+      description:
+        'Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque. Conoce más ',
+      linkText: 'Conoce más',
+      onPress: () => {},
+    },
+    {
+      id: 2,
+      imageSource: require('../../../assets/images/home/mid-truck.png'),
+      title: 'Carga Liviana',
+      description:
+        'Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque. Conoce más ',
+      linkText: 'Conoce más',
+      onPress: () => {},
+    },
+    {
+      id: 3,
+      imageSource: require('../../../assets/images/home/big-truck.png'),
+      title: 'Carga Pesada',
+      description:
+        'Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque. Conoce más ',
+      linkText: 'Conoce más',
+      onPress: () => {},
+    },
+  ];
+
   return (
     <>
       <Header />
-      <ScrollView className="flex-1 bg-gray-50">
+      <ScrollView className="flex-1 bg-[#fbf9f4]">
         <WelcomeHero name={user?.name} />
         <View className="-mt-16 w-full flex-row items-center justify-between px-3">
           <Card
             icon={<Motorcycle />}
-            title={t('home.actions.heavyLoad')}
-            onPress={() => navigateTo('/search')}
-          />
-          <Card
-            icon={<Truck />}
             title={t('home.actions.express')}
             onPress={() => navigateTo('/search')}
           />
@@ -35,52 +63,38 @@ export default function UserHomeScreen() {
             title={t('home.actions.lightLoad')}
             onPress={() => navigateTo('/search')}
           />
-        </View>
-        <View className="mx-4 mt-6 rounded-lg border border-primary-500 bg-primary-50">
-          <View className="mx-8 mt-3 items-center px-6 pb-6 pt-6">
-            <Text className="text-xl font-bold text-black">
-              {t('user.home.ctaDiscount.title')}
-            </Text>
-            <Text className="text-base font-medium text-black">
-              {t('user.home.ctaDiscount.subtitle')}
-            </Text>
-            <View className="mt-5">
-              <Button
-                title={t('user.home.ctaDiscount.action1')}
-                onPress={() => {}}
-                userType={user?.role}
-              />
-            </View>
-          </View>
+          <Card
+            icon={<Truck />}
+            title={t('home.actions.heavyLoad')}
+            onPress={() => navigateTo('/search')}
+          />
         </View>
 
-        <View className="p-4">
-          {/* Recent Activity */}
-          <View className="mb-6">
-            <Text className="mb-4 text-xl font-semibold text-gray-800">
-              {t('transport.home.recentActivity.title')}
+        <View className="pt-4">
+          <View className="items-center">
+            <Text className="font-plus-jakarta-bold text-2xl font-bold">
+              Nuestros Servicios
             </Text>
-            <View className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
-              <Text className="text-center text-gray-600">
-                {t('transport.home.recentActivity.noActivity')}
-              </Text>
-              <Text className="mt-1 text-center text-sm text-gray-500">
-                {t('transport.home.recentActivity.subtitle')}
-              </Text>
-            </View>
+          </View>
+          <View className="mt-4 bg-white">
+            {listItemData.map((el) => (
+              <ListItem key={el.id} {...el} />
+            ))}
           </View>
         </View>
-        <View className="mx-4 mt-6 rounded-lg">
-          <Image
-            source={require('../../../assets/images/CTA-background.png')}
-            className="absolute inset-0 h-full w-full rounded-lg"
-            resizeMode="cover"
-          />
-          <View className="mx-8 mt-3 items-center px-6 pb-12 pt-8">
-            <Text className="text-xl font-bold text-white">
+        <View className="bg-[#EAF6F3] p-6">
+          <View className="mt-4 w-dvw">
+            <Image
+              source={require('../../../assets/images/truck-2-home.png')}
+              className="h-48 w-full rounded-xl"
+              resizeMethod="scale"
+            />
+          </View>
+          <View className="mx-8 mt-6 items-center px-6 pb-6">
+            <Text className="font-plus-jakarta-bold text-xl font-bold text-black">
               {t('home.ctaTransporter.title')}
             </Text>
-            <Text className="text-[16px] font-normal text-white">
+            <Text className="mt-2 font-plus-jakarta-medium text-[16px] font-medium text-black">
               {t('home.ctaTransporter.subtitle')}
             </Text>
             <View className="mt-5">
@@ -88,6 +102,34 @@ export default function UserHomeScreen() {
                 title={t('home.ctaTransporter.action1')}
                 onPress={() => {}}
                 userType={UserRole.TRANSPORTER}
+              />
+            </View>
+          </View>
+        </View>
+        {/*newsletter*/}
+        <View className="bg-[#642E14] p-4">
+          <View className="mt-6 items-center pb-6">
+            <View className="gap-3">
+              <Text className="text-center font-plus-jakarta-bold text-3xl font-bold text-white">
+                {t('home.newsletter.title')}
+              </Text>
+              <Text className="text-center font-plus-jakarta-medium text-[16px] font-medium text-white">
+                {t('home.newsletter.subtitle')}
+              </Text>
+            </View>
+
+            <View className="mt-5 w-full">
+              <Input
+                label={''}
+                type="text"
+                value={''}
+                onChangeText={() => {}}
+                autoCapitalize="none"
+              />
+              <Button
+                title={t('home.newsletter.action1')}
+                onPress={() => {}}
+                userType={UserRole.USER}
               />
             </View>
           </View>

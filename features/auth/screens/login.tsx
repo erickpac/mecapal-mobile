@@ -108,7 +108,7 @@ export default function LoginScreen() {
                   onSubmitEditing={handleLogin}
                 />
                 <ActionLink
-                  className="mb-4 mt-1 text-right text-[13px]"
+                  className="mb-4 mt-1 text-right text-[13px] text-black"
                   onPress={() => {
                     if (isOnboardingFlow) {
                       navigateToOnboardingForgotPassword();
@@ -117,7 +117,7 @@ export default function LoginScreen() {
                     }
                   }}
                   title={t('auth.login.forgotPassword')}
-                  userType={selectedUserType}
+                  // userType={selectedUserType}
                 />
               </View>
             </View>

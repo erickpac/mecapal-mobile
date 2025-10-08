@@ -5,9 +5,14 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 type Props = {
   name?: string | null;
   role?: UserRole | null;
+  centerAlign?: boolean;
 };
 
-const WelcomeHero = ({ name = '', role = UserRole.USER }: Props) => {
+const WelcomeHero = ({
+  name = '',
+  role = UserRole.USER,
+  centerAlign = false,
+}: Props) => {
   const { t } = useTranslation();
   const pathUser = require('../assets/images/Hero-background.png');
   const pathTransporter = require('../assets/images/hero-background-transporter.png');
@@ -21,8 +26,9 @@ const WelcomeHero = ({ name = '', role = UserRole.USER }: Props) => {
       />
 
       {/* Overlay content */}
-      <View className="relative z-10 px-8 py-4">
-        {/* <Text>{t("transport.home.guestGreeting", { name })}</Text> */}
+      <View
+        className={`relative z-10 px-8 py-4 ${centerAlign ? 'h-full justify-center' : ''}`}
+      >
         <Text className="font-plus-jakarta-bold text-2xl font-bold text-white">
           {t('home.greeting')} {name}
         </Text>
