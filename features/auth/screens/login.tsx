@@ -28,7 +28,11 @@ import { useLoginValidation } from '@/features/auth/hooks/useLoginValidation';
 import { UserRole } from '@/features/auth/types/user';
 import { ActionLink } from '@/components/action-link';
 
-export default function LoginScreen() {
+export default function LoginScreen({
+  showBackButton = true,
+}: {
+  showBackButton?: boolean;
+}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login, isLoading, error, isSuccess } = useAuth();
@@ -57,7 +61,7 @@ export default function LoginScreen() {
   return (
     <>
       <NavigationHeader
-        showBackButton={!isOnboardingFlow}
+        showBackButton={!showBackButton ? showBackButton : !isOnboardingFlow}
         rightComponent={
           isOnboardingFlow ? (
             <IconButton

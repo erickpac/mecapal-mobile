@@ -1,12 +1,12 @@
-import React from "react";
-import { Text } from "react-native";
+import React from 'react';
+import { Text } from 'react-native';
 
 interface MaterialSymbolProps {
   name: string;
   size?: number;
   color?: string;
   className?: string;
-  variant?: "outlined" | "rounded" | "sharp";
+  variant?: 'outlined' | 'rounded' | 'sharp';
 }
 
 /**
@@ -24,14 +24,14 @@ interface MaterialSymbolProps {
 export const MaterialSymbol = ({
   name,
   size = 24,
-  color = "text-black",
-  className = "",
-  variant = "outlined",
+  color = 'text-black',
+  className = '',
+  variant = 'outlined',
 }: MaterialSymbolProps) => {
   const fontFamilyMap = {
-    outlined: "font-material-symbols-outlined",
-    rounded: "font-material-symbols-rounded",
-    sharp: "font-material-symbols-sharp",
+    outlined: 'font-material-symbols-outlined',
+    rounded: 'font-material-symbols-rounded',
+    sharp: 'font-material-symbols-sharp',
   };
 
   const fontFamily = fontFamilyMap[variant];

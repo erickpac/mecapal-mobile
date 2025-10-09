@@ -3,7 +3,6 @@ import { Text, TouchableOpacity, Image, View, ScrollView } from 'react-native';
 import { MaterialSymbol } from '@/components/material-symbol';
 import { NavigationHeader } from '@/components/navigation-header';
 import MaterialIcon from '@/components/material-icon';
-import { COLORS } from '@/consts/colors';
 import { useTranslation } from 'react-i18next';
 import Avatar from '@/components/avatar';
 import { navigateToHelp, navigateToSecurity } from '@/features/user/routes';
@@ -12,6 +11,7 @@ import {
   navigateToEarnings,
 } from '@/features/transporter/routes';
 import StarsRating from '@/components/stars-rating';
+import { COLORS } from '@/consts/colors';
 
 export default function TransporterProfileScreen() {
   const { user, logout } = useStore();

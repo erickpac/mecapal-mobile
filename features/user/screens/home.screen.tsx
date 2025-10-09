@@ -3,15 +3,15 @@ import { Text, View, ScrollView, Image } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { navigateTo } from '@/features/shared/routes';
 import { Header } from '@/components/header';
+import { Button } from '@/components/button';
+import { UserRole } from '@/features/auth/types/user';
 import WelcomeHero from '@/components/welcome-hero';
 import Card from '@/components/card';
 import Truck from '@/components/svg/truck';
 import Shuttle from '@/components/svg/shuttle';
 import Motorcycle from '@/components/svg/motorcycle';
-import { Button } from '@/components/button';
-import { UserRole } from '@/features/auth/types/user';
 import ListItem from '@/components/list-item';
-import { Input } from '@/components/input';
+import SubheaderText from '@/components/subheader-text';
 
 export default function UserHomeScreen() {
   const { user } = useStore();
@@ -71,11 +71,7 @@ export default function UserHomeScreen() {
         </View>
 
         <View className="pt-4">
-          <View className="items-center">
-            <Text className="font-plus-jakarta-bold text-2xl font-bold">
-              Nuestros Servicios
-            </Text>
-          </View>
+          <SubheaderText title="Nuestros Servicios" onlyTitle />
           <View className="mt-4 bg-white">
             {listItemData.map((el) => (
               <ListItem key={el.id} {...el} />
@@ -102,34 +98,6 @@ export default function UserHomeScreen() {
                 title={t('home.ctaTransporter.action1')}
                 onPress={() => {}}
                 userType={UserRole.TRANSPORTER}
-              />
-            </View>
-          </View>
-        </View>
-        {/*newsletter*/}
-        <View className="bg-[#642E14] p-4">
-          <View className="mt-6 items-center pb-6">
-            <View className="gap-3">
-              <Text className="text-center font-plus-jakarta-bold text-3xl font-bold text-white">
-                {t('home.newsletter.title')}
-              </Text>
-              <Text className="text-center font-plus-jakarta-medium text-[16px] font-medium text-white">
-                {t('home.newsletter.subtitle')}
-              </Text>
-            </View>
-
-            <View className="mt-5 w-full">
-              <Input
-                label={''}
-                type="text"
-                value={''}
-                onChangeText={() => {}}
-                autoCapitalize="none"
-              />
-              <Button
-                title={t('home.newsletter.action1')}
-                onPress={() => {}}
-                userType={UserRole.USER}
               />
             </View>
           </View>

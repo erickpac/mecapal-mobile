@@ -1,9 +1,8 @@
-import { useStore } from "@/store/useStore";
-import { UserRole } from "@/features/auth/types/user";
-import UserHomeScreen from "@/features/user/screens/home.screen";
-import GuestHomeScreen from "@/features/user/screens/guest-home.screen";
-import TransporterDashboardScreen from "@/features/transporter/screens/dashboard.screen";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useStore } from '@/store/useStore';
+import { UserRole } from '@/features/auth/types/user';
+import UserHomeScreen from '@/features/user/screens/home.screen';
+import GuestHomeScreen from '@/features/user/screens/guest-home.screen';
+import TransporterDashboardScreen from '@/features/transporter/screens/dashboard.screen';
 
 export default function HomeIndex() {
   const { user, isAuthenticated } = useStore();

@@ -20,12 +20,12 @@
       "dashboard": "Dashboard",
       "search": "Buscar",
       "history": "Historial",
-      "about": "Acerca de",
-      "auth": "Cuenta",
+      "about": "¿Cómo Funciona?",
+      "auth": "Crear Cuenta",
       "orders": "Órdenes",
       "vehicles": "Vehículos",
       "earnings": "Ganancias",
-      "profile": "Perfil",
+      "profile": "Mi Perfil",
       "settings": "Configuración"
     }
   },

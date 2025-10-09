@@ -20,12 +20,12 @@
       "dashboard": "Dashboard",
       "search": "Search",
       "history": "History",
-      "about": "About",
-      "auth": "Account",
+      "about": "How it works?",
+      "auth": "Create Account",
       "orders": "Orders",
       "vehicles": "Vehicles",
       "earnings": "Earnings",
-      "profile": "Profile",
+      "profile": "My Profile",
       "settings": "Settings"
     }
   },
