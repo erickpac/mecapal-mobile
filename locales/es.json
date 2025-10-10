@@ -552,7 +552,13 @@
     },
     "address": {
       "title": "Mis Direcciones",
-      "subtitle": "Agrega tus direcciones"
+      "subtitle": "Agrega tus direcciones",
+      "title2": "Mis Direcciones",
+      "subTitle2": "Aquí encontrarás las direcciones guardadas de punto de origen y destinos.",
+      "myAddresses": "Origen",
+      "addNew": "Agregar Dirección",
+      "addNewAddress": "Agregar Nueva Dirección",
+      "saveAddress": "Guardar Dirección"
     },
     "security": {
       "title": "Seguridad",

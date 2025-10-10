@@ -547,7 +547,13 @@
     },
     "address": {
       "title": "My Addresses",
-      "subtitle": "Add your address"
+      "subtitle": "Add your address",
+      "title2": "My Addresses",
+      "subtitle2": "Here you will find saved addresses for origin and destination points.",
+      "myAddresses": "Origin",
+      "addNew": "Add New Address",
+      "addNewAddress": "Add New Address",
+      "saveAddress": "Save Address"
     },
     "security": {
       "title": "Security",

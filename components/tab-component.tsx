@@ -68,7 +68,7 @@ const TabComponent: React.FC<TabComponentProps> = ({
       </View>
 
       <ScrollView className={`flex-1 ${contentStyle}`}>
-        <View className="">{tabs[activeTab]?.component}</View>
+        <View className="flex-1">{tabs[activeTab]?.component}</View>
       </ScrollView>
     </View>
   );
