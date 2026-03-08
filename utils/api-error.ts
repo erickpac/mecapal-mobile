@@ -52,6 +52,8 @@ export function parseApiError(error: unknown): AppError {
     }
 
     switch (status) {
+      case 400:
+        return new AppError(ErrorCode.VALIDATION, status, message);
       case 401:
         return new AppError(ErrorCode.UNAUTHORIZED, status, message);
       case 403:

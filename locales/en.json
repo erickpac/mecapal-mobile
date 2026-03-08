@@ -432,8 +432,9 @@
       "phone": "Phone*",
       "password": "Password*",
       "confirmPassword": "Confirm Password*",
+      "accountType": "Account type",
       "selectRole": "Account type",
-      "userRole": "User",
+      "userRole": "Client",
       "transporterRole": "Transporter",
       "success": "Registration successful!",
       "redirecting": "Redirecting to login...",
@@ -678,7 +679,8 @@
         "phoneRequired": "Phone number is required",
         "phoneInvalid": "Please enter a valid phone number",
         "passwordRequired": "Password is required",
-        "passwordTooShort": "Password must be at least 6 characters",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "passwordPolicy": "Must include uppercase, lowercase, number and symbol",
         "confirmPasswordRequired": "Please confirm your password",
         "passwordsMismatch": "Passwords do not match"
       }

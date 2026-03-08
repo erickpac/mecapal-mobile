@@ -6,6 +6,9 @@ export const useLocalizedError = () => {
 
   const getErrorMessage = (error: unknown): string => {
     const appError = parseApiError(error);
+    if (appError.serverMessage) {
+      return appError.serverMessage;
+    }
     return t(appError.i18nKey);
   };
 

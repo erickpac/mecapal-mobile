@@ -432,8 +432,9 @@
       "phone": "Número de teléfono*",
       "password": "Contraseña*",
       "confirmPassword": "Confirmar Contraseña*",
+      "accountType": "Tipo de cuenta",
       "selectRole": "Tipo de cuenta",
-      "userRole": "Usuario",
+      "userRole": "Cliente",
       "transporterRole": "Transportista",
       "success": "¡Registro exitoso!",
       "redirecting": "Redirigiendo al login...",
@@ -683,7 +684,8 @@
         "phoneRequired": "Número de telefono es requerido",
         "phoneInvalid": "Ingresa los 8 dígitos de tu número de celular.",
         "passwordRequired": "Contraseña es requerida",
-        "passwordTooShort": "Contraseña debe tener al menos 6 caracteres",
+        "passwordTooShort": "Contraseña debe tener al menos 8 caracteres",
+        "passwordPolicy": "Debe incluir mayúscula, minúscula, número y símbolo",
         "confirmPasswordRequired": "Por favor confirma tu contraseña",
         "passwordsMismatch": "Las contraseñas no coinciden"
       }

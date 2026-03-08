@@ -9,6 +9,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { SegmentedButtons } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
 import { UserRole } from '@/features/auth/types/user';
@@ -21,19 +22,23 @@ import { NavigationHeader } from '@/components/navigation-header';
 import { IconButton } from '@/components/icon-button';
 import { Button } from '@/components/button';
 import { Input } from '@/components/input';
-import { NativePicker } from '@/components/NativePicker';
 import { useRegisterValidation } from '../hooks/useRegisterValidation';
+
+const ROLE_COLORS = {
+  [UserRole.CLIENT]: '#ef6e30',
+  [UserRole.TRANSPORTER]: '#28a389',
+};
 
 export default function RegisterScreen() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [userType, setUserType] = useState(UserRole.CLIENT);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const { mutate: register, isPending, error, isSuccess } = useRegister();
   const { selectedUserType, setSelectedUserType } = useStore();
+  const [userType, setUserType] = useState(selectedUserType ?? UserRole.CLIENT);
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
   const pathname = usePathname();
@@ -42,12 +47,12 @@ export default function RegisterScreen() {
     lastName,
     email,
     phone,
-    userType,
     password,
     confirmPassword,
   });
 
   const isOnboardingFlow = pathname.includes('/onboarding/');
+  const activeColor = ROLE_COLORS[userType];
 
   useEffect(() => {
     if (isSuccess) {
@@ -78,7 +83,7 @@ export default function RegisterScreen() {
       email,
       password,
       phone,
-      role: selectedUserType ?? UserRole.CLIENT,
+      role: userType,
     });
   };
   return (
@@ -102,7 +107,7 @@ export default function RegisterScreen() {
         >
           <ScrollView>
             <View className="mb-6 mt-2 items-center">
-              <View className="aspect-[287/206] w-64 max-w-full">
+              <View className="aspect-[287/206] w-48 max-w-full">
                 {selectedUserType === UserRole.CLIENT ? (
                   <RegisterUser width="100%" height="100%" />
                 ) : (
@@ -110,52 +115,86 @@ export default function RegisterScreen() {
                 )}
               </View>
             </View>
-            <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
+            <Text className="mb-4 text-center font-plus-jakarta-bold text-2xl text-text-active">
               {t('auth.register.title')}
             </Text>
+
+            <View className="mb-4">
+              <Text className="mb-2 font-plus-jakarta-semibold text-sm text-text-active">
+                {t('auth.register.accountType')}
+              </Text>
+              <SegmentedButtons
+                value={userType}
+                onValueChange={handleSelectUserType}
+                buttons={[
+                  {
+                    value: UserRole.CLIENT,
+                    label: t('auth.register.userRole'),
+                    checkedColor: '#fff',
+                    uncheckedColor: '#666',
+                    style: {
+                      backgroundColor:
+                        userType === UserRole.CLIENT
+                          ? ROLE_COLORS[UserRole.CLIENT]
+                          : 'transparent',
+                      borderColor: activeColor,
+                    },
+                  },
+                  {
+                    value: UserRole.TRANSPORTER,
+                    label: t('auth.register.transporterRole'),
+                    checkedColor: '#fff',
+                    uncheckedColor: '#666',
+                    style: {
+                      backgroundColor:
+                        userType === UserRole.TRANSPORTER
+                          ? ROLE_COLORS[UserRole.TRANSPORTER]
+                          : 'transparent',
+                      borderColor: activeColor,
+                    },
+                  },
+                ]}
+              />
+            </View>
+
             <View className="mb-2">
-              <Input
-                label={t('auth.register.firstName')}
-                type="text"
-                value={firstName}
-                onChangeText={setFirstName}
-                error={errors.firstName}
-                returnKeyType="next"
-              />
-              <Input
-                label={t('auth.register.lastName')}
-                type="text"
-                value={lastName}
-                onChangeText={setLastName}
-                error={errors.lastName}
-                returnKeyType="next"
-              />
-              <Input
-                label={t('auth.register.phone')}
-                type="text"
-                value={phone}
-                onChangeText={setPhone}
-                error={errors.phone}
-                returnKeyType="next"
-              />
+              <View className="flex-row gap-2">
+                <View className="flex-1">
+                  <Input
+                    label={t('auth.register.firstName')}
+                    type="text"
+                    value={firstName}
+                    onChangeText={setFirstName}
+                    error={errors.firstName}
+                    returnKeyType="next"
+                  />
+                </View>
+                <View className="flex-1">
+                  <Input
+                    label={t('auth.register.lastName')}
+                    type="text"
+                    value={lastName}
+                    onChangeText={setLastName}
+                    error={errors.lastName}
+                    returnKeyType="next"
+                  />
+                </View>
+              </View>
               <Input
                 label={t('auth.register.email')}
-                type="text"
+                type="email"
                 value={email}
                 onChangeText={setEmail}
                 error={errors.email}
                 returnKeyType="next"
               />
-              <NativePicker
-                pickerLabel={t('auth.register.selectRole')}
-                value={userType}
-                onValueChange={handleSelectUserType}
-                options={[
-                  { label: t('auth.register.userRole'), value: UserRole.CLIENT },
-                  { label: t('auth.register.transporterRole'), value: UserRole.TRANSPORTER },
-                ]}
-                error={errors.userType}
-                placeholder={t('auth.register.selectRole')}
+              <Input
+                label={t('auth.register.phone')}
+                type="phone"
+                value={phone}
+                onChangeText={setPhone}
+                error={errors.phone}
+                returnKeyType="next"
               />
               <Input
                 label={t('auth.register.password')}

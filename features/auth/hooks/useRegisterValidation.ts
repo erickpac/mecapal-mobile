@@ -6,7 +6,6 @@ interface RegisterFormData {
   lastName: string;
   email: string;
   phone: string;
-  userType: string;
   password: string;
   confirmPassword: string;
 }
@@ -16,7 +15,6 @@ interface RegisterFormErrors {
   lastName?: string;
   email?: string;
   phone?: string;
-  userType?: string;
   password?: string;
   confirmPassword?: string;
 }
@@ -56,14 +54,12 @@ export const useRegisterValidation = (formData: RegisterFormData) => {
       newErrors.phone = t('errors.auth.register.phoneInvalid');
     }
 
-    if (!formData.userType) {
-      newErrors.userType = t('errors.auth.register.userTypeRequired');
-    }
-
     if (!formData.password) {
       newErrors.password = t('errors.auth.register.passwordRequired');
-    } else if (formData.password.length < 6) {
+    } else if (formData.password.length < 8) {
       newErrors.password = t('errors.auth.register.passwordTooShort');
+    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9])/.test(formData.password)) {
+      newErrors.password = t('errors.auth.register.passwordPolicy');
     }
 
     if (!formData.confirmPassword) {
