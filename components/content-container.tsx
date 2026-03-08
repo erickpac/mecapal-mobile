@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React, { ReactNode } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface ContentContainerProps {
   children: ReactNode;
@@ -18,12 +18,12 @@ interface ContentContainerProps {
  */
 export const ContentContainer: React.FC<ContentContainerProps> = ({
   children,
-  className = "",
+  className = '',
 }) => {
   return (
     <SafeAreaView
       className={`flex-1 bg-background-100 ${className}`}
-      edges={["bottom", "left", "right"]}
+      edges={['bottom', 'left', 'right']}
     >
       {children}
     </SafeAreaView>

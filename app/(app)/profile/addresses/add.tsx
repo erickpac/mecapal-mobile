@@ -1,14 +1,8 @@
-import { useStore } from "@/store/useStore";
-import { AddressScreen } from "@/features/user/screens/profile/addresses";
+import { useStore } from '@/store/useStore';
+import { AddAddressScreen } from '@/features/user/screens/profile/addresses';
 
 export default function AddAddress() {
-    const { isAuthenticated } = useStore();
+  const { isAuthenticated } = useStore();
 
-    return (
-        <>
-            {isAuthenticated && (
-                <AddressScreen />
-            )}
-        </>
-    );
+  return <>{isAuthenticated && <AddAddressScreen />}</>;
 }

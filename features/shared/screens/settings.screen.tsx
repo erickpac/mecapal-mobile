@@ -1,8 +1,8 @@
-import { useStore } from "@/store/useStore";
-import { UserRole } from "@/features/auth/types/user";
-import { Text, TouchableOpacity, View, ScrollView } from "react-native";
-import { MaterialSymbol } from "@/components/material-symbol";
-import { ScreenHeader } from "@/components/screen-header";
+import { useStore } from '@/store/useStore';
+import { UserRole } from '@/features/auth/types/user';
+import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import { MaterialSymbol } from '@/components/material-symbol';
+import { ScreenHeader } from '@/components/screen-header';
 
 export default function SettingsScreen() {
   const { user, logout } = useStore();
@@ -16,14 +16,14 @@ export default function SettingsScreen() {
 
       <View className="p-4">
         {/* Profile Info */}
-        <View className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mb-6">
-          <View className="flex-row items-center mb-4">
-            <View className="w-16 h-16 bg-blue-100 rounded-full items-center justify-center mr-4">
+        <View className="mb-6 rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
+          <View className="mb-4 flex-row items-center">
+            <View className="mr-4 h-16 w-16 items-center justify-center rounded-full bg-blue-100">
               <MaterialSymbol name="person" size={24} color="text-blue-500" />
             </View>
             <View className="flex-1">
               <Text className="text-xl font-semibold text-gray-800">
-                {user?.name || "Usuario"}
+                {user?.name || 'Usuario'}
               </Text>
               <Text className="text-gray-600">{user?.email}</Text>
             </View>
@@ -32,9 +32,9 @@ export default function SettingsScreen() {
 
         {/* Menu Items */}
         <View className="space-y-3">
-          <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+          <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
             <View className="flex-row items-center">
-              <View className="w-10 h-10 bg-blue-100 rounded-lg items-center justify-center mr-4">
+              <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-blue-100">
                 <MaterialSymbol name="person" size={24} color="text-blue-500" />
               </View>
               <View className="flex-1">
@@ -51,9 +51,9 @@ export default function SettingsScreen() {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+          <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
             <View className="flex-row items-center">
-              <View className="w-10 h-10 bg-green-100 rounded-lg items-center justify-center mr-4">
+              <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-green-100">
                 <MaterialSymbol name="lock" size={24} color="text-green-500" />
               </View>
               <View className="flex-1">
@@ -70,9 +70,9 @@ export default function SettingsScreen() {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+          <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
             <View className="flex-row items-center">
-              <View className="w-10 h-10 bg-purple-100 rounded-lg items-center justify-center mr-4">
+              <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-purple-100">
                 <MaterialSymbol
                   name="notifications"
                   size={24}
@@ -93,9 +93,9 @@ export default function SettingsScreen() {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+          <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
             <View className="flex-row items-center">
-              <View className="w-10 h-10 bg-yellow-100 rounded-lg items-center justify-center mr-4">
+              <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-yellow-100">
                 <MaterialSymbol name="help" size={24} color="text-yellow-500" />
               </View>
               <View className="flex-1">
@@ -114,9 +114,9 @@ export default function SettingsScreen() {
 
           {user?.role === UserRole.TRANSPORTER && (
             <>
-              <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+              <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
                 <View className="flex-row items-center">
-                  <View className="w-10 h-10 bg-orange-100 rounded-lg items-center justify-center mr-4">
+                  <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-orange-100">
                     <MaterialSymbol
                       name="directions_car"
                       size={24}
@@ -137,9 +137,9 @@ export default function SettingsScreen() {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+              <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
                 <View className="flex-row items-center">
-                  <View className="w-10 h-10 bg-green-100 rounded-lg items-center justify-center mr-4">
+                  <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-green-100">
                     <MaterialSymbol
                       name="account_balance_wallet"
                       size={24}
@@ -166,10 +166,10 @@ export default function SettingsScreen() {
         {/* Logout Button */}
         <TouchableOpacity
           onPress={logout}
-          className="bg-red-500 p-4 rounded-lg mt-6 items-center"
+          className="mt-6 items-center rounded-lg bg-red-500 p-4"
         >
           <MaterialSymbol name="logout" size={24} color="text-white" />
-          <Text className="text-white font-semibold mt-2">Cerrar Sesión</Text>
+          <Text className="mt-2 font-semibold text-white">Cerrar Sesión</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

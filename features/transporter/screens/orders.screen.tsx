@@ -1,5 +1,5 @@
-import { Text, View, ScrollView } from "react-native";
-import { ScreenHeader } from "@/components/screen-header";
+import { Text, View, ScrollView } from 'react-native';
+import { ScreenHeader } from '@/components/screen-header';
 
 export default function TransporterOrdersScreen() {
   return (
@@ -10,48 +10,48 @@ export default function TransporterOrdersScreen() {
       />
 
       <View className="p-4">
-        <Text className="text-lg font-semibold mb-4 text-gray-800">
+        <Text className="mb-4 text-lg font-semibold text-gray-800">
           Pedidos Activos
         </Text>
 
         <View className="space-y-3">
           {[
             {
-              id: "1",
-              client: "Juan Pérez",
-              service: "Transporte de carga",
-              status: "En progreso",
-              time: "10:30 AM",
-              price: "$150",
+              id: '1',
+              client: 'Juan Pérez',
+              service: 'Transporte de carga',
+              status: 'En progreso',
+              time: '10:30 AM',
+              price: '$150',
             },
             {
-              id: "2",
-              client: "María García",
-              service: "Entrega urgente",
-              status: "Pendiente",
-              time: "2:15 PM",
-              price: "$200",
+              id: '2',
+              client: 'María García',
+              service: 'Entrega urgente',
+              status: 'Pendiente',
+              time: '2:15 PM',
+              price: '$200',
             },
             {
-              id: "3",
-              client: "Carlos López",
-              service: "Mudanza",
-              status: "Completado",
-              time: "9:00 AM",
-              price: "$300",
+              id: '3',
+              client: 'Carlos López',
+              service: 'Mudanza',
+              status: 'Completado',
+              time: '9:00 AM',
+              price: '$300',
             },
           ].map((order) => (
             <View
               key={order.id}
-              className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+              className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm"
             >
-              <View className="flex-row justify-between items-center">
+              <View className="flex-row items-center justify-between">
                 <View>
                   <Text className="text-lg font-semibold text-gray-800">
                     {order.client}
                   </Text>
                   <Text className="text-gray-600">{order.service}</Text>
-                  <Text className="text-gray-500 text-sm">{order.time}</Text>
+                  <Text className="text-sm text-gray-500">{order.time}</Text>
                 </View>
                 <View className="items-end">
                   <Text className="text-lg font-bold text-green-600">
@@ -59,11 +59,11 @@ export default function TransporterOrdersScreen() {
                   </Text>
                   <Text
                     className={`text-sm font-medium ${
-                      order.status === "Completado"
-                        ? "text-green-600"
-                        : order.status === "En progreso"
-                        ? "text-blue-600"
-                        : "text-yellow-600"
+                      order.status === 'Completado'
+                        ? 'text-green-600'
+                        : order.status === 'En progreso'
+                          ? 'text-blue-600'
+                          : 'text-yellow-600'
                     }`}
                   >
                     {order.status}

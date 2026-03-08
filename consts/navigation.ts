@@ -5,17 +5,17 @@ export const TRANSPORTER_TABS: TabConfig[] = [
   {
     name: 'home',
     titleKey: 'navigation.tabs.dashboard',
-    icon: 'dashboard',
+    icon: 'home',
   },
   {
     name: 'orders',
     titleKey: 'navigation.tabs.orders',
-    icon: 'receipt_long',
+    icon: 'search',
   },
   {
     name: 'vehicles',
     titleKey: 'navigation.tabs.vehicles',
-    icon: 'directions_car',
+    icon: 'history',
   },
   {
     name: 'profile',
@@ -30,14 +30,9 @@ export const USER_TABS: TabConfig[] = [
     icon: 'home',
   },
   {
-    name: 'search',
-    titleKey: 'navigation.tabs.search',
-    icon: 'search',
-  },
-  {
     name: 'history',
     titleKey: 'navigation.tabs.history',
-    icon: 'history',
+    icon: 'schedule',
   },
   {
     name: 'profile',
@@ -53,19 +48,14 @@ export const GUEST_TABS: TabConfig[] = [
     icon: 'home',
   },
   {
-    name: 'search',
-    titleKey: 'navigation.tabs.search',
-    icon: 'search',
-  },
-  {
     name: 'about',
     titleKey: 'navigation.tabs.about',
-    icon: 'info',
+    icon: 'help',
   },
   {
     name: 'auth',
     titleKey: 'navigation.tabs.auth',
-    icon: 'person_add',
+    icon: 'person',
   },
 ];
 
@@ -77,6 +67,7 @@ export const TRANSPORTER_HIDDEN_ROUTES = [
   'earnings',
   'auth',
   'about',
+  'search',
 ];
 export const USER_HIDDEN_ROUTES = [
   'orders',
@@ -85,6 +76,7 @@ export const USER_HIDDEN_ROUTES = [
   'earnings',
   'about',
   'auth',
+  'search',
 ];
 
 export const GUEST_HIDDEN_ROUTES = [
@@ -94,6 +86,7 @@ export const GUEST_HIDDEN_ROUTES = [
   'earnings',
   'history',
   'profile',
+  'search',
 ];
 
 // Common tab screen options

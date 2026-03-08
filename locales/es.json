@@ -20,12 +20,12 @@
       "dashboard": "Dashboard",
       "search": "Buscar",
       "history": "Historial",
-      "about": "Acerca de",
-      "auth": "Cuenta",
+      "about": "¿Cómo Funciona?",
+      "auth": "Crear Cuenta",
       "orders": "Órdenes",
       "vehicles": "Vehículos",
       "earnings": "Ganancias",
-      "profile": "Perfil",
+      "profile": "Mi Perfil",
       "settings": "Configuración"
     }
   },
@@ -522,9 +522,14 @@
       "noTransactions": "Aún no hay transacciones"
     },
     "ctaTransporter": {
-      "title": "¿Eres transportista?",
+      "title": "¿Quieres ser transportista?",
       "subtitle": "Haz que tu vehiculo trabaje para ti",
-      "action1": "Crear tu cuenta"
+      "action1": "Conoce Más"
+    },
+    "newsletter": {
+      "title": "Suscríbete a nuestro boletín",
+      "subtitle": "Sé el primero en acceder a promociones y noticias.",
+      "action1": "Suscribirme"
     },
     "ctaUser": {
       "title": "¿Listo para mover tus chivas?",
@@ -547,7 +552,13 @@
     },
     "address": {
       "title": "Mis Direcciones",
-      "subtitle": "Agrega tus direcciones"
+      "subtitle": "Agrega tus direcciones",
+      "title2": "Mis Direcciones",
+      "subTitle2": "Aquí encontrarás las direcciones guardadas de punto de origen y destinos.",
+      "myAddresses": "Origen",
+      "addNew": "Agregar Dirección",
+      "addNewAddress": "Agregar Nueva Dirección",
+      "saveAddress": "Guardar Dirección"
     },
     "security": {
       "title": "Seguridad",
@@ -572,15 +583,15 @@
       "faq": {
         "title": "Preguntas Frecuentes",
         "question1": "¿Qué tipo de envío de cargas manejan?",
-        "answer1": "Manejamos 3 tipos: Envío express, Carga Ligera y Carga Pesada.",
+        "answer1": "Manejamos 3 tipos: Envío express, Carga Ligera y Carga Pesada."
       },
       "terms": {
         "title": "Términos y Condiciones",
-        "description": "Por favor, lea los términos y condiciones antes de continuar.",
+        "description": "Por favor, lea los términos y condiciones antes de continuar."
       },
       "privacy": {
         "title": "Política de Privacidad",
-        "description": "Por favor, lea la política de privacidad antes de continuar.",
+        "description": "Por favor, lea la política de privacidad antes de continuar."
       }
     },
     "preferences": {

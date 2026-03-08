@@ -1,6 +1,6 @@
-import React, { memo } from "react";
-import { TouchableOpacity, Text } from "react-native";
-import { UserRole } from "@/features/auth/types/user";
+import React, { memo } from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+import { UserRole } from '@/features/auth/types/user';
 
 interface ActionLinkProps {
   title: string;
@@ -12,18 +12,18 @@ interface ActionLinkProps {
 const getUserTypeColorClass = (userType: UserRole | undefined) => {
   switch (userType) {
     case UserRole.USER:
-      return "text-primary-500";
+      return 'text-primary-500';
     case UserRole.TRANSPORTER:
-      return "text-secondary-500";
+      return 'text-secondary-500';
     default:
-      return "text-tertiary-500";
+      return 'text-black-500';
   }
 };
 
 const ActionLinkComponent = ({
   title,
   onPress,
-  className = "",
+  className = '',
   userType,
 }: ActionLinkProps) => {
   const color = getUserTypeColorClass(userType);

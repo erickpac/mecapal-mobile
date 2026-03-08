@@ -1,6 +1,6 @@
-import { MaterialSymbol } from "@/components/material-symbol";
-import { Text, TouchableOpacity, View, ScrollView } from "react-native";
-import { ScreenHeader } from "@/components/screen-header";
+import { MaterialSymbol } from '@/components/material-symbol';
+import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import { ScreenHeader } from '@/components/screen-header';
 
 export default function TransporterVehiclesScreen() {
   return (
@@ -11,52 +11,52 @@ export default function TransporterVehiclesScreen() {
       />
 
       <View className="p-4">
-        <TouchableOpacity className="bg-blue-500 p-4 rounded-lg mb-6 items-center">
+        <TouchableOpacity className="mb-6 items-center rounded-lg bg-blue-500 p-4">
           <MaterialSymbol name="add" size={24} color="text-white" />
-          <Text className="text-white font-semibold mt-2">
+          <Text className="mt-2 font-semibold text-white">
             Agregar Vehículo
           </Text>
         </TouchableOpacity>
 
-        <Text className="text-lg font-semibold mb-4 text-gray-800">
+        <Text className="mb-4 text-lg font-semibold text-gray-800">
           Vehículos Registrados
         </Text>
 
         <View className="space-y-4">
           {[
             {
-              id: "1",
-              type: "Camión",
-              model: "Toyota Hilux",
-              year: "2020",
-              plate: "ABC-123",
-              status: "Disponible",
-              capacity: "1.5 toneladas",
+              id: '1',
+              type: 'Camión',
+              model: 'Toyota Hilux',
+              year: '2020',
+              plate: 'ABC-123',
+              status: 'Disponible',
+              capacity: '1.5 toneladas',
             },
             {
-              id: "2",
-              type: "Furgón",
-              model: "Ford Transit",
-              year: "2019",
-              plate: "XYZ-789",
-              status: "En Servicio",
-              capacity: "2 toneladas",
+              id: '2',
+              type: 'Furgón',
+              model: 'Ford Transit',
+              year: '2019',
+              plate: 'XYZ-789',
+              status: 'En Servicio',
+              capacity: '2 toneladas',
             },
             {
-              id: "3",
-              type: "Pickup",
-              model: "Nissan Frontier",
-              year: "2021",
-              plate: "DEF-456",
-              status: "Mantenimiento",
-              capacity: "1 tonelada",
+              id: '3',
+              type: 'Pickup',
+              model: 'Nissan Frontier',
+              year: '2021',
+              plate: 'DEF-456',
+              status: 'Mantenimiento',
+              capacity: '1 tonelada',
             },
           ].map((vehicle) => (
             <View
               key={vehicle.id}
-              className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+              className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm"
             >
-              <View className="flex-row justify-between items-start mb-3">
+              <View className="mb-3 flex-row items-start justify-between">
                 <View className="flex-1">
                   <Text className="text-lg font-semibold text-gray-800">
                     {vehicle.model}
@@ -68,12 +68,12 @@ export default function TransporterVehiclesScreen() {
                     {vehicle.plate}
                   </Text>
                   <Text
-                    className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      vehicle.status === "Disponible"
-                        ? "bg-green-100 text-green-800"
-                        : vehicle.status === "En Servicio"
-                        ? "bg-blue-100 text-blue-800"
-                        : "bg-yellow-100 text-yellow-800"
+                    className={`rounded-full px-3 py-1 text-sm font-medium ${
+                      vehicle.status === 'Disponible'
+                        ? 'bg-green-100 text-green-800'
+                        : vehicle.status === 'En Servicio'
+                          ? 'bg-blue-100 text-blue-800'
+                          : 'bg-yellow-100 text-yellow-800'
                     }`}
                   >
                     {vehicle.status}
@@ -81,14 +81,14 @@ export default function TransporterVehiclesScreen() {
                 </View>
               </View>
 
-              <View className="flex-row justify-between items-center">
+              <View className="flex-row items-center justify-between">
                 <View>
                   <Text className="text-gray-600">Tipo: {vehicle.type}</Text>
                   <Text className="text-gray-600">
                     Capacidad: {vehicle.capacity}
                   </Text>
                 </View>
-                <TouchableOpacity className="bg-gray-100 p-2 rounded-lg">
+                <TouchableOpacity className="rounded-lg bg-gray-100 p-2">
                   <MaterialSymbol
                     name="chevron_right"
                     size={16}

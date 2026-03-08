@@ -1,6 +1,6 @@
-import { View, Text, Pressable } from "react-native";
-import React from "react";
-import { Button } from "react-native-paper";
+import { View, Text, Pressable } from 'react-native';
+import React from 'react';
+import { Button } from 'react-native-paper';
 
 interface Props {
   title: string;

@@ -1,15 +1,8 @@
-import { useStore } from "@/store/useStore";
-import UserHelpScreen from "@/features/user/screens/profile/help/help.screen";
-
+import { useStore } from '@/store/useStore';
+import UserHelpScreen from '@/features/user/screens/profile/help/help.screen';
 
 export default function ProfileIndex() {
-    const { isAuthenticated } = useStore();
+  const { isAuthenticated } = useStore();
 
-    return (
-        <>
-            {isAuthenticated && (
-                <UserHelpScreen />
-            )}
-        </>
-    );
+  return <>{isAuthenticated && <UserHelpScreen />}</>;
 }

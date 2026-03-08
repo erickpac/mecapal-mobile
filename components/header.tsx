@@ -1,12 +1,12 @@
-import React, { ReactNode } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { MaterialSymbol } from "@/components/material-symbol";
-import { router } from "expo-router";
-import { useStore } from "@/store/useStore";
-import { UserRole } from "@/features/auth/types/user";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { COLORS } from "@/consts/colors";
-import MekapalWhite from "./svg/mekapal-white-letters";
+import React, { ReactNode } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { MaterialSymbol } from '@/components/material-symbol';
+import { router } from 'expo-router';
+import { useStore } from '@/store/useStore';
+import { UserRole } from '@/features/auth/types/user';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { COLORS } from '@/consts/colors';
+import MekapalWhite from './svg/mekapal-white-letters';
 
 export const Header: React.FC<{ backgroundColor?: string }> = ({
   backgroundColor,
@@ -24,7 +24,7 @@ export const Header: React.FC<{ backgroundColor?: string }> = ({
 
   return (
     <View
-      className={["flex-row justify-center"].join(" ")}
+      className={['flex-row justify-center'].join(' ')}
       pointerEvents="box-none"
       style={{
         height: headerHeight,

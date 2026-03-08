@@ -1,16 +1,16 @@
-import { useStore } from "@/store/useStore";
-import { UserRole } from "@/features/auth/types/user";
-import { Text, View } from "react-native";
-import { NavigationHeader } from "@/components/navigation-header";
-import { ContentContainer } from "@/components/content-container";
+import { useStore } from '@/store/useStore';
+import { UserRole } from '@/features/auth/types/user';
+import { Text, View } from 'react-native';
+import { NavigationHeader } from '@/components/navigation-header';
+import { ContentContainer } from '@/components/content-container';
 import {
   navigateToOnboardingRegister,
   navigateToOnboardingLogin,
-} from "../routes";
-import { CarAccesories, FreeShipping } from "@/components/svg";
-import { Button } from "@/components/button";
-import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+} from '../routes';
+import { CarAccesories, FreeShipping } from '@/components/svg';
+import { Button } from '@/components/button';
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function AuthOptionsScreen() {
   const { selectedUserType, setHasCompletedOnboarding } = useStore();
@@ -24,12 +24,12 @@ export default function AuthOptionsScreen() {
         <FreeShipping width="100%" height="100%" />
       ),
       title: isUser
-        ? t("onboarding.authOptions.titleUser")
-        : t("onboarding.authOptions.titleTransporter"),
+        ? t('onboarding.authOptions.titleUser')
+        : t('onboarding.authOptions.titleTransporter'),
       description: isUser
-        ? t("onboarding.authOptions.descUser")
-        : t("onboarding.authOptions.descTransporter"),
-      aspectRatio: isUser ? "aspect-[342/227]" : "aspect-[287/206]",
+        ? t('onboarding.authOptions.descUser')
+        : t('onboarding.authOptions.descTransporter'),
+      aspectRatio: isUser ? 'aspect-[342/227]' : 'aspect-[287/206]',
     };
   }, [isUser, t]);
 
@@ -61,18 +61,18 @@ export default function AuthOptionsScreen() {
 
         <View className="gap-4">
           <Button
-            title={t("onboarding.authOptions.createAccount")}
+            title={t('onboarding.authOptions.createAccount')}
             onPress={() => navigateToOnboardingRegister()}
             userType={selectedUserType}
           />
           <Button
-            title={t("onboarding.authOptions.haveAccount")}
+            title={t('onboarding.authOptions.haveAccount')}
             variant="outlined"
             onPress={() => navigateToOnboardingLogin()}
             userType={selectedUserType}
           />
           <Button
-            title={t("onboarding.authOptions.skip")}
+            title={t('onboarding.authOptions.skip')}
             variant="text"
             onPress={() => setHasCompletedOnboarding(true)}
             userType={selectedUserType}

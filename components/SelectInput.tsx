@@ -1,6 +1,6 @@
-import React from "react";
-import { View } from "react-native";
-import { HelperText, Menu, TextInput } from "react-native-paper";
+import React from 'react';
+import { View } from 'react-native';
+import { HelperText, Menu, TextInput } from 'react-native-paper';
 
 interface Option {
   label: string;
@@ -23,7 +23,7 @@ export const SelectInput: React.FC<SelectInputProps> = ({
   onValueChange,
   options,
   error,
-  placeholder = "Select an option",
+  placeholder = 'Select an option',
   disabled = false,
 }) => {
   const [visible, setVisible] = React.useState(false);
@@ -45,14 +45,14 @@ export const SelectInput: React.FC<SelectInputProps> = ({
         anchor={
           <TextInput
             label={label}
-            value={selectedOption?.label || ""}
+            value={selectedOption?.label || ''}
             onPressIn={openMenu}
             error={!!error}
             placeholder={placeholder}
             disabled={disabled}
             right={<TextInput.Icon icon="chevron-down" />}
             mode="outlined"
-            style={{ backgroundColor: "#FFF" }}
+            style={{ backgroundColor: '#FFF' }}
           />
         }
       >

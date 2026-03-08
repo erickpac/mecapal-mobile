@@ -1,4 +1,4 @@
-import Svg, { Mask, Path, G } from "react-native-svg";
+import Svg, { Mask, Path, G } from 'react-native-svg';
 const Motorcycle = () => (
   <Svg width={33} height={32} fill="none">
     <Mask
@@ -9,7 +9,7 @@ const Motorcycle = () => (
       y={0}
       maskUnits="userSpaceOnUse"
       style={{
-        maskType: "alpha",
+        maskType: 'alpha',
       }}
     >
       <Path fill="#D9D9D9" d="M.818 0h32v32h-32z" />

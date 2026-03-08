@@ -1,20 +1,20 @@
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
 export const validateEmail = (email: string): string | undefined => {
-  if (!email) return "El correo es obligatorio.";
+  if (!email) return 'El correo es obligatorio.';
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailRegex.test(email))
-    return "Ingresa tu correo electrónico correctamente.";
+    return 'Ingresa tu correo electrónico correctamente.';
 
   return undefined;
 };
 
 export const validatePassword = (password: string): string | undefined => {
-  if (!password) return "La contraseña es obligatoria.";
+  if (!password) return 'La contraseña es obligatoria.';
   if (password.length < 6)
-    return "La contraseña debe tener al menos 6 caracteres.";
+    return 'La contraseña debe tener al menos 6 caracteres.';
   return undefined;
 };
 

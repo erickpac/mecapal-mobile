@@ -1,11 +1,13 @@
-import { View, Text, ScrollView, Pressable } from 'react-native'
-import { Button } from "@/components/button";
-import React, { useState } from 'react'
-import { NavigationHeader } from "@/components/navigation-header";
-import { useStore } from "@/store/useStore";
-import { COLORS } from "@/consts/colors";
+import React, { useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { Button } from '@/components/button';
+// import TabComponent from '@/components/tab-component';
+import { NavigationHeader } from '@/components/navigation-header';
+import { useStore } from '@/store/useStore';
+import { COLORS } from '@/consts/colors';
 import { MaterialSymbol } from '@/components/material-symbol';
-import { Input } from '@/components/input';
+import { useTranslation } from 'react-i18next';
+import { navigateToAddAddress } from '@/features/user/routes';
 
 type Address = {
   id: string;
@@ -16,12 +18,11 @@ type Address = {
   zipCode: string;
   country: string;
   isDefault: boolean;
-}
+};
 
-type Props = {}
-
-const AddressScreen = (props: Props) => {
+const AddressScreen = () => {
   const { user } = useStore();
+  const { t } = useTranslation();
 
   const [addresses, setAddresses] = useState<Address[]>([
     {
@@ -32,7 +33,7 @@ const AddressScreen = (props: Props) => {
       state: 'Guatemala',
       zipCode: '01001',
       country: 'Guatemala',
-      isDefault: true
+      isDefault: true,
     },
     {
       id: '2',
@@ -42,7 +43,7 @@ const AddressScreen = (props: Props) => {
       state: 'Guatemala',
       zipCode: '01001',
       country: 'Guatemala',
-      isDefault: false
+      isDefault: false,
     },
     {
       id: '3',
@@ -52,262 +53,92 @@ const AddressScreen = (props: Props) => {
       state: 'Guatemala',
       zipCode: '01001',
       country: 'Guatemala',
-      isDefault: false
-    }
+      isDefault: false,
+    },
   ]);
 
-  const [editingAddress, setEditingAddress] = useState<Address | null>(null);
-  const [showAddForm, setShowAddForm] = useState(false);
-
-  const [newAddress, setNewAddress] = useState<Address>({
-    id: '',
-    name: '',
-    street: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    country: 'Guatemala',
-    isDefault: false
-  });
-
-  const handleSaveAddress = () => {
-    if (editingAddress) {
-      setAddresses(prev => prev.map(addr =>
-        addr.id === editingAddress.id ? editingAddress : addr
-      ));
-      setEditingAddress(null);
-    } else {
-      const addressToAdd = {
-        ...newAddress,
-        id: Date.now().toString()
-      };
-      setAddresses(prev => [...prev, addressToAdd]);
-      setNewAddress({
-        id: '',
-        name: '',
-        street: '',
-        city: '',
-        state: '',
-        zipCode: '',
-        country: 'Guatemala',
-        isDefault: false
-      });
-      setShowAddForm(false);
-    }
+  const renderListAddressItem = (address: Address) => {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          navigateToAddAddress();
+        }}
+        className="border-b border-t border-gray-100 bg-white p-4 px-6"
+      >
+        <View className="flex-row items-center justify-between">
+          <View className="flex-1 pr-4">
+            <View className="flex-row items-center gap-2">
+              <Text className="font-plus-jakarta-bold text-base font-bold leading-tight text-gray-900">
+                {address.name} {address.isDefault && '(Predeterminada)'}
+              </Text>
+            </View>
+            <Text className="font-plus-jakarta-medium text-base font-medium leading-tight text-gray-900">
+              {address.street}
+            </Text>
+            <Text className="font-plus-jakarta-medium text-base font-medium leading-tight text-gray-900">
+              {address.city}, {address.state}, {address.zipCode},{' '}
+              {address.country}
+            </Text>
+          </View>
+          <View className="justify-center">
+            <MaterialSymbol
+              name="chevron_right"
+              size={20}
+              color={COLORS.gray[400]}
+            />
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
   };
-
-  const handleSetDefault = (id: string) => {
-    setAddresses(prev => prev.map(addr => ({
-      ...addr,
-      isDefault: addr.id === id
-    })));
-  };
-
-  const handleDeleteAddress = (id: string) => {
-    setAddresses(prev => prev.filter(addr => addr.id !== id));
-  };
-
-  const renderAddressForm = (address: Address, isEditing: boolean = false) => (
-    <View className="space-y-4">
-      <Input
-        label="Nombre de la dirección"
-        value={address.name}
-        mode="flat"
-        contentStyle={{ backgroundColor: COLORS.white }}
-        style={{ backgroundColor: COLORS.white }}
-        activeUnderlineColor="black"
-        onChangeText={(value) => {
-          if (isEditing && editingAddress) {
-            setEditingAddress({ ...editingAddress, name: value });
-          } else {
-            setNewAddress(prev => ({ ...prev, name: value }));
-          }
-        }}
-      />
-      <Input
-        label="Calle"
-        value={address.street}
-        mode="flat"
-        contentStyle={{ backgroundColor: COLORS.white }}
-        style={{ backgroundColor: COLORS.white }}
-        activeUnderlineColor="black"
-        onChangeText={(value) => {
-          if (isEditing && editingAddress) {
-            setEditingAddress({ ...editingAddress, street: value });
-          } else {
-            setNewAddress(prev => ({ ...prev, street: value }));
-          }
-        }}
-      />
-      <Input
-        label="Ciudad"
-        value={address.city}
-        mode="flat"
-        contentStyle={{ backgroundColor: COLORS.white }}
-        style={{ backgroundColor: COLORS.white }}
-        activeUnderlineColor="black"
-        onChangeText={(value) => {
-          if (isEditing && editingAddress) {
-            setEditingAddress({ ...editingAddress, city: value });
-          } else {
-            setNewAddress(prev => ({ ...prev, city: value }));
-          }
-        }}
-      />
-      <Input
-        label="Departamento"
-        value={address.state}
-        mode="flat"
-        contentStyle={{ backgroundColor: COLORS.white }}
-        style={{ backgroundColor: COLORS.white }}
-        activeUnderlineColor="black"
-        onChangeText={(value) => {
-          if (isEditing && editingAddress) {
-            setEditingAddress({ ...editingAddress, state: value });
-          } else {
-            setNewAddress(prev => ({ ...prev, state: value }));
-          }
-        }}
-      />
-      <Input
-        label="Código Postal"
-        value={address.zipCode}
-        mode="flat"
-        contentStyle={{ backgroundColor: COLORS.white }}
-        style={{ backgroundColor: COLORS.white }}
-        activeUnderlineColor="black"
-        onChangeText={(value) => {
-          if (isEditing && editingAddress) {
-            setEditingAddress({ ...editingAddress, zipCode: value });
-          } else {
-            setNewAddress(prev => ({ ...prev, zipCode: value }));
-          }
-        }}
-      />
-      <Input
-        label="País"
-        value={address.country}
-        mode="flat"
-        contentStyle={{ backgroundColor: COLORS.white }}
-        style={{ backgroundColor: COLORS.white }}
-        activeUnderlineColor="black"
-        onChangeText={(value) => {
-          if (isEditing && editingAddress) {
-            setEditingAddress({ ...editingAddress, country: value });
-          } else {
-            setNewAddress(prev => ({ ...prev, country: value }));
-          }
-        }}
-      />
-    </View>
-  );
 
   return (
     <>
       <NavigationHeader title="" showBackButton={true} borderBottom={false} />
       <View className="flex-1 bg-white">
-        <ScrollView className="flex-1">
+        <View className="flex-1">
           <View className="px-6 pt-6">
-            <Text className="text-2xl font-plus-jakarta-bold font-bold text-gray-900">Mis Direcciones</Text>
-            <Text className="text-base font-plus-jakarta font-normal text-gray-800 mt-4">{"Estas son las direcciones para recoger tus cargas. Puedes ingresar hasta un máximo de 3."}</Text>
+            <Text className="font-plus-jakarta-bold text-2xl font-bold text-gray-900">
+              {t('profile.address.title2')}
+            </Text>
+            <Text className="mt-4 font-plus-jakarta text-base font-normal text-gray-800">
+              {t('profile.address.subTitle2')}
+            </Text>
           </View>
 
-          <View className="mt-6 px-6 pb-2 space-y-4">
-            {addresses.map((address) => (
-              <View key={address.id} className="bg-white  shadow-sm border-t border-b border-gray-100 p-4">
-                <View className="flex-row justify-between items-start">
-                  <View className="flex-1 pr-4">
-                    <View className="flex-row items-center gap-2">
-                      <Text className="font-semibold text-gray-900 text-base leading-tight">{address.name}</Text>
-
-                    </View>
-                    <Text className=" text-gray-900 text-base leading-tight">{address.street}</Text>
-                    <Text className="text-gray-600 text-sm mt-1">{address.city}, {address.state}, {address.zipCode}, {address.country}</Text>
-                    {/* {address.isDefault && (
-                      <View className="mt-3">
-                        <Text className="text-sm text-green-600 font-medium">Dirección Predeterminada</Text>
-                      </View>
-                    )} */}
-                  </View>
-                  <View className="flex-row space-x-3">
-                    <Pressable onPress={() => setEditingAddress(address)} className="p-1">
-                      <MaterialSymbol name="edit" size={20} color={COLORS.primary} />
-                    </Pressable>
-                    <Pressable onPress={() => handleDeleteAddress(address.id)} className="p-1">
-                      <MaterialSymbol name="delete" size={20} color={COLORS.error} />
-                    </Pressable>
-                  </View>
-                </View>
-                {/*!address.isDefault && (
-                  <View className="mt-4">
-                    <Button
-                      title="Establecer como Predeterminada"
-                      variant="outlined"
-                      onPress={() => handleSetDefault(address.id)}
-                      userType={user?.role}
-                    />
-                  </View>
-                )*/}
-              </View>
-            ))}
+          <View className="mt-6">
+            {/*{addresses.length > 0 && (
+              <TabComponent
+                tabs={[
+                  {
+                    title: t('profile.address.myAddresses'),
+                    component: <></>,
+                    activeColor: COLORS.primary,
+                  },
+                ]}
+              />
+            )}*/}
           </View>
-
-          {showAddForm && (
-            <View className="mx-6 mb-6 bg-white rounded-xl shadow-sm border border-gray-100">
-              <View className="flex-row justify-between items-center p-4 border-b border-gray-100">
-                <Text className="text-lg font-semibold text-gray-900">Nueva Dirección</Text>
-                <Pressable onPress={() => setShowAddForm(false)}>
-                  <MaterialSymbol name="close" size={24} color={COLORS.gray[600]} />
-                </Pressable>
-              </View>
-              <View className="p-4">
-                {renderAddressForm(newAddress)}
-                <View className="mt-6">
-                  <Button
-                    title="Guardar Dirección"
-                    onPress={handleSaveAddress}
-                    userType={user?.role}
-                  />
-                </View>
-              </View>
-            </View>
-          )}
-
-          {editingAddress && (
-            <View className="mx-6 mb-6 bg-white rounded-xl shadow-sm border border-gray-100">
-              <View className="flex-row justify-between items-center p-4 border-b border-gray-100">
-                <Text className="text-lg font-semibold text-gray-900">Editar Dirección</Text>
-                <Pressable onPress={() => setEditingAddress(null)}>
-                  <MaterialSymbol name="close" size={24} color={COLORS.gray[600]} />
-                </Pressable>
-              </View>
-              <View className="p-4">
-                {renderAddressForm(editingAddress, true)}
-                <View className="mt-6">
-                  <Button
-                    title="Guardar Cambios"
-                    onPress={handleSaveAddress}
-                    userType={user?.role}
-                  />
-                </View>
-              </View>
-            </View>
-          )}
-
-
-          <View className="pt-4 px-6 py-6">
-            <Button
-              title="Agregar Nueva Dirección"
-              onPress={() => setShowAddForm(true)}
-              userType={user?.role}
-              variant="text"
-              disabled={addresses.length >= 3}
+          <View className="space-y-4 pb-2">
+            <FlatList
+              data={addresses}
+              renderItem={({ item }) => renderListAddressItem(item)}
+              keyExtractor={(item) => item.id.toString()}
             />
           </View>
-        </ScrollView>
+        </View>
+        <View className="px-6 py-6 pt-4">
+          <Button
+            title={t('profile.address.addNew')}
+            onPress={() => navigateToAddAddress()}
+            userType={user?.role}
+            variant="contained"
+            disabled={addresses.length >= 3}
+          />
+        </View>
       </View>
     </>
-  )
-}
+  );
+};
 
 export default AddressScreen;

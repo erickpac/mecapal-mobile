@@ -1,8 +1,8 @@
-import { router } from "expo-router";
+import { router } from 'expo-router';
 
 // Shared routes (common across features)
 export const SHARED_ROUTES = {
-  SETTINGS: "/settings",
+  SETTINGS: '/settings',
 } as const;
 
 // Shared navigation functions

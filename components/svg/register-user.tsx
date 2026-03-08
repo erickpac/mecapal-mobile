@@ -1,4 +1,4 @@
-import Svg, { Path, SvgProps, G } from "react-native-svg";
+import Svg, { Path, SvgProps, G } from 'react-native-svg';
 
 export const RegisterUser = (props: SvgProps) => (
   <Svg viewBox="0 0 193 168" fill="none" {...props}>

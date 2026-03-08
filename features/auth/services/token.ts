@@ -1,9 +1,9 @@
-import axios from "axios";
-import { AUTH_ENDPOINTS } from "@/services/api/config/endpoints";
-import TokenManager from "./token-manager";
-import { useStore } from "@/store/useStore";
-import { RefreshTokenResponse, RefreshTokenRequest } from "../types/auth";
-import { TOKEN_CONFIG } from "@/services/api/config/constants";
+import axios from 'axios';
+import { AUTH_ENDPOINTS } from '@/services/api/config/endpoints';
+import TokenManager from './token-manager';
+import { useStore } from '@/store/useStore';
+import { RefreshTokenResponse, RefreshTokenRequest } from '../types/auth';
+import { TOKEN_CONFIG } from '@/services/api/config/constants';
 
 export class TokenService {
   /**
@@ -27,7 +27,7 @@ export class TokenService {
 
       return true;
     } catch (error) {
-      console.log("❌ Token refresh failed:", error);
+      console.log('❌ Token refresh failed:', error);
       this.clearAllTokens();
       return false;
     }
@@ -37,7 +37,7 @@ export class TokenService {
    * Makes the actual refresh token request
    */
   private static async makeRefreshRequest(
-    refreshToken: string
+    refreshToken: string,
   ): Promise<RefreshTokenResponse> {
     const requestData: RefreshTokenRequest = { refresh_token: refreshToken };
 
@@ -45,9 +45,9 @@ export class TokenService {
       `${process.env.EXPO_PUBLIC_API_URL}${AUTH_ENDPOINTS.REFRESH_TOKEN}`,
       requestData,
       {
-        headers: { "Content-Type": "application/json" },
+        headers: { 'Content-Type': 'application/json' },
         timeout: TOKEN_CONFIG.REFRESH_TIMEOUT,
-      }
+      },
     );
 
     return response.data;

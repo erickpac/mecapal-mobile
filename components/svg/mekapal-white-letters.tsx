@@ -1,4 +1,4 @@
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path } from 'react-native-svg';
 const MekapalWhite = () => (
   <Svg width={122} height={22} fill="none">
     <Path

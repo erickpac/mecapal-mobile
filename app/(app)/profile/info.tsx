@@ -1,15 +1,8 @@
-import { useStore } from "@/store/useStore";
-import InfoScreen from "@/features/user/screens/profile/info.screen";
-
+import { useStore } from '@/store/useStore';
+import InfoScreen from '@/features/user/screens/profile/info.screen';
 
 export default function ProfileIndex() {
-    const { isAuthenticated } = useStore();
+  const { isAuthenticated } = useStore();
 
-    return (
-        <>
-            {isAuthenticated && (
-                <InfoScreen />
-            )}
-        </>
-    );
+  return <>{isAuthenticated && <InfoScreen />}</>;
 }

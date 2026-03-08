@@ -1,4 +1,4 @@
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path } from 'react-native-svg';
 const Amico = () => (
   <Svg width={181} height={168} fill="none">
     <Path

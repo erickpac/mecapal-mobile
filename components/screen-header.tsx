@@ -1,5 +1,5 @@
-import { View, Text } from "react-native";
-import { MaterialSymbol } from "./material-symbol";
+import { View, Text } from 'react-native';
+import { MaterialSymbol } from './material-symbol';
 
 interface ScreenHeaderProps {
   title: string;
@@ -9,7 +9,7 @@ interface ScreenHeaderProps {
     name: string;
     color?: string;
     size?: number;
-    variant?: "outlined" | "rounded" | "sharp";
+    variant?: 'outlined' | 'rounded' | 'sharp';
   };
 }
 
@@ -31,7 +31,7 @@ interface ScreenHeaderProps {
 export const ScreenHeader = ({
   title,
   subtitle,
-  className = "",
+  className = '',
   icon,
 }: ScreenHeaderProps) => {
   return (
@@ -41,8 +41,8 @@ export const ScreenHeader = ({
           <MaterialSymbol
             name={icon.name}
             size={icon.size || 28}
-            color={icon.color || "text-gray-600"}
-            variant={icon.variant || "outlined"}
+            color={icon.color || 'text-gray-600'}
+            variant={icon.variant || 'outlined'}
           />
         )}
         <View className="flex-1">

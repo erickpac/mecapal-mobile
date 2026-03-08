@@ -1,9 +1,9 @@
-import { ApiErrorResponse } from "@/services/api";
+import { ApiErrorResponse } from '@/services/api';
 
 export class ErrorHandler {
   private static getErrorMessage(error: any): string {
     // If it's already an app error message, return it as is
-    if (typeof error === "string") {
+    if (typeof error === 'string') {
       return error;
     }
 
@@ -13,17 +13,17 @@ export class ErrorHandler {
     // Map specific error codes
     switch (apiError.status) {
       case 401:
-        return "errors.unauthorized";
+        return 'errors.unauthorized';
       case 403:
-        return "errors.forbidden";
+        return 'errors.forbidden';
       case 404:
-        return "errors.notFound";
+        return 'errors.notFound';
       case 422:
-        return "errors.validationError";
+        return 'errors.validationError';
       case 500:
-        return "errors.serverError";
+        return 'errors.serverError';
       default:
-        return "errors.generic";
+        return 'errors.generic';
     }
   }
 
@@ -39,14 +39,14 @@ export class ErrorHandler {
     if (error.request) {
       return {
         status: 0,
-        message: "Network error",
-        error: "Network error",
+        message: 'Network error',
+        error: 'Network error',
       };
     }
 
     return {
-      message: error.message || "Unknown error",
-      error: "Unknown error",
+      message: error.message || 'Unknown error',
+      error: 'Unknown error',
     };
   }
 
