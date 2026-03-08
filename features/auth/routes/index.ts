@@ -1,11 +1,11 @@
-import { router } from "expo-router";
+import { router } from 'expo-router';
 
 // Auth routes
 export const AUTH_ROUTES = {
-  AUTH: "/auth",
-  AUTH_REGISTER: "/auth/register",
-  AUTH_FORGOT_PASSWORD: "/auth/forgot-password",
-  AUTH_FORGOT_PASSWORD_SUCCESS_MESSAGE: "/auth/forgot-password-success",
+  AUTH: '/auth',
+  AUTH_REGISTER: '/auth/register',
+  AUTH_FORGOT_PASSWORD: '/auth/forgot-password',
+  AUTH_FORGOT_PASSWORD_SUCCESS_MESSAGE: '/auth/forgot-password-success',
 } as const;
 
 // Auth navigation functions

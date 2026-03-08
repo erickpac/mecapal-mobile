@@ -1,6 +1,6 @@
-import { View, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { MaterialSymbol } from "./material-symbol";
+import { View, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { MaterialSymbol } from './material-symbol';
 
 type Props = {
   uri?: string;
@@ -9,12 +9,17 @@ type Props = {
   sizeEditButton?: number;
   onPress?: () => void;
   className?: string;
-}
+};
 
 const Avatar = (props: Props) => {
   return (
     <View className="relative">
-      <View className={"h-28 w-28 items-center justify-center rounded-full border-4 border-white bg-gray-100 " + props.className}>
+      <View
+        className={
+          'h-28 w-28 items-center justify-center rounded-full border-4 border-white bg-gray-100 ' +
+          props.className
+        }
+      >
         <MaterialSymbol
           name="person"
           size={props.size || 48}
@@ -34,7 +39,7 @@ const Avatar = (props: Props) => {
         />
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
-export default Avatar
+export default Avatar;

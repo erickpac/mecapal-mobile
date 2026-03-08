@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface RegisterFormData {
   name: string;
@@ -36,42 +36,42 @@ export const useRegisterValidation = (formData: RegisterFormData) => {
 
     // Name validation
     if (!formData.name.trim()) {
-      newErrors.name = t("errors.auth.register.nameRequired");
+      newErrors.name = t('errors.auth.register.nameRequired');
     }
 
     // Email validation
     if (!formData.email.trim()) {
-      newErrors.email = t("errors.auth.register.emailRequired");
+      newErrors.email = t('errors.auth.register.emailRequired');
     } else if (!isValidEmail(formData.email)) {
-      newErrors.email = t("errors.auth.register.emailInvalid");
+      newErrors.email = t('errors.auth.register.emailInvalid');
     }
 
     // Phone validation
     if (!formData.phone.trim()) {
-      newErrors.phone = t("errors.auth.register.phoneRequired");
+      newErrors.phone = t('errors.auth.register.phoneRequired');
     } else if (!isValidPhone(formData.phone)) {
-      newErrors.phone = t("errors.auth.register.phoneInvalid");
+      newErrors.phone = t('errors.auth.register.phoneInvalid');
     }
 
     // User type validation
     if (!formData.userType) {
-      newErrors.userType = t("errors.auth.register.userTypeRequired");
+      newErrors.userType = t('errors.auth.register.userTypeRequired');
     }
 
     // Password validation
     if (!formData.password) {
-      newErrors.password = t("errors.auth.register.passwordRequired");
+      newErrors.password = t('errors.auth.register.passwordRequired');
     } else if (formData.password.length < 6) {
-      newErrors.password = t("errors.auth.register.passwordTooShort");
+      newErrors.password = t('errors.auth.register.passwordTooShort');
     }
 
     // Confirm password validation
     if (!formData.confirmPassword) {
       newErrors.confirmPassword = t(
-        "errors.auth.register.confirmPasswordRequired",
+        'errors.auth.register.confirmPasswordRequired',
       );
     } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = t("errors.auth.register.passwordsMismatch");
+      newErrors.confirmPassword = t('errors.auth.register.passwordsMismatch');
     }
 
     setErrors(newErrors);

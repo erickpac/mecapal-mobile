@@ -1,4 +1,4 @@
-import Svg, { G, Path, SvgProps } from "react-native-svg";
+import Svg, { G, Path, SvgProps } from 'react-native-svg';
 
 export const RegisterTransporter = (props: SvgProps) => (
   <Svg viewBox="0 0 193 168" fill="none" {...props}>

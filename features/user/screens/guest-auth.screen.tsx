@@ -1,7 +1,7 @@
-import { MaterialSymbol } from "@/components/material-symbol";
-import { Text, TouchableOpacity, View, ScrollView } from "react-native";
-import { ScreenHeader } from "@/components/screen-header";
-import { navigateTo } from "@/features/shared/routes";
+import { MaterialSymbol } from '@/components/material-symbol';
+import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import { ScreenHeader } from '@/components/screen-header';
+import { navigateTo } from '@/features/shared/routes';
 
 export default function GuestAuthScreen() {
   return (
@@ -22,7 +22,7 @@ export default function GuestAuthScreen() {
         {/* Auth Options */}
         <View className="mb-6 space-y-4">
           <TouchableOpacity
-            onPress={() => navigateTo("/auth/register")}
+            onPress={() => navigateTo('/auth/register')}
             className="items-center rounded-lg bg-green-500 p-4"
           >
             <MaterialSymbol name="person_add" size={32} color="text-white" />
@@ -35,7 +35,7 @@ export default function GuestAuthScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigateTo("/auth")}
+            onPress={() => navigateTo('/auth')}
             className="items-center rounded-lg bg-blue-500 p-4"
           >
             <MaterialSymbol name="login" size={32} color="text-white" />
@@ -56,24 +56,24 @@ export default function GuestAuthScreen() {
           <View className="space-y-3">
             {[
               {
-                icon: "star",
-                title: "Acceso completo",
-                description: "Reserva servicios sin restricciones",
+                icon: 'star',
+                title: 'Acceso completo',
+                description: 'Reserva servicios sin restricciones',
               },
               {
-                icon: "history",
-                title: "Historial personal",
-                description: "Revisa todos tus servicios anteriores",
+                icon: 'history',
+                title: 'Historial personal',
+                description: 'Revisa todos tus servicios anteriores',
               },
               {
-                icon: "favorite",
-                title: "Favoritos",
-                description: "Guarda tus transportistas preferidos",
+                icon: 'favorite',
+                title: 'Favoritos',
+                description: 'Guarda tus transportistas preferidos',
               },
               {
-                icon: "notifications",
-                title: "Notificaciones",
-                description: "Recibe actualizaciones en tiempo real",
+                icon: 'notifications',
+                title: 'Notificaciones',
+                description: 'Recibe actualizaciones en tiempo real',
               },
             ].map((benefit, index) => (
               <View
@@ -107,7 +107,7 @@ export default function GuestAuthScreen() {
           </Text>
           <View className="flex-row flex-wrap justify-between">
             <TouchableOpacity
-              onPress={() => navigateTo("/search")}
+              onPress={() => navigateTo('/search')}
               className="mb-4 w-[48%] items-center rounded-lg bg-blue-500 p-4"
             >
               <MaterialSymbol name="search" size={24} color="text-blue-500" />
@@ -115,7 +115,7 @@ export default function GuestAuthScreen() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigateTo("/about")}
+              onPress={() => navigateTo('/about')}
               className="mb-4 w-[48%] items-center rounded-lg bg-gray-500 p-4"
             >
               <MaterialSymbol name="info" size={24} color="text-gray-500" />
@@ -135,7 +135,7 @@ export default function GuestAuthScreen() {
           </Text>
           <View className="flex-row space-x-3">
             <TouchableOpacity
-              onPress={() => navigateTo("/auth/register")}
+              onPress={() => navigateTo('/auth/register')}
               className="flex-1 rounded-lg bg-white p-3"
             >
               <Text className="text-center font-semibold text-blue-600">
@@ -143,7 +143,7 @@ export default function GuestAuthScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigateTo("/auth")}
+              onPress={() => navigateTo('/auth')}
               className="flex-1 rounded-lg border border-white bg-transparent p-3"
             >
               <Text className="text-center font-semibold text-white">

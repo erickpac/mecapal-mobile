@@ -1,5 +1,5 @@
-import * as React from "react";
-import Svg, { SvgProps, Path } from "react-native-svg";
+import * as React from 'react';
+import Svg, { SvgProps, Path } from 'react-native-svg';
 
 export const Car = (props: SvgProps) => (
   <Svg fill="none" viewBox="0 0 108 45" {...props}>

@@ -1,28 +1,28 @@
-import { router, usePathname } from "expo-router";
-import { KeyboardAvoidingView, Platform, Text, View } from "react-native";
+import { router, usePathname } from 'expo-router';
+import { KeyboardAvoidingView, Platform, Text, View } from 'react-native';
 
-import { useTranslation } from "react-i18next";
-import { NavigationHeader } from "@/components/navigation-header";
-import { Input } from "@/components/input";
-import { ContentContainer } from "@/components/content-container";
-import { ForgetPasswordImageClient } from "@/components/svg";
-import { useStore } from "@/store/useStore";
-import { IconButton } from "@/components/icon-button";
-import { Button } from "@/components/button";
-import { useState } from "react";
-import { useAuth } from "@/features/auth/hooks/useAuth";
-import { navigateToForgotPasswordSuccessMessage } from "../routes";
+import { useTranslation } from 'react-i18next';
+import { NavigationHeader } from '@/components/navigation-header';
+import { Input } from '@/components/input';
+import { ContentContainer } from '@/components/content-container';
+import { ForgetPasswordImageClient } from '@/components/svg';
+import { useStore } from '@/store/useStore';
+import { IconButton } from '@/components/icon-button';
+import { Button } from '@/components/button';
+import { useState } from 'react';
+import { useAuth } from '@/features/auth/hooks/useAuth';
+import { navigateToForgotPasswordSuccessMessage } from '../routes';
 
 export default function ForgotPasswordScreen() {
   const { t } = useTranslation();
   const { selectedUserType } = useStore();
   const pathname = usePathname();
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   const { recoverPassword, isLoading, error, isSuccess } = useAuth();
 
   // Check if we're in modal mode (from onboarding)
-  const isModalMode = pathname.includes("/onboarding/");
+  const isModalMode = pathname.includes('/onboarding/');
 
   // Email validation function
   const validateEmail = (email: string): boolean => {
@@ -32,16 +32,16 @@ export default function ForgotPasswordScreen() {
 
   const handleValidateEmail = (email: string) => {
     // Reset previous errors
-    setEmailError("");
+    setEmailError('');
 
     // Validate email
     if (!email.trim()) {
       setEmailError(
-        t("errors.auth.register.emailRequired") || "Email is required",
+        t('errors.auth.register.emailRequired') || 'Email is required',
       );
       return false;
     } else if (!validateEmail(email)) {
-      setEmailError(t("auth.errors.invalidEmail") || "Invalid email format");
+      setEmailError(t('auth.errors.invalidEmail') || 'Invalid email format');
       return false;
     }
   };
@@ -49,9 +49,9 @@ export default function ForgotPasswordScreen() {
   // Handle form submission
   const handleSubmit = () => {
     // recoverPassword(email);
-    console.log("email", email);
-    console.log("email", pathname);
-    console.log(">>>>>");
+    console.log('email', email);
+    console.log('email', pathname);
+    console.log('>>>>>');
 
     debugger;
     navigateToForgotPasswordSuccessMessage();
@@ -75,7 +75,7 @@ export default function ForgotPasswordScreen() {
       <ContentContainer className="flex-1 px-4">
         <KeyboardAvoidingView
           className="flex-1 gap-6 pt-8"
-          behavior={Platform.OS === "ios" ? "padding" : undefined}
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
           <View className="mb-6 mt-2 items-center">
             <View className="aspect-[287/206] w-64 max-w-full">
@@ -84,15 +84,15 @@ export default function ForgotPasswordScreen() {
           </View>
           <View className="mt-6">
             <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
-              {t("auth.forgotPassword.title2")}
+              {t('auth.forgotPassword.title2')}
             </Text>
             <Text className="mx-6 text-center font-plus-jakarta text-base text-text-active">
-              {t("auth.forgotPassword.description")}
+              {t('auth.forgotPassword.description')}
             </Text>
           </View>
           <View className="gap-4">
             <Input
-              label={t("auth.register.email")}
+              label={t('auth.register.email')}
               type="email"
               value={email}
               onChangeText={(text) => {
@@ -105,14 +105,14 @@ export default function ForgotPasswordScreen() {
               autoCapitalize="none"
             />
             <Button
-              title={t("auth.forgotPassword.submit")}
+              title={t('auth.forgotPassword.submit')}
               onPress={handleSubmit}
               disabled={emailError.length > 0 || email.length <= 0 || isLoading}
               userType={selectedUserType}
             />
 
             <Button
-              title={`${t("auth.forgotPassword.backToLogin")}`}
+              title={`${t('auth.forgotPassword.backToLogin')}`}
               variant="text"
               className="mt-2"
               onPress={() => {

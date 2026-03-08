@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useStore } from "@/store/useStore";
-import TokenManager from "@/features/auth/services/token-manager";
+import { useEffect } from 'react';
+import { useStore } from '@/store/useStore';
+import TokenManager from '@/features/auth/services/token-manager';
 
 // Hook to initialize the token manager
 export const useTokenInitialization = () => {

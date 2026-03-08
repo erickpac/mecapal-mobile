@@ -1,8 +1,8 @@
-import React from "react";
-import { ActivityIndicator, View } from "react-native";
+import React from 'react';
+import { ActivityIndicator, View } from 'react-native';
 
 interface LoadingScreenProps {
-  size?: "small" | "large";
+  size?: 'small' | 'large';
   color?: string;
   backgroundColor?: string;
 }
@@ -18,9 +18,9 @@ interface LoadingScreenProps {
  * @returns {JSX.Element} A centered loading indicator within a full-screen view.
  */
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({
-  size = "large",
-  color = "#0000ff",
-  backgroundColor = "bg-white",
+  size = 'large',
+  color = '#0000ff',
+  backgroundColor = 'bg-white',
 }) => {
   return (
     <View className={`flex-1 items-center justify-center ${backgroundColor}`}>

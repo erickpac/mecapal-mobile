@@ -1,11 +1,11 @@
-import TokenManager from "@/features/auth/services/token-manager";
-import { TokenService } from "@/features/auth/services/token";
-import axios from "axios";
+import TokenManager from '@/features/auth/services/token-manager';
+import { TokenService } from '@/features/auth/services/token';
+import axios from 'axios';
 
 const api = axios.create({
   baseURL: process.env.EXPO_PUBLIC_API_URL,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
@@ -22,7 +22,7 @@ api.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // Response interceptor
@@ -47,7 +47,7 @@ api.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;

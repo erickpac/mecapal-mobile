@@ -1,17 +1,17 @@
-import { router } from "expo-router";
+import { router } from 'expo-router';
 
 // Onboarding routes
 export const ONBOARDING_ROUTES = {
-  ONBOARDING: "/onboarding",
-  ONBOARDING_USER_TYPE: "/onboarding/user-type-selection",
-  ONBOARDING_AUTH_OPTIONS: "/onboarding/auth-options",
+  ONBOARDING: '/onboarding',
+  ONBOARDING_USER_TYPE: '/onboarding/user-type-selection',
+  ONBOARDING_AUTH_OPTIONS: '/onboarding/auth-options',
   // Modal Auth routes (from onboarding)
-  ONBOARDING_AUTH: "/onboarding/auth",
-  ONBOARDING_LOGIN: "/onboarding/auth/login",
-  ONBOARDING_REGISTER: "/onboarding/auth/register",
-  ONBOARDING_FORGOT_PASSWORD: "/onboarding/auth/forgot-password",
+  ONBOARDING_AUTH: '/onboarding/auth',
+  ONBOARDING_LOGIN: '/onboarding/auth/login',
+  ONBOARDING_REGISTER: '/onboarding/auth/register',
+  ONBOARDING_FORGOT_PASSWORD: '/onboarding/auth/forgot-password',
   ONBOARDING_FORGOT_PASSWORD_SUCCESS_MESSAGE:
-    "/onboarding/auth/forgot-password-success",
+    '/onboarding/auth/forgot-password-success',
 } as const;
 
 // Onboarding navigation functions

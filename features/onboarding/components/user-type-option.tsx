@@ -1,5 +1,5 @@
-import { UserRole } from "@/features/auth/types/user";
-import { Text, TouchableOpacity, View } from "react-native";
+import { UserRole } from '@/features/auth/types/user';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 interface UserTypeOptionProps {
   userType: UserRole;
@@ -23,11 +23,11 @@ export const UserTypeOption = ({
   onPress,
 }: UserTypeOptionProps) => {
   const getBorderColor = () => {
-    if (!isPressed) return "border-gray-200";
+    if (!isPressed) return 'border-gray-200';
 
     return userType === UserRole.USER
-      ? "border-primary-500"
-      : "border-secondary-500";
+      ? 'border-primary-500'
+      : 'border-secondary-500';
   };
 
   return (

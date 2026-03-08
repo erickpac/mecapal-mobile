@@ -3,8 +3,8 @@ import {
   LoginCredentials,
   RegisterCredentials,
   ChangePasswordCredentials,
-} from "../types/auth";
-import { api, AUTH_ENDPOINTS } from "@/services/api";
+} from '../types/auth';
+import { api, AUTH_ENDPOINTS } from '@/services/api';
 
 export const authService = {
   login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
@@ -23,7 +23,7 @@ export const authService = {
     await api.post(AUTH_ENDPOINTS.CHANGE_PASSWORD, credentials);
 
     return {
-      message: "auth.changePassword.success",
+      message: 'auth.changePassword.success',
     };
   },
 
@@ -31,7 +31,7 @@ export const authService = {
     await api.post(AUTH_ENDPOINTS.RECOVER_PASSWORD, { email });
 
     return {
-      message: "auth.recoverPassword.success",
+      message: 'auth.recoverPassword.success',
     };
   },
 };

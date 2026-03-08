@@ -1,19 +1,19 @@
-import { authService } from "@/features/auth/services/auth";
+import { authService } from '@/features/auth/services/auth';
 import {
   LoginCredentials,
   RegisterCredentials,
   ChangePasswordCredentials,
-} from "@/features/auth/types/auth";
-import { useStore } from "@/store/useStore";
-import { useMutation } from "@tanstack/react-query";
-import { navigateToForgotPasswordSuccessMessage } from "../routes";
-import { router, usePathname } from "expo-router";
-import { USER_ROUTES } from "@/features/user/routes";
+} from '@/features/auth/types/auth';
+import { useStore } from '@/store/useStore';
+import { useMutation } from '@tanstack/react-query';
+import { navigateToForgotPasswordSuccessMessage } from '../routes';
+import { router, usePathname } from 'expo-router';
+import { USER_ROUTES } from '@/features/user/routes';
 
 export const useAuth = () => {
   const { setUser, setAccessToken, setRefreshToken } = useStore();
   const pathname = usePathname();
-  const isOnboardingFlow = pathname.includes("/onboarding/");
+  const isOnboardingFlow = pathname.includes('/onboarding/');
 
   const login = useMutation({
     mutationFn: authService.login,

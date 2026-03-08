@@ -47,9 +47,9 @@ const AddAddressScreen = () => {
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -59,7 +59,7 @@ const AddAddressScreen = () => {
         ...formData,
         department: selectedDepartment,
         municipality: selectedMunicipality,
-        isDefault: isDefaultAddress
+        isDefault: isDefaultAddress,
       };
 
       console.log('Address saved successfully:', addressData);
@@ -121,7 +121,10 @@ const AddAddressScreen = () => {
     { label: 'San Pedro Sacatepéquez', value: 'San Pedro Sacatepéquez' },
     { label: 'San Raymundo', value: 'San Raymundo' },
     { label: 'Chuarrancho', value: 'Chuarrancho' },
-    { label: 'San Antonio Aguas Calientes', value: 'San Antonio Aguas Calientes' },
+    {
+      label: 'San Antonio Aguas Calientes',
+      value: 'San Antonio Aguas Calientes',
+    },
     { label: 'Santa Catarina Barahona', value: 'Santa Catarina Barahona' },
     { label: 'Magdalena Milpas Altas', value: 'Magdalena Milpas Altas' },
     { label: 'Pastores', value: 'Pastores' },
@@ -214,13 +217,17 @@ const AddAddressScreen = () => {
                 label="Dirección Completa"
                 value={formData.fullAddress}
                 type="text"
-                onChangeText={(value) => handleInputChange('fullAddress', value)}
+                onChangeText={(value) =>
+                  handleInputChange('fullAddress', value)
+                }
               />
               <Input
                 label="Indicaciones adicionales"
                 value={formData.additionalInstructions}
                 type="text"
-                onChangeText={(value) => handleInputChange('additionalInstructions', value)}
+                onChangeText={(value) =>
+                  handleInputChange('additionalInstructions', value)
+                }
               />
             </View>
           </View>

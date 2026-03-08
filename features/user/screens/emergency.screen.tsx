@@ -4,8 +4,8 @@ import {
   View,
   ScrollView,
   Linking,
-} from "react-native";
-import { MaterialSymbol } from "@/components/material-symbol";
+} from 'react-native';
+import { MaterialSymbol } from '@/components/material-symbol';
 
 export default function UserEmergencyScreen() {
   const handleCall = (phoneNumber: string) => {
@@ -17,60 +17,60 @@ export default function UserEmergencyScreen() {
       <View className="p-4">
         {/* Emergency Contact */}
         <View className="mb-6">
-          <Text className="text-xl font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-xl font-semibold text-gray-800">
             Contacto de Emergencia
           </Text>
           <TouchableOpacity
-            className="bg-red-500 p-6 rounded-lg mb-4 items-center"
-            onPress={() => handleCall("1-800-EMERGENCY")}
+            className="mb-4 items-center rounded-lg bg-red-500 p-6"
+            onPress={() => handleCall('1-800-EMERGENCY')}
           >
             <MaterialSymbol name="call" size={48} color="text-white" />
-            <Text className="text-white font-bold text-xl mt-2">
+            <Text className="mt-2 text-xl font-bold text-white">
               Llamar Ahora
             </Text>
-            <Text className="text-red-100 text-lg">1-800-EMERGENCY</Text>
+            <Text className="text-lg text-red-100">1-800-EMERGENCY</Text>
           </TouchableOpacity>
         </View>
 
         {/* Emergency Types */}
         <View className="mb-6">
-          <Text className="text-lg font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-lg font-semibold text-gray-800">
             Tipos de Emergencia
           </Text>
           <View className="space-y-3">
             {[
               {
-                type: "Avería en Carretera",
-                description: "Vehículo no arranca o se avería",
-                icon: "warning",
-                color: "bg-red-500",
+                type: 'Avería en Carretera',
+                description: 'Vehículo no arranca o se avería',
+                icon: 'warning',
+                color: 'bg-red-500',
               },
               {
-                type: "Accidente",
-                description: "Accidente de tráfico",
-                icon: "error",
-                color: "bg-red-600",
+                type: 'Accidente',
+                description: 'Accidente de tráfico',
+                icon: 'error',
+                color: 'bg-red-600',
               },
               {
-                type: "Pérdida de Combustible",
-                description: "Se quedó sin gasolina",
-                icon: "local_gas_station",
-                color: "bg-orange-500",
+                type: 'Pérdida de Combustible',
+                description: 'Se quedó sin gasolina',
+                icon: 'local_gas_station',
+                color: 'bg-orange-500',
               },
               {
-                type: "Neumático Pinchado",
-                description: "Neumático desinflado",
-                icon: "tire_repair",
-                color: "bg-yellow-500",
+                type: 'Neumático Pinchado',
+                description: 'Neumático desinflado',
+                icon: 'tire_repair',
+                color: 'bg-yellow-500',
               },
             ].map((emergency, index) => (
               <TouchableOpacity
                 key={index}
-                className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+                className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm"
               >
                 <View className="flex-row items-center">
                   <View
-                    className={`w-12 h-12 ${emergency.color} rounded-lg items-center justify-center mr-4`}
+                    className={`h-12 w-12 ${emergency.color} mr-4 items-center justify-center rounded-lg`}
                   >
                     <MaterialSymbol
                       name={emergency.icon}
@@ -99,25 +99,25 @@ export default function UserEmergencyScreen() {
 
         {/* Location Information */}
         <View className="mb-6">
-          <Text className="text-lg font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-lg font-semibold text-gray-800">
             Información de Ubicación
           </Text>
-          <View className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-            <View className="flex-row items-center mb-4">
+          <View className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
+            <View className="mb-4 flex-row items-center">
               <MaterialSymbol
                 name="location_on"
                 size={24}
                 color="text-blue-500"
               />
-              <Text className="text-lg font-semibold ml-2 text-gray-800">
+              <Text className="ml-2 text-lg font-semibold text-gray-800">
                 Ubicación Actual
               </Text>
             </View>
-            <Text className="text-gray-600 mb-4">
+            <Text className="mb-4 text-gray-600">
               Av. Principal 123, Ciudad
             </Text>
-            <TouchableOpacity className="bg-blue-500 p-3 rounded-lg items-center">
-              <Text className="text-white font-semibold">
+            <TouchableOpacity className="items-center rounded-lg bg-blue-500 p-3">
+              <Text className="font-semibold text-white">
                 Compartir Ubicación
               </Text>
             </TouchableOpacity>
@@ -126,24 +126,24 @@ export default function UserEmergencyScreen() {
 
         {/* Emergency Services */}
         <View className="mb-6">
-          <Text className="text-lg font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-lg font-semibold text-gray-800">
             Servicios de Emergencia
           </Text>
           <View className="space-y-3">
             {[
-              { service: "Grúa", phone: "1-800-GRUA", available: "24/7" },
+              { service: 'Grúa', phone: '1-800-GRUA', available: '24/7' },
               {
-                service: "Mecánico",
-                phone: "1-800-MECANICO",
-                available: "24/7",
+                service: 'Mecánico',
+                phone: '1-800-MECANICO',
+                available: '24/7',
               },
-              { service: "Gasolina", phone: "1-800-GAS", available: "24/7" },
+              { service: 'Gasolina', phone: '1-800-GAS', available: '24/7' },
             ].map((service, index) => (
               <View
                 key={index}
-                className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+                className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm"
               >
-                <View className="flex-row justify-between items-center">
+                <View className="flex-row items-center justify-between">
                   <View>
                     <Text className="text-lg font-semibold text-gray-800">
                       {service.service}
@@ -151,14 +151,14 @@ export default function UserEmergencyScreen() {
                     <Text className="text-gray-600">{service.phone}</Text>
                   </View>
                   <View className="items-end">
-                    <Text className="text-sm text-green-600 font-medium">
+                    <Text className="text-sm font-medium text-green-600">
                       {service.available}
                     </Text>
                     <TouchableOpacity
-                      className="bg-green-500 px-4 py-2 rounded-lg mt-2"
+                      className="mt-2 rounded-lg bg-green-500 px-4 py-2"
                       onPress={() => handleCall(service.phone)}
                     >
-                      <Text className="text-white font-semibold">Llamar</Text>
+                      <Text className="font-semibold text-white">Llamar</Text>
                     </TouchableOpacity>
                   </View>
                 </View>

@@ -1,6 +1,6 @@
-import React from "react";
-import { TouchableOpacity, ViewStyle, StyleProp } from "react-native";
-import { MaterialSymbol } from "@/components/material-symbol";
+import React from 'react';
+import { TouchableOpacity, ViewStyle, StyleProp } from 'react-native';
+import { MaterialSymbol } from '@/components/material-symbol';
 
 interface IconButtonProps {
   icon: string;
@@ -15,10 +15,10 @@ interface IconButtonProps {
 
 export const IconButton = ({
   icon,
-  color = "#18181B",
+  color = '#18181B',
   size = 24,
   onPress,
-  className = "",
+  className = '',
   style,
   disabled = false,
   backgroundColor,
@@ -36,8 +36,8 @@ export const IconButton = ({
               borderRadius: size,
               width: size * 1.5,
               height: size * 1.5,
-              alignItems: "center",
-              justifyContent: "center",
+              alignItems: 'center',
+              justifyContent: 'center',
             }
           : {},
         style,

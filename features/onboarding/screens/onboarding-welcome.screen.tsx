@@ -1,12 +1,12 @@
-import React from "react";
-import { Text, View } from "react-native";
-import { Button } from "@/components/button";
-import { navigateToUserTypeSelection } from "../routes";
-import { CarRental, CheckCircle } from "@/components/svg";
-import { NavigationHeader } from "@/components/navigation-header";
-import { ContentContainer } from "@/components/content-container";
-import { COLORS } from "@/consts/colors";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { Text, View } from 'react-native';
+import { Button } from '@/components/button';
+import { navigateToUserTypeSelection } from '../routes';
+import { CarRental, CheckCircle } from '@/components/svg';
+import { NavigationHeader } from '@/components/navigation-header';
+import { ContentContainer } from '@/components/content-container';
+import { COLORS } from '@/consts/colors';
+import { useTranslation } from 'react-i18next';
 
 export default function OnboardingWelcomeScreen() {
   const { t } = useTranslation();
@@ -34,28 +34,28 @@ export default function OnboardingWelcomeScreen() {
 
           <View className="gap-4">
             <Text className="text-center font-plus-jakarta-bold text-2xl text-text-active">
-              {t("onboarding.welcome.title")}
+              {t('onboarding.welcome.title')}
             </Text>
             <Text className="font-plus-jakarta-regular text-center text-base text-text-active">
-              {t("onboarding.welcome.subtitle")}
+              {t('onboarding.welcome.subtitle')}
             </Text>
             <View className="gap-2">
               <View className="flex-row items-center">
                 <CheckCircle width={24} height={24} />
                 <Text className="font-plus-jakarta-regular ml-2 text-base text-text-active">
-                  {t("onboarding.welcome.fast")}
+                  {t('onboarding.welcome.fast')}
                 </Text>
               </View>
               <View className="flex-row items-center">
                 <CheckCircle width={24} height={24} />
                 <Text className="font-plus-jakarta-regular ml-2 text-base text-text-active">
-                  {t("onboarding.welcome.securePayment")}
+                  {t('onboarding.welcome.securePayment')}
                 </Text>
               </View>
               <View className="flex-row items-center">
                 <CheckCircle width={24} height={24} />
                 <Text className="font-plus-jakarta-regular ml-2 text-base text-text-active">
-                  {t("onboarding.welcome.realtimeTracking")}
+                  {t('onboarding.welcome.realtimeTracking')}
                 </Text>
               </View>
             </View>
@@ -63,7 +63,7 @@ export default function OnboardingWelcomeScreen() {
         </View>
 
         <Button
-          title={t("onboarding.welcome.start")}
+          title={t('onboarding.welcome.start')}
           onPress={handleContinue}
           fullWidth
           buttonColor={COLORS.primary}

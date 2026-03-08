@@ -1,6 +1,6 @@
-import { MaterialSymbol } from "@/components/material-symbol";
-import { Text, TouchableOpacity, View, ScrollView } from "react-native";
-import { ScreenHeader } from "@/components/screen-header";
+import { MaterialSymbol } from '@/components/material-symbol';
+import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import { ScreenHeader } from '@/components/screen-header';
 
 export default function UserHistoryScreen() {
   return (
@@ -13,18 +13,18 @@ export default function UserHistoryScreen() {
       <View className="p-4">
         {/* Filter Options */}
         <View className="mb-6">
-          <Text className="text-lg font-semibold mb-3 text-gray-800">
+          <Text className="mb-3 text-lg font-semibold text-gray-800">
             Filtrar por
           </Text>
           <View className="flex-row space-x-2">
-            <TouchableOpacity className="bg-blue-500 px-4 py-2 rounded-lg">
-              <Text className="text-white font-medium">Todos</Text>
+            <TouchableOpacity className="rounded-lg bg-blue-500 px-4 py-2">
+              <Text className="font-medium text-white">Todos</Text>
             </TouchableOpacity>
-            <TouchableOpacity className="bg-gray-200 px-4 py-2 rounded-lg">
-              <Text className="text-gray-700 font-medium">Completados</Text>
+            <TouchableOpacity className="rounded-lg bg-gray-200 px-4 py-2">
+              <Text className="font-medium text-gray-700">Completados</Text>
             </TouchableOpacity>
-            <TouchableOpacity className="bg-gray-200 px-4 py-2 rounded-lg">
-              <Text className="text-gray-700 font-medium">Cancelados</Text>
+            <TouchableOpacity className="rounded-lg bg-gray-200 px-4 py-2">
+              <Text className="font-medium text-gray-700">Cancelados</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -33,44 +33,44 @@ export default function UserHistoryScreen() {
         <View className="space-y-4">
           {[
             {
-              id: "1",
-              service: "Transporte de Carga",
-              transporter: "Carlos López",
-              date: "15 Mar 2024",
-              status: "Completado",
-              amount: "$150",
-              pickup: "Av. Principal 123",
-              delivery: "Calle Secundaria 456",
+              id: '1',
+              service: 'Transporte de Carga',
+              transporter: 'Carlos López',
+              date: '15 Mar 2024',
+              status: 'Completado',
+              amount: '$150',
+              pickup: 'Av. Principal 123',
+              delivery: 'Calle Secundaria 456',
               rating: 5,
             },
             {
-              id: "2",
-              service: "Mudanza",
-              transporter: "María García",
-              date: "10 Mar 2024",
-              status: "Completado",
-              amount: "$300",
-              pickup: "Plaza Central",
-              delivery: "Zona Residencial",
+              id: '2',
+              service: 'Mudanza',
+              transporter: 'María García',
+              date: '10 Mar 2024',
+              status: 'Completado',
+              amount: '$300',
+              pickup: 'Plaza Central',
+              delivery: 'Zona Residencial',
               rating: 4,
             },
             {
-              id: "3",
-              service: "Entrega Urgente",
-              transporter: "Juan Pérez",
-              date: "5 Mar 2024",
-              status: "Cancelado",
-              amount: "$80",
-              pickup: "Centro Comercial",
-              delivery: "Oficina Norte",
+              id: '3',
+              service: 'Entrega Urgente',
+              transporter: 'Juan Pérez',
+              date: '5 Mar 2024',
+              status: 'Cancelado',
+              amount: '$80',
+              pickup: 'Centro Comercial',
+              delivery: 'Oficina Norte',
               rating: null,
             },
           ].map((item) => (
             <View
               key={item.id}
-              className="bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+              className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm"
             >
-              <View className="flex-row justify-between items-start mb-3">
+              <View className="mb-3 flex-row items-start justify-between">
                 <View className="flex-1">
                   <Text className="text-lg font-semibold text-gray-800">
                     {item.service}
@@ -78,17 +78,17 @@ export default function UserHistoryScreen() {
                   <Text className="text-gray-600">
                     Transportista: {item.transporter}
                   </Text>
-                  <Text className="text-gray-500 text-sm">{item.date}</Text>
+                  <Text className="text-sm text-gray-500">{item.date}</Text>
                 </View>
                 <View className="items-end">
                   <Text className="text-lg font-bold text-green-600">
                     {item.amount}
                   </Text>
                   <Text
-                    className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      item.status === "Completado"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-red-100 text-red-800"
+                    className={`rounded-full px-3 py-1 text-sm font-medium ${
+                      item.status === 'Completado'
+                        ? 'bg-green-100 text-green-800'
+                        : 'bg-red-100 text-red-800'
                     }`}
                   >
                     {item.status}
@@ -96,14 +96,14 @@ export default function UserHistoryScreen() {
                 </View>
               </View>
 
-              <View className="space-y-2 mb-3">
+              <View className="mb-3 space-y-2">
                 <View className="flex-row items-center">
                   <MaterialSymbol
                     name="location_on"
                     size={14}
                     color="text-gray-500"
                   />
-                  <Text className="text-gray-600 ml-1 text-sm">
+                  <Text className="ml-1 text-sm text-gray-600">
                     {item.pickup}
                   </Text>
                 </View>
@@ -113,13 +113,13 @@ export default function UserHistoryScreen() {
                     size={14}
                     color="text-gray-500"
                   />
-                  <Text className="text-gray-600 ml-1 text-sm">
+                  <Text className="ml-1 text-sm text-gray-600">
                     {item.delivery}
                   </Text>
                 </View>
               </View>
 
-              <View className="flex-row justify-between items-center">
+              <View className="flex-row items-center justify-between">
                 {item.rating && (
                   <View className="flex-row items-center">
                     <MaterialSymbol
@@ -127,11 +127,11 @@ export default function UserHistoryScreen() {
                       size={16}
                       color="text-yellow-500"
                     />
-                    <Text className="text-gray-600 ml-1">{item.rating}/5</Text>
+                    <Text className="ml-1 text-gray-600">{item.rating}/5</Text>
                   </View>
                 )}
-                <TouchableOpacity className="bg-blue-500 px-4 py-2 rounded-lg">
-                  <Text className="text-white font-semibold">Ver Detalles</Text>
+                <TouchableOpacity className="rounded-lg bg-blue-500 px-4 py-2">
+                  <Text className="font-semibold text-white">Ver Detalles</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -140,42 +140,42 @@ export default function UserHistoryScreen() {
 
         {/* Quick Actions */}
         <View className="mt-6">
-          <Text className="text-lg font-semibold mb-4 text-gray-800">
+          <Text className="mb-4 text-lg font-semibold text-gray-800">
             Acciones Rápidas
           </Text>
           <View className="flex-row flex-wrap justify-between">
-            <TouchableOpacity className="bg-blue-500 p-4 rounded-lg w-[48%] mb-4 items-center">
+            <TouchableOpacity className="mb-4 w-[48%] items-center rounded-lg bg-blue-500 p-4">
               <MaterialSymbol
                 name="directions_car"
                 size={32}
                 color="text-white"
               />
-              <Text className="text-white font-semibold mt-2">
+              <Text className="mt-2 font-semibold text-white">
                 Nuevo Servicio
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity className="bg-green-500 p-4 rounded-lg w-[48%] mb-4 items-center">
+            <TouchableOpacity className="mb-4 w-[48%] items-center rounded-lg bg-green-500 p-4">
               <MaterialSymbol name="star" size={32} color="text-white" />
-              <Text className="text-white font-semibold mt-2">Calificar</Text>
+              <Text className="mt-2 font-semibold text-white">Calificar</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity className="bg-purple-500 p-4 rounded-lg w-[48%] mb-4 items-center">
+            <TouchableOpacity className="mb-4 w-[48%] items-center rounded-lg bg-purple-500 p-4">
               <MaterialSymbol
                 name="account_balance_wallet"
                 size={32}
                 color="text-white"
               />
-              <Text className="text-white font-semibold mt-2">Pagos</Text>
+              <Text className="mt-2 font-semibold text-white">Pagos</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity className="bg-orange-500 p-4 rounded-lg w-[48%] mb-4 items-center">
+            <TouchableOpacity className="mb-4 w-[48%] items-center rounded-lg bg-orange-500 p-4">
               <MaterialSymbol
                 name="calendar_today"
                 size={32}
                 color="text-white"
               />
-              <Text className="text-white font-semibold mt-2">Programar</Text>
+              <Text className="mt-2 font-semibold text-white">Programar</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { MaterialSymbol } from "@/components/material-symbol";
-import { router } from "expo-router";
-import { useStore } from "@/store/useStore";
-import { UserRole } from "@/features/auth/types/user";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { COLORS } from "@/consts/colors";
+import React, { ReactNode } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { MaterialSymbol } from '@/components/material-symbol';
+import { router } from 'expo-router';
+import { useStore } from '@/store/useStore';
+import { UserRole } from '@/features/auth/types/user';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { COLORS } from '@/consts/colors';
 
 interface NavigationHeaderProps {
   title?: string;
@@ -38,13 +38,13 @@ interface NavigationHeaderProps {
  * @returns {JSX.Element} The rendered navigation header component.
  */
 export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
-  title = "",
+  title = '',
   showBackButton = true,
   onBackPress,
   canGoBack = true,
   rightComponent,
   backgroundColor,
-  textColor = "text-white",
+  textColor = 'text-white',
   backButtonColor,
   children,
   borderBottom = true,
@@ -54,7 +54,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   const role = user?.role ?? selectedUserType;
   const defaultBgColor =
     role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
-  const defaultTextColor = "text-white";
+  const defaultTextColor = 'text-white';
   const finalBgColor = backgroundColor ?? defaultBgColor;
   const finalTextColor = textColor ?? defaultTextColor;
   const finalBackButtonColor = backButtonColor ?? defaultTextColor;
@@ -64,9 +64,9 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   return (
     <View
       className={[
-        "flex-row items-center justify-between px-4",
-        borderBottom ? "border-b border-gray-200" : "",
-      ].join(" ")}
+        'flex-row items-center justify-between px-4',
+        borderBottom ? 'border-b border-gray-200' : '',
+      ].join(' ')}
       pointerEvents="box-none"
       style={{
         height: headerHeight,

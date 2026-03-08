@@ -1,5 +1,5 @@
-import * as React from "react";
-import Svg, { SvgProps, Path, Mask, G } from "react-native-svg";
+import * as React from 'react';
+import Svg, { SvgProps, Path, Mask, G } from 'react-native-svg';
 
 interface CheckCircleProps extends SvgProps {
   color?: string;
@@ -8,7 +8,7 @@ interface CheckCircleProps extends SvgProps {
 export const CheckCircle = ({
   width = 24,
   height = 24,
-  color = "#28A389",
+  color = '#28A389',
   ...props
 }: CheckCircleProps) => (
   <Svg width={width} height={height} fill="none" viewBox="0 0 24 25" {...props}>
@@ -20,7 +20,7 @@ export const CheckCircle = ({
       y={0}
       maskUnits="userSpaceOnUse"
       style={{
-        maskType: "alpha",
+        maskType: 'alpha',
       }}
     >
       <Path fill="#D9D9D9" d="M0 .114h24v24H0z" />

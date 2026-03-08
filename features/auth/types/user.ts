@@ -1,6 +1,6 @@
 export enum UserRole {
-  TRANSPORTER = "TRANSPORTER",
-  USER = "USER",
+  TRANSPORTER = 'TRANSPORTER',
+  USER = 'USER',
 }
 
 export interface User {

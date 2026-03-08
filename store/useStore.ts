@@ -1,10 +1,10 @@
-import { User, UserRole } from "@/features/auth/types/user";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
-import TokenManager from "@/features/auth/services/token-manager";
-import { replaceRoute } from "@/features/shared/routes";
-import { USER_ROUTES } from "@/features/user/routes";
+import { User, UserRole } from '@/features/auth/types/user';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
+import TokenManager from '@/features/auth/services/token-manager';
+import { replaceRoute } from '@/features/shared/routes';
+import { USER_ROUTES } from '@/features/user/routes';
 
 interface AppState {
   user: User | null;
@@ -74,7 +74,7 @@ export const useStore = create<AppState>()(
       },
     }),
     {
-      name: "app-storage",
+      name: 'app-storage',
       storage: createJSONStorage(() => AsyncStorage),
     },
   ),

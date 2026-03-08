@@ -1,5 +1,5 @@
-import * as React from "react";
-import Svg, { Path, G, SvgProps } from "react-native-svg";
+import * as React from 'react';
+import Svg, { Path, G, SvgProps } from 'react-native-svg';
 
 export const LoginTransporter = (props: SvgProps) => (
   <Svg viewBox="0 0 193 168" fill="none" {...props}>

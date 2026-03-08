@@ -1,11 +1,11 @@
-import { Stack } from "expo-router";
+import { Stack } from 'expo-router';
 
 export default function OnboardingLayout() {
   return (
     <Stack
       screenOptions={{
         headerShown: false,
-        contentStyle: { backgroundColor: "white" },
+        contentStyle: { backgroundColor: 'white' },
       }}
     >
       <Stack.Screen name="index" />
@@ -16,7 +16,7 @@ export default function OnboardingLayout() {
       <Stack.Screen
         name="auth"
         options={{
-          presentation: "fullScreenModal",
+          presentation: 'fullScreenModal',
         }}
       />
     </Stack>
