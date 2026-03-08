@@ -11,7 +11,7 @@ interface ActionLinkProps {
 
 const getUserTypeColorClass = (userType: UserRole | undefined) => {
   switch (userType) {
-    case UserRole.USER:
+    case UserRole.CLIENT:
       return 'text-primary-500';
     case UserRole.TRANSPORTER:
       return 'text-secondary-500';

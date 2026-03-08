@@ -2,16 +2,26 @@ import { User, UserRole } from './user';
 
 export interface AuthResponse {
   user: User;
-  access_token: string;
-  refresh_token: string;
+  accessToken: string;
+  refreshToken: string;
+  idToken: string;
+  expiresIn: number;
+}
+
+export interface RegisterResponse {
+  user: User;
+  message: string;
 }
 
 export interface RegisterCredentials {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   role: UserRole;
-  phone?: string | number | null;
+  phone: string;
+  companyName?: string;
+  taxId?: string;
 }
 
 export interface LoginCredentials {
@@ -20,15 +30,27 @@ export interface LoginCredentials {
 }
 
 export interface RefreshTokenResponse {
-  access_token: string;
-  refresh_token: string;
+  accessToken: string;
+  idToken: string;
+  expiresIn: number;
 }
 
 export interface RefreshTokenRequest {
-  refresh_token: string;
+  refreshToken: string;
 }
 
 export interface ChangePasswordCredentials {
-  current_password: string;
-  new_password: string;
+  oldPassword: string;
+  newPassword: string;
+}
+
+export interface VerifyEmailRequest {
+  email: string;
+  code: string;
+}
+
+export interface ResetPasswordRequest {
+  email: string;
+  code: string;
+  newPassword: string;
 }

@@ -23,7 +23,7 @@ export default function SettingsScreen() {
             </View>
             <View className="flex-1">
               <Text className="text-xl font-semibold text-gray-800">
-                {user?.name || 'Usuario'}
+                {user ? `${user.firstName} ${user.lastName}` : 'Usuario'}
               </Text>
               <Text className="text-gray-600">{user?.email}</Text>
             </View>

@@ -37,7 +37,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({
   className = '',
   buttonColor,
   variant = 'contained',
-  userType = UserRole.USER,
+  userType = UserRole.CLIENT,
   ...props
 }) => {
   const finalButtonColor = buttonColor ?? getButtonColor(userType);

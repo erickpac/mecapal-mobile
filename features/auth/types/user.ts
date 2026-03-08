@@ -1,14 +1,16 @@
 export enum UserRole {
   TRANSPORTER = 'TRANSPORTER',
-  USER = 'USER',
+  CLIENT = 'CLIENT',
 }
 
 export interface User {
   id: string;
-  name: string;
+  cognitoSub: string;
+  firstName: string;
+  lastName: string;
   email: string;
   role: UserRole;
   phone: string;
-  createdAt: string;
-  updatedAt: string;
+  companyName: string | null;
+  taxId: string | null;
 }

@@ -18,7 +18,7 @@ export default function TransporterDashboardScreen() {
     <>
       <Header />
       <ScrollView className="flex-1 bg-gray-50">
-        <WelcomeHero name={user?.name} role={user?.role} />
+        <WelcomeHero name={user ? `${user.firstName} ${user.lastName}` : ''} role={user?.role} />
         <View className="-mt-16 w-full flex-row items-center justify-between px-3">
           <Card
             icon={<Motorcycle />}

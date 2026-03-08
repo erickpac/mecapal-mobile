@@ -23,7 +23,7 @@ const { height: screenHeight } = Dimensions.get('window');
 
 const AddAddressScreen = () => {
   const { user } = useStore();
-  const userRole = user?.role ?? UserRole.USER;
+  const userRole = user?.role ?? UserRole.CLIENT;
   const [isDefaultAddress, setIsDefaultAddress] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const [selectedMunicipality, setSelectedMunicipality] = useState('');

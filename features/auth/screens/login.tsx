@@ -16,6 +16,7 @@ import {
   navigateToForgotPassword as navigateToOnboardingForgotPassword,
   ONBOARDING_ROUTES,
 } from '@/features/onboarding/routes';
+import { AUTH_ROUTES } from '@/features/auth/routes';
 import { replaceRoute } from '@/features/shared/routes';
 import { USER_ROUTES } from '@/features/user/routes';
 import { NavigationHeader } from '@/components/navigation-header';
@@ -80,7 +81,7 @@ export default function LoginScreen({
           <ScrollView>
             <View className="mb-6 mt-2 items-center">
               <View className="aspect-[287/206] w-64 max-w-full">
-                {selectedUserType === UserRole.USER ? (
+                {selectedUserType === UserRole.CLIENT ? (
                   <LoginUser width="100%" height="100%" />
                 ) : (
                   <LoginTransporter width="100%" height="100%" />
@@ -143,9 +144,9 @@ export default function LoginScreen({
               className="mt-2"
               onPress={() => {
                 if (isOnboardingFlow) {
-                  router.dismiss();
-                } else {
                   replaceRoute(ONBOARDING_ROUTES.ONBOARDING_REGISTER);
+                } else {
+                  replaceRoute(AUTH_ROUTES.AUTH_REGISTER);
                 }
               }}
               userType={selectedUserType}

@@ -22,7 +22,7 @@ export default function UserTypeSelectionScreen() {
 
   const userTypeOptions = [
     {
-      userType: UserRole.USER,
+      userType: UserRole.CLIENT,
       title: t('onboarding.userType.optionUser.title'),
       description: t('onboarding.userType.optionUser.description'),
       icon: <UserRisingHand width="100%" height="100%" />,

@@ -19,6 +19,7 @@ const SecurityScreen = () => {
   } = useChangePassword();
   const { getErrorMessage } = useLocalizedError();
 
+  const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [validationError, setValidationError] = useState('');
@@ -33,7 +34,7 @@ const SecurityScreen = () => {
     );
   }
 
-  const userRole = user.role || 'USER';
+  const userRole = user.role || 'CLIENT';
 
   const handlePasswordChange = async () => {
     setValidationError('');
@@ -50,9 +51,10 @@ const SecurityScreen = () => {
 
     try {
       await changePassword({
-        current_password: '',
-        new_password: newPassword,
+        oldPassword,
+        newPassword,
       });
+      setOldPassword('');
       setNewPassword('');
       setConfirmPassword('');
     } catch {
@@ -80,6 +82,13 @@ const SecurityScreen = () => {
             </Text>
 
             <View className="space-y-4 rounded-lg">
+              <Input
+                label={t('auth.changePassword.oldPassword')}
+                value={oldPassword}
+                type="password"
+                onChangeText={setOldPassword}
+              />
+
               <Input
                 label={t('auth.changePassword.newPassword')}
                 value={newPassword}
@@ -123,7 +132,7 @@ const SecurityScreen = () => {
                 : t('auth.changePassword.submit')
             }
             onPress={handlePasswordChange}
-            disabled={isPending || !newPassword || !confirmPassword}
+            disabled={isPending || !oldPassword || !newPassword || !confirmPassword}
             userType={userRole}
           />
         </View>

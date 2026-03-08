@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface RegisterFormData {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: string;
   userType: string;
@@ -11,7 +12,8 @@ interface RegisterFormData {
 }
 
 interface RegisterFormErrors {
-  name?: string;
+  firstName?: string;
+  lastName?: string;
   email?: string;
   phone?: string;
   userType?: string;
@@ -34,38 +36,36 @@ export const useRegisterValidation = (formData: RegisterFormData) => {
   const validateForm = (): boolean => {
     const newErrors: RegisterFormErrors = {};
 
-    // Name validation
-    if (!formData.name.trim()) {
-      newErrors.name = t('errors.auth.register.nameRequired');
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = t('errors.auth.register.firstNameRequired');
     }
 
-    // Email validation
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = t('errors.auth.register.lastNameRequired');
+    }
+
     if (!formData.email.trim()) {
       newErrors.email = t('errors.auth.register.emailRequired');
     } else if (!isValidEmail(formData.email)) {
       newErrors.email = t('errors.auth.register.emailInvalid');
     }
 
-    // Phone validation
     if (!formData.phone.trim()) {
       newErrors.phone = t('errors.auth.register.phoneRequired');
     } else if (!isValidPhone(formData.phone)) {
       newErrors.phone = t('errors.auth.register.phoneInvalid');
     }
 
-    // User type validation
     if (!formData.userType) {
       newErrors.userType = t('errors.auth.register.userTypeRequired');
     }
 
-    // Password validation
     if (!formData.password) {
       newErrors.password = t('errors.auth.register.passwordRequired');
     } else if (formData.password.length < 6) {
       newErrors.password = t('errors.auth.register.passwordTooShort');
     }
 
-    // Confirm password validation
     if (!formData.confirmPassword) {
       newErrors.confirmPassword = t(
         'errors.auth.register.confirmPasswordRequired',

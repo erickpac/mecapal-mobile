@@ -25,7 +25,7 @@ export const UserTypeOption = ({
   const getBorderColor = () => {
     if (!isPressed) return 'border-gray-200';
 
-    return userType === UserRole.USER
+    return userType === UserRole.CLIENT
       ? 'border-primary-500'
       : 'border-secondary-500';
   };

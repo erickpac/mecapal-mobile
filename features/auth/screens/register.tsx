@@ -13,7 +13,6 @@ import { useTranslation } from 'react-i18next';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
 import { UserRole } from '@/features/auth/types/user';
 import { replaceRoute } from '@/features/shared/routes';
-import { USER_ROUTES } from '@/features/user/routes';
 import { ONBOARDING_ROUTES } from '@/features/onboarding/routes';
 import { AUTH_ROUTES } from '@/features/auth/routes';
 import { ContentContainer } from '@/components/content-container';
@@ -26,21 +25,21 @@ import { NativePicker } from '@/components/NativePicker';
 import { useRegisterValidation } from '../hooks/useRegisterValidation';
 
 export default function RegisterScreen() {
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [userType, setUserType] = useState(UserRole.USER);
+  const [userType, setUserType] = useState(UserRole.CLIENT);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [showSuccess, setShowSuccess] = useState(false);
   const { mutate: register, isPending, error, isSuccess } = useRegister();
-  const { selectedUserType, setHasCompletedOnboarding, setSelectedUserType } =
-    useStore();
+  const { selectedUserType, setSelectedUserType } = useStore();
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
   const pathname = usePathname();
   const { errors, validateForm } = useRegisterValidation({
-    name,
+    firstName,
+    lastName,
     email,
     phone,
     userType,
@@ -51,16 +50,13 @@ export default function RegisterScreen() {
   const isOnboardingFlow = pathname.includes('/onboarding/');
 
   useEffect(() => {
-    if (isSuccess && !showSuccess) {
-      setShowSuccess(true);
-      const timer = setTimeout(() => {
-        setShowSuccess(false);
-        setHasCompletedOnboarding(true);
-        replaceRoute(USER_ROUTES.HOME);
-      }, 1500);
-      return () => clearTimeout(timer);
+    if (isSuccess) {
+      const verificationRoute = isOnboardingFlow
+        ? `${ONBOARDING_ROUTES.ONBOARDING_EMAIL_VERIFICATION}?email=${encodeURIComponent(email)}`
+        : `${AUTH_ROUTES.AUTH_EMAIL_VERIFICATION}?email=${encodeURIComponent(email)}`;
+      replaceRoute(verificationRoute);
     }
-  }, [isSuccess, showSuccess, setHasCompletedOnboarding]);
+  }, [isSuccess, isOnboardingFlow, email]);
 
   const handleSelectUserType = (value: string) => {
     setSelectedUserType(value as UserRole);
@@ -77,10 +73,12 @@ export default function RegisterScreen() {
     }
 
     register({
-      name,
+      firstName,
+      lastName,
       email,
       password,
-      role: selectedUserType ?? UserRole.USER,
+      phone,
+      role: selectedUserType ?? UserRole.CLIENT,
     });
   };
   return (
@@ -105,7 +103,7 @@ export default function RegisterScreen() {
           <ScrollView>
             <View className="mb-6 mt-2 items-center">
               <View className="aspect-[287/206] w-64 max-w-full">
-                {selectedUserType === UserRole.USER ? (
+                {selectedUserType === UserRole.CLIENT ? (
                   <RegisterUser width="100%" height="100%" />
                 ) : (
                   <RegisterTransporter width="100%" height="100%" />
@@ -117,11 +115,19 @@ export default function RegisterScreen() {
             </Text>
             <View className="mb-2">
               <Input
-                label={t('auth.register.name')}
+                label={t('auth.register.firstName')}
                 type="text"
-                value={name}
-                onChangeText={setName}
-                error={errors.name}
+                value={firstName}
+                onChangeText={setFirstName}
+                error={errors.firstName}
+                returnKeyType="next"
+              />
+              <Input
+                label={t('auth.register.lastName')}
+                type="text"
+                value={lastName}
+                onChangeText={setLastName}
+                error={errors.lastName}
                 returnKeyType="next"
               />
               <Input
@@ -141,15 +147,15 @@ export default function RegisterScreen() {
                 returnKeyType="next"
               />
               <NativePicker
-                pickerLabel={'Tipo de usuario'}
+                pickerLabel={t('auth.register.selectRole')}
                 value={userType}
                 onValueChange={handleSelectUserType}
                 options={[
-                  { label: 'Cliente', value: UserRole.USER },
-                  { label: 'Transportista', value: UserRole.TRANSPORTER },
+                  { label: t('auth.register.userRole'), value: UserRole.CLIENT },
+                  { label: t('auth.register.transporterRole'), value: UserRole.TRANSPORTER },
                 ]}
                 error={errors.userType}
-                placeholder="Selecciona un tipo de usuario"
+                placeholder={t('auth.register.selectRole')}
               />
               <Input
                 label={t('auth.register.password')}
@@ -190,7 +196,6 @@ export default function RegisterScreen() {
               onPress={() => {
                 if (isOnboardingFlow) {
                   replaceRoute(ONBOARDING_ROUTES.ONBOARDING_LOGIN);
-                  router.dismiss();
                 } else {
                   replaceRoute(AUTH_ROUTES.AUTH);
                 }

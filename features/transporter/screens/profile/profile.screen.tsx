@@ -39,7 +39,7 @@ export default function TransporterProfileScreen() {
               />
               <View className="mt-4 items-center">
                 <Text className="text-xl font-semibold text-gray-800">
-                  {user?.name || 'Usuario'}
+                  {user ? `${user.firstName} ${user.lastName}` : 'Usuario'}
                 </Text>
                 <Text className="text-gray-600">{user?.email}</Text>
               </View>
@@ -51,7 +51,7 @@ export default function TransporterProfileScreen() {
                 <Text className="text-xl font-semibold text-gray-800">
                   {t('profile.title')}
                 </Text>
-                <Text className="text-gray-600">{user?.name || 'Jom Doe'}</Text>
+                <Text className="text-gray-600">{user ? `${user.firstName} ${user.lastName}` : 'John Doe'}</Text>
                 <View className="mt-2">
                   <StarsRating rating={4.5} />
                 </View>

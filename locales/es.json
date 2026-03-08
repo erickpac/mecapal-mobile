@@ -426,7 +426,8 @@
     },
     "register": {
       "title": "Registrarse",
-      "name": "Nombre completo*",
+      "firstName": "Nombre*",
+      "lastName": "Apellido*",
       "email": "Correo electrónico*",
       "phone": "Número de teléfono*",
       "password": "Contraseña*",
@@ -443,16 +444,27 @@
     "forgotPassword": {
       "title": "Olvidé mi contraseña",
       "title2": "¿Olvidaste tu contraseña?",
-      "description": "No te preocupes, ingresa tu correo electrónico a continuación y  te enviaremos una nueva contraseña para iniciar sesión.",
+      "description": "No te preocupes, ingresa tu correo electrónico a continuación y te enviaremos un código para restablecer tu contraseña.",
       "email": "Correo electrónico",
-      "submit": "Enviar nueva contraseña",
+      "submit": "Enviar código",
       "backToLogin": "Cancelar",
-      "continueAsGuest": "Continuar como invitado",
-      "successTitle": "¡Revisa tu correo!",
-      "successDescription": "Te hemos enviado una nueva contraseña. Confirma el correo y vuelve a iniciar sesión para seguir usando Mekapal."
+      "continueAsGuest": "Continuar como invitado"
+    },
+    "resetPassword": {
+      "title": "Restablecer contraseña",
+      "description": "Ingresa el código que enviamos a {{email}} y tu nueva contraseña.",
+      "code": "Código de verificación",
+      "codePlaceholder": "Ingresa el código de 6 dígitos",
+      "newPassword": "Nueva contraseña*",
+      "confirmPassword": "Confirmar contraseña*",
+      "submit": "Restablecer contraseña",
+      "resetting": "Restableciendo...",
+      "success": "Contraseña restablecida exitosamente",
+      "passwordsMismatch": "Las contraseñas no coinciden"
     },
     "changePassword": {
       "title": "Cambiar contraseña",
+      "oldPassword": "Contraseña actual*",
       "currentPassword": "Contraseña actual",
       "newPassword": "Nueva contraseña",
       "confirmPassword": "Confirmar nueva contraseña",
@@ -463,6 +475,19 @@
       "passwordsMismatch": "Las contraseñas nuevas no coinciden",
       "passwordTooShort": "La contraseña debe tener al menos 8 caracteres",
       "noUser": "No se pudo cargar la información del usuario"
+    },
+    "verifyEmail": {
+      "title": "Verifica tu correo",
+      "description": "Ingresa el código de 6 dígitos que enviamos a {{email}}",
+      "codeLabel": "Código de verificación",
+      "codePlaceholder": "Ingresa el código",
+      "submit": "Verificar",
+      "verifying": "Verificando...",
+      "resend": "Reenviar código",
+      "resendCountdown": "Reenviar en {{seconds}}s",
+      "resendSuccess": "Código reenviado exitosamente",
+      "success": "Correo verificado exitosamente",
+      "invalidCode": "El código ingresado es incorrecto"
     },
     "errors": {
       "loginError": "Error al iniciar sesión",
@@ -651,7 +676,8 @@
         "passwordTooShort": "La contraseña debe tener al menos 6 caracteres"
       },
       "register": {
-        "nameRequired": "Nombre es requerido",
+        "firstNameRequired": "Nombre es requerido",
+        "lastNameRequired": "Apellido es requerido",
         "emailRequired": "Email es requerido",
         "emailInvalid": "Ingresa un email válido",
         "phoneRequired": "Número de telefono es requerido",

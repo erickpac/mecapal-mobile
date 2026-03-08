@@ -51,7 +51,7 @@ export default function UserHomeScreen() {
     <>
       <Header />
       <ScrollView className="flex-1 bg-[#fbf9f4]">
-        <WelcomeHero name={user?.name} />
+        <WelcomeHero name={user ? `${user.firstName} ${user.lastName}` : ''} />
         <View className="-mt-16 w-full flex-row items-center justify-between px-3">
           <Card
             icon={<Motorcycle />}

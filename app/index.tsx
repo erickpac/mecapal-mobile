@@ -6,7 +6,7 @@ import { ONBOARDING_ROUTES } from '@/features/onboarding/routes';
 import { USER_ROUTES } from '@/features/user/routes';
 
 export default function Index() {
-  const { isAuthenticated, isGuestMode, hasCompletedOnboarding } = useStore();
+  const { hasCompletedOnboarding } = useStore();
 
   useEffect(() => {
     const navigate = async () => {
@@ -23,7 +23,7 @@ export default function Index() {
     };
 
     navigate();
-  }, [isAuthenticated, isGuestMode, hasCompletedOnboarding]);
+  }, [hasCompletedOnboarding]);
 
   return <LoadingScreen />;
 }

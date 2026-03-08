@@ -9,9 +9,9 @@ export const ONBOARDING_ROUTES = {
   ONBOARDING_AUTH: '/onboarding/auth',
   ONBOARDING_LOGIN: '/onboarding/auth/login',
   ONBOARDING_REGISTER: '/onboarding/auth/register',
+  ONBOARDING_EMAIL_VERIFICATION: '/onboarding/auth/email-verification',
   ONBOARDING_FORGOT_PASSWORD: '/onboarding/auth/forgot-password',
-  ONBOARDING_FORGOT_PASSWORD_SUCCESS_MESSAGE:
-    '/onboarding/auth/forgot-password-success',
+  ONBOARDING_RESET_PASSWORD: '/onboarding/auth/reset-password',
 } as const;
 
 // Onboarding navigation functions
@@ -31,10 +31,8 @@ export const navigateToOnboardingRegister = () =>
   router.push(ONBOARDING_ROUTES.ONBOARDING_REGISTER as any);
 export const navigateToForgotPassword = () =>
   router.push(ONBOARDING_ROUTES.ONBOARDING_FORGOT_PASSWORD);
-export const navigateToForgotPasswordSuccessMessage = () =>
-  router.push(
-    ONBOARDING_ROUTES.ONBOARDING_FORGOT_PASSWORD_SUCCESS_MESSAGE as any,
-  );
+export const navigateToResetPassword = (email: string) =>
+  router.push(`${ONBOARDING_ROUTES.ONBOARDING_RESET_PASSWORD}?email=${encodeURIComponent(email)}` as any);
 
 // Onboarding replace navigation functions
 export const replaceToOnboarding = () =>

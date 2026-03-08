@@ -82,7 +82,7 @@ const InfoScreen = () => {
             <View className="flex-1">
               <Input
                 label="Nombre"
-                value={userEdit?.name || ''}
+                value={userEdit ? `${userEdit.firstName} ${userEdit.lastName}` : ''}
                 mode="flat"
                 disabled={
                   !editingFields.has('name') && !editedFields.has('name')
@@ -90,9 +90,12 @@ const InfoScreen = () => {
                 contentStyle={{ backgroundColor: COLORS.white }}
                 style={{ backgroundColor: COLORS.white }}
                 activeUnderlineColor="black"
-                onChangeText={(value) =>
-                  setUserEdit({ ...userEdit, name: value })
-                }
+                onChangeText={(value) => {
+                  const parts = value.split(' ');
+                  const firstName = parts[0] || '';
+                  const lastName = parts.slice(1).join(' ') || '';
+                  setUserEdit({ ...userEdit, firstName, lastName });
+                }}
               />
             </View>
             {renderEditButton('name')}
@@ -142,7 +145,7 @@ const InfoScreen = () => {
             <View className="flex-1">
               <Input
                 label="Tipo de Usuario"
-                value={userEdit?.role === 'USER' ? 'Cliente' : 'Transportista'}
+                value={userEdit?.role === 'CLIENT' ? 'Cliente' : 'Transportista'}
                 mode="flat"
                 disabled={true}
                 contentStyle={{ backgroundColor: COLORS.white }}

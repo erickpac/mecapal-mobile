@@ -15,9 +15,9 @@ import { replaceRoute } from '@/features/shared/routes';
 import { USER_ROUTES } from '@/features/user/routes';
 
 export default function AuthOptionsScreen() {
-  const { selectedUserType, setHasCompletedOnboarding } = useStore();
+  const { selectedUserType, setHasCompletedOnboarding, enterGuestMode } = useStore();
   const { t } = useTranslation();
-  const isUser = selectedUserType === UserRole.USER;
+  const isUser = selectedUserType === UserRole.CLIENT;
   const content = useMemo(() => {
     return {
       illustration: isUser ? (
@@ -77,6 +77,7 @@ export default function AuthOptionsScreen() {
             title={t('onboarding.authOptions.skip')}
             variant="text"
             onPress={() => {
+              enterGuestMode();
               setHasCompletedOnboarding(true);
               replaceRoute(USER_ROUTES.HOME);
             }}

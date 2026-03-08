@@ -10,7 +10,7 @@ type Props = {
 
 const WelcomeHero = ({
   name = '',
-  role = UserRole.USER,
+  role = UserRole.CLIENT,
   centerAlign = false,
 }: Props) => {
   const { t } = useTranslation();
@@ -20,7 +20,7 @@ const WelcomeHero = ({
   return (
     <View className="h-40 rounded-b-2xl">
       <Image
-        source={role === UserRole.USER ? pathUser : pathTransporter}
+        source={role === UserRole.CLIENT ? pathUser : pathTransporter}
         className="absolute inset-0 h-full w-full rounded-b-2xl"
         resizeMode="cover"
       />

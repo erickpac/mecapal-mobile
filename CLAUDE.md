@@ -74,7 +74,7 @@ pnpm lint         # ESLint
 4. Axios interceptor handles Bearer token injection and 401 refresh
 
 ### Roles
-- `UserRole.USER` - Customer requesting transport
+- `UserRole.CLIENT` - Customer requesting transport
 - `UserRole.TRANSPORTER` - Driver providing transport
 - Guest mode - limited access without auth
 

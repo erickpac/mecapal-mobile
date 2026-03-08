@@ -9,9 +9,10 @@ import { useStore } from '@/store/useStore';
 import { IconButton } from '@/components/icon-button';
 import { Button } from '@/components/button';
 import { useState } from 'react';
-import { useRecoverPassword } from '@/features/auth/hooks/useRecoverPassword';
+import { useForgotPassword } from '@/features/auth/hooks/useForgotPassword';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
-import { navigateToForgotPasswordSuccessMessage } from '../routes';
+import { navigateToResetPassword } from '../routes';
+import { navigateToResetPassword as navigateToOnboardingResetPassword } from '@/features/onboarding/routes';
 
 export default function ForgotPasswordScreen() {
   const { t } = useTranslation();
@@ -20,10 +21,10 @@ export default function ForgotPasswordScreen() {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const {
-    mutateAsync: recoverPassword,
+    mutateAsync: forgotPassword,
     isPending,
     error,
-  } = useRecoverPassword();
+  } = useForgotPassword();
   const { getErrorMessage } = useLocalizedError();
 
   const isModalMode = pathname.includes('/onboarding/');
@@ -51,8 +52,12 @@ export default function ForgotPasswordScreen() {
     if (!handleValidateEmail(email)) return;
 
     try {
-      await recoverPassword(email);
-      navigateToForgotPasswordSuccessMessage();
+      await forgotPassword(email);
+      if (isModalMode) {
+        navigateToOnboardingResetPassword(email);
+      } else {
+        navigateToResetPassword(email);
+      }
     } catch {
       // error state is handled by the mutation
     }

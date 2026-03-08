@@ -3,11 +3,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import TokenManager from '@/features/auth/services/token-manager';
+import { authService } from '@/features/auth/services/auth';
 
 interface AppState {
   user: User | null;
   accessToken: string | null;
   refreshToken: string | null;
+  idToken: string | null;
   isAuthenticated: boolean;
   isGuestMode: boolean;
   hasCompletedOnboarding: boolean;
@@ -15,6 +17,7 @@ interface AppState {
   setUser: (user: User | null) => void;
   setAccessToken: (accessToken: string | null) => void;
   setRefreshToken: (refreshToken: string | null) => void;
+  setIdToken: (idToken: string | null) => void;
   setHasCompletedOnboarding: (completed: boolean) => void;
   setSelectedUserType: (userType: UserRole | undefined) => void;
   setGuestMode: (isGuest: boolean) => void;
@@ -28,6 +31,7 @@ export const useStore = create<AppState>()(
       user: null,
       accessToken: null,
       refreshToken: null,
+      idToken: null,
       isAuthenticated: false,
       isGuestMode: false,
       hasCompletedOnboarding: false,
@@ -43,17 +47,20 @@ export const useStore = create<AppState>()(
         set({ accessToken });
       },
       setRefreshToken: (refreshToken: string | null) => set({ refreshToken }),
+      setIdToken: (idToken: string | null) => set({ idToken }),
       setHasCompletedOnboarding: (completed) => {
         set({ hasCompletedOnboarding: completed });
       },
       setSelectedUserType: (userType) => set({ selectedUserType: userType }),
       setGuestMode: (isGuest) => set({ isGuestMode: isGuest }),
       logout: () => {
+        authService.signOut().catch(() => {});
         TokenManager.clearToken();
         set({
           user: null,
           accessToken: null,
           refreshToken: null,
+          idToken: null,
           isAuthenticated: false,
           isGuestMode: false,
         });
@@ -65,6 +72,7 @@ export const useStore = create<AppState>()(
           user: null,
           accessToken: null,
           refreshToken: null,
+          idToken: null,
         });
       },
     }),

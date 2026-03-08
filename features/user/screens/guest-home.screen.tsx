@@ -146,12 +146,12 @@ export default function GuestHomeScreen() {
             <Button
               title={t('home.ctaUser.action1')}
               onPress={() => navigateTo('/auth/register')}
-              userType={UserRole.USER}
+              userType={UserRole.CLIENT}
             />
             <Button
               title={t('home.ctaUser.action2')}
-              onPress={() => handleClickLogin(UserRole.USER)}
-              userType={UserRole.USER}
+              onPress={() => handleClickLogin(UserRole.CLIENT)}
+              userType={UserRole.CLIENT}
               variant="outlined"
             />
           </View>

@@ -7,10 +7,6 @@ import { replaceRoute } from '@/features/shared/routes';
 import { USER_ROUTES } from '@/features/user/routes';
 
 export class TokenService {
-  /**
-   * Attempts to refresh the access token using the stored refresh token
-   * @returns Promise<boolean> - true if refresh was successful, false otherwise
-   */
   static async refreshAccessToken(): Promise<boolean> {
     try {
       const refreshToken = useStore.getState().refreshToken;
@@ -20,27 +16,22 @@ export class TokenService {
       }
 
       const response = await this.makeRefreshRequest(refreshToken);
-      const { access_token: newAccessToken, refresh_token: newRefreshToken } =
-        response;
+      const { accessToken, idToken } = response;
 
-      // Update both tokens in store and TokenManager
-      this.updateTokens(newAccessToken, newRefreshToken);
+      this.updateTokens(accessToken, idToken);
 
       return true;
     } catch (error) {
-      console.log('❌ Token refresh failed:', error);
+      console.log('Token refresh failed:', error);
       this.clearAllTokens();
       return false;
     }
   }
 
-  /**
-   * Makes the actual refresh token request
-   */
   private static async makeRefreshRequest(
     refreshToken: string,
   ): Promise<RefreshTokenResponse> {
-    const requestData: RefreshTokenRequest = { refresh_token: refreshToken };
+    const requestData: RefreshTokenRequest = { refreshToken };
 
     const response = await axios.post(
       `${process.env.EXPO_PUBLIC_API_URL}${AUTH_ENDPOINTS.REFRESH_TOKEN}`,
@@ -54,32 +45,20 @@ export class TokenService {
     return response.data;
   }
 
-  /**
-   * Updates tokens in both store and TokenManager
-   */
-  private static updateTokens(accessToken: string, refreshToken: string): void {
+  private static updateTokens(accessToken: string, idToken: string): void {
     useStore.getState().setAccessToken(accessToken);
-    useStore.getState().setRefreshToken(refreshToken);
+    useStore.getState().setIdToken(idToken);
   }
 
-  /**
-   * Clears all tokens and logs out the user
-   */
   private static clearAllTokens(): void {
     useStore.getState().logout();
     replaceRoute(USER_ROUTES.HOME);
   }
 
-  /**
-   * Checks if a token refresh should be attempted
-   */
   static shouldAttemptRefresh(error: any): boolean {
     return error.response?.status === 401 && !error.config._retry;
   }
 
-  /**
-   * Marks a request as retried to prevent infinite loops
-   */
   static markRequestAsRetried(config: any): void {
     config._retry = true;
   }

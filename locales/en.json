@@ -426,7 +426,8 @@
     },
     "register": {
       "title": "Register",
-      "name": "Full name*",
+      "firstName": "First name*",
+      "lastName": "Last name*",
       "email": "Email*",
       "phone": "Phone*",
       "password": "Password*",
@@ -443,16 +444,27 @@
     "forgotPassword": {
       "title": "Forgot Password",
       "title2": "Forgot your password?",
-      "description": "Don’t worry, enter your email below and we’ll send you a new password to log in.",
+      "description": "Don’t worry, enter your email below and we’ll send you a code to reset your password.",
       "email": "Email",
-      "submit": "Send Reset Link",
+      "submit": "Send code",
       "backToLogin": "Back to Login",
-      "continueAsGuest": "Continue as guest",
-      "successTitle": "Check your email!",
-      "successDescription": "We've sent you a new password. Confirm the email and log in again to continue using Mekapal."
+      "continueAsGuest": "Continue as guest"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "description": "Enter the code we sent to {{email}} and your new password.",
+      "code": "Verification code",
+      "codePlaceholder": "Enter the 6-digit code",
+      "newPassword": "New password*",
+      "confirmPassword": "Confirm password*",
+      "submit": "Reset password",
+      "resetting": "Resetting...",
+      "success": "Password reset successfully",
+      "passwordsMismatch": "Passwords do not match"
     },
     "changePassword": {
       "title": "Change Password",
+      "oldPassword": "Current Password*",
       "currentPassword": "Current Password",
       "newPassword": "New Password",
       "confirmPassword": "Confirm New Password",
@@ -463,6 +475,19 @@
       "passwordsMismatch": "New passwords do not match",
       "passwordTooShort": "Password must be at least 8 characters",
       "noUser": "Could not load user information"
+    },
+    "verifyEmail": {
+      "title": "Verify your email",
+      "description": "Enter the 6-digit code we sent to {{email}}",
+      "codeLabel": "Verification code",
+      "codePlaceholder": "Enter the code",
+      "submit": "Verify",
+      "verifying": "Verifying...",
+      "resend": "Resend code",
+      "resendCountdown": "Resend in {{seconds}}s",
+      "resendSuccess": "Code resent successfully",
+      "success": "Email verified successfully",
+      "invalidCode": "The code entered is incorrect"
     },
     "errors": {
       "loginError": "Login error",
@@ -646,7 +671,8 @@
         "passwordTooShort": "Password must be at least 6 characters"
       },
       "register": {
-        "nameRequired": "Name is required",
+        "firstNameRequired": "First name is required",
+        "lastNameRequired": "Last name is required",
         "emailRequired": "Email is required",
         "emailInvalid": "Please enter a valid email",
         "phoneRequired": "Phone number is required",
