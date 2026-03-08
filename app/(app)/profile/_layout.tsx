@@ -10,7 +10,7 @@ export default function ProfileLayout() {
     >
       <Stack.Screen name="index" />
       <Stack.Screen name="info" />
-      <Stack.Screen name="payment/index" />
+      <Stack.Screen name="payment" />
       <Stack.Screen name="addresses" />
       <Stack.Screen name="security" />
       <Stack.Screen name="help/index" />
