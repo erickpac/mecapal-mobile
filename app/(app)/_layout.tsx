@@ -14,7 +14,6 @@ import { COLORS } from '@/consts/colors';
 export default function AppLayout() {
   const { user, isAuthenticated } = useStore();
 
-  // @TODO
   const { TRANSPORTER_TABS, USER_TABS, GUEST_TABS } = useTabConfigurations();
 
   // Determine which tabs to show based on authentication and user role

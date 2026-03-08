@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import TokenManager from '@/features/auth/services/token-manager';
-import { authService } from '@/features/auth/services/auth';
 
 interface AppState {
   user: User | null;
@@ -54,7 +53,9 @@ export const useStore = create<AppState>()(
       setSelectedUserType: (userType) => set({ selectedUserType: userType }),
       setGuestMode: (isGuest) => set({ isGuestMode: isGuest }),
       logout: () => {
-        authService.signOut().catch(() => {});
+        import('@/features/auth/services/auth').then(({ authService }) =>
+          authService.signOut().catch(() => {}),
+        );
         TokenManager.clearToken();
         set({
           user: null,

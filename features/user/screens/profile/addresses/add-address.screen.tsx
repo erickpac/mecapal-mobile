@@ -171,7 +171,7 @@ const AddAddressScreen = () => {
                     <TextInput.Icon
                       icon="chevron-down"
                       size={20}
-                      color={COLORS.gray[600]}
+                      color={COLORS.gray}
                       onPress={() => setShowDepartmentPicker(true)}
                     />
                   }
@@ -198,7 +198,7 @@ const AddAddressScreen = () => {
                     <TextInput.Icon
                       icon="chevron-down"
                       size={20}
-                      color={COLORS.gray[600]}
+                      color={COLORS.gray}
                       onPress={() => setShowMunicipalityPicker(true)}
                     />
                   }
@@ -282,7 +282,7 @@ const AddAddressScreen = () => {
                   <MaterialSymbol
                     name="close"
                     size={24}
-                    color={COLORS.gray[600]}
+                    color={COLORS.gray}
                   />
                 </TouchableOpacity>
               </View>
@@ -344,7 +344,7 @@ const AddAddressScreen = () => {
                   <MaterialSymbol
                     name="close"
                     size={24}
-                    color={COLORS.gray[600]}
+                    color={COLORS.gray}
                   />
                 </TouchableOpacity>
               </View>
