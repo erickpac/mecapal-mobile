@@ -1,6 +1,6 @@
 import { UserRole } from '@/features/auth/types/user';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { Text, View, Image } from 'react-native';
 
 type Props = {
   name?: string | null;
@@ -41,5 +41,3 @@ const WelcomeHero = ({
 };
 
 export default WelcomeHero;
-
-const styles = StyleSheet.create({});

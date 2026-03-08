@@ -1,4 +1,4 @@
-import { useAuth } from '@/features/auth/hooks/useAuth';
+import { useRegister } from '@/features/auth/hooks/useRegister';
 import { useStore } from '@/store/useStore';
 import { usePathname, router } from 'expo-router';
 import { useState, useEffect } from 'react';
@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { useLocalizedError } from '@/hooks/useLocalizedError';
 import { UserRole } from '@/features/auth/types/user';
 import { replaceRoute } from '@/features/shared/routes';
 import { USER_ROUTES } from '@/features/user/routes';
@@ -32,10 +33,11 @@ export default function RegisterScreen() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
-  const { register, isLoading, error, isSuccess } = useAuth();
+  const { mutate: register, isPending, error, isSuccess } = useRegister();
   const { selectedUserType, setHasCompletedOnboarding, setSelectedUserType } =
     useStore();
   const { t } = useTranslation();
+  const { getErrorMessage } = useLocalizedError();
   const pathname = usePathname();
   const { errors, validateForm } = useRegisterValidation({
     name,
@@ -46,14 +48,11 @@ export default function RegisterScreen() {
     confirmPassword,
   });
 
-  // Check if we're in modal mode (from onboarding)
   const isOnboardingFlow = pathname.includes('/onboarding/');
 
-  // Handle successful registration
   useEffect(() => {
     if (isSuccess && !showSuccess) {
       setShowSuccess(true);
-      // Complete onboarding and navigate to home after successful registration
       const timer = setTimeout(() => {
         setShowSuccess(false);
         setHasCompletedOnboarding(true);
@@ -69,14 +68,11 @@ export default function RegisterScreen() {
   };
 
   const handleRegister = () => {
-    // Validate form
     if (!validateForm()) {
       return;
     }
 
-    // Validate passwords match
     if (password !== confirmPassword) {
-      // Handle password mismatch error
       return;
     }
 
@@ -172,15 +168,22 @@ export default function RegisterScreen() {
                 returnKeyType="done"
               />
             </View>
+
+            {error && (
+              <Text className="mb-4 text-center font-plus-jakarta text-sm text-red-500">
+                {getErrorMessage(error)}
+              </Text>
+            )}
+
             <Button
               title={t('auth.register.title')}
               onPress={handleRegister}
               userType={selectedUserType}
-              loading={isLoading}
+              loading={isPending}
             />
 
             <Button
-              title="Ya tienes cuenta? Inicia sesión aquí"
+              title={t('auth.register.hasAccount')}
               variant="text"
               className="mt-2"
               userType={selectedUserType}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import { Text, ToggleButton } from 'react-native-paper';
-import { COLORS } from '@/consts/colors';
 interface TabItem {
   title: string;
   component: React.ReactNode;

@@ -17,12 +17,13 @@ import { Input } from '@/components/input';
 import { Button } from '@/components/button';
 import { COLORS } from '@/consts/colors';
 import { MaterialSymbol } from '@/components/material-symbol';
+import { UserRole } from '@/features/auth/types/user';
 
 const { height: screenHeight } = Dimensions.get('window');
 
 const AddAddressScreen = () => {
   const { user } = useStore();
-  const userRole = user?.role || 'USER';
+  const userRole = user?.role ?? UserRole.USER;
   const [isDefaultAddress, setIsDefaultAddress] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const [selectedMunicipality, setSelectedMunicipality] = useState('');
@@ -268,9 +269,7 @@ const AddAddressScreen = () => {
           <View className="flex-1 justify-end">
             <View
               className="transform rounded-t-3xl bg-white"
-              style={{
-                animation: 'slideUp 0.3s ease-out',
-              }}
+              style={{}}
             >
               <View className="flex-row items-center justify-between border-b border-gray-100 px-6 pb-2 pt-4">
                 <Text className="text-lg font-semibold text-gray-900">
@@ -332,9 +331,7 @@ const AddAddressScreen = () => {
           <View className="flex-1 justify-end">
             <View
               className="transform rounded-t-3xl bg-white"
-              style={{
-                animation: 'slideUp 0.3s ease-out',
-              }}
+              style={{}}
             >
               <View className="flex-row items-center justify-between border-b border-gray-100 px-6 pb-2 pt-4">
                 <Text className="text-lg font-semibold text-gray-900">

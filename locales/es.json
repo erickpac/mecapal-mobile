@@ -455,8 +455,14 @@
       "title": "Cambiar contraseña",
       "currentPassword": "Contraseña actual",
       "newPassword": "Nueva contraseña",
-      "submit": "Cambiar contraseña",
-      "success": "Contraseña cambiada correctamente"
+      "confirmPassword": "Confirmar nueva contraseña",
+      "submit": "Actualizar contraseña",
+      "updating": "Actualizando...",
+      "success": "Contraseña actualizada exitosamente",
+      "passwordHint": "Tu contraseña debe tener un mínimo de 8 caracteres, incluyendo letras, por lo menos un número y un símbolo.",
+      "passwordsMismatch": "Las contraseñas nuevas no coinciden",
+      "passwordTooShort": "La contraseña debe tener al menos 8 caracteres",
+      "noUser": "No se pudo cargar la información del usuario"
     },
     "errors": {
       "loginError": "Error al iniciar sesión",
@@ -638,6 +644,12 @@
     "serverError": "Error interno del servidor. Por favor, inténtelo más tarde",
     "networkError": "Error de conexión. Verifique su conexión a internet",
     "auth": {
+      "login": {
+        "emailRequired": "El correo es obligatorio",
+        "emailInvalid": "Ingresa tu correo electrónico correctamente",
+        "passwordRequired": "La contraseña es obligatoria",
+        "passwordTooShort": "La contraseña debe tener al menos 6 caracteres"
+      },
       "register": {
         "nameRequired": "Nombre es requerido",
         "emailRequired": "Email es requerido",

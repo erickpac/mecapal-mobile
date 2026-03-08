@@ -1,10 +1,5 @@
 import React, { useState, useCallback, memo } from 'react';
-import {
-  View,
-  Text,
-  NativeSyntheticEvent,
-  TextInputFocusEventData,
-} from 'react-native';
+import { View, Text } from 'react-native';
 import { TextInput, TextInputProps } from 'react-native-paper';
 
 export interface InputProps
@@ -84,12 +79,12 @@ const InputComponent: React.FC<InputProps> = ({
     return defaultOutline;
   };
 
-  const handleFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+  const handleFocus: TextInputProps['onFocus'] = (e) => {
     setTouched(true);
     if (props.onFocus) props.onFocus(e);
   };
 
-  const handleBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+  const handleBlur: TextInputProps['onBlur'] = (e) => {
     if (props.onBlur) props.onBlur(e);
   };
 

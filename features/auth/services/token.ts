@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { AUTH_ENDPOINTS } from '@/services/api/config/endpoints';
-import TokenManager from './token-manager';
 import { useStore } from '@/store/useStore';
 import { RefreshTokenResponse, RefreshTokenRequest } from '../types/auth';
 import { TOKEN_CONFIG } from '@/services/api/config/constants';
+import { replaceRoute } from '@/features/shared/routes';
+import { USER_ROUTES } from '@/features/user/routes';
 
 export class TokenService {
   /**
@@ -59,15 +60,14 @@ export class TokenService {
   private static updateTokens(accessToken: string, refreshToken: string): void {
     useStore.getState().setAccessToken(accessToken);
     useStore.getState().setRefreshToken(refreshToken);
-    TokenManager.setToken(accessToken);
   }
 
   /**
    * Clears all tokens and logs out the user
    */
   private static clearAllTokens(): void {
-    TokenManager.clearToken();
     useStore.getState().logout();
+    replaceRoute(USER_ROUTES.HOME);
   }
 
   /**

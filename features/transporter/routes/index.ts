@@ -5,7 +5,7 @@ export const TRANSPORTER_ROUTES = {
   ORDERS: '/orders',
   INFO: '/profile/info',
   VEHICLES: '/vehicles',
-  EARNINGS: '/profile/earnings',
+  EARNINGS: '/earnings',
   PROFILE: '/profile',
 } as const;
 

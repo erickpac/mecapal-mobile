@@ -455,8 +455,14 @@
       "title": "Change Password",
       "currentPassword": "Current Password",
       "newPassword": "New Password",
-      "submit": "Change Password",
-      "success": "Password changed successfully"
+      "confirmPassword": "Confirm New Password",
+      "submit": "Update Password",
+      "updating": "Updating...",
+      "success": "Password updated successfully",
+      "passwordHint": "Your password must have a minimum of 8 characters, including letters, at least one number and one symbol.",
+      "passwordsMismatch": "New passwords do not match",
+      "passwordTooShort": "Password must be at least 8 characters",
+      "noUser": "Could not load user information"
     },
     "errors": {
       "loginError": "Login error",
@@ -633,6 +639,12 @@
     "serverError": "Internal server error. Please try again later",
     "networkError": "Connection error. Please check your internet connection",
     "auth": {
+      "login": {
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "passwordRequired": "Password is required",
+        "passwordTooShort": "Password must be at least 6 characters"
+      },
       "register": {
         "nameRequired": "Name is required",
         "emailRequired": "Email is required",

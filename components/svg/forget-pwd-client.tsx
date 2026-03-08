@@ -1,4 +1,4 @@
-import Svg, { SvgProps, Path, G } from 'react-native-svg';
+import Svg, { Path, G } from 'react-native-svg';
 
 const ForgetPasswordImageClient = () => {
   return (

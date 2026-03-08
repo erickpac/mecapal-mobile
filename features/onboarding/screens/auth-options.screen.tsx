@@ -11,6 +11,8 @@ import { CarAccesories, FreeShipping } from '@/components/svg';
 import { Button } from '@/components/button';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { replaceRoute } from '@/features/shared/routes';
+import { USER_ROUTES } from '@/features/user/routes';
 
 export default function AuthOptionsScreen() {
   const { selectedUserType, setHasCompletedOnboarding } = useStore();
@@ -74,7 +76,10 @@ export default function AuthOptionsScreen() {
           <Button
             title={t('onboarding.authOptions.skip')}
             variant="text"
-            onPress={() => setHasCompletedOnboarding(true)}
+            onPress={() => {
+              setHasCompletedOnboarding(true);
+              replaceRoute(USER_ROUTES.HOME);
+            }}
             userType={selectedUserType}
           />
         </View>

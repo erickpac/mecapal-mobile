@@ -5,63 +5,59 @@ import { NavigationHeader } from '@/components/navigation-header';
 import { useStore } from '@/store/useStore';
 import { Input } from '@/components/input';
 import { useTranslation } from 'react-i18next';
-
-type SecuritySettings = {
-  currentPassword: string;
-  newPassword: string;
-  confirmPassword: string;
-};
+import { useChangePassword } from '@/features/auth/hooks/useChangePassword';
+import { useLocalizedError } from '@/hooks/useLocalizedError';
 
 const SecurityScreen = () => {
   const { t } = useTranslation();
   const { user } = useStore();
+  const {
+    mutateAsync: changePassword,
+    isPending,
+    error,
+    isSuccess,
+  } = useChangePassword();
+  const { getErrorMessage } = useLocalizedError();
 
-  // Early return if no user
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [validationError, setValidationError] = useState('');
+
   if (!user) {
     return (
       <View className="flex-1 items-center justify-center bg-white">
         <Text className="text-gray-600">
-          No se pudo cargar la información del usuario
+          {t('auth.changePassword.noUser')}
         </Text>
       </View>
     );
   }
 
-  // Ensure user has a role
   const userRole = user.role || 'USER';
 
-  const [securitySettings, setSecuritySettings] = useState<SecuritySettings>({
-    currentPassword: '',
-    newPassword: '',
-    confirmPassword: '',
-  });
-
-  const [loading, setLoading] = useState(false);
-
   const handlePasswordChange = async () => {
-    if (securitySettings.newPassword !== securitySettings.confirmPassword) {
-      alert('Las contraseñas nuevas no coinciden');
+    setValidationError('');
+
+    if (newPassword !== confirmPassword) {
+      setValidationError(t('auth.changePassword.passwordsMismatch'));
       return;
     }
 
-    if (securitySettings.newPassword.length < 8) {
-      alert('La contraseña debe tener al menos 8 caracteres');
+    if (newPassword.length < 8) {
+      setValidationError(t('auth.changePassword.passwordTooShort'));
       return;
     }
 
-    setLoading(true);
-
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
-      setSecuritySettings((prev) => ({
-        ...prev,
-        currentPassword: '',
-        newPassword: '',
-        confirmPassword: '',
-      }));
-      alert('Contraseña actualizada exitosamente');
-    }, 2000);
+    try {
+      await changePassword({
+        current_password: '',
+        new_password: newPassword,
+      });
+      setNewPassword('');
+      setConfirmPassword('');
+    } catch {
+      // error state is handled by the mutation
+    }
   };
 
   return (
@@ -71,57 +67,63 @@ const SecurityScreen = () => {
         <ScrollView className="flex-1">
           <View className="px-8 pt-4">
             <Text className="font-plus-jakarta-bold text-2xl font-bold text-gray-800">
-              Seguridad
+              {t('profile.security.title')}
             </Text>
             <Text className="mt-4 font-plus-jakarta text-base font-normal text-gray-800">
-              {'Cambia tu contraseña'}
+              {t('profile.security.subtitle')}
             </Text>
           </View>
 
           <View className="px-8 pb-4">
             <Text className="my-4 font-plus-jakarta text-base font-normal text-gray-800">
-              {
-                'Tu contraseña debe tener un mínimo de 8 caracteres, incluyendo letras, por lo menos un número y un símbolo.'
-              }
+              {t('auth.changePassword.passwordHint')}
             </Text>
 
             <View className="space-y-4 rounded-lg">
               <Input
-                label="Nueva Contraseña"
-                value={securitySettings.newPassword}
+                label={t('auth.changePassword.newPassword')}
+                value={newPassword}
                 type="password"
-                onChangeText={(value) =>
-                  setSecuritySettings((prev) => ({
-                    ...prev,
-                    newPassword: value,
-                  }))
-                }
+                onChangeText={setNewPassword}
               />
 
               <Input
-                label="Confirmar Nueva Contraseña"
-                value={securitySettings.confirmPassword}
+                label={t('auth.changePassword.confirmPassword')}
+                value={confirmPassword}
                 type="password"
-                onChangeText={(value) =>
-                  setSecuritySettings((prev) => ({
-                    ...prev,
-                    confirmPassword: value,
-                  }))
-                }
+                onChangeText={setConfirmPassword}
               />
             </View>
+
+            {validationError ? (
+              <Text className="mt-2 font-plus-jakarta text-sm text-red-500">
+                {validationError}
+              </Text>
+            ) : null}
+
+            {error && (
+              <Text className="mt-2 font-plus-jakarta text-sm text-red-500">
+                {getErrorMessage(error)}
+              </Text>
+            )}
+
+            {isSuccess && (
+              <Text className="mt-2 font-plus-jakarta text-sm text-green-600">
+                {t('auth.changePassword.success')}
+              </Text>
+            )}
           </View>
         </ScrollView>
 
         <View className="bg-white px-6 py-4">
           <Button
-            title={loading ? 'Actualizando...' : 'Actualizar Contraseña'}
-            onPress={handlePasswordChange}
-            disabled={
-              loading ||
-              !securitySettings.currentPassword ||
-              !securitySettings.newPassword
+            title={
+              isPending
+                ? t('auth.changePassword.updating')
+                : t('auth.changePassword.submit')
             }
+            onPress={handlePasswordChange}
+            disabled={isPending || !newPassword || !confirmPassword}
             userType={userRole}
           />
         </View>

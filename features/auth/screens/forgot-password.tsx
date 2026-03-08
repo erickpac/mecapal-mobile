@@ -1,6 +1,5 @@
 import { router, usePathname } from 'expo-router';
 import { KeyboardAvoidingView, Platform, Text, View } from 'react-native';
-
 import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from '@/components/navigation-header';
 import { Input } from '@/components/input';
@@ -10,7 +9,8 @@ import { useStore } from '@/store/useStore';
 import { IconButton } from '@/components/icon-button';
 import { Button } from '@/components/button';
 import { useState } from 'react';
-import { useAuth } from '@/features/auth/hooks/useAuth';
+import { useRecoverPassword } from '@/features/auth/hooks/useRecoverPassword';
+import { useLocalizedError } from '@/hooks/useLocalizedError';
 import { navigateToForgotPasswordSuccessMessage } from '../routes';
 
 export default function ForgotPasswordScreen() {
@@ -19,43 +19,43 @@ export default function ForgotPasswordScreen() {
   const pathname = usePathname();
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
-  const { recoverPassword, isLoading, error, isSuccess } = useAuth();
+  const {
+    mutateAsync: recoverPassword,
+    isPending,
+    error,
+  } = useRecoverPassword();
+  const { getErrorMessage } = useLocalizedError();
 
-  // Check if we're in modal mode (from onboarding)
   const isModalMode = pathname.includes('/onboarding/');
 
-  // Email validation function
-  const validateEmail = (email: string): boolean => {
+  const validateEmail = (value: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    return emailRegex.test(value);
   };
 
-  const handleValidateEmail = (email: string) => {
-    // Reset previous errors
+  const handleValidateEmail = (value: string) => {
     setEmailError('');
 
-    // Validate email
-    if (!email.trim()) {
-      setEmailError(
-        t('errors.auth.register.emailRequired') || 'Email is required',
-      );
+    if (!value.trim()) {
+      setEmailError(t('errors.auth.register.emailRequired'));
       return false;
-    } else if (!validateEmail(email)) {
-      setEmailError(t('auth.errors.invalidEmail') || 'Invalid email format');
+    } else if (!validateEmail(value)) {
+      setEmailError(t('auth.errors.invalidEmail'));
       return false;
     }
+
+    return true;
   };
 
-  // Handle form submission
-  const handleSubmit = () => {
-    // recoverPassword(email);
-    console.log('email', email);
-    console.log('email', pathname);
-    console.log('>>>>>');
+  const handleSubmit = async () => {
+    if (!handleValidateEmail(email)) return;
 
-    debugger;
-    navigateToForgotPasswordSuccessMessage();
-    return true;
+    try {
+      await recoverPassword(email);
+      navigateToForgotPasswordSuccessMessage();
+    } catch {
+      // error state is handled by the mutation
+    }
   };
 
   return (
@@ -104,10 +104,18 @@ export default function ForgotPasswordScreen() {
               keyboardType="email-address"
               autoCapitalize="none"
             />
+
+            {error && (
+              <Text className="text-center font-plus-jakarta text-sm text-red-500">
+                {getErrorMessage(error)}
+              </Text>
+            )}
+
             <Button
               title={t('auth.forgotPassword.submit')}
               onPress={handleSubmit}
-              disabled={emailError.length > 0 || email.length <= 0 || isLoading}
+              disabled={emailError.length > 0 || email.length <= 0 || isPending}
+              loading={isPending}
               userType={selectedUserType}
             />
 

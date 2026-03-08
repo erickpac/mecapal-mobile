@@ -11,13 +11,11 @@ export default function Index() {
   useEffect(() => {
     const navigate = async () => {
       try {
-        // If user hasn't completed onboarding, show onboarding
-        if (hasCompletedOnboarding) {
+        if (!hasCompletedOnboarding) {
           replaceRoute(ONBOARDING_ROUTES.ONBOARDING);
           return;
         }
 
-        // If user has completed onboarding, go to home
         replaceRoute(USER_ROUTES.HOME);
       } catch (error) {
         console.error('Navigation error:', error);

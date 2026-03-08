@@ -1,4 +1,4 @@
-import { useAuth } from '@/features/auth/hooks/useAuth';
+import { useLogin } from '@/features/auth/hooks/useLogin';
 import { useStore } from '@/store/useStore';
 import { router, usePathname } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -35,10 +35,10 @@ export default function LoginScreen({
 }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, isLoading, error, isSuccess } = useAuth();
+  const { mutate: login, isPending, error, isSuccess } = useLogin();
   const { setHasCompletedOnboarding, selectedUserType } = useStore();
   const { t } = useTranslation();
-  const { handleError } = useLocalizedError();
+  const { getErrorMessage } = useLocalizedError();
   const pathname = usePathname();
   const isOnboardingFlow = pathname.includes('/onboarding/');
   const { emailError, passwordError, isValid } = useLoginValidation(
@@ -105,9 +105,7 @@ export default function LoginScreen({
                   type="password"
                   value={password}
                   onChangeText={setPassword}
-                  error={
-                    passwordError || (error ? handleError(error) : undefined)
-                  }
+                  error={passwordError}
                   returnKeyType="done"
                   onSubmitEditing={handleLogin}
                 />
@@ -121,16 +119,21 @@ export default function LoginScreen({
                     }
                   }}
                   title={t('auth.login.forgotPassword')}
-                  // userType={selectedUserType}
                 />
               </View>
             </View>
 
+            {error && (
+              <Text className="mb-4 text-center font-plus-jakarta text-sm text-red-500">
+                {getErrorMessage(error)}
+              </Text>
+            )}
+
             <Button
               title={t('auth.login.login')}
               onPress={handleLogin}
-              disabled={!isValid || isLoading}
-              loading={isLoading}
+              disabled={!isValid || isPending}
+              loading={isPending}
               userType={selectedUserType}
             />
 

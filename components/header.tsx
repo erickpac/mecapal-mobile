@@ -1,7 +1,5 @@
-import React, { ReactNode } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { MaterialSymbol } from '@/components/material-symbol';
-import { router } from 'expo-router';
+import React from 'react';
+import { View } from 'react-native';
 import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
