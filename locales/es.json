@@ -625,6 +625,28 @@
         "considerations": "Consideraciones:",
         "exampleTitle": "Este envío es para ti si por ejemplo:"
       }
+    },
+    "howItWorks": {
+      "title": "¿Cómo funciona?",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "clientTab": "Cliente",
+      "transporterTab": "Transportista",
+      "client": {
+        "step1Title": "Crea una cuenta",
+        "step1Description": "Sed do eiusmod tempor incididunt ut labore et dolore magna ali qua.",
+        "step2Title": "Selecciona el tipo de envío",
+        "step2Description": "Sed do eiusmod tempor incididunt ut labore et dolore",
+        "step3Title": "¡Envía tus chivas!",
+        "step3Description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea"
+      },
+      "transporter": {
+        "step1Title": "Crea una cuenta",
+        "step1Description": "Sed do eiusmod tempor incididunt ut labore et dolore magna ali qua.",
+        "step2Title": "Completa tu perfil",
+        "step2Description": "Sed do eiusmod tempor incididunt ut labore elit dolore magna ali qua.",
+        "step3Title": "¡Presta tus servicios!",
+        "step3Description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea"
+      }
     }
   },
   "profile": {

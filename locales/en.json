@@ -620,6 +620,28 @@
         "considerations": "Considerations:",
         "exampleTitle": "This shipping is for you if for example:"
       }
+    },
+    "howItWorks": {
+      "title": "How does it work?",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "clientTab": "Client",
+      "transporterTab": "Transporter",
+      "client": {
+        "step1Title": "Create an account",
+        "step1Description": "Sed do eiusmod tempor incididunt ut labore et dolore magna ali qua.",
+        "step2Title": "Select the shipment type",
+        "step2Description": "Sed do eiusmod tempor incididunt ut labore et dolore",
+        "step3Title": "Ship your things!",
+        "step3Description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea"
+      },
+      "transporter": {
+        "step1Title": "Create an account",
+        "step1Description": "Sed do eiusmod tempor incididunt ut labore et dolore magna ali qua.",
+        "step2Title": "Complete your profile",
+        "step2Description": "Sed do eiusmod tempor incididunt ut labore elit dolore magna ali qua.",
+        "step3Title": "Provide your services!",
+        "step3Description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea"
+      }
     }
   },
   "profile": {
