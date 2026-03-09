@@ -1,5 +1,4 @@
-import { Text, View, ScrollView, Image, TextInput } from 'react-native';
-import { useState } from 'react';
+import { Text, View, ScrollView, Image } from 'react-native';
 import { Header } from '@/components/header';
 import { useTranslation } from 'react-i18next';
 import { navigateTo } from '@/features/shared/routes';
@@ -17,7 +16,6 @@ import { SERVICES } from '@/features/shared/data/services';
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
   const { setSelectedUserType } = useStore();
-  const [newsletterEmail, setNewsletterEmail] = useState('');
 
   const handleClickLogin = (role: UserRole) => {
     setSelectedUserType(role);
@@ -153,32 +151,7 @@ export default function GuestHomeScreen() {
           </View>
         </View>
 
-        {/* Newsletter */}
-        <View className="mt-8 bg-gray-800 px-6 py-8">
-          <Text className="text-center font-plus-jakarta-bold text-xl text-white">
-            {t('home.newsletter.title')}
-          </Text>
-          <Text className="mt-2 text-center font-plus-jakarta text-sm text-gray-300">
-            {t('home.newsletter.subtitle')}
-          </Text>
-          <View className="mt-4">
-            <TextInput
-              className="rounded-lg border border-gray-600 bg-white px-4 py-3 font-plus-jakarta text-base"
-              placeholder="Ingresa tu correo electrónico"
-              placeholderTextColor={COLORS.lightGray[700]}
-              value={newsletterEmail}
-              onChangeText={setNewsletterEmail}
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
-            <Button
-              title={t('home.newsletter.action1')}
-              onPress={() => {}}
-              userType={UserRole.CLIENT}
-              className="mt-3"
-            />
-          </View>
-        </View>
+        <View className="h-8" />
       </ScrollView>
     </>
   );
