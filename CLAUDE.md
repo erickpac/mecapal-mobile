@@ -65,6 +65,10 @@ pnpm lint         # ESLint
 - `feature/<name>` - new features (create from develop when instructed)
 - When user says "new feature", create a `feature/<name>` branch from develop
 
+### Merging
+- **Always squash merge** feature branches into develop (`git merge --squash`)
+- This keeps the develop history clean with one commit per feature
+
 ## Architecture Notes
 
 ### Authentication Flow
