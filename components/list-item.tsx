@@ -13,32 +13,47 @@ interface ListItemProps {
   imageSource: ImageSourcePropType | undefined;
   title: string;
   description: string;
+  linkText?: string;
   onPress: () => void;
 }
 
-const ListItem = (props: ListItemProps) => {
+const ListItem = ({
+  imageSource,
+  title,
+  description,
+  linkText,
+  onPress,
+}: ListItemProps) => {
   return (
     <TouchableOpacity
-      onPress={props.onPress}
-      className="flex flex-row items-center justify-between border-[#D6D6D6] py-4 first:border-b-0 first:border-t last:border-b last:border-t-0"
+      onPress={onPress}
+      className="flex-row items-center justify-between border-b py-4"
+      style={{ borderColor: COLORS.lightGray[500] }}
     >
       <View className="items-center py-2 pl-4">
         <Image
-          source={props.imageSource}
+          source={imageSource}
           className="h-[75px] w-[75px]"
           resizeMode="cover"
         />
       </View>
-      <View className="ml-4 h-[75px] flex-1">
-        <Text className="font-plus-jakarta-bold text-lg font-bold text-gray-800">
-          {props.title}
+      <View className="ml-4 flex-1">
+        <Text className="font-plus-jakarta-bold text-lg text-gray-800">
+          {title}
         </Text>
-        <Text className="mt-1 pr-4 font-plus-jakarta-medium text-sm font-medium text-gray-500">
-          {props.description}
+        <Text className="mt-1 pr-4 font-plus-jakarta text-sm text-gray-500">
+          {description}{' '}
+          {linkText && (
+            <Text style={{ color: COLORS.primary }}>{linkText}</Text>
+          )}
         </Text>
       </View>
       <View className="items-center justify-center px-4">
-        <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[700]} />
+        <MaterialCommunityIcons
+          name="chevron-right"
+          size={20}
+          color={COLORS.lightGray[700]}
+        />
       </View>
     </TouchableOpacity>
   );

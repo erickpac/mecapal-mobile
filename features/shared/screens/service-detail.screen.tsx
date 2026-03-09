@@ -1,0 +1,77 @@
+import { View, Text, Image, ScrollView } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
+import { NavigationHeader } from '@/components/navigation-header';
+import { ContentContainer } from '@/components/content-container';
+import { SERVICES } from '@/features/shared/data/services';
+import { COLORS } from '@/consts/colors';
+
+export default function ServiceDetailScreen() {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const service = SERVICES.find((s) => s.id === id);
+
+  if (!service) return null;
+
+  return (
+    <>
+      <NavigationHeader showBackButton />
+      <ContentContainer className="flex-1">
+        <ScrollView contentContainerClassName="px-4 pb-8">
+          <Text className="mb-4 mt-2 font-plus-jakarta-bold text-2xl">
+            {service.title}
+          </Text>
+
+          <View
+            className="mb-4 overflow-hidden rounded-xl"
+            style={{ backgroundColor: COLORS.primary + '15' }}
+          >
+            <Image
+              source={service.image}
+              className="h-48 w-full"
+              resizeMode="contain"
+            />
+          </View>
+
+          <Text className="mb-6 font-plus-jakarta text-base leading-6 text-gray-700">
+            {service.detailDescription}
+          </Text>
+
+          <View className="mb-6">
+            {service.specs.map((spec) => (
+              <View key={spec.label} className="mb-2">
+                <Text className="font-plus-jakarta-bold text-base">
+                  {spec.label}:{' '}
+                  <Text className="font-plus-jakarta font-normal">
+                    {spec.value}
+                  </Text>
+                </Text>
+              </View>
+            ))}
+          </View>
+
+          <View className="mb-6">
+            <Text className="mb-2 font-plus-jakarta-bold text-base">
+              Consideraciones:
+            </Text>
+            {service.considerations.map((item, index) => (
+              <View key={index} className="mb-1 flex-row pl-2">
+                <Text className="mr-2 font-plus-jakarta text-base">•</Text>
+                <Text className="flex-1 font-plus-jakarta text-base leading-6 text-gray-700">
+                  {item}
+                </Text>
+              </View>
+            ))}
+          </View>
+
+          <View className="rounded-xl bg-gray-50 p-4">
+            <Text className="mb-2 font-plus-jakarta-bold text-base">
+              Este envío es para ti si por ejemplo:
+            </Text>
+            <Text className="font-plus-jakarta text-base leading-6 text-gray-700">
+              {service.example}
+            </Text>
+          </View>
+        </ScrollView>
+      </ContentContainer>
+    </>
+  );
+}
