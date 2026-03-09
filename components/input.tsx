@@ -63,17 +63,15 @@ const InputComponent: React.FC<InputProps> = ({
   }, [type, showPassword, props.right]);
 
   const getOutlineColor = () => {
-    if (!value) return defaultOutline;
     if (touched && error) return errorOutline;
-    if (touched && !error) return successOutline;
+    if (touched && !error && value) return successOutline;
     return defaultOutline;
   };
 
   const getActiveOutlineColor = () => {
-    if (!value) return COLORS.black;
     if (touched && error) return errorOutline;
-    if (touched && !error) return successOutline;
-    return defaultOutline;
+    if (touched && !error && value) return successOutline;
+    return COLORS.black;
   };
 
   const isNumericType = type === 'phone' || type === 'number';
@@ -90,11 +88,11 @@ const InputComponent: React.FC<InputProps> = ({
   );
 
   const handleFocus: TextInputProps['onFocus'] = (e) => {
-    setTouched(true);
     if (props.onFocus) props.onFocus(e);
   };
 
   const handleBlur: TextInputProps['onBlur'] = (e) => {
+    setTouched(true);
     if (props.onBlur) props.onBlur(e);
   };
 
