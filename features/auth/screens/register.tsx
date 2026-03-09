@@ -22,11 +22,12 @@ import { NavigationHeader } from '@/components/navigation-header';
 import { IconButton } from '@/components/icon-button';
 import { Button } from '@/components/button';
 import { Input } from '@/components/input';
+import { COLORS } from '@/consts/colors';
 import { useRegisterValidation } from '../hooks/useRegisterValidation';
 
 const ROLE_COLORS = {
-  [UserRole.CLIENT]: '#ef6e30',
-  [UserRole.TRANSPORTER]: '#28a389',
+  [UserRole.CLIENT]: COLORS.primary,
+  [UserRole.TRANSPORTER]: COLORS.secondary,
 };
 
 export default function RegisterScreen() {
@@ -100,12 +101,12 @@ export default function RegisterScreen() {
           ) : undefined
         }
       />
-      <ContentContainer className="flex-1 px-4">
+      <ContentContainer className="flex-1">
         <KeyboardAvoidingView
           className="flex-1 pt-8"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-          <ScrollView>
+          <ScrollView contentContainerClassName="px-4">
             <View className="mb-6 mt-2 items-center">
               <View className="aspect-[287/206] w-48 max-w-full">
                 {selectedUserType === UserRole.CLIENT ? (
@@ -130,8 +131,8 @@ export default function RegisterScreen() {
                   {
                     value: UserRole.CLIENT,
                     label: t('auth.register.userRole'),
-                    checkedColor: '#fff',
-                    uncheckedColor: '#666',
+                    checkedColor: COLORS.white,
+                    uncheckedColor: COLORS.darkGray[500],
                     style: {
                       backgroundColor:
                         userType === UserRole.CLIENT
@@ -143,8 +144,8 @@ export default function RegisterScreen() {
                   {
                     value: UserRole.TRANSPORTER,
                     label: t('auth.register.transporterRole'),
-                    checkedColor: '#fff',
-                    uncheckedColor: '#666',
+                    checkedColor: COLORS.white,
+                    uncheckedColor: COLORS.darkGray[500],
                     style: {
                       backgroundColor:
                         userType === UserRole.TRANSPORTER

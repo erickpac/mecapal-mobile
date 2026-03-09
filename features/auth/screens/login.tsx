@@ -73,12 +73,12 @@ export default function LoginScreen({
           ) : undefined
         }
       />
-      <ContentContainer className="flex-1 px-4">
+      <ContentContainer className="flex-1">
         <KeyboardAvoidingView
           className="flex-1 pt-8"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-          <ScrollView>
+          <ScrollView contentContainerClassName="px-4">
             <View className="mb-6 mt-2 items-center">
               <View className="aspect-[287/206] w-64 max-w-full">
                 {selectedUserType === UserRole.CLIENT ? (

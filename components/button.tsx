@@ -1,20 +1,22 @@
-import React, { memo } from 'react';
+import React, { ComponentProps, memo } from 'react';
 import { GestureResponderEvent } from 'react-native';
 import { Button as PaperButton } from 'react-native-paper';
 import { UserRole } from '@/features/auth/types/user';
 import { COLORS } from '@/consts/colors';
 
-interface ButtonProps {
+type PaperButtonProps = ComponentProps<typeof PaperButton>;
+
+interface ButtonProps
+  extends Omit<
+    PaperButtonProps,
+    'mode' | 'onPress' | 'children' | 'buttonColor' | 'textColor'
+  > {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
-  loading?: boolean;
-  disabled?: boolean;
   fullWidth?: boolean;
-  className?: string;
   buttonColor?: string;
   variant?: 'contained' | 'outlined' | 'text';
   userType?: UserRole;
-  [key: string]: any; // for ...props
 }
 
 const getButtonColor = (userType: UserRole) => {

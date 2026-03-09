@@ -7,9 +7,7 @@ export interface InputProps
   extends Omit<TextInputProps, 'secureTextEntry' | 'error'> {
   label: string;
   error?: string;
-  success?: boolean;
   type?: 'text' | 'email' | 'password' | 'number' | 'phone';
-  helperText?: string;
 }
 
 const inputContentStyle = {
@@ -30,9 +28,7 @@ const successOutline = COLORS.success;
 const InputComponent: React.FC<InputProps> = ({
   label,
   error,
-  success,
   type = 'text',
-  helperText,
   value,
   onChangeText,
   ...props
@@ -112,12 +108,10 @@ const InputComponent: React.FC<InputProps> = ({
         {...props}
       />
 
-      {((!!error && touched) || helperText) && (
+      {!!error && touched && (
         <View className="mt-1 flex-row justify-end">
-          <Text
-            className={`font-plus-jakarta-regular text-right text-sm ${error && touched ? 'text-red-600' : 'text-gray-500'}`}
-          >
-            {error && touched ? error : helperText}
+          <Text className="font-plus-jakarta-regular text-right text-sm text-red-600">
+            {error}
           </Text>
         </View>
       )}

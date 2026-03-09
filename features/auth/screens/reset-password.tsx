@@ -75,12 +75,12 @@ export default function ResetPasswordScreen() {
           ) : undefined
         }
       />
-      <ContentContainer className="flex-1 px-4">
+      <ContentContainer className="flex-1">
         <KeyboardAvoidingView
           className="flex-1 pt-8"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-          <ScrollView>
+          <ScrollView contentContainerClassName="px-4">
             <View className="mt-6">
               <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
                 {t('auth.resetPassword.title')}
