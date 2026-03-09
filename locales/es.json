@@ -565,8 +565,8 @@
     },
     "ctaUser": {
       "title": "¿Listo para mover chivas?",
-      "action1": "Crear mi Cuenta",
-      "action2": "Iniciar Sesión"
+      "action1": "Crear mi cuenta",
+      "action2": "Iniciar sesión"
     },
     "guest": {
       "aboutTitle": "Conoce más sobre nosotros",

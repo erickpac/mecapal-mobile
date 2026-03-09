@@ -1,6 +1,8 @@
-import Svg, { Path } from 'react-native-svg';
-const Amico = () => (
-  <Svg width={181} height={168} fill="none">
+import * as React from 'react';
+import Svg, { Path, SvgProps } from 'react-native-svg';
+
+export const LoginHome = ({ width = 181, height = 168, ...props }: SvgProps) => (
+  <Svg width={width} height={height} fill="none" {...props}>
     <Path
       fill="#F5F5F5"
       d="M26.752 154.865c35.208 16.779 92.288 16.784 127.496 0 35.207-16.783 35.202-43.985 0-60.763-35.203-16.78-92.288-16.78-127.496 0-35.207 16.778-35.202 43.985 0 60.763Z"
@@ -335,4 +337,3 @@ const Amico = () => (
     />
   </Svg>
 );
-export default Amico;

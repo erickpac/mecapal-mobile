@@ -11,6 +11,7 @@ import SubheaderText from '@/components/subheader-text';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
 import { SERVICES } from '@/features/shared/data/services';
+import { LoginHome } from '@/components/svg';
 
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
@@ -28,7 +29,11 @@ export default function GuestHomeScreen() {
   return (
     <>
       <Header />
-      <ScrollView className="flex-1 bg-background" contentContainerClassName="pb-0">
+      <ScrollView
+        className="bg-background flex-1"
+        contentContainerClassName="pb-0"
+        bounces={false}
+      >
         {/* Welcome Hero */}
         <WelcomeHero centerAlign />
 
@@ -116,13 +121,7 @@ export default function GuestHomeScreen() {
 
         {/* CTA */}
         <View className="mx-8 mt-6 items-center">
-          <View className="py-4">
-            <Image
-              source={require('../../../assets/images/guest-truck.png')}
-              className="h-40 w-64 rounded-xl"
-              resizeMode="cover"
-            />
-          </View>
+          <LoginHome />
           <Text className="text-center font-plus-jakarta-semibold text-xl">
             {t('home.ctaUser.title')}
           </Text>

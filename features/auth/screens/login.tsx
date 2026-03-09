@@ -11,12 +11,11 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
-import { navigateToForgotPassword } from '../routes';
 import {
   navigateToForgotPassword as navigateToOnboardingForgotPassword,
   ONBOARDING_ROUTES,
 } from '@/features/onboarding/routes';
-import { AUTH_ROUTES } from '@/features/auth/routes';
+import { AUTH_ROUTES, navigateToForgotPassword } from '@/features/auth/routes';
 import { replaceRoute } from '@/features/shared/routes';
 import { USER_ROUTES } from '@/features/user/routes';
 import { NavigationHeader } from '@/components/navigation-header';
