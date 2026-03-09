@@ -1,8 +1,8 @@
 import { Text, View, ScrollView, Image } from 'react-native';
 import { Header } from '@/components/header';
 import { useTranslation } from 'react-i18next';
+import { router } from 'expo-router';
 import { navigateTo } from '@/features/shared/routes';
-import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import WelcomeHero from '@/components/welcome-hero';
 import ListItem from '@/components/list-item';
@@ -15,11 +15,8 @@ import { LoginHome } from '@/components/svg';
 
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
-  const { setSelectedUserType } = useStore();
-
-  const handleClickLogin = (role: UserRole) => {
-    setSelectedUserType(role);
-    navigateTo('/auth');
+  const handleGoToAuth = () => {
+    router.navigate('/(app)/auth' as any);
   };
 
   const handleServicePress = (serviceId: string) => {
@@ -128,12 +125,12 @@ export default function GuestHomeScreen() {
           <View className="mt-4 w-72 gap-4">
             <Button
               title={t('home.ctaUser.action1')}
-              onPress={() => navigateTo('/auth/register')}
+              onPress={handleGoToAuth}
               userType={UserRole.CLIENT}
             />
             <Button
               title={t('home.ctaUser.action2')}
-              onPress={() => handleClickLogin(UserRole.CLIENT)}
+              onPress={handleGoToAuth}
               userType={UserRole.CLIENT}
               variant="outlined"
             />
