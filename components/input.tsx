@@ -1,6 +1,6 @@
 import React, { useState, useCallback, memo } from 'react';
-import { View, Text } from 'react-native';
-import { TextInput, TextInputProps } from 'react-native-paper';
+import { View } from 'react-native';
+import { HelperText, TextInput, TextInputProps } from 'react-native-paper';
 import { COLORS } from '@/consts/colors';
 
 export interface InputProps
@@ -108,13 +108,9 @@ const InputComponent: React.FC<InputProps> = ({
         {...props}
       />
 
-      {!!error && touched && (
-        <View className="mt-1 flex-row justify-end">
-          <Text className="font-plus-jakarta-regular text-right text-sm text-red-600">
-            {error}
-          </Text>
-        </View>
-      )}
+      <HelperText type="error" visible={!!error && touched}>
+        {error}
+      </HelperText>
     </View>
   );
 };
