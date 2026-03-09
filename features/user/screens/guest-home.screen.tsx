@@ -8,7 +8,6 @@ import WelcomeHero from '@/components/welcome-hero';
 import ListItem from '@/components/list-item';
 import { Button } from '@/components/button';
 import SubheaderText from '@/components/subheader-text';
-import HowItWorks from '@/components/how-it-works';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
 import { SERVICES } from '@/features/shared/data/services';
@@ -114,9 +113,6 @@ export default function GuestHomeScreen() {
             </View>
           </View>
         </View>
-
-        {/* How it works */}
-        <HowItWorks />
 
         {/* CTA */}
         <View className="mx-8 mt-6 items-center">
