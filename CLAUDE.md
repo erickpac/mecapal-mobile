@@ -87,15 +87,27 @@ pnpm lint         # ESLint
 - Nested Stack navigators within tabs
 - Hidden tabs for search, settings, auth (guest)
 
-## Environment
-- `.env` with `EXPO_PUBLIC_` prefix for public vars
-- Key var: `EXPO_PUBLIC_API_URL`
+## Environment & Deployment
+- **Config:** `app.config.ts` (dynamic, replaces `app.json`) — switches app name, bundle ID per environment
+- **EAS Build:** `eas.json` with `development`, `staging`, and `production` profiles
+- **Env vars:** `EXPO_PUBLIC_` prefix for public vars, `APP_ENV` controls environment
+- **Key vars:** `EXPO_PUBLIC_API_URL`, `APP_ENV` (`staging` | `production`)
+- **Bundle IDs:** `com.mekapal.app` (production), `com.mekapal.app.staging` (staging)
+
+### EAS Commands
+```bash
+eas build --profile development --platform ios    # Dev build (simulator)
+eas build --profile staging --platform all        # Staging (internal testers)
+eas build --profile production --platform all     # Production (store release)
+eas submit --platform ios                         # Submit to App Store
+eas submit --platform android                     # Submit to Play Store
+```
 
 ## Styling
 - Use NativeWind/Tailwind classes (className prop)
 - Custom color palette defined in tailwind.config.js (primary=orange, secondary=teal, tertiary=brown)
 - Font: Plus Jakarta Sans (multiple weights)
-- Icons: Material Symbols + custom SVG components
+- Icons: `@expo/vector-icons` (MaterialCommunityIcons) + custom SVG components
 
 ## Code Conventions
 - Functional components with hooks

@@ -34,6 +34,9 @@ yarn-error.*
 .env
 .env*.local
 
+# EAS / Google Play service account
+google-service-account.json
+
 # typescript
 *.tsbuildinfo
 
