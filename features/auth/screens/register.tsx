@@ -43,7 +43,7 @@ export default function RegisterScreen() {
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
   const pathname = usePathname();
-  const { errors, validateForm } = useRegisterValidation({
+  const { errors, isValid } = useRegisterValidation({
     firstName,
     lastName,
     email,
@@ -70,13 +70,7 @@ export default function RegisterScreen() {
   };
 
   const handleRegister = () => {
-    if (!validateForm()) {
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      return;
-    }
+    if (!isValid) return;
 
     register({
       firstName,

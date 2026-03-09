@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface RegisterFormData {
@@ -19,19 +19,13 @@ interface RegisterFormErrors {
   confirmPassword?: string;
 }
 
+const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const isValidPhone = (phone: string) => /^\d{8}$/.test(phone);
+
 export const useRegisterValidation = (formData: RegisterFormData) => {
   const { t } = useTranslation();
-  const [errors, setErrors] = useState<RegisterFormErrors>({});
 
-  const isValidEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
-  const isValidPhone = (phone: string) => {
-    return /^\d{8}$/.test(phone);
-  };
-
-  const validateForm = (): boolean => {
+  const errors = useMemo(() => {
     const newErrors: RegisterFormErrors = {};
 
     if (!formData.firstName.trim()) {
@@ -63,20 +57,15 @@ export const useRegisterValidation = (formData: RegisterFormData) => {
     }
 
     if (!formData.confirmPassword) {
-      newErrors.confirmPassword = t(
-        'errors.auth.register.confirmPasswordRequired',
-      );
+      newErrors.confirmPassword = t('errors.auth.register.confirmPasswordRequired');
     } else if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = t('errors.auth.register.passwordsMismatch');
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+    return newErrors;
+  }, [formData, t]);
 
-  return {
-    errors,
-    validateForm,
-    isValid: Object.keys(errors).length === 0,
-  };
+  const isValid = Object.keys(errors).length === 0;
+
+  return { errors, isValid };
 };

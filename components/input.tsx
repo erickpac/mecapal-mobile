@@ -76,6 +76,19 @@ const InputComponent: React.FC<InputProps> = ({
     return defaultOutline;
   };
 
+  const isNumericType = type === 'phone' || type === 'number';
+
+  const handleChangeText = useCallback(
+    (text: string) => {
+      if (isNumericType) {
+        onChangeText?.(text.replace(/[^0-9]/g, ''));
+      } else {
+        onChangeText?.(text);
+      }
+    },
+    [isNumericType, onChangeText],
+  );
+
   const handleFocus: TextInputProps['onFocus'] = (e) => {
     setTouched(true);
     if (props.onFocus) props.onFocus(e);
@@ -90,7 +103,7 @@ const InputComponent: React.FC<InputProps> = ({
       <TextInput
         label={label}
         value={value}
-        onChangeText={onChangeText}
+        onChangeText={handleChangeText}
         mode="outlined"
         outlineColor={getOutlineColor()}
         activeOutlineColor={getActiveOutlineColor()}
