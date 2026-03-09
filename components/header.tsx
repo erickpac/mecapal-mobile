@@ -14,8 +14,6 @@ export const Header: React.FC<{ backgroundColor?: string }> = ({
   const role = user?.role ?? selectedUserType;
   const defaultBgColor =
     role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
-  // const defaultBgColor =
-  //   role === UserRole.TRANSPORTER ? COLORS.primary : COLORS.secondary;
   const finalBgColor = backgroundColor ?? defaultBgColor;
   const headerHeight = 56 + insets.top;
   const paddingTop = insets.top;

@@ -1,10 +1,9 @@
-import TransporterVehiclesScreen from '@/features/transporter/screens/vehicles.screen';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text } from 'react-native';
 
 export default function VehiclesIndex() {
   return (
-    <SafeAreaView className="flex-1 bg-white" edges={['top', 'left', 'right']}>
-      <TransporterVehiclesScreen />
-    </SafeAreaView>
+    <View className="flex-1 items-center justify-center bg-white">
+      <Text className="font-plus-jakarta-semibold text-lg">Vehicles</Text>
+    </View>
   );
 }

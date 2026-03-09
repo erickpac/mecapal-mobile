@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { navigateTo } from '@/features/shared/routes';
 import WelcomeHero from '@/components/welcome-hero';
 import Card from '@/components/card';
-import Truck from '@/components/svg/truck';
-import Shuttle from '@/components/svg/shuttle';
-import Motorcycle from '@/components/svg/motorcycle';
+import { Truck } from '@/components/svg/vehicles/truck';
+import { Shuttle } from '@/components/svg/vehicles/shuttle';
+import { Motorcycle } from '@/components/svg/vehicles/motorcycle';
 import { Header } from '@/components/header';
 
 export default function TransporterDashboardScreen() {

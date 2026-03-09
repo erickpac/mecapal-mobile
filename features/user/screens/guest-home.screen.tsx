@@ -30,7 +30,7 @@ export default function GuestHomeScreen() {
     <>
       <Header />
       <ScrollView
-        className="bg-background flex-1"
+        className="flex-1 bg-background-100"
         contentContainerClassName="pb-0"
         bounces={false}
       >
