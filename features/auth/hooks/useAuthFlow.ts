@@ -1,8 +1,8 @@
-import { usePathname } from 'expo-router';
+import { router, usePathname } from 'expo-router';
 import { AuthFlow } from '@/features/auth/types/auth-flow';
 import { ONBOARDING_ROUTES } from '@/features/onboarding/routes';
 import { AUTH_ROUTES } from '@/features/auth/routes';
-import { replaceRoute } from '@/features/shared/routes';
+import { replaceRoute, navigateTo } from '@/features/shared/routes';
 
 export function useAuthFlow() {
   const pathname = usePathname();
@@ -25,16 +25,22 @@ export function useAuthFlow() {
         emailVerification: AUTH_ROUTES.AUTH_EMAIL_VERIFICATION,
       };
 
+  // Onboarding: replace to avoid stack buildup (X dismiss handles exit)
+  // Auth: push to preserve back navigation
+  const navigate = isOnboarding ? replaceRoute : navigateTo;
+
   return {
     flow,
     isOnboarding,
     routes,
+    // After success (login, verify, reset) always replace — no going back
     navigateToLogin: () => replaceRoute(routes.login),
-    navigateToRegister: () => replaceRoute(routes.register),
-    navigateToForgotPassword: () => replaceRoute(routes.forgotPassword),
+    // Screen-to-screen navigation: push in auth flow, replace in onboarding
+    navigateToRegister: () => navigate(routes.register),
+    navigateToForgotPassword: () => navigate(routes.forgotPassword),
     navigateToResetPassword: (email: string) =>
-      replaceRoute(`${routes.resetPassword}?email=${encodeURIComponent(email)}`),
+      navigate(`${routes.resetPassword}?email=${encodeURIComponent(email)}`),
     navigateToEmailVerification: (email: string) =>
-      replaceRoute(`${routes.emailVerification}?email=${encodeURIComponent(email)}`),
+      navigate(`${routes.emailVerification}?email=${encodeURIComponent(email)}`),
   };
 }
