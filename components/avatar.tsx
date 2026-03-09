@@ -1,6 +1,7 @@
 import { View, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { MaterialSymbol } from './material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { COLORS } from '@/consts/colors';
 
 type Props = {
   uri?: string;
@@ -20,22 +21,20 @@ const Avatar = (props: Props) => {
           props.className
         }
       >
-        <MaterialSymbol
-          name="person"
+        <MaterialCommunityIcons
+          name="account"
           size={props.size || 48}
-          color="text-gray-500"
-          variant="rounded"
+          color={COLORS.textActiveGray[400]}
         />
       </View>
       <TouchableOpacity
         className="absolute bottom-0 right-0 h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-gray-100 shadow-md"
         onPress={props.onPress}
       >
-        <MaterialSymbol
-          name="edit"
+        <MaterialCommunityIcons
+          name="pencil"
           size={props.sizeEditButton || 20}
-          color="text-gray"
-          variant="rounded"
+          color={COLORS.textActiveGray[400]}
         />
       </TouchableOpacity>
     </View>

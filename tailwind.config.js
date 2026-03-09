@@ -141,9 +141,6 @@ module.exports = {
         },
       },
       fontFamily: {
-        'material-symbols-outlined': ['Material Symbols Outlined Regular'],
-        'material-symbols-rounded': ['Material Symbols Rounded Regular'],
-        'material-symbols-sharp': ['Material Symbols Sharp Regular'],
         // Plus Jakarta Sans font family
         'plus-jakarta': ['Plus Jakarta Sans Regular'],
         'plus-jakarta-extralight': ['Plus Jakarta Sans Extra Light'],

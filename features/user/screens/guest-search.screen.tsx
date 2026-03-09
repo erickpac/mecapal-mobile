@@ -7,7 +7,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ScreenHeader } from '@/components/screen-header';
 
 interface Transporter {
@@ -78,7 +78,7 @@ export default function GuestSearchScreen() {
         <View className="items-end">
           <Text className="text-lg font-bold text-blue-600">{item.price}</Text>
           <View className="mt-1 flex-row items-center">
-            <MaterialSymbol name="star" size={16} color="text-yellow-500" />
+            <MaterialCommunityIcons name="star" size={16} color={COLORS.warning} />
             <Text className="ml-1 text-gray-600">{item.rating}</Text>
             <Text className="ml-1 text-sm text-gray-500">({item.reviews})</Text>
           </View>
@@ -118,12 +118,9 @@ export default function GuestSearchScreen() {
         {/* Search Bar */}
         <View className="mb-6">
           <View className="relative">
-            <MaterialSymbol
-              name="search"
-              size={20}
-              color="text-gray-400"
-              className="absolute left-3 top-3 z-10"
-            />
+            <View className="absolute left-3 top-3 z-10">
+              <MaterialCommunityIcons name="magnify" size={20} color={COLORS.lightGray[400]} />
+            </View>
             <TextInput
               className="rounded-lg border border-gray-200 bg-white py-3 pl-10 pr-4"
               placeholder="Buscar por ubicación o servicio..."
@@ -178,7 +175,7 @@ export default function GuestSearchScreen() {
 
         {/* Call to Action */}
         <View className="items-center rounded-lg bg-blue-600 p-6">
-          <MaterialSymbol name="search" size={32} color="text-white" />
+          <MaterialCommunityIcons name="magnify" size={32} color={COLORS.white} />
           <Text className="mt-2 text-center text-xl font-bold text-white">
             ¿No encuentras lo que buscas?
           </Text>

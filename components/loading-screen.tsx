@@ -1,5 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
+import { COLORS } from '@/consts/colors';
 
 interface LoadingScreenProps {
   size?: 'small' | 'large';
@@ -19,7 +20,7 @@ interface LoadingScreenProps {
  */
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({
   size = 'large',
-  color = '#0000ff',
+  color = COLORS.primary,
   backgroundColor = 'bg-white',
 }) => {
   return (

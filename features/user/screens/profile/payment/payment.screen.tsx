@@ -4,12 +4,10 @@ import { Input } from '@/components/input';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Button } from '@/components/button';
 import addresses from '@/app/(app)/profile/addresses';
 import { useStore } from '@/store/useStore';
-
-type Props = {};
 
 const mockCreditData = [
   {
@@ -38,7 +36,7 @@ const mockCreditData = [
   },
 ];
 
-const PaymentsScreen = (props: Props) => {
+const PaymentsScreen = () => {
   const { user } = useStore();
   return (
     <>
@@ -54,13 +52,13 @@ const PaymentsScreen = (props: Props) => {
             <View key={credit.id} className="flex-row items-center">
               <View className="h-8 w-8 items-center justify-center rounded-full bg-blue-600">
                 {credit.brand === 'Visa' && (
-                  <MaterialSymbol name="credit_card" size={20} color="white" />
+                  <MaterialCommunityIcons name="credit-card" size={20} color={COLORS.white} />
                 )}
                 {credit.brand === 'Mastercard' && (
-                  <MaterialSymbol name="credit_score" size={20} color="white" />
+                  <MaterialCommunityIcons name="credit-card-check" size={20} color={COLORS.white} />
                 )}
                 {credit.brand === 'American Express' && (
-                  <MaterialSymbol name="payments" size={20} color="white" />
+                  <MaterialCommunityIcons name="cash" size={20} color={COLORS.white} />
                 )}
               </View>
               <View className="flex-1">
@@ -69,10 +67,7 @@ const PaymentsScreen = (props: Props) => {
                   value={'1234...XXXX...1234'}
                   mode="flat"
                   disabled={true}
-                  // contentStyle={{ backgroundColor: COLORS.white }}
-                  // style={{ backgroundColor: COLORS.white }}
                   activeUnderlineColor="black"
-                  // onChangeText={(value) => setUserEdit({ ...userEdit, name: value })}
                 />
               </View>
             </View>

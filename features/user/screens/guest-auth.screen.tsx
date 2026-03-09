@@ -1,4 +1,4 @@
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import { ScreenHeader } from '@/components/screen-header';
 import { navigateTo } from '@/features/shared/routes';
@@ -10,9 +10,9 @@ export default function GuestAuthScreen() {
       <View className="p-4">
         {/* Welcome Banner */}
         <View className="mb-6 items-center rounded-lg bg-blue-600 p-6">
-          <MaterialSymbol name="rocket_launch" size={48} color="text-white" />
+          <MaterialCommunityIcons name="rocket-launch" size={48} color={COLORS.white} />
           <Text className="mt-2 text-center text-xl font-bold text-white">
-            ¡Bienvenido a Mecapal!
+            ¡Bienvenido a Mekapal!
           </Text>
           <Text className="mt-1 text-center text-blue-100">
             Conectamos usuarios con transportistas confiables
@@ -25,7 +25,7 @@ export default function GuestAuthScreen() {
             onPress={() => navigateTo('/auth/register')}
             className="items-center rounded-lg bg-green-500 p-4"
           >
-            <MaterialSymbol name="person_add" size={32} color="text-white" />
+            <MaterialCommunityIcons name="account-plus" size={32} color={COLORS.white} />
             <Text className="mt-2 text-lg font-semibold text-white">
               Crear Cuenta
             </Text>
@@ -38,7 +38,7 @@ export default function GuestAuthScreen() {
             onPress={() => navigateTo('/auth')}
             className="items-center rounded-lg bg-blue-500 p-4"
           >
-            <MaterialSymbol name="login" size={32} color="text-white" />
+            <MaterialCommunityIcons name="login" size={32} color={COLORS.white} />
             <Text className="mt-2 text-lg font-semibold text-white">
               Iniciar Sesión
             </Text>
@@ -56,22 +56,22 @@ export default function GuestAuthScreen() {
           <View className="space-y-3">
             {[
               {
-                icon: 'star',
+                icon: 'star' as const,
                 title: 'Acceso completo',
                 description: 'Reserva servicios sin restricciones',
               },
               {
-                icon: 'history',
+                icon: 'history' as const,
                 title: 'Historial personal',
                 description: 'Revisa todos tus servicios anteriores',
               },
               {
-                icon: 'favorite',
+                icon: 'heart' as const,
                 title: 'Favoritos',
                 description: 'Guarda tus transportistas preferidos',
               },
               {
-                icon: 'notifications',
+                icon: 'bell' as const,
                 title: 'Notificaciones',
                 description: 'Recibe actualizaciones en tiempo real',
               },
@@ -82,10 +82,10 @@ export default function GuestAuthScreen() {
               >
                 <View className="flex-row items-center">
                   <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-blue-100">
-                    <MaterialSymbol
+                    <MaterialCommunityIcons
                       name={benefit.icon}
                       size={20}
-                      color="text-blue-500"
+                      color={COLORS.info}
                     />
                   </View>
                   <View className="flex-1">
@@ -110,7 +110,7 @@ export default function GuestAuthScreen() {
               onPress={() => navigateTo('/search')}
               className="mb-4 w-[48%] items-center rounded-lg bg-blue-500 p-4"
             >
-              <MaterialSymbol name="search" size={24} color="text-blue-500" />
+              <MaterialCommunityIcons name="magnify" size={24} color={COLORS.info} />
               <Text className="mt-2 font-semibold text-white">Explorar</Text>
             </TouchableOpacity>
 
@@ -118,7 +118,7 @@ export default function GuestAuthScreen() {
               onPress={() => navigateTo('/about')}
               className="mb-4 w-[48%] items-center rounded-lg bg-gray-500 p-4"
             >
-              <MaterialSymbol name="info" size={24} color="text-gray-500" />
+              <MaterialCommunityIcons name="information" size={24} color={COLORS.textActiveGray[400]} />
               <Text className="mt-2 font-semibold text-white">Acerca de</Text>
             </TouchableOpacity>
           </View>
@@ -126,7 +126,7 @@ export default function GuestAuthScreen() {
 
         {/* Call to Action */}
         <View className="items-center rounded-lg bg-blue-600 p-6">
-          <MaterialSymbol name="star" size={32} color="text-white" />
+          <MaterialCommunityIcons name="star" size={32} color={COLORS.white} />
           <Text className="mt-2 text-center text-xl font-bold text-white">
             ¿Listo para empezar?
           </Text>

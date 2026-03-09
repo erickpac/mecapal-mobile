@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from '@/components/navigation-header';
-import MaterialIcon from '@/components/material-icon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
 import {
   navigateToHelpFaq,
@@ -38,10 +38,10 @@ const UserHelpScreen = (props: Props) => {
                   {t('profile.help.option1')}
                 </Text>
               </View>
-              <MaterialIcon
+              <MaterialCommunityIcons
                 name="chevron-right"
                 size={20}
-                color={COLORS.gray}
+                color={COLORS.lightGray[700]}
               />
             </View>
           </TouchableOpacity>
@@ -56,10 +56,10 @@ const UserHelpScreen = (props: Props) => {
                   {t('profile.help.option2')}
                 </Text>
               </View>
-              <MaterialIcon
+              <MaterialCommunityIcons
                 name="chevron-right"
                 size={20}
-                color={COLORS.gray}
+                color={COLORS.lightGray[700]}
               />
             </View>
           </TouchableOpacity>
@@ -74,10 +74,10 @@ const UserHelpScreen = (props: Props) => {
                   {t('profile.help.option3')}
                 </Text>
               </View>
-              <MaterialIcon
+              <MaterialCommunityIcons
                 name="chevron-right"
                 size={20}
-                color={COLORS.gray}
+                color={COLORS.lightGray[700]}
               />
             </View>
           </TouchableOpacity>
@@ -92,10 +92,10 @@ const UserHelpScreen = (props: Props) => {
                   {t('profile.help.option4')}
                 </Text>
               </View>
-              <MaterialIcon
+              <MaterialCommunityIcons
                 name="chevron-right"
                 size={20}
-                color={COLORS.gray}
+                color={COLORS.lightGray[700]}
               />
             </View>
           </TouchableOpacity>

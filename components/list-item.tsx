@@ -6,7 +6,7 @@ import {
   ImageSourcePropType,
   TouchableOpacity,
 } from 'react-native';
-import MaterialIcon from '@/components/material-icon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
 
 interface ListItemProps {
@@ -38,7 +38,7 @@ const ListItem = (props: ListItemProps) => {
         </Text>
       </View>
       <View className="items-center justify-center px-4">
-        <MaterialIcon name="chevron-right" size={20} color={COLORS.gray} />
+        <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[700]} />
       </View>
     </TouchableOpacity>
   );

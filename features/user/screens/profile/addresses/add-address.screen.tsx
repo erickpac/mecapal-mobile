@@ -16,7 +16,7 @@ import SubheaderText from '@/components/subheader-text';
 import { Input } from '@/components/input';
 import { Button } from '@/components/button';
 import { COLORS } from '@/consts/colors';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { UserRole } from '@/features/auth/types/user';
 
 const { height: screenHeight } = Dimensions.get('window');
@@ -171,12 +171,12 @@ const AddAddressScreen = () => {
                     <TextInput.Icon
                       icon="chevron-down"
                       size={20}
-                      color={COLORS.gray}
+                      color={COLORS.lightGray[700]}
                       onPress={() => setShowDepartmentPicker(true)}
                     />
                   }
-                  outlineColor="#c4c4c4"
-                  activeOutlineColor="#000"
+                  outlineColor={COLORS.lightGray[600]}
+                  activeOutlineColor={COLORS.black}
                   contentStyle={{
                     fontSize: 16,
                     lineHeight: 22,
@@ -198,12 +198,12 @@ const AddAddressScreen = () => {
                     <TextInput.Icon
                       icon="chevron-down"
                       size={20}
-                      color={COLORS.gray}
+                      color={COLORS.lightGray[700]}
                       onPress={() => setShowMunicipalityPicker(true)}
                     />
                   }
-                  outlineColor="#c4c4c4"
-                  activeOutlineColor="#000"
+                  outlineColor={COLORS.lightGray[600]}
+                  activeOutlineColor={COLORS.black}
                   contentStyle={{
                     fontSize: 16,
                     lineHeight: 22,
@@ -239,7 +239,7 @@ const AddAddressScreen = () => {
                 status={isDefaultAddress ? 'checked' : 'unchecked'}
                 onPress={() => setIsDefaultAddress(!isDefaultAddress)}
                 color={COLORS.primary}
-                uncheckedColor={COLORS.gray}
+                uncheckedColor={COLORS.lightGray[700]}
               />
               <Text className="flex-1 font-plus-jakarta text-base text-gray-700">
                 Convertir en dirección predeterminada
@@ -279,10 +279,10 @@ const AddAddressScreen = () => {
                   onPress={() => setShowDepartmentPicker(false)}
                   className="p-1"
                 >
-                  <MaterialSymbol
+                  <MaterialCommunityIcons
                     name="close"
                     size={24}
-                    color={COLORS.gray}
+                    color={COLORS.lightGray[700]}
                   />
                 </TouchableOpacity>
               </View>
@@ -341,10 +341,10 @@ const AddAddressScreen = () => {
                   onPress={() => setShowMunicipalityPicker(false)}
                   className="p-1"
                 >
-                  <MaterialSymbol
+                  <MaterialCommunityIcons
                     name="close"
                     size={24}
-                    color={COLORS.gray}
+                    color={COLORS.lightGray[700]}
                   />
                 </TouchableOpacity>
               </View>

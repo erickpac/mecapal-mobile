@@ -8,7 +8,7 @@ import WelcomeHero from '@/components/welcome-hero';
 import ListItem from '@/components/list-item';
 import { Button } from '@/components/button';
 import Amico from '@/components/svg/amico';
-import MaterialIcon from '@/components/material-icon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import SubheaderText from '@/components/subheader-text';
 import { COLORS } from '@/consts/colors';
 
@@ -105,7 +105,7 @@ export default function GuestHomeScreen() {
           <View className="my-4 flex flex-row justify-between gap-4 px-4">
             <View className="flex-1 rounded-xl border border-gray-300 bg-white p-6">
               <View className="flex flex-col items-center">
-                <MaterialIcon
+                <MaterialCommunityIcons
                   name="account-circle-outline"
                   size={28}
                   color={COLORS.primary}
@@ -121,7 +121,7 @@ export default function GuestHomeScreen() {
             </View>
             <View className="flex-1 rounded-lg border border-gray-300 bg-white p-6">
               <View className="flex flex-col items-center">
-                <MaterialIcon name="truck" size={28} color={COLORS.secondary} />
+                <MaterialCommunityIcons name="truck" size={28} color={COLORS.secondary} />
                 <Text className="mt-2 text-center font-plus-jakarta-bold text-lg font-bold">
                   Transportista
                 </Text>

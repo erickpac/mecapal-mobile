@@ -20,9 +20,6 @@ importers:
       '@react-native-picker/picker':
         specifier: 2.11.4
         version: 2.11.4(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)
-      '@react-native-vector-icons/material-design-icons':
-        specifier: ^12.4.1
-        version: 12.4.1(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)
       '@tanstack/react-query':
         specifier: ^5.90.21
         version: 5.90.21(react@19.2.0)
@@ -62,9 +59,6 @@ importers:
       expo-status-bar:
         specifier: ~55.0.4
         version: 55.0.4(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)
-      expo-symbols:
-        specifier: ~55.0.5
-        version: 55.0.5(expo-font@55.0.4)(expo@55.0.5)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)
       expo-system-ui:
         specifier: ~55.0.9
         version: 55.0.9(expo@55.0.5)(react-native-web@0.21.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))
@@ -1306,25 +1300,6 @@ packages:
 
   '@react-native-picker/picker@2.11.4':
     resolution: {integrity: sha1-f7CVBu4AqCmJElzAPoSVIEyK/AE=}
-    peerDependencies:
-      react: '*'
-      react-native: '*'
-
-  '@react-native-vector-icons/common@12.4.0':
-    resolution: {integrity: sha1-YPxvTZoOfnsG98OpluMgxyxYihU=}
-    engines: {node: '>=20.19.0 <21.0.0 || >=22.0.0'}
-    hasBin: true
-    peerDependencies:
-      '@react-native-vector-icons/get-image': ^12.3.0
-      react: '*'
-      react-native: '*'
-    peerDependenciesMeta:
-      '@react-native-vector-icons/get-image':
-        optional: true
-
-  '@react-native-vector-icons/material-design-icons@12.4.1':
-    resolution: {integrity: sha1-M/02W5v9qbXWX1XoDKTNNq9mPRw=}
-    engines: {node: '>= 18.0.0'}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -2753,10 +2728,6 @@ packages:
     resolution: {integrity: sha1-TJKBnstwg1YeT0okCoa+UZj1Nvw=}
     engines: {node: '>=10'}
 
-  find-up@7.0.0:
-    resolution: {integrity: sha1-6N7BRV90942IitZb98oT3StOZvs=}
-    engines: {node: '>=18'}
-
   flat-cache@4.0.1:
     resolution: {integrity: sha1-Ds45/LFO4BL0sEEL0z3ZwfAREnw=}
     engines: {node: '>=16'}
@@ -3356,10 +3327,6 @@ packages:
     resolution: {integrity: sha1-VTIeswn+u8WcSAHZMackUqaB0oY=}
     engines: {node: '>=10'}
 
-  locate-path@7.2.0:
-    resolution: {integrity: sha1-acsXeb2Qs1qx53Hh8viaICwqioo=}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-
   lodash.debounce@4.0.8:
     resolution: {integrity: sha1-gteb/zCmfEAF/9XiUVMArZyk168=}
 
@@ -3701,10 +3668,6 @@ packages:
     resolution: {integrity: sha1-4drMvnjQ0TiMoYxk/qOOPlfjcGs=}
     engines: {node: '>=10'}
 
-  p-limit@4.0.0:
-    resolution: {integrity: sha1-kUr2VE7TK/pUZwsGHK/L0EmEtkQ=}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-
   p-locate@3.0.0:
     resolution: {integrity: sha1-Mi1poFwCZLJZl9n0DNiokasAZKQ=}
     engines: {node: '>=6'}
@@ -3716,10 +3679,6 @@ packages:
   p-locate@5.0.0:
     resolution: {integrity: sha1-g8gxXGeFAF470CGDlBHJ4RDm2DQ=}
     engines: {node: '>=10'}
-
-  p-locate@6.0.0:
-    resolution: {integrity: sha1-PamknUk0uQEIncozAvpl3FoFwE8=}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   p-try@2.2.0:
     resolution: {integrity: sha1-yyhoVA4xPWHeWPr741zpAE1VQOY=}
@@ -3747,10 +3706,6 @@ packages:
   path-exists@4.0.0:
     resolution: {integrity: sha1-UTvb4tO5XXdi6METfvoZXGxhtbM=}
     engines: {node: '>=8'}
-
-  path-exists@5.0.0:
-    resolution: {integrity: sha1-pqrZSJIAsh+rMeSc8JJ35RFvuec=}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   path-is-absolute@1.0.1:
     resolution: {integrity: sha1-F0uSaHNVNP+8es5r9TpanhtcX18=}
@@ -4649,10 +4604,6 @@ packages:
     resolution: {integrity: sha1-Q9QeO+aYvUk++REHfJsTH4J+jM0=}
     engines: {node: '>=4'}
 
-  unicorn-magic@0.1.0:
-    resolution: {integrity: sha1-G7mlHII6r51zqL/NPRoj3elLDOQ=}
-    engines: {node: '>=18'}
-
   unpipe@1.0.0:
     resolution: {integrity: sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=}
     engines: {node: '>= 0.8'}
@@ -4865,10 +4816,6 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha1-ApTrPe4FAo0x7hpfosVWpqrxChs=}
     engines: {node: '>=10'}
-
-  yocto-queue@1.2.2:
-    resolution: {integrity: sha1-PgnJXT8aqJpYwRTJkiPt9jkVLAA=}
-    engines: {node: '>=12.20'}
 
   zod@3.25.76:
     resolution: {integrity: sha1-JoQcP2/SKmonYOfMtxkXl2hHHjQ=}
@@ -6363,22 +6310,6 @@ snapshots:
     dependencies:
       react: 19.2.0
       react-native: 0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0)
-
-  '@react-native-vector-icons/common@12.4.0(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)':
-    dependencies:
-      find-up: 7.0.0
-      picocolors: 1.1.1
-      plist: 3.1.0
-      react: 19.2.0
-      react-native: 0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0)
-
-  '@react-native-vector-icons/material-design-icons@12.4.1(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)':
-    dependencies:
-      '@react-native-vector-icons/common': 12.4.0(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)
-      react: 19.2.0
-      react-native: 0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0)
-    transitivePeerDependencies:
-      - '@react-native-vector-icons/get-image'
 
   '@react-native/assets-registry@0.83.2': {}
 
@@ -8160,12 +8091,6 @@ snapshots:
       locate-path: 6.0.0
       path-exists: 4.0.0
 
-  find-up@7.0.0:
-    dependencies:
-      locate-path: 7.2.0
-      path-exists: 5.0.0
-      unicorn-magic: 0.1.0
-
   flat-cache@4.0.1:
     dependencies:
       flatted: 3.3.3
@@ -8773,10 +8698,6 @@ snapshots:
     dependencies:
       p-locate: 5.0.0
 
-  locate-path@7.2.0:
-    dependencies:
-      p-locate: 6.0.0
-
   lodash.debounce@4.0.8: {}
 
   lodash.isequal@4.5.0: {}
@@ -9213,10 +9134,6 @@ snapshots:
     dependencies:
       yocto-queue: 0.1.0
 
-  p-limit@4.0.0:
-    dependencies:
-      yocto-queue: 1.2.2
-
   p-locate@3.0.0:
     dependencies:
       p-limit: 2.3.0
@@ -9228,10 +9145,6 @@ snapshots:
   p-locate@5.0.0:
     dependencies:
       p-limit: 3.1.0
-
-  p-locate@6.0.0:
-    dependencies:
-      p-limit: 4.0.0
 
   p-try@2.2.0: {}
 
@@ -9250,8 +9163,6 @@ snapshots:
   path-exists@3.0.0: {}
 
   path-exists@4.0.0: {}
-
-  path-exists@5.0.0: {}
 
   path-is-absolute@1.0.1: {}
 
@@ -10200,8 +10111,6 @@ snapshots:
 
   unicode-property-aliases-ecmascript@2.1.0: {}
 
-  unicorn-magic@0.1.0: {}
-
   unpipe@1.0.0: {}
 
   unrs-resolver@1.7.8:
@@ -10414,8 +10323,6 @@ snapshots:
       yargs-parser: 21.1.1
 
   yocto-queue@0.1.0: {}
-
-  yocto-queue@1.2.2: {}
 
   zod@3.25.76: {}
 

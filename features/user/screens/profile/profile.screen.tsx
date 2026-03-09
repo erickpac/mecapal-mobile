@@ -8,7 +8,7 @@ import {
   FlatList,
 } from 'react-native';
 import { NavigationHeader } from '@/components/navigation-header';
-import MaterialIcon from '@/components/material-icon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
 import { useTranslation } from 'react-i18next';
 import {
@@ -85,7 +85,7 @@ export default function UserProfileScreen() {
       >
         <View className="flex-row items-center">
           <View className="mr-4 h-10 w-10 items-center justify-center">
-            <MaterialIcon name={icon} size={28} color={COLORS.primary} />
+            <MaterialCommunityIcons name={icon} size={28} color={COLORS.primary} />
           </View>
           <View className="flex-1">
             <Text className="font-plus-jakarta-semibold text-lg font-semibold text-gray-800">
@@ -95,7 +95,7 @@ export default function UserProfileScreen() {
               {t(`${subTitle}`)}
             </Text>
           </View>
-          <MaterialIcon name="chevron-right" size={20} color={COLORS.gray} />
+          <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[700]} />
         </View>
       </TouchableOpacity>
     );
@@ -155,7 +155,7 @@ export default function UserProfileScreen() {
               onPress={handleLogout}
               className="mt-6 flex flex-row items-center gap-2 p-4 align-middle"
             >
-              <MaterialIcon name="logout" size={24} color="#7C2F19" />
+              <MaterialCommunityIcons name="logout" size={24} color={COLORS.tertiary700} />
               <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-[#7C2F19] underline">
                 {t('profile.account.logout')}
               </Text>

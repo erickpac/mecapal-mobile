@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
@@ -20,23 +20,6 @@ interface NavigationHeaderProps {
   borderBottom?: boolean;
 }
 
-/**
- * Renders a navigation header with a title, optional back button, and right component.
- *
- * @param {NavigationHeaderProps} props - The props for the NavigationHeader component.
- * @param {string} [props.title] - The title to display in the header.
- * @param {boolean} [props.showBackButton=true] - Whether to show the back button.
- * @param {function} [props.onBackPress] - Callback function for back button press.
- * @param {boolean} [props.canGoBack=true] - Whether the navigation can go back.
- * @param {ReactNode} [props.rightComponent] - Optional component to display on the right side of the header.
- * @param {string} [props.backgroundColor] - Background color of the header.
- * @param {string} [props.textColor="text-white"] - Text color of the title.
- * @param {string} [props.backButtonColor="text-white"] - Color of the back button icon.
- * @param {ReactNode} [props.children] - Additional components to render in the header.
- * @param {boolean} [props.borderBottom=true] - Whether to show a bottom border on the header.
- *
- * @returns {JSX.Element} The rendered navigation header component.
- */
 export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   title = '',
   showBackButton = true,
@@ -54,9 +37,8 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   const role = user?.role ?? selectedUserType;
   const defaultBgColor =
     role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
-  const defaultTextColor = 'text-white';
+  const defaultTextColor = COLORS.white;
   const finalBgColor = backgroundColor ?? defaultBgColor;
-  const finalTextColor = textColor ?? defaultTextColor;
   const finalBackButtonColor = backButtonColor ?? defaultTextColor;
   const headerHeight = 56 + insets.top;
   const paddingTop = insets.top;
@@ -80,15 +62,15 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
             onPress={onBackPress || router.back}
             className="mr-3 p-1"
           >
-            <MaterialSymbol
-              name="arrow_back"
+            <MaterialCommunityIcons
+              name="arrow-left"
               size={24}
               color={finalBackButtonColor}
             />
           </TouchableOpacity>
         )}
         <Text
-          className={`flex-1 text-lg font-semibold ${finalTextColor}`}
+          className={`flex-1 text-lg font-semibold ${textColor}`}
           numberOfLines={1}
         >
           {title}

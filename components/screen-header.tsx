@@ -1,33 +1,21 @@
 import { View, Text } from 'react-native';
-import { MaterialSymbol } from './material-symbol';
+import { ComponentProps } from 'react';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { COLORS } from '@/consts/colors';
+
+type IconName = ComponentProps<typeof MaterialCommunityIcons>['name'];
 
 interface ScreenHeaderProps {
   title: string;
   subtitle?: string;
   className?: string;
   icon?: {
-    name: string;
+    name: IconName;
     color?: string;
     size?: number;
-    variant?: 'outlined' | 'rounded' | 'sharp';
   };
 }
 
-/**
- * Renders a screen header with an optional icon, title, and subtitle.
- *
- * @param {ScreenHeaderProps} props - The props for the ScreenHeader component.
- * @param {string} props.title - The main title to display in the header.
- * @param {string} [props.subtitle] - An optional subtitle to display below the title.
- * @param {string} [props.className] - Additional class names for custom styling.
- * @param {Object} [props.icon] - Optional icon configuration to display alongside the title.
- * @param {string} props.icon.name - The name of the icon to display.
- * @param {string} [props.icon.color] - The color of the icon (defaults to "text-gray-600").
- * @param {number} [props.icon.size] - The size of the icon (defaults to 28).
- * @param {"outlined" | "rounded" | "sharp"} [props.icon.variant] - The variant style of the icon (defaults to "outlined").
- *
- * @returns {JSX.Element} The rendered screen header component.
- */
 export const ScreenHeader = ({
   title,
   subtitle,
@@ -38,11 +26,10 @@ export const ScreenHeader = ({
     <View className={`border-b border-gray-200 bg-white p-4 ${className}`}>
       <View className="flex-row items-center space-x-3">
         {icon && (
-          <MaterialSymbol
+          <MaterialCommunityIcons
             name={icon.name}
             size={icon.size || 28}
-            color={icon.color || 'text-gray-600'}
-            variant={icon.variant || 'outlined'}
+            color={icon.color || COLORS.textActiveGray[500]}
           />
         )}
         <View className="flex-1">

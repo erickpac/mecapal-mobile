@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import { TouchableOpacity, ViewStyle, StyleProp } from 'react-native';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { COLORS } from '@/consts/colors';
+
+type IconName = ComponentProps<typeof MaterialCommunityIcons>['name'];
 
 interface IconButtonProps {
-  icon: string;
+  icon: IconName;
   color?: string;
   size?: number;
   onPress?: () => void;
@@ -15,7 +18,7 @@ interface IconButtonProps {
 
 export const IconButton = ({
   icon,
-  color = '#18181B',
+  color = COLORS.textActive,
   size = 24,
   onPress,
   className = '',
@@ -43,7 +46,7 @@ export const IconButton = ({
         style,
       ]}
     >
-      <MaterialSymbol name={icon} size={size} color={color} />
+      <MaterialCommunityIcons name={icon} size={size} color={color} />
     </TouchableOpacity>
   );
 };

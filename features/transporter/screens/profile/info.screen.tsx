@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Avatar from '@/components/avatar';
 import { useStore } from '@/store/useStore';
 import { COLORS } from '@/consts/colors';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Input } from '@/components/input';
 
 const InfoScreen = () => {
@@ -51,8 +51,8 @@ const InfoScreen = () => {
         onPress={() => handleEditPress(field)}
       >
         <View className="p-2">
-          <MaterialSymbol
-            name={isEditing ? 'check' : 'edit'}
+          <MaterialCommunityIcons
+            name={isEditing ? 'check' : 'pencil'}
             size={20}
             color={isEditing ? COLORS.primary : COLORS.black}
           />

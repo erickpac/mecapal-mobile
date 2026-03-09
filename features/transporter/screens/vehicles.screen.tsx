@@ -1,4 +1,4 @@
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import { ScreenHeader } from '@/components/screen-header';
 
@@ -12,7 +12,7 @@ export default function TransporterVehiclesScreen() {
 
       <View className="p-4">
         <TouchableOpacity className="mb-6 items-center rounded-lg bg-blue-500 p-4">
-          <MaterialSymbol name="add" size={24} color="text-white" />
+          <MaterialCommunityIcons name="plus" size={24} color={COLORS.white} />
           <Text className="mt-2 font-semibold text-white">
             Agregar Vehículo
           </Text>
@@ -89,10 +89,10 @@ export default function TransporterVehiclesScreen() {
                   </Text>
                 </View>
                 <TouchableOpacity className="rounded-lg bg-gray-100 p-2">
-                  <MaterialSymbol
-                    name="chevron_right"
+                  <MaterialCommunityIcons
+                    name="chevron-right"
                     size={16}
-                    color="text-gray-400"
+                    color={COLORS.lightGray[400]}
                   />
                 </TouchableOpacity>
               </View>

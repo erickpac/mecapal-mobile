@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
   TRANSPORTER_HIDDEN_ROUTES,
   USER_HIDDEN_ROUTES,
@@ -33,11 +33,8 @@ export default function AppLayout() {
     hiddenRoutes = USER_HIDDEN_ROUTES;
   }
 
-  const orangeText = user
-    ? user.role === UserRole.TRANSPORTER
-      ? 'text-black'
-      : 'text-orange-800'
-    : 'text-orange-800';
+  const activeColor =
+    user?.role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
 
   return (
     <Tabs screenOptions={TAB_SCREEN_OPTIONS}>
@@ -49,17 +46,13 @@ export default function AppLayout() {
             name={tab.name}
             options={{
               title: tab.title,
-              tabBarActiveTintColor:
-                user?.role === UserRole.TRANSPORTER
-                  ? COLORS.secondary
-                  : COLORS.primary,
-              tabBarInactiveTintColor: '#9ca3af',
+              tabBarActiveTintColor: activeColor,
+              tabBarInactiveTintColor: COLORS.lightGray[400],
               tabBarIcon: ({ focused, size }) => (
-                <MaterialSymbol
+                <MaterialCommunityIcons
                   name={tab.icon}
                   size={size}
-                  color={focused ? orangeText : 'text-gray-400'}
-                  variant="sharp"
+                  color={focused ? activeColor : COLORS.lightGray[400]}
                 />
               ),
             }}

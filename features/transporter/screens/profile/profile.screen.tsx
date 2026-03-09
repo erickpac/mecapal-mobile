@@ -1,8 +1,7 @@
 import { useStore } from '@/store/useStore';
 import { Text, TouchableOpacity, Image, View, ScrollView } from 'react-native';
-import { MaterialSymbol } from '@/components/material-symbol';
 import { NavigationHeader } from '@/components/navigation-header';
-import MaterialIcon from '@/components/material-icon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import Avatar from '@/components/avatar';
 import { navigateToHelp, navigateToSecurity } from '@/features/user/routes';
@@ -69,7 +68,7 @@ export default function TransporterProfileScreen() {
             >
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialIcon
+                  <MaterialCommunityIcons
                     name="account-circle-outline"
                     size={28}
                     color={COLORS.secondary}
@@ -83,10 +82,10 @@ export default function TransporterProfileScreen() {
                     {t('profile.personalInfo.subtitle')}
                   </Text>
                 </View>
-                <MaterialIcon
+                <MaterialCommunityIcons
                   name="chevron-right"
                   size={20}
-                  color={COLORS.gray}
+                  color={COLORS.lightGray[700]}
                 />
               </View>
             </TouchableOpacity>
@@ -99,7 +98,7 @@ export default function TransporterProfileScreen() {
             >
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialIcon
+                  <MaterialCommunityIcons
                     name="cash-multiple"
                     size={28}
                     color={COLORS.secondary}
@@ -113,10 +112,10 @@ export default function TransporterProfileScreen() {
                     {'Revisa tus ganancias mensuales'}
                   </Text>
                 </View>
-                <MaterialIcon
+                <MaterialCommunityIcons
                   name="chevron-right"
                   size={20}
-                  color={COLORS.gray}
+                  color={COLORS.lightGray[700]}
                 />
               </View>
             </TouchableOpacity>
@@ -127,7 +126,7 @@ export default function TransporterProfileScreen() {
             >
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialIcon
+                  <MaterialCommunityIcons
                     name="truck"
                     size={28}
                     color={COLORS.secondary}
@@ -141,10 +140,10 @@ export default function TransporterProfileScreen() {
                     {'Información de tus vehículos'}
                   </Text>
                 </View>
-                <MaterialIcon
+                <MaterialCommunityIcons
                   name="chevron-right"
                   size={20}
-                  color={COLORS.gray}
+                  color={COLORS.lightGray[700]}
                 />
               </View>
             </TouchableOpacity>
@@ -155,10 +154,10 @@ export default function TransporterProfileScreen() {
             >
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialSymbol
-                    name="location_on"
+                  <MaterialCommunityIcons
+                    name="map-marker"
                     size={28}
-                    color="text-secondary-500"
+                    color={COLORS.secondary}
                   />
                 </View>
                 <View className="flex-1">
@@ -169,10 +168,10 @@ export default function TransporterProfileScreen() {
                     {'Ubicaciones Disponibles'}
                   </Text>
                 </View>
-                <MaterialIcon
+                <MaterialCommunityIcons
                   name="chevron-right"
                   size={20}
-                  color={COLORS.gray}
+                  color={COLORS.lightGray[700]}
                 />
               </View>
             </TouchableOpacity>
@@ -183,10 +182,10 @@ export default function TransporterProfileScreen() {
             >
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialSymbol
+                  <MaterialCommunityIcons
                     name="lock"
                     size={28}
-                    color="text-secondary-500"
+                    color={COLORS.secondary}
                   />
                 </View>
                 <View className="flex-1">
@@ -197,10 +196,10 @@ export default function TransporterProfileScreen() {
                     {t('profile.security.subtitle')}
                   </Text>
                 </View>
-                <MaterialIcon
+                <MaterialCommunityIcons
                   name="chevron-right"
                   size={20}
-                  color={COLORS.gray}
+                  color={COLORS.lightGray[700]}
                 />
               </View>
             </TouchableOpacity>
@@ -210,10 +209,10 @@ export default function TransporterProfileScreen() {
             >
               <View className="flex-row items-center">
                 <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialSymbol
-                    name="help"
+                  <MaterialCommunityIcons
+                    name="help-circle-outline"
                     size={28}
-                    color="text-secondary-500"
+                    color={COLORS.secondary}
                   />
                 </View>
                 <View className="flex-1">
@@ -224,10 +223,10 @@ export default function TransporterProfileScreen() {
                     {t('profile.help.subtitle')}
                   </Text>
                 </View>
-                <MaterialIcon
+                <MaterialCommunityIcons
                   name="chevron-right"
                   size={20}
-                  color={COLORS.gray}
+                  color={COLORS.lightGray[700]}
                 />
               </View>
             </TouchableOpacity>
@@ -238,7 +237,7 @@ export default function TransporterProfileScreen() {
               onPress={logout}
               className="mt-6 flex flex-row items-center gap-2 p-4 align-middle"
             >
-              <MaterialIcon name="logout" size={24} color={COLORS.secondary} />
+              <MaterialCommunityIcons name="logout" size={24} color={COLORS.secondary} />
               <Text className="text-left text-base font-semibold text-secondary-500">
                 {t('profile.account.logout')}
               </Text>

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Avatar from '@/components/avatar';
 import { useStore } from '@/store/useStore';
 import { COLORS } from '@/consts/colors';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Input } from '@/components/input';
 import { UserRole } from '@/features/auth/types/user';
 
@@ -55,8 +55,8 @@ const InfoScreen = (props: Props) => {
       >
         {!isEditing && (
           <View className="p-2">
-            <MaterialSymbol
-              name={'edit'}
+            <MaterialCommunityIcons
+              name="pencil"
               size={20}
               color={isEditing ? COLORS.primary : COLORS.black}
             />

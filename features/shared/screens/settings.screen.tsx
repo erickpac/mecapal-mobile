@@ -1,8 +1,9 @@
 import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ScreenHeader } from '@/components/screen-header';
+import { COLORS } from '@/consts/colors';
 
 export default function SettingsScreen() {
   const { user, logout } = useStore();
@@ -19,7 +20,7 @@ export default function SettingsScreen() {
         <View className="mb-6 rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
           <View className="mb-4 flex-row items-center">
             <View className="mr-4 h-16 w-16 items-center justify-center rounded-full bg-blue-100">
-              <MaterialSymbol name="person" size={24} color="text-blue-500" />
+              <MaterialCommunityIcons name="account" size={24} color={COLORS.info} />
             </View>
             <View className="flex-1">
               <Text className="text-xl font-semibold text-gray-800">
@@ -35,7 +36,7 @@ export default function SettingsScreen() {
           <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
             <View className="flex-row items-center">
               <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-blue-100">
-                <MaterialSymbol name="person" size={24} color="text-blue-500" />
+                <MaterialCommunityIcons name="account" size={24} color={COLORS.info} />
               </View>
               <View className="flex-1">
                 <Text className="text-lg font-semibold text-gray-800">
@@ -43,18 +44,14 @@ export default function SettingsScreen() {
                 </Text>
                 <Text className="text-gray-600">Edita tu perfil</Text>
               </View>
-              <MaterialSymbol
-                name="chevron_right"
-                size={20}
-                color="text-gray-400"
-              />
+              <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[400]} />
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
             <View className="flex-row items-center">
               <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-green-100">
-                <MaterialSymbol name="lock" size={24} color="text-green-500" />
+                <MaterialCommunityIcons name="lock" size={24} color={COLORS.success} />
               </View>
               <View className="flex-1">
                 <Text className="text-lg font-semibold text-gray-800">
@@ -62,22 +59,14 @@ export default function SettingsScreen() {
                 </Text>
                 <Text className="text-gray-600">Cambia tu contraseña</Text>
               </View>
-              <MaterialSymbol
-                name="chevron_right"
-                size={20}
-                color="text-gray-400"
-              />
+              <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[400]} />
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
             <View className="flex-row items-center">
               <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-purple-100">
-                <MaterialSymbol
-                  name="notifications"
-                  size={24}
-                  color="text-purple-500"
-                />
+                <MaterialCommunityIcons name="bell" size={24} color={COLORS.info} />
               </View>
               <View className="flex-1">
                 <Text className="text-lg font-semibold text-gray-800">
@@ -85,18 +74,14 @@ export default function SettingsScreen() {
                 </Text>
                 <Text className="text-gray-600">Configura alertas</Text>
               </View>
-              <MaterialSymbol
-                name="chevron_right"
-                size={20}
-                color="text-gray-400"
-              />
+              <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[400]} />
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
             <View className="flex-row items-center">
               <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-yellow-100">
-                <MaterialSymbol name="help" size={24} color="text-yellow-500" />
+                <MaterialCommunityIcons name="help-circle-outline" size={24} color={COLORS.warning} />
               </View>
               <View className="flex-1">
                 <Text className="text-lg font-semibold text-gray-800">
@@ -104,11 +89,7 @@ export default function SettingsScreen() {
                 </Text>
                 <Text className="text-gray-600">Contacta soporte</Text>
               </View>
-              <MaterialSymbol
-                name="chevron_right"
-                size={20}
-                color="text-gray-400"
-              />
+              <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[400]} />
             </View>
           </TouchableOpacity>
 
@@ -117,11 +98,7 @@ export default function SettingsScreen() {
               <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
                 <View className="flex-row items-center">
                   <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-orange-100">
-                    <MaterialSymbol
-                      name="directions_car"
-                      size={24}
-                      color="text-orange-500"
-                    />
+                    <MaterialCommunityIcons name="car" size={24} color={COLORS.primary} />
                   </View>
                   <View className="flex-1">
                     <Text className="text-lg font-semibold text-gray-800">
@@ -129,22 +106,14 @@ export default function SettingsScreen() {
                     </Text>
                     <Text className="text-gray-600">Gestiona tu flota</Text>
                   </View>
-                  <MaterialSymbol
-                    name="chevron_right"
-                    size={20}
-                    color="text-gray-400"
-                  />
+                  <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[400]} />
                 </View>
               </TouchableOpacity>
 
               <TouchableOpacity className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
                 <View className="flex-row items-center">
                   <View className="mr-4 h-10 w-10 items-center justify-center rounded-lg bg-green-100">
-                    <MaterialSymbol
-                      name="account_balance_wallet"
-                      size={24}
-                      color="text-green-500"
-                    />
+                    <MaterialCommunityIcons name="wallet" size={24} color={COLORS.success} />
                   </View>
                   <View className="flex-1">
                     <Text className="text-lg font-semibold text-gray-800">
@@ -152,11 +121,7 @@ export default function SettingsScreen() {
                     </Text>
                     <Text className="text-gray-600">Revisa tus ingresos</Text>
                   </View>
-                  <MaterialSymbol
-                    name="chevron_right"
-                    size={20}
-                    color="text-gray-400"
-                  />
+                  <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[400]} />
                 </View>
               </TouchableOpacity>
             </>
@@ -168,7 +133,7 @@ export default function SettingsScreen() {
           onPress={logout}
           className="mt-6 items-center rounded-lg bg-red-500 p-4"
         >
-          <MaterialSymbol name="logout" size={24} color="text-white" />
+          <MaterialCommunityIcons name="logout" size={24} color={COLORS.white} />
           <Text className="mt-2 font-semibold text-white">Cerrar Sesión</Text>
         </TouchableOpacity>
       </View>

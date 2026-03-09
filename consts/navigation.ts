@@ -1,4 +1,5 @@
 import { TabConfig } from '@/types/navigation';
+import { COLORS } from '@/consts/colors';
 
 // Active tabs for each role
 export const TRANSPORTER_TABS: TabConfig[] = [
@@ -10,7 +11,7 @@ export const TRANSPORTER_TABS: TabConfig[] = [
   {
     name: 'orders',
     titleKey: 'navigation.tabs.orders',
-    icon: 'search',
+    icon: 'magnify',
   },
   {
     name: 'vehicles',
@@ -20,7 +21,7 @@ export const TRANSPORTER_TABS: TabConfig[] = [
   {
     name: 'profile',
     titleKey: 'navigation.tabs.profile',
-    icon: 'person',
+    icon: 'account',
   },
 ];
 export const USER_TABS: TabConfig[] = [
@@ -32,12 +33,12 @@ export const USER_TABS: TabConfig[] = [
   {
     name: 'history',
     titleKey: 'navigation.tabs.history',
-    icon: 'schedule',
+    icon: 'clock-outline',
   },
   {
     name: 'profile',
     titleKey: 'navigation.tabs.profile',
-    icon: 'person',
+    icon: 'account',
   },
 ];
 
@@ -50,12 +51,12 @@ export const GUEST_TABS: TabConfig[] = [
   {
     name: 'about',
     titleKey: 'navigation.tabs.about',
-    icon: 'help',
+    icon: 'help-circle-outline',
   },
   {
     name: 'auth',
     titleKey: 'navigation.tabs.auth',
-    icon: 'person',
+    icon: 'account',
   },
 ];
 
@@ -88,12 +89,12 @@ export const GUEST_HIDDEN_ROUTES = [
 // Common tab screen options
 export const TAB_SCREEN_OPTIONS = {
   headerShown: false,
-  tabBarActiveTintColor: '#007AFF',
-  tabBarInactiveTintColor: '#8E8E93',
+  tabBarActiveTintColor: COLORS.info,
+  tabBarInactiveTintColor: COLORS.lightGray[700],
   tabBarStyle: {
-    backgroundColor: '#ffffff',
+    backgroundColor: COLORS.white,
     elevation: 10, // Android shadow
-    shadowColor: '#000', // iOS shadow
+    shadowColor: COLORS.black, // iOS shadow
     shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,

@@ -431,7 +431,7 @@
       "email": "Email*",
       "phone": "Phone*",
       "password": "Password*",
-      "confirmPassword": "Confirm Password*",
+      "confirmPassword": "Confirm password*",
       "accountType": "Account type",
       "selectRole": "Account type",
       "userRole": "Client",

@@ -1,4 +1,4 @@
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import { ScreenHeader } from '@/components/screen-header';
 
@@ -98,21 +98,13 @@ export default function UserHistoryScreen() {
 
               <View className="mb-3 space-y-2">
                 <View className="flex-row items-center">
-                  <MaterialSymbol
-                    name="location_on"
-                    size={14}
-                    color="text-gray-500"
-                  />
+                  <MaterialCommunityIcons name="map-marker" size={14} color={COLORS.textActiveGray[400]} />
                   <Text className="ml-1 text-sm text-gray-600">
                     {item.pickup}
                   </Text>
                 </View>
                 <View className="flex-row items-center">
-                  <MaterialSymbol
-                    name="location_on"
-                    size={14}
-                    color="text-gray-500"
-                  />
+                  <MaterialCommunityIcons name="map-marker" size={14} color={COLORS.textActiveGray[400]} />
                   <Text className="ml-1 text-sm text-gray-600">
                     {item.delivery}
                   </Text>
@@ -122,11 +114,7 @@ export default function UserHistoryScreen() {
               <View className="flex-row items-center justify-between">
                 {item.rating && (
                   <View className="flex-row items-center">
-                    <MaterialSymbol
-                      name="star"
-                      size={16}
-                      color="text-yellow-500"
-                    />
+                    <MaterialCommunityIcons name="star" size={16} color={COLORS.warning} />
                     <Text className="ml-1 text-gray-600">{item.rating}/5</Text>
                   </View>
                 )}
@@ -145,36 +133,24 @@ export default function UserHistoryScreen() {
           </Text>
           <View className="flex-row flex-wrap justify-between">
             <TouchableOpacity className="mb-4 w-[48%] items-center rounded-lg bg-blue-500 p-4">
-              <MaterialSymbol
-                name="directions_car"
-                size={32}
-                color="text-white"
-              />
+              <MaterialCommunityIcons name="car" size={32} color={COLORS.white} />
               <Text className="mt-2 font-semibold text-white">
                 Nuevo Servicio
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity className="mb-4 w-[48%] items-center rounded-lg bg-green-500 p-4">
-              <MaterialSymbol name="star" size={32} color="text-white" />
+              <MaterialCommunityIcons name="star" size={32} color={COLORS.white} />
               <Text className="mt-2 font-semibold text-white">Calificar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity className="mb-4 w-[48%] items-center rounded-lg bg-purple-500 p-4">
-              <MaterialSymbol
-                name="account_balance_wallet"
-                size={32}
-                color="text-white"
-              />
+              <MaterialCommunityIcons name="wallet" size={32} color={COLORS.white} />
               <Text className="mt-2 font-semibold text-white">Pagos</Text>
             </TouchableOpacity>
 
             <TouchableOpacity className="mb-4 w-[48%] items-center rounded-lg bg-orange-500 p-4">
-              <MaterialSymbol
-                name="calendar_today"
-                size={32}
-                color="text-white"
-              />
+              <MaterialCommunityIcons name="calendar-today" size={32} color={COLORS.white} />
               <Text className="mt-2 font-semibold text-white">Programar</Text>
             </TouchableOpacity>
           </View>

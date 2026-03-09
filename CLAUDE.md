@@ -1,7 +1,7 @@
-# Mecapal App - Project Guide
+# Mekapal App - Project Guide
 
 ## Overview
-Mecapal is a React Native/Expo mobile app for real-time truck driver booking with location-based search. Supports two user roles (User/Transporter) and a guest mode.
+Mekapal is a React Native/Expo mobile app for real-time truck driver booking with location-based search. Supports two user roles (Client/Transporter) and a guest mode.
 
 ## Tech Stack
 - **Framework:** React Native 0.79 + Expo 53 (New Architecture enabled)
@@ -98,3 +98,4 @@ pnpm lint         # ESLint
 - Spanish is the primary language for UI content
 - Prefer existing component patterns when creating new ones
 - Keep feature logic inside the corresponding feature module
+- **Avoid using `any` type** — always use proper TypeScript types throughout the codebase

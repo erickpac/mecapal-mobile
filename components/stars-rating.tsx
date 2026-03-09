@@ -1,5 +1,6 @@
 import { View } from 'react-native';
-import MaterialIcon from './material-icon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { COLORS } from '@/consts/colors';
 
 interface StarsRatingProps {
   rating: number;
@@ -12,7 +13,7 @@ interface StarsRatingProps {
 const StarsRating = ({
   rating,
   size = 20,
-  color = '#FCD34D',
+  color = COLORS.warning,
   maxStars = 5,
   className = '',
 }: StarsRatingProps) => {
@@ -23,7 +24,7 @@ const StarsRating = ({
   return (
     <View className={`flex-row items-center ${className}`}>
       {[...Array(fullStars)].map((_, index) => (
-        <MaterialIcon
+        <MaterialCommunityIcons
           key={`full-${index}`}
           name="star"
           size={size}
@@ -32,7 +33,7 @@ const StarsRating = ({
       ))}
 
       {hasHalfStar && (
-        <MaterialIcon
+        <MaterialCommunityIcons
           key="half"
           name="star-half-full"
           size={size}
@@ -41,7 +42,7 @@ const StarsRating = ({
       )}
 
       {[...Array(emptyStars)].map((_, index) => (
-        <MaterialIcon
+        <MaterialCommunityIcons
           key={`empty-${index}`}
           name="star-outline"
           size={size}

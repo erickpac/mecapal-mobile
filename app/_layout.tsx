@@ -28,9 +28,6 @@ export default function RootLayout() {
   useTokenInitialization();
 
   const [loaded] = useFonts({
-    'Material Symbols Outlined Regular': require('../assets/fonts/material_symbols_outlined.ttf'),
-    'Material Symbols Rounded Regular': require('../assets/fonts/material_symbols_rounded.ttf'),
-    'Material Symbols Sharp Regular': require('../assets/fonts/material_symbols_sharp.ttf'),
     // Plus Jakarta Sans font family
     'Plus Jakarta Sans Regular': require('../assets/fonts/plus_jakarta_sans_regular.ttf'),
     'Plus Jakarta Sans Extra Light': require('../assets/fonts/plus_jakarta_sans_extra_light.ttf'),

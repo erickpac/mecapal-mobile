@@ -1,6 +1,7 @@
 import React, { useState, useCallback, memo } from 'react';
 import { View, Text } from 'react-native';
 import { TextInput, TextInputProps } from 'react-native-paper';
+import { COLORS } from '@/consts/colors';
 
 export interface InputProps
   extends Omit<TextInputProps, 'secureTextEntry' | 'error'> {
@@ -22,9 +23,9 @@ const inputStyle = {
 const inputOutlineStyle = {
   borderWidth: 1,
 };
-const defaultOutline = '#c4c4c4';
-const errorOutline = '#f25b36';
-const successOutline = '#06b21a';
+const defaultOutline = COLORS.lightGray[600];
+const errorOutline = COLORS.error;
+const successOutline = COLORS.success;
 
 const InputComponent: React.FC<InputProps> = ({
   label,
@@ -73,7 +74,7 @@ const InputComponent: React.FC<InputProps> = ({
   };
 
   const getActiveOutlineColor = () => {
-    if (!value) return '#000';
+    if (!value) return COLORS.black;
     if (touched && error) return errorOutline;
     if (touched && !error) return successOutline;
     return defaultOutline;

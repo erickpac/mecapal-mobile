@@ -5,7 +5,7 @@ import { Button } from '@/components/button';
 import { NavigationHeader } from '@/components/navigation-header';
 import { useStore } from '@/store/useStore';
 import { COLORS } from '@/consts/colors';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { navigateToAddAddress } from '@/features/user/routes';
 
@@ -81,10 +81,10 @@ const AddressScreen = () => {
             </Text>
           </View>
           <View className="justify-center">
-            <MaterialSymbol
-              name="chevron_right"
+            <MaterialCommunityIcons
+              name="chevron-right"
               size={20}
-              color={COLORS.gray[400]}
+              color={COLORS.lightGray[700]}
             />
           </View>
         </View>

@@ -1,6 +1,6 @@
 import { useStore } from '@/store/useStore';
 import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
-import { MaterialSymbol } from '@/components/material-symbol';
+
 import { useTranslation } from 'react-i18next';
 import { navigateTo } from '@/features/shared/routes';
 import WelcomeHero from '@/components/welcome-hero';

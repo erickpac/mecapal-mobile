@@ -5,7 +5,7 @@ import {
   ScrollView,
   Linking,
 } from 'react-native';
-import { MaterialSymbol } from '@/components/material-symbol';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function UserEmergencyScreen() {
   const handleCall = (phoneNumber: string) => {
@@ -24,7 +24,7 @@ export default function UserEmergencyScreen() {
             className="mb-4 items-center rounded-lg bg-red-500 p-6"
             onPress={() => handleCall('1-800-EMERGENCY')}
           >
-            <MaterialSymbol name="call" size={48} color="text-white" />
+            <MaterialCommunityIcons name="phone" size={48} color={COLORS.white} />
             <Text className="mt-2 text-xl font-bold text-white">
               Llamar Ahora
             </Text>
@@ -42,25 +42,25 @@ export default function UserEmergencyScreen() {
               {
                 type: 'Avería en Carretera',
                 description: 'Vehículo no arranca o se avería',
-                icon: 'warning',
+                icon: 'alert' as const,
                 color: 'bg-red-500',
               },
               {
                 type: 'Accidente',
                 description: 'Accidente de tráfico',
-                icon: 'error',
+                icon: 'alert-circle' as const,
                 color: 'bg-red-600',
               },
               {
                 type: 'Pérdida de Combustible',
                 description: 'Se quedó sin gasolina',
-                icon: 'local_gas_station',
+                icon: 'gas-station' as const,
                 color: 'bg-orange-500',
               },
               {
                 type: 'Neumático Pinchado',
                 description: 'Neumático desinflado',
-                icon: 'tire_repair',
+                icon: 'car-tire-alert' as const,
                 color: 'bg-yellow-500',
               },
             ].map((emergency, index) => (
@@ -72,10 +72,10 @@ export default function UserEmergencyScreen() {
                   <View
                     className={`h-12 w-12 ${emergency.color} mr-4 items-center justify-center rounded-lg`}
                   >
-                    <MaterialSymbol
+                    <MaterialCommunityIcons
                       name={emergency.icon}
                       size={24}
-                      color="text-white"
+                      color={COLORS.white}
                     />
                   </View>
                   <View className="flex-1">
@@ -86,11 +86,7 @@ export default function UserEmergencyScreen() {
                       {emergency.description}
                     </Text>
                   </View>
-                  <MaterialSymbol
-                    name="chevron_right"
-                    size={20}
-                    color="text-gray-400"
-                  />
+                  <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[400]} />
                 </View>
               </TouchableOpacity>
             ))}
@@ -104,11 +100,7 @@ export default function UserEmergencyScreen() {
           </Text>
           <View className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm">
             <View className="mb-4 flex-row items-center">
-              <MaterialSymbol
-                name="location_on"
-                size={24}
-                color="text-blue-500"
-              />
+              <MaterialCommunityIcons name="map-marker" size={24} color={COLORS.info} />
               <Text className="ml-2 text-lg font-semibold text-gray-800">
                 Ubicación Actual
               </Text>

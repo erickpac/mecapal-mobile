@@ -3,7 +3,7 @@ import { UserRole } from '@/features/auth/types/user';
 import { Text, View } from 'react-native';
 import SubheaderText from '@/components/subheader-text';
 import TabComponent from '@/components/tab-component';
-import MaterialIcon from '@/components/material-icon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
 
 const HowItWorks = () => {
@@ -19,10 +19,10 @@ const HowItWorks = () => {
                   1
                 </Text>
               </View>
-              <MaterialIcon
+              <MaterialCommunityIcons
                 name="account-box-outline"
                 size={28}
-                color={COLORS.maroon}
+                color={COLORS.tertiary700}
               />
             </View>
             <View className="flex flex-col gap-2">
@@ -42,10 +42,10 @@ const HowItWorks = () => {
                   2
                 </Text>
               </View>
-              <MaterialIcon
+              <MaterialCommunityIcons
                 name="account-details-outline"
                 size={28}
-                color={COLORS.maroon}
+                color={COLORS.tertiary700}
               />
             </View>
             <View className="flex flex-col gap-2">
@@ -67,10 +67,10 @@ const HowItWorks = () => {
                   3
                 </Text>
               </View>
-              <MaterialIcon
+              <MaterialCommunityIcons
                 name="truck-outline"
                 size={28}
-                color={COLORS.maroon}
+                color={COLORS.tertiary700}
               />
               <Text className="ml-2 font-plus-jakarta-semibold text-base font-semibold">
                 Selecciona el tipo de envío
@@ -100,10 +100,10 @@ const HowItWorks = () => {
                   1
                 </Text>
               </View>
-              <MaterialIcon
+              <MaterialCommunityIcons
                 name="account-box-outline"
                 size={28}
-                color={COLORS.darkSecondary}
+                color={COLORS.secondary900}
               />
             </View>
             <View className="flex flex-col gap-2">
@@ -123,10 +123,10 @@ const HowItWorks = () => {
                   2
                 </Text>
               </View>
-              <MaterialIcon
+              <MaterialCommunityIcons
                 name="account-details-outline"
                 size={28}
-                color={COLORS.darkSecondary}
+                color={COLORS.secondary900}
               />
             </View>
             <View className="flex flex-col gap-2">
@@ -148,10 +148,10 @@ const HowItWorks = () => {
                   3
                 </Text>
               </View>
-              <MaterialIcon
+              <MaterialCommunityIcons
                 name="truck-outline"
                 size={28}
-                color={COLORS.darkSecondary}
+                color={COLORS.secondary900}
               />
               <Text className="ml-2 font-plus-jakarta-semibold text-base font-semibold">
                 Selecciona el tipo de envío
