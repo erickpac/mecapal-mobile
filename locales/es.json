@@ -40,7 +40,7 @@
         "loginSubtitle": "Inicia sesión para acceder a todas las funciones",
         "login": "Iniciar Sesión",
         "register": "Registrarse",
-        "createAccount": "Crear Cuenta",
+        "createAccount": "Crear cuenta",
         "benefits": {
           "title": "Beneficios de registrarte",
           "history": {
@@ -63,7 +63,7 @@
         "cta": {
           "title": "¿Listo para empezar?",
           "subtitle": "Crea tu cuenta y disfruta de todos los beneficios",
-          "button": "Crear Cuenta Gratis"
+          "button": "Crear cuenta gratis"
         }
       },
       "quickSearch": {
@@ -116,7 +116,7 @@
         "cta": {
           "title": "¿Encontraste lo que buscabas?",
           "subtitle": "Crea tu cuenta para hacer reservas y disfrutar de todos los beneficios",
-          "register": "Crear Cuenta",
+          "register": "Crear cuenta",
           "login": "Iniciar Sesión"
         }
       },
@@ -171,7 +171,7 @@
         "cta": {
           "title": "¿Quieres ver tu historial real?",
           "subtitle": "Crea tu cuenta y comienza a construir tu historial de servicios",
-          "register": "Crear Cuenta",
+          "register": "Crear cuenta",
           "login": "Iniciar Sesión"
         }
       },
@@ -203,7 +203,7 @@
       "guest": {
         "loginPrompt": "¿Listo para empezar?",
         "loginSubtitle": "Crea una cuenta para acceder a todos los servicios",
-        "register": "Crear Cuenta"
+        "register": "Crear cuenta"
       },
       "whatIs": {
         "title": "¿Qué es Mecapal?",
@@ -269,7 +269,7 @@
       "cta": {
         "title": "¿Listo para empezar?",
         "subtitle": "Únete a miles de usuarios que ya confían en Mecapal",
-        "register": "Crear Cuenta",
+        "register": "Crear cuenta",
         "login": "Iniciar Sesión"
       }
     },
@@ -281,7 +281,7 @@
         "subtitle": "La plataforma de transporte más confiable"
       },
       "createAccount": {
-        "title": "Crear Cuenta Gratis",
+        "title": "Crear cuenta gratis",
         "subtitle": "Regístrate en menos de 2 minutos"
       },
       "signIn": {
@@ -328,7 +328,7 @@
         "upgrade": {
           "title": "¿Quieres más funcionalidades?",
           "subtitle": "Crea una cuenta para acceder a todas las funciones de la aplicación",
-          "register": "Crear Cuenta",
+          "register": "Crear cuenta",
           "login": "Iniciar Sesión"
         },
         "availableActions": {
@@ -354,7 +354,7 @@
         "cta": {
           "title": "¿Listo para desbloquear todo?",
           "subtitle": "Únete a miles de usuarios que ya disfrutan de todas las funciones",
-          "button": "Crear Cuenta Gratis"
+          "button": "Crear cuenta gratis"
         }
       }
     },
