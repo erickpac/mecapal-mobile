@@ -24,7 +24,7 @@ const Avatar = (props: Props) => {
         <MaterialCommunityIcons
           name="account"
           size={props.size || 48}
-          color={COLORS.textActiveGray[400]}
+          color={COLORS.darkGray[400]}
         />
       </View>
       <TouchableOpacity
@@ -34,7 +34,7 @@ const Avatar = (props: Props) => {
         <MaterialCommunityIcons
           name="pencil"
           size={props.sizeEditButton || 20}
-          color={COLORS.textActiveGray[400]}
+          color={COLORS.darkGray[400]}
         />
       </TouchableOpacity>
     </View>

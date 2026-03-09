@@ -98,13 +98,13 @@ export default function UserHistoryScreen() {
 
               <View className="mb-3 space-y-2">
                 <View className="flex-row items-center">
-                  <MaterialCommunityIcons name="map-marker" size={14} color={COLORS.textActiveGray[400]} />
+                  <MaterialCommunityIcons name="map-marker" size={14} color={COLORS.darkGray[400]} />
                   <Text className="ml-1 text-sm text-gray-600">
                     {item.pickup}
                   </Text>
                 </View>
                 <View className="flex-row items-center">
-                  <MaterialCommunityIcons name="map-marker" size={14} color={COLORS.textActiveGray[400]} />
+                  <MaterialCommunityIcons name="map-marker" size={14} color={COLORS.darkGray[400]} />
                   <Text className="ml-1 text-sm text-gray-600">
                     {item.delivery}
                   </Text>

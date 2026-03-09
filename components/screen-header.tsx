@@ -29,7 +29,7 @@ export const ScreenHeader = ({
           <MaterialCommunityIcons
             name={icon.name}
             size={icon.size || 28}
-            color={icon.color || COLORS.textActiveGray[500]}
+            color={icon.color || COLORS.darkGray[500]}
           />
         )}
         <View className="flex-1">

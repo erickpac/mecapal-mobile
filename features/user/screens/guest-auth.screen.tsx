@@ -118,7 +118,7 @@ export default function GuestAuthScreen() {
               onPress={() => navigateTo('/about')}
               className="mb-4 w-[48%] items-center rounded-lg bg-gray-500 p-4"
             >
-              <MaterialCommunityIcons name="information" size={24} color={COLORS.textActiveGray[400]} />
+              <MaterialCommunityIcons name="information" size={24} color={COLORS.darkGray[400]} />
               <Text className="mt-2 font-semibold text-white">Acerca de</Text>
             </TouchableOpacity>
           </View>
