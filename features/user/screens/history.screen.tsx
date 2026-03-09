@@ -1,6 +1,7 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import { ScreenHeader } from '@/components/screen-header';
+import { COLORS } from '@/consts/colors';
 
 export default function UserHistoryScreen() {
   return (

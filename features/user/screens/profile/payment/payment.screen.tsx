@@ -5,6 +5,7 @@ import { NavigationHeader } from '@/components/navigation-header';
 import { ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { COLORS } from '@/consts/colors';
 import { Button } from '@/components/button';
 import addresses from '@/app/(app)/profile/addresses';
 import { useStore } from '@/store/useStore';

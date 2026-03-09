@@ -6,6 +6,7 @@ import {
   Linking,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { COLORS } from '@/consts/colors';
 
 export default function UserEmergencyScreen() {
   const handleCall = (phoneNumber: string) => {

@@ -8,6 +8,7 @@ import {
   FlatList,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { COLORS } from '@/consts/colors';
 import { ScreenHeader } from '@/components/screen-header';
 
 interface Transporter {

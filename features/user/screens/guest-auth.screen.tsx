@@ -1,6 +1,7 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import { ScreenHeader } from '@/components/screen-header';
+import { COLORS } from '@/consts/colors';
 import { navigateTo } from '@/features/shared/routes';
 
 export default function GuestAuthScreen() {

@@ -1,5 +1,6 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import { COLORS } from '@/consts/colors';
 import { ScreenHeader } from '@/components/screen-header';
 
 export default function TransporterVehiclesScreen() {
