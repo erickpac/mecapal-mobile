@@ -4,7 +4,7 @@ import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS } from '@/consts/colors';
-import MekapalWhite from './svg/mekapal-white-letters';
+import { MekapalWhite } from '@/components/svg';
 
 export const Header: React.FC<{ backgroundColor?: string }> = ({
   backgroundColor,

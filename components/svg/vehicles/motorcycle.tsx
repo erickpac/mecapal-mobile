@@ -1,5 +1,5 @@
 import Svg, { Mask, Path, G } from 'react-native-svg';
-const Motorcycle = () => (
+export const Motorcycle = () => (
   <Svg width={33} height={32} fill="none">
     <Mask
       id="a"
@@ -22,4 +22,3 @@ const Motorcycle = () => (
     </G>
   </Svg>
 );
-export default Motorcycle;

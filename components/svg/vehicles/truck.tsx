@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Svg, { Mask, Path, G } from 'react-native-svg';
-const Truck = () => (
+export const Truck = () => (
   <Svg width={33} height={32} fill="none">
     <Mask
       id="a"
@@ -23,4 +23,3 @@ const Truck = () => (
     </G>
   </Svg>
 );
-export default Truck;

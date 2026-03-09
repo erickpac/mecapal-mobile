@@ -1,5 +1,5 @@
 import Svg, { Path } from 'react-native-svg';
-const MekapalWhite = () => (
+export const MekapalWhite = () => (
   <Svg width={122} height={22} fill="none">
     <Path
       fill="#fff"
@@ -7,4 +7,3 @@ const MekapalWhite = () => (
     />
   </Svg>
 );
-export default MekapalWhite;
