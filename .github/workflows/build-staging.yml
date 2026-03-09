@@ -1,0 +1,31 @@
+name: Build Staging
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  build:
+    name: EAS Build (Staging)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build for iOS and Android
+        run: eas build --profile staging --platform all --non-interactive

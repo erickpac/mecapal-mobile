@@ -1,0 +1,39 @@
+name: Build & Submit Production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: EAS Build (Production)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build for iOS and Android
+        run: eas build --profile production --platform all --non-interactive
+
+      - name: Submit to App Store
+        if: success()
+        run: eas submit --profile production --platform ios --non-interactive
+
+      - name: Submit to Play Store
+        if: success()
+        run: eas submit --profile production --platform android --non-interactive
