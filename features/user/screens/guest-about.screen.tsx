@@ -7,7 +7,11 @@ export default function GuestAboutScreen() {
   return (
     <>
       <Header />
-      <ScrollView className="flex-1 bg-background-100" bounces={false}>
+      <ScrollView
+        className="flex-1 bg-background-100"
+        contentContainerClassName="pb-0"
+        bounces={false}
+      >
         <HowItWorks />
       </ScrollView>
     </>
