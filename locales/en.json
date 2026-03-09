@@ -21,7 +21,7 @@
       "search": "Search",
       "history": "History",
       "about": "How it works?",
-      "auth": "Create Account",
+      "auth": "Create account",
       "orders": "Orders",
       "vehicles": "Vehicles",
       "earnings": "Earnings",
@@ -40,7 +40,7 @@
         "loginSubtitle": "Sign in to access all features",
         "login": "Sign In",
         "register": "Register",
-        "createAccount": "Create Account",
+        "createAccount": "Create account",
         "benefits": {
           "title": "Benefits of registering",
           "history": {
@@ -116,7 +116,7 @@
         "cta": {
           "title": "Found what you're looking for?",
           "subtitle": "Create an account to make reservations and enjoy all benefits",
-          "register": "Create Account",
+          "register": "Create account",
           "login": "Sign In"
         }
       },
@@ -171,7 +171,7 @@
         "cta": {
           "title": "Want to see your real history?",
           "subtitle": "Create an account and start building your service history",
-          "register": "Create Account",
+          "register": "Create account",
           "login": "Sign In"
         }
       },
@@ -203,7 +203,7 @@
       "guest": {
         "loginPrompt": "Ready to get started?",
         "loginSubtitle": "Create an account to access all services",
-        "register": "Create Account"
+        "register": "Create account"
       },
       "whatIs": {
         "title": "What is Mecapal?",
@@ -269,7 +269,7 @@
       "cta": {
         "title": "Ready to get started?",
         "subtitle": "Join thousands of users who already trust Mecapal",
-        "register": "Create Account",
+        "register": "Create account",
         "login": "Sign In"
       }
     },
@@ -281,7 +281,7 @@
         "subtitle": "The most reliable transportation platform"
       },
       "createAccount": {
-        "title": "Create Free Account",
+        "title": "Create free account",
         "subtitle": "Sign up in less than 2 minutes"
       },
       "signIn": {
@@ -328,7 +328,7 @@
         "upgrade": {
           "title": "Want more features?",
           "subtitle": "Create an account to access all application features",
-          "register": "Create Account",
+          "register": "Create account",
           "login": "Sign In"
         },
         "availableActions": {

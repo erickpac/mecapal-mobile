@@ -1,6 +1,6 @@
 import { useRegister } from '@/features/auth/hooks/useRegister';
 import { useStore } from '@/store/useStore';
-import { usePathname, router } from 'expo-router';
+import { router } from 'expo-router';
 import { useState, useEffect } from 'react';
 import {
   KeyboardAvoidingView,
@@ -13,9 +13,6 @@ import { SegmentedButtons } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
 import { UserRole } from '@/features/auth/types/user';
-import { replaceRoute } from '@/features/shared/routes';
-import { ONBOARDING_ROUTES } from '@/features/onboarding/routes';
-import { AUTH_ROUTES } from '@/features/auth/routes';
 import { ContentContainer } from '@/components/content-container';
 import { RegisterUser, RegisterTransporter } from '@/components/svg';
 import { NavigationHeader } from '@/components/navigation-header';
@@ -24,6 +21,7 @@ import { Button } from '@/components/button';
 import { Input } from '@/components/input';
 import { COLORS } from '@/consts/colors';
 import { useRegisterValidation } from '../hooks/useRegisterValidation';
+import { useAuthFlow } from '@/features/auth/hooks/useAuthFlow';
 
 const ROLE_COLORS = {
   [UserRole.CLIENT]: COLORS.primary,
@@ -42,7 +40,7 @@ export default function RegisterScreen() {
   const [userType, setUserType] = useState(selectedUserType ?? UserRole.CLIENT);
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
-  const pathname = usePathname();
+  const { isOnboarding, navigateToLogin, navigateToEmailVerification } = useAuthFlow();
   const { errors, isValid } = useRegisterValidation({
     firstName,
     lastName,
@@ -51,18 +49,13 @@ export default function RegisterScreen() {
     password,
     confirmPassword,
   });
-
-  const isOnboardingFlow = pathname.includes('/onboarding/');
   const activeColor = ROLE_COLORS[userType];
 
   useEffect(() => {
     if (isSuccess) {
-      const verificationRoute = isOnboardingFlow
-        ? `${ONBOARDING_ROUTES.ONBOARDING_EMAIL_VERIFICATION}?email=${encodeURIComponent(email)}`
-        : `${AUTH_ROUTES.AUTH_EMAIL_VERIFICATION}?email=${encodeURIComponent(email)}`;
-      replaceRoute(verificationRoute);
+      navigateToEmailVerification(email);
     }
-  }, [isSuccess, isOnboardingFlow, email]);
+  }, [isSuccess, email, navigateToEmailVerification]);
 
   const handleSelectUserType = (value: string) => {
     setSelectedUserType(value as UserRole);
@@ -84,9 +77,9 @@ export default function RegisterScreen() {
   return (
     <>
       <NavigationHeader
-        showBackButton={!isOnboardingFlow}
+        showBackButton={!isOnboarding}
         rightComponent={
-          isOnboardingFlow ? (
+          isOnboarding ? (
             <IconButton
               icon="close"
               color="text-white"
@@ -227,13 +220,7 @@ export default function RegisterScreen() {
               variant="text"
               className="mt-2"
               userType={selectedUserType}
-              onPress={() => {
-                if (isOnboardingFlow) {
-                  replaceRoute(ONBOARDING_ROUTES.ONBOARDING_LOGIN);
-                } else {
-                  replaceRoute(AUTH_ROUTES.AUTH);
-                }
-              }}
+              onPress={navigateToLogin}
             />
           </ScrollView>
         </KeyboardAvoidingView>
