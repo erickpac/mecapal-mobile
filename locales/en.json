@@ -560,8 +560,66 @@
     },
     "ctaUser": {
       "title": "Ready to move your things?",
-      "action1": "Create my account",
+      "action1": "Create my Account",
       "action2": "Login"
+    },
+    "guest": {
+      "aboutTitle": "Learn more about us",
+      "aboutDescription1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "aboutDescription2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "servicesTitle": "Our services",
+      "learnMore": "Learn more",
+      "forEveryoneTitle": "Mekapal is for everyone!",
+      "forEveryoneDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "clientTitle": "Client",
+      "clientDescription": "This account is for everyone who needs to move their things from one place to another.",
+      "transporterTitle": "Transporter",
+      "transporterDescription": "This account is for everyone who offers logistics services and has one or more cargo vehicles."
+    },
+    "services": {
+      "express": {
+        "title": "Express Shipping",
+        "listDescription": "Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque.",
+        "detailDescription": "This type of shipping is ideal if you want to send small packages and envelopes within a 1–10km radius from your location. Consider the following to decide on this type of shipping.",
+        "maxWeight": "20 Lbs.",
+        "maxSize": "30×30cm",
+        "vehicleType": "Motorcycle",
+        "consideration1": "Packages can be fragile but must be properly packed.",
+        "consideration2": "The package will not be exposed to the elements.",
+        "consideration3": "No complex unloading logistics needed.",
+        "example": "You want to send a 15×15 cm package to a client, it weighs 3 pounds, it's not fragile, it's well packaged and easy to deliver."
+      },
+      "light": {
+        "title": "Light Cargo",
+        "listDescription": "Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque.",
+        "detailDescription": "This type of shipping is ideal if you want to send packages and small envelopes within a 1–10km radius from your location. Consider the following to decide on this type of shipping.",
+        "maxWeight": "1 ton (2,200 Lbs)",
+        "maxSize": "30×30cm",
+        "vehicleType": "Pickup, small and medium truck",
+        "consideration1": "Items can be fragile but must be properly packed.",
+        "consideration2": "The package may be exposed to the elements.",
+        "consideration3": "Loading and unloading service may be needed.",
+        "example": "You want to transport medium boxes, sacks, a couple of pieces of furniture, or large items regardless of the radius from your location."
+      },
+      "heavy": {
+        "title": "Heavy Cargo",
+        "listDescription": "Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque.",
+        "detailDescription": "This type of shipping is ideal if you want to send packages and small envelopes within a 1–10km radius from your location. Consider the following to decide on this type of shipping.",
+        "maxWeight": "5 Tons and above",
+        "maxSize": "Depends",
+        "vehicleType": "Truck",
+        "consideration1": "Items can be fragile but must be properly packed.",
+        "consideration2": "Items will not be exposed to the elements.",
+        "consideration3": "Loading and unloading service may be needed.",
+        "example": "You want to transport many boxes of different sizes, you're moving, furniture or large items regardless of the radius from your location."
+      },
+      "detail": {
+        "maxWeight": "Maximum package weight",
+        "maxSize": "Maximum package size",
+        "vehicleType": "Vehicle type",
+        "considerations": "Considerations:",
+        "exampleTitle": "This shipping is for you if for example:"
+      }
     }
   },
   "profile": {

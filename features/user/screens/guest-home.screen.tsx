@@ -36,7 +36,7 @@ export default function GuestHomeScreen() {
         {/* About Section */}
         <View>
           <SubheaderText
-            title="Conoce más sobre nosotros"
+            title={t('home.guest.aboutTitle')}
             onlyTitle
             className="mt-6"
           />
@@ -49,29 +49,25 @@ export default function GuestHomeScreen() {
           </View>
           <View className="px-4">
             <Text className="mt-4 font-plus-jakarta text-sm leading-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              {t('home.guest.aboutDescription1')}
             </Text>
             <Text className="mt-4 font-plus-jakarta text-sm leading-5">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit
-              anim id est laborum.
+              {t('home.guest.aboutDescription2')}
             </Text>
           </View>
         </View>
 
         {/* Services Section */}
         <View className="mt-10">
-          <SubheaderText title="Nuestros servicios" onlyTitle />
+          <SubheaderText title={t('home.guest.servicesTitle')} onlyTitle />
           <View className="mt-4 bg-white">
             {SERVICES.map((service) => (
               <ListItem
                 key={service.id}
                 imageSource={service.image}
-                title={service.title}
-                description={service.listDescription}
-                linkText="Conoce más"
+                title={t(`home.services.${service.id}.title`)}
+                description={t(`home.services.${service.id}.listDescription`)}
+                linkText={t('home.guest.learnMore')}
                 onPress={() => handleServicePress(service.id)}
               />
             ))}
@@ -82,8 +78,8 @@ export default function GuestHomeScreen() {
         <View>
           <SubheaderText
             className="mb-4 mt-10"
-            title="¡Mekapal es para todos!"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            title={t('home.guest.forEveryoneTitle')}
+            description={t('home.guest.forEveryoneDescription')}
           />
           <View className="my-4 flex-row gap-4 px-4">
             <View className="flex-1 rounded-xl border border-gray-300 bg-white p-6">
@@ -94,12 +90,11 @@ export default function GuestHomeScreen() {
                   color={COLORS.primary}
                 />
                 <Text className="mt-2 text-center font-plus-jakarta-bold text-lg">
-                  Cliente
+                  {t('home.guest.clientTitle')}
                 </Text>
               </View>
               <Text className="mt-4 text-center font-plus-jakarta text-xs">
-                Esta cuenta es para todos aquellos que necesitan mover sus chivas
-                de un lugar a otro.
+                {t('home.guest.clientDescription')}
               </Text>
             </View>
             <View className="flex-1 rounded-xl border border-gray-300 bg-white p-6">
@@ -110,12 +105,11 @@ export default function GuestHomeScreen() {
                   color={COLORS.secondary}
                 />
                 <Text className="mt-2 text-center font-plus-jakarta-bold text-lg">
-                  Transportista
+                  {t('home.guest.transporterTitle')}
                 </Text>
               </View>
               <Text className="mt-4 text-center font-plus-jakarta text-xs">
-                Esta cuenta es para todos aquellos que ofrezcan servicios de
-                logística y cuentan con uno o más vehículos de carga.
+                {t('home.guest.transporterDescription')}
               </Text>
             </View>
           </View>

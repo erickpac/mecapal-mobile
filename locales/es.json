@@ -564,9 +564,67 @@
       "action1": "Suscribirme"
     },
     "ctaUser": {
-      "title": "¿Listo para mover tus chivas?",
-      "action1": "Crear tu cuenta",
+      "title": "¿Listo para mover chivas?",
+      "action1": "Crear mi Cuenta",
       "action2": "Iniciar Sesión"
+    },
+    "guest": {
+      "aboutTitle": "Conoce más sobre nosotros",
+      "aboutDescription1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "aboutDescription2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "servicesTitle": "Nuestros servicios",
+      "learnMore": "Conoce más",
+      "forEveryoneTitle": "¡Mekapal es para todos!",
+      "forEveryoneDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "clientTitle": "Cliente",
+      "clientDescription": "Esta cuenta es para todos aquellos que necesitan mover sus chivas de un lugar a otro.",
+      "transporterTitle": "Transportista",
+      "transporterDescription": "Esta cuenta es para todos aquellos que ofrezcan servicios de logística y cuentan con uno o más vehículos de carga."
+    },
+    "services": {
+      "express": {
+        "title": "Envíos Express",
+        "listDescription": "Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque.",
+        "detailDescription": "Este tipo de envíos es ideal si deseas enviar paquetes y sobres pequeños en un radio de distancia de 1–10km de donde te encuentras. Toma en cuenta lo siguiente para decidirte por este envío.",
+        "maxWeight": "20 Lbs.",
+        "maxSize": "30×30cm",
+        "vehicleType": "Moto",
+        "consideration1": "Pueden ser paquetes frágiles pero deben ir empacados correctamente.",
+        "consideration2": "El paquete no irá a la interperie.",
+        "consideration3": "No se necesita descarga logística compleja.",
+        "example": "Quieres enviar un paquete de 15×15 cm a un cliente, pesa 3 libras, no es frágil, está bien empaquetado y es de fácil entrega."
+      },
+      "light": {
+        "title": "Carga Liviana",
+        "listDescription": "Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque.",
+        "detailDescription": "Este tipo de envíos es ideal si deseas enviar paquetes y sobres pequeños en un radio de distancia de 1–10km de donde te encuentras. Toma en cuenta lo siguiente para decidirte por este envío.",
+        "maxWeight": "1 tonelada (2,200 Lbs)",
+        "maxSize": "30×30cm",
+        "vehicleType": "Pickup, camión pequeño y mediano",
+        "consideration1": "Pueden ser artículos frágiles pero deben ir empacados correctamente.",
+        "consideration2": "El paquete podría ir a la interperie.",
+        "consideration3": "Es posible que se necesite servicio de carga y descarga adicional.",
+        "example": "Quieres transportar cajas medianas, costales, un par de muebles, o artículos grandes sin importar el radio de donde te encuentres."
+      },
+      "heavy": {
+        "title": "Carga Pesada",
+        "listDescription": "Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque.",
+        "detailDescription": "Este tipo de envíos es ideal si deseas enviar paquetes y sobres pequeños en un radio de distancia de 1–10km de donde te encuentras. Toma en cuenta lo siguiente para decidirte por este envío.",
+        "maxWeight": "5 Toneladas en adelante",
+        "maxSize": "Depende",
+        "vehicleType": "Camión",
+        "consideration1": "Pueden ser artículos frágiles pero deben ir empacados correctamente.",
+        "consideration2": "Los artículos no irán a la interperie.",
+        "consideration3": "Es posible que se necesite servicio de carga y descarga adicional.",
+        "example": "Quieres transportar muchas cajas de diferentes tamaños, te estás mudando, muebles o artículos grandes sin importar el radio de donde te encuentres."
+      },
+      "detail": {
+        "maxWeight": "Peso máximo del paquete",
+        "maxSize": "Tamaño máximo del paquete",
+        "vehicleType": "Tipo de vehículo",
+        "considerations": "Consideraciones:",
+        "exampleTitle": "Este envío es para ti si por ejemplo:"
+      }
     }
   },
   "profile": {
