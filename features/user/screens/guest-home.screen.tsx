@@ -65,7 +65,7 @@ export default function GuestHomeScreen() {
             {SERVICES.map((service) => (
               <ListItem
                 key={service.id}
-                imageSource={service.image}
+                icon={<service.icon width={75} height={75} />}
                 title={t(`home.services.${service.id}.title`)}
                 description={t(`home.services.${service.id}.listDescription`)}
                 linkText={t('home.guest.learnMore')}

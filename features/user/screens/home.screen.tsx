@@ -7,45 +7,18 @@ import { Button } from '@/components/button';
 import { UserRole } from '@/features/auth/types/user';
 import WelcomeHero from '@/components/welcome-hero';
 import Card from '@/components/card';
-import { Truck } from '@/components/svg/vehicles/truck';
-import { Shuttle } from '@/components/svg/vehicles/shuttle';
-import { Motorcycle } from '@/components/svg/vehicles/motorcycle';
+import { Truck, Shuttle, Motorcycle } from '@/components/svg';
 import ListItem from '@/components/list-item';
 import SubheaderText from '@/components/subheader-text';
+import { SERVICES } from '@/features/shared/data/services';
 
 export default function UserHomeScreen() {
   const { user } = useStore();
   const { t } = useTranslation();
 
-  const listItemData = [
-    {
-      id: 1,
-      imageSource: require('../../../assets/images/home/motorcycle.png'),
-      title: 'Envíos Express',
-      description:
-        'Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque. Conoce más ',
-      linkText: 'Conoce más',
-      onPress: () => {},
-    },
-    {
-      id: 2,
-      imageSource: require('../../../assets/images/home/mid-truck.png'),
-      title: 'Carga Liviana',
-      description:
-        'Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque. Conoce más ',
-      linkText: 'Conoce más',
-      onPress: () => {},
-    },
-    {
-      id: 3,
-      imageSource: require('../../../assets/images/home/big-truck.png'),
-      title: 'Carga Pesada',
-      description:
-        'Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque. Conoce más ',
-      linkText: 'Conoce más',
-      onPress: () => {},
-    },
-  ];
+  const handleServicePress = (serviceId: string) => {
+    navigateTo(`/home/service-detail?id=${serviceId}`);
+  };
 
   return (
     <>
@@ -71,10 +44,17 @@ export default function UserHomeScreen() {
         </View>
 
         <View className="pt-4">
-          <SubheaderText title="Nuestros Servicios" onlyTitle />
+          <SubheaderText title={t('home.guest.servicesTitle')} onlyTitle />
           <View className="mt-4 bg-white">
-            {listItemData.map((el) => (
-              <ListItem key={el.id} {...el} />
+            {SERVICES.map((service) => (
+              <ListItem
+                key={service.id}
+                icon={<service.icon width={75} height={75} />}
+                title={t(`home.services.${service.id}.title`)}
+                description={t(`home.services.${service.id}.listDescription`)}
+                linkText={t('home.guest.learnMore')}
+                onPress={() => handleServicePress(service.id)}
+              />
             ))}
           </View>
         </View>

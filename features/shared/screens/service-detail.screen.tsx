@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from '@/components/navigation-header';
@@ -35,14 +35,10 @@ export default function ServiceDetailScreen() {
           </Text>
 
           <View
-            className="mb-4 overflow-hidden rounded-xl"
+            className="mb-4 items-center overflow-hidden rounded-xl py-6"
             style={{ backgroundColor: COLORS.primary + '15' }}
           >
-            <Image
-              source={service.image}
-              className="h-48 w-full"
-              resizeMode="contain"
-            />
+            <service.icon width={150} height={150} />
           </View>
 
           <Text className="mb-6 font-plus-jakarta text-base leading-6 text-gray-700">

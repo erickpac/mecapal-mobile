@@ -1,21 +1,27 @@
-import { ImageSourcePropType } from 'react-native';
+import { ComponentType } from 'react';
+import { SvgProps } from 'react-native-svg';
+import {
+  ExpressShipping,
+  LightCargo,
+  HeavyCargo,
+} from '@/components/svg';
 
 export interface ServiceData {
   id: string;
-  image: ImageSourcePropType;
+  icon: ComponentType<SvgProps>;
 }
 
 export const SERVICES: ServiceData[] = [
   {
     id: 'express',
-    image: require('../../../assets/images/home/motorcycle.png'),
+    icon: ExpressShipping,
   },
   {
     id: 'light',
-    image: require('../../../assets/images/home/mid-truck.png'),
+    icon: LightCargo,
   },
   {
     id: 'heavy',
-    image: require('../../../assets/images/home/big-truck.png'),
+    icon: HeavyCargo,
   },
 ];

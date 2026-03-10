@@ -1,16 +1,10 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  ImageSourcePropType,
-  TouchableOpacity,
-} from 'react-native';
+import React, { ReactNode } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
 
 interface ListItemProps {
-  imageSource: ImageSourcePropType | undefined;
+  icon: ReactNode;
   title: string;
   description: string;
   linkText?: string;
@@ -18,7 +12,7 @@ interface ListItemProps {
 }
 
 const ListItem = ({
-  imageSource,
+  icon,
   title,
   description,
   linkText,
@@ -30,13 +24,7 @@ const ListItem = ({
       className="flex-row items-center justify-between border-b py-4"
       style={{ borderColor: COLORS.lightGray[500] }}
     >
-      <View className="items-center py-2 pl-4">
-        <Image
-          source={imageSource}
-          className="h-[75px] w-[75px]"
-          resizeMode="cover"
-        />
-      </View>
+      <View className="items-center py-2 pl-4">{icon}</View>
       <View className="ml-4 flex-1">
         <Text className="font-plus-jakarta-bold text-lg text-gray-800">
           {title}

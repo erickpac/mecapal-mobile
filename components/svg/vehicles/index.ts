@@ -5,3 +5,6 @@ export * from './motorcycle';
 export * from './truck';
 export * from './shuttle';
 export * from './free-shipping';
+export * from './express-shipping';
+export * from './light-cargo';
+export * from './heavy-cargo';
