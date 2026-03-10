@@ -8,6 +8,7 @@ export interface InputProps
   label: string;
   error?: string;
   type?: 'text' | 'email' | 'password' | 'number' | 'phone';
+  dirty?: boolean;
 }
 
 const inputContentStyle = {
@@ -31,10 +32,15 @@ const InputComponent: React.FC<InputProps> = ({
   type = 'text',
   value,
   onChangeText,
+  onBlur,
+  onFocus,
+  right,
+  dirty,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [touched, setTouched] = useState(false);
+  const [blurred, setBlurred] = useState(false);
+  const touched = dirty !== undefined ? dirty : blurred;
 
   const getKeyboardType = useCallback(() => {
     switch (type) {
@@ -59,8 +65,8 @@ const InputComponent: React.FC<InputProps> = ({
         />
       );
     }
-    return props.right;
-  }, [type, showPassword, props.right]);
+    return right;
+  }, [type, showPassword, right]);
 
   const getOutlineColor = () => {
     if (touched && error) return errorOutline;
@@ -69,8 +75,8 @@ const InputComponent: React.FC<InputProps> = ({
   };
 
   const getActiveOutlineColor = () => {
-    if (touched && error) return errorOutline;
-    if (touched && !error && value) return successOutline;
+    if (error) return errorOutline;
+    if (!error && value) return successOutline;
     return COLORS.black;
   };
 
@@ -88,12 +94,12 @@ const InputComponent: React.FC<InputProps> = ({
   );
 
   const handleFocus: TextInputProps['onFocus'] = (e) => {
-    if (props.onFocus) props.onFocus(e);
+    if (onFocus) onFocus(e);
   };
 
   const handleBlur: TextInputProps['onBlur'] = (e) => {
-    setTouched(true);
-    if (props.onBlur) props.onBlur(e);
+    if (onBlur) onBlur(e);
+    setTimeout(() => setBlurred(true), 150);
   };
 
   return (

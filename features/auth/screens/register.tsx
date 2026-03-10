@@ -1,7 +1,7 @@
 import { useRegister } from '@/features/auth/hooks/useRegister';
 import { useStore } from '@/store/useStore';
 import { router } from 'expo-router';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -18,10 +18,15 @@ import { RegisterUser, RegisterTransporter } from '@/components/svg';
 import { NavigationHeader } from '@/components/navigation-header';
 import { IconButton } from '@/components/icon-button';
 import { Button } from '@/components/button';
-import { Input } from '@/components/input';
+import { FormInput } from '@/components/form-input';
 import { COLORS } from '@/consts/colors';
-import { useRegisterValidation } from '../hooks/useRegisterValidation';
 import { useAuthFlow } from '@/features/auth/hooks/useAuthFlow';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  createRegisterSchema,
+  RegisterFormData,
+} from '@/features/auth/schemas/register';
 
 const ROLE_COLORS = {
   [UserRole.CLIENT]: COLORS.primary,
@@ -29,52 +34,58 @@ const ROLE_COLORS = {
 };
 
 export default function RegisterScreen() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const { mutate: register, isPending, error, isSuccess } = useRegister();
   const { selectedUserType, setSelectedUserType } = useStore();
-  const [userType, setUserType] = useState(selectedUserType ?? UserRole.CLIENT);
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
   const { isOnboarding, navigateToLogin, navigateToEmailVerification } =
     useAuthFlow();
-  const { errors, isValid } = useRegisterValidation({
-    firstName,
-    lastName,
-    email,
-    phone,
-    password,
-    confirmPassword,
+
+  const {
+    control,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { isValid },
+  } = useForm<RegisterFormData>({
+    resolver: zodResolver(createRegisterSchema(t)),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
+    },
+    mode: 'all',
   });
+
+  const email = watch('email');
+  const userType = selectedUserType ?? UserRole.CLIENT;
   const activeColor = ROLE_COLORS[userType];
 
   useEffect(() => {
     if (isSuccess) {
+      reset();
       navigateToEmailVerification(email);
     }
-  }, [isSuccess, email, navigateToEmailVerification]);
+  }, [isSuccess, email, reset, navigateToEmailVerification]);
 
   const handleSelectUserType = (value: string) => {
     setSelectedUserType(value as UserRole);
-    setUserType(value as UserRole);
   };
 
-  const handleRegister = () => {
-    if (!isValid) return;
-
+  const onSubmit = (data: RegisterFormData) => {
     register({
-      firstName,
-      lastName,
-      email,
-      password,
-      phone,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      password: data.password,
+      phone: data.phone,
       role: userType,
     });
   };
+
   return (
     <>
       <NavigationHeader
@@ -149,56 +160,50 @@ export default function RegisterScreen() {
             <View className="mb-2">
               <View className="flex-row gap-2">
                 <View className="flex-1">
-                  <Input
+                  <FormInput
+                    control={control}
+                    name="firstName"
                     label={t('auth.register.firstName')}
                     type="text"
-                    value={firstName}
-                    onChangeText={setFirstName}
-                    error={errors.firstName}
                     returnKeyType="next"
                   />
                 </View>
                 <View className="flex-1">
-                  <Input
+                  <FormInput
+                    control={control}
+                    name="lastName"
                     label={t('auth.register.lastName')}
                     type="text"
-                    value={lastName}
-                    onChangeText={setLastName}
-                    error={errors.lastName}
                     returnKeyType="next"
                   />
                 </View>
               </View>
-              <Input
+              <FormInput
+                control={control}
+                name="email"
                 label={t('auth.register.email')}
                 type="email"
-                value={email}
-                onChangeText={setEmail}
-                error={errors.email}
                 returnKeyType="next"
               />
-              <Input
+              <FormInput
+                control={control}
+                name="phone"
                 label={t('auth.register.phone')}
                 type="phone"
-                value={phone}
-                onChangeText={setPhone}
-                error={errors.phone}
                 returnKeyType="next"
               />
-              <Input
+              <FormInput
+                control={control}
+                name="password"
                 label={t('auth.register.password')}
                 type="password"
-                value={password}
-                onChangeText={setPassword}
-                error={errors.password}
                 returnKeyType="next"
               />
-              <Input
+              <FormInput
+                control={control}
+                name="confirmPassword"
                 label={t('auth.register.confirmPassword')}
                 type="password"
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
-                error={errors.confirmPassword}
                 returnKeyType="done"
               />
             </View>
@@ -211,7 +216,8 @@ export default function RegisterScreen() {
 
             <Button
               title={t('auth.register.title')}
-              onPress={handleRegister}
+              onPress={handleSubmit(onSubmit)}
+              disabled={!isValid || isPending}
               userType={selectedUserType}
               loading={isPending}
             />

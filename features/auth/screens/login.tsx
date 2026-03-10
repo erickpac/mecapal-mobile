@@ -1,7 +1,7 @@
 import { useLogin } from '@/features/auth/hooks/useLogin';
 import { useStore } from '@/store/useStore';
 import { router } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -19,41 +19,51 @@ import { IconButton } from '@/components/icon-button';
 import { COLORS } from '@/consts/colors';
 import { Button } from '@/components/button';
 import { LoginUser, LoginTransporter } from '@/components/svg';
-import { Input } from '@/components/input';
-import { useLoginValidation } from '@/features/auth/hooks/useLoginValidation';
+import { FormInput } from '@/components/form-input';
 import { UserRole } from '@/features/auth/types/user';
 import { ActionLink } from '@/components/action-link';
 import { useAuthFlow } from '@/features/auth/hooks/useAuthFlow';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  createLoginSchema,
+  LoginFormData,
+} from '@/features/auth/schemas/login';
 
 export default function LoginScreen({
   showBackButton = true,
 }: {
   showBackButton?: boolean;
 }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const { mutate: login, isPending, error, isSuccess } = useLogin();
   const { setHasCompletedOnboarding, selectedUserType } = useStore();
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
   const { isOnboarding, navigateToForgotPassword, navigateToRegister } =
     useAuthFlow();
-  const { emailError, passwordError, isValid } = useLoginValidation(
-    email,
-    password,
-  );
 
-  const handleLogin = () => {
-    if (!isValid) return;
-    login({ email, password });
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isValid },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(createLoginSchema(t)),
+    defaultValues: { email: '', password: '' },
+    mode: 'all',
+  });
+
+  const onSubmit = (data: LoginFormData) => {
+    login({ email: data.email, password: data.password });
   };
 
   useEffect(() => {
     if (isSuccess) {
+      reset();
       setHasCompletedOnboarding(true);
       replaceRoute(USER_ROUTES.HOME);
     }
-  }, [isSuccess, setHasCompletedOnboarding]);
+  }, [isSuccess, reset, setHasCompletedOnboarding]);
 
   return (
     <>
@@ -88,23 +98,21 @@ export default function LoginScreen({
               {t('auth.login.title')}
             </Text>
             <View className="mb-2">
-              <Input
+              <FormInput
+                control={control}
+                name="email"
                 label={t('auth.login.email')}
                 type="email"
-                value={email}
-                onChangeText={setEmail}
-                error={emailError}
                 returnKeyType="next"
               />
               <View>
-                <Input
+                <FormInput
+                  control={control}
+                  name="password"
                   label={t('auth.login.password')}
                   type="password"
-                  value={password}
-                  onChangeText={setPassword}
-                  error={passwordError}
                   returnKeyType="done"
-                  onSubmitEditing={handleLogin}
+                  onSubmitEditing={handleSubmit(onSubmit)}
                 />
                 <ActionLink
                   className="mb-4 mt-1 text-right text-[13px] text-black"
@@ -122,7 +130,7 @@ export default function LoginScreen({
 
             <Button
               title={t('auth.login.login')}
-              onPress={handleLogin}
+              onPress={handleSubmit(onSubmit)}
               disabled={!isValid || isPending}
               loading={isPending}
               userType={selectedUserType}

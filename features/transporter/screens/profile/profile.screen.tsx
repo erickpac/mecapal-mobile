@@ -11,6 +11,7 @@ import {
 } from '@/features/transporter/routes';
 import StarsRating from '@/components/stars-rating';
 import { COLORS } from '@/consts/colors';
+import { replaceRoute } from '@/features/shared/routes';
 
 export default function TransporterProfileScreen() {
   const { user, logout } = useStore();
@@ -234,7 +235,10 @@ export default function TransporterProfileScreen() {
           <View className="absolute bottom-0 left-0 right-0 bg-white p-4">
             {/* Logout Button */}
             <TouchableOpacity
-              onPress={logout}
+              onPress={() => {
+                logout();
+                replaceRoute('/(app)/home');
+              }}
               className="mt-6 flex flex-row items-center gap-2 p-4 align-middle"
             >
               <MaterialCommunityIcons name="logout" size={24} color={COLORS.secondary} />

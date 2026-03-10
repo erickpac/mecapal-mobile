@@ -19,6 +19,7 @@ import {
 } from '../../routes';
 import Avatar from '@/components/avatar';
 import { IconName } from '@/types/navigation';
+import { replaceRoute } from '@/features/shared/routes';
 
 const listProfileOptions: {
   icon: IconName;
@@ -63,7 +64,10 @@ export default function UserProfileScreen() {
       [
         {
           text: 'Sí, cerrar sesión',
-          onPress: logout,
+          onPress: () => {
+            logout();
+            replaceRoute('/(app)/home');
+          },
         },
         {
           text: 'Regresar',
