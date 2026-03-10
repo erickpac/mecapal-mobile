@@ -23,7 +23,11 @@ export default function UserHomeScreen() {
   return (
     <>
       <Header />
-      <ScrollView className="flex-1 bg-[#fbf9f4]">
+      <ScrollView
+        className="flex-1 bg-background-100"
+        contentContainerClassName="pb-0"
+        bounces={false}
+      >
         <WelcomeHero name={user ? `${user.firstName} ${user.lastName}` : ''} />
         <View className="-mt-16 w-full flex-row items-center justify-between px-3">
           <Card
