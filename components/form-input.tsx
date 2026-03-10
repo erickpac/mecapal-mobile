@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Controller, Control, FieldValues, Path } from 'react-hook-form';
 import { Input, InputProps } from '@/components/input';
 
@@ -7,11 +8,11 @@ interface FormInputProps<T extends FieldValues>
   name: Path<T>;
 }
 
-export function FormInput<T extends FieldValues>({
+const FormInputComponent = <T extends FieldValues>({
   control,
   name,
   ...inputProps
-}: FormInputProps<T>) {
+}: FormInputProps<T>) => {
   return (
     <Controller
       control={control}
@@ -28,4 +29,6 @@ export function FormInput<T extends FieldValues>({
       )}
     />
   );
-}
+};
+
+export const FormInput = memo(FormInputComponent) as typeof FormInputComponent;
