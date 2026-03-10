@@ -4,16 +4,12 @@ import { TFunction } from 'i18next';
 export const createRegisterSchema = (t: TFunction) =>
   z
     .object({
-      firstName: z
-        .string()
-        .min(1, t('errors.auth.register.firstNameRequired')),
-      lastName: z
-        .string()
-        .min(1, t('errors.auth.register.lastNameRequired')),
+      firstName: z.string().min(1, t('errors.auth.register.firstNameRequired')),
+      lastName: z.string().min(1, t('errors.auth.register.lastNameRequired')),
       email: z
         .string()
         .min(1, t('errors.auth.register.emailRequired'))
-        .email(t('errors.auth.register.emailInvalid')),
+        .pipe(z.email(t('errors.auth.register.emailInvalid'))),
       phone: z
         .string()
         .min(1, t('errors.auth.register.phoneRequired'))
@@ -35,6 +31,4 @@ export const createRegisterSchema = (t: TFunction) =>
       path: ['confirmPassword'],
     });
 
-export type RegisterFormData = z.infer<
-  ReturnType<typeof createRegisterSchema>
->;
+export type RegisterFormData = z.infer<ReturnType<typeof createRegisterSchema>>;

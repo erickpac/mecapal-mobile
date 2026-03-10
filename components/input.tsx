@@ -1,10 +1,12 @@
-import React, { useState, useCallback, memo } from 'react';
+import React, { useState, useCallback, useEffect, memo } from 'react';
 import { View, Text } from 'react-native';
 import { TextInput, TextInputProps } from 'react-native-paper';
 import { COLORS } from '@/consts/colors';
 
-export interface InputProps
-  extends Omit<TextInputProps, 'secureTextEntry' | 'error'> {
+export interface InputProps extends Omit<
+  TextInputProps,
+  'secureTextEntry' | 'error'
+> {
   label: string;
   error?: string;
   type?: 'text' | 'email' | 'password' | 'number' | 'phone';
@@ -40,7 +42,12 @@ const InputComponent: React.FC<InputProps> = ({
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [blurred, setBlurred] = useState(false);
-  const touched = dirty !== undefined ? dirty : blurred;
+
+  useEffect(() => {
+    if (dirty === false) setBlurred(false);
+  }, [dirty]);
+
+  const touched = blurred;
 
   const getKeyboardType = useCallback(() => {
     switch (type) {
@@ -98,8 +105,8 @@ const InputComponent: React.FC<InputProps> = ({
   };
 
   const handleBlur: TextInputProps['onBlur'] = (e) => {
+    setBlurred(true);
     if (onBlur) onBlur(e);
-    setTimeout(() => setBlurred(true), 150);
   };
 
   return (
@@ -126,7 +133,7 @@ const InputComponent: React.FC<InputProps> = ({
       />
 
       {!!error && touched && (
-        <Text className="mt-1 text-right font-plus-jakarta-regular text-xs text-red-600">
+        <Text className="font-plus-jakarta-regular mt-1 text-right text-xs text-red-600">
           {error}
         </Text>
       )}

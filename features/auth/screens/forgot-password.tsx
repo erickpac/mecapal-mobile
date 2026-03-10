@@ -2,55 +2,46 @@ import { router } from 'expo-router';
 import { KeyboardAvoidingView, Platform, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from '@/components/navigation-header';
-import { Input } from '@/components/input';
 import { ContentContainer } from '@/components/content-container';
 import { ForgetPasswordImageClient } from '@/components/svg';
 import { useStore } from '@/store/useStore';
 import { IconButton } from '@/components/icon-button';
 import { COLORS } from '@/consts/colors';
 import { Button } from '@/components/button';
-import { useState } from 'react';
+import { FormInput } from '@/components/form-input';
 import { useForgotPassword } from '@/features/auth/hooks/useForgotPassword';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
 import { useAuthFlow } from '@/features/auth/hooks/useAuthFlow';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  createForgotPasswordSchema,
+  ForgotPasswordFormData,
+} from '@/features/auth/schemas/forgot-password';
 
 export default function ForgotPasswordScreen() {
   const { t } = useTranslation();
   const { selectedUserType } = useStore();
-  const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const {
-    mutateAsync: forgotPassword,
-    isPending,
-    error,
-  } = useForgotPassword();
+  const { mutateAsync: forgotPassword, isPending, error } = useForgotPassword();
   const { getErrorMessage } = useLocalizedError();
   const { isOnboarding, navigateToResetPassword } = useAuthFlow();
 
-  const validateEmail = (value: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(value);
-  };
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: { isValid },
+  } = useForm<ForgotPasswordFormData>({
+    resolver: zodResolver(createForgotPasswordSchema(t)),
+    defaultValues: { email: '' },
+    mode: 'all',
+  });
 
-  const handleValidateEmail = (value: string) => {
-    setEmailError('');
+  const email = watch('email');
 
-    if (!value.trim()) {
-      setEmailError(t('errors.auth.register.emailRequired'));
-      return false;
-    } else if (!validateEmail(value)) {
-      setEmailError(t('auth.errors.invalidEmail'));
-      return false;
-    }
-
-    return true;
-  };
-
-  const handleSubmit = async () => {
-    if (!handleValidateEmail(email)) return;
-
+  const onSubmit = async (data: ForgotPasswordFormData) => {
     try {
-      await forgotPassword(email);
+      await forgotPassword(data.email);
       navigateToResetPassword(email);
     } catch {
       // error state is handled by the mutation
@@ -90,18 +81,13 @@ export default function ForgotPasswordScreen() {
             </Text>
           </View>
           <View className="gap-4">
-            <Input
+            <FormInput
+              control={control}
+              name="email"
               label={t('auth.register.email')}
               type="email"
-              value={email}
-              onChangeText={(text) => {
-                setEmail(text);
-                handleValidateEmail(text);
-              }}
-              error={emailError}
-              returnKeyType="next"
-              keyboardType="email-address"
-              autoCapitalize="none"
+              returnKeyType="done"
+              onSubmitEditing={handleSubmit(onSubmit)}
             />
 
             {error && (
@@ -112,8 +98,8 @@ export default function ForgotPasswordScreen() {
 
             <Button
               title={t('auth.forgotPassword.submit')}
-              onPress={handleSubmit}
-              disabled={emailError.length > 0 || email.length <= 0 || isPending}
+              onPress={handleSubmit(onSubmit)}
+              disabled={!isValid || isPending}
               loading={isPending}
               userType={selectedUserType}
             />

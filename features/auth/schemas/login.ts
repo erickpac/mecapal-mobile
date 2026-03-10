@@ -6,7 +6,7 @@ export const createLoginSchema = (t: TFunction) =>
     email: z
       .string()
       .min(1, t('errors.auth.login.emailRequired'))
-      .email(t('errors.auth.login.emailInvalid')),
+      .pipe(z.email(t('errors.auth.login.emailInvalid'))),
     password: z
       .string()
       .min(1, t('errors.auth.login.passwordRequired'))

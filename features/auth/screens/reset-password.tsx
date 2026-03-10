@@ -1,17 +1,29 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, Text, View } from 'react-native';
+import { useEffect } from 'react';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
 import { IconButton } from '@/components/icon-button';
 import { COLORS } from '@/consts/colors';
 import { Button } from '@/components/button';
-import { Input } from '@/components/input';
+import { FormInput } from '@/components/form-input';
 import { useStore } from '@/store/useStore';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
 import { useResetPassword } from '@/features/auth/hooks/useResetPassword';
 import { useAuthFlow } from '@/features/auth/hooks/useAuthFlow';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  createResetPasswordSchema,
+  ResetPasswordFormData,
+} from '@/features/auth/schemas/reset-password';
 
 export default function ResetPasswordScreen() {
   const { email } = useLocalSearchParams<{ email: string }>();
@@ -20,11 +32,6 @@ export default function ResetPasswordScreen() {
   const { getErrorMessage } = useLocalizedError();
   const { isOnboarding, navigateToLogin } = useAuthFlow();
 
-  const [code, setCode] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [validationError, setValidationError] = useState('');
-
   const {
     mutateAsync: resetPassword,
     isPending,
@@ -32,24 +39,31 @@ export default function ResetPasswordScreen() {
     isSuccess,
   } = useResetPassword();
 
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm<ResetPasswordFormData>({
+    resolver: zodResolver(createResetPasswordSchema(t)),
+    defaultValues: { code: '', newPassword: '', confirmPassword: '' },
+    mode: 'all',
+  });
+
   useEffect(() => {
     if (isSuccess) {
       navigateToLogin();
     }
   }, [isSuccess, navigateToLogin]);
 
-  const handleSubmit = async () => {
-    setValidationError('');
-
-    if (newPassword !== confirmPassword) {
-      setValidationError(t('auth.resetPassword.passwordsMismatch'));
-      return;
-    }
-
-    if (code.length !== 6 || !email) return;
+  const onSubmit = async (data: ResetPasswordFormData) => {
+    if (!email) return;
 
     try {
-      await resetPassword({ email, code, newPassword });
+      await resetPassword({
+        email,
+        code: data.code,
+        newPassword: data.newPassword,
+      });
     } catch {
       // error state handled by mutation
     }
@@ -85,39 +99,31 @@ export default function ResetPasswordScreen() {
             </View>
 
             <View className="mt-6 gap-4">
-              <Input
+              <FormInput
+                control={control}
+                name="code"
                 label={t('auth.resetPassword.code')}
-                type="text"
-                value={code}
-                onChangeText={setCode}
-                placeholder={t('auth.resetPassword.codePlaceholder')}
-                keyboardType="number-pad"
+                type="number"
                 maxLength={6}
                 returnKeyType="next"
               />
 
-              <Input
+              <FormInput
+                control={control}
+                name="newPassword"
                 label={t('auth.resetPassword.newPassword')}
                 type="password"
-                value={newPassword}
-                onChangeText={setNewPassword}
                 returnKeyType="next"
               />
 
-              <Input
+              <FormInput
+                control={control}
+                name="confirmPassword"
                 label={t('auth.resetPassword.confirmPassword')}
                 type="password"
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
                 returnKeyType="done"
-                onSubmitEditing={handleSubmit}
+                onSubmitEditing={handleSubmit(onSubmit)}
               />
-
-              {validationError ? (
-                <Text className="text-center font-plus-jakarta text-sm text-red-500">
-                  {validationError}
-                </Text>
-              ) : null}
 
               {error && (
                 <Text className="text-center font-plus-jakarta text-sm text-red-500">
@@ -131,8 +137,8 @@ export default function ResetPasswordScreen() {
                     ? t('auth.resetPassword.resetting')
                     : t('auth.resetPassword.submit')
                 }
-                onPress={handleSubmit}
-                disabled={code.length !== 6 || !newPassword || !confirmPassword || isPending}
+                onPress={handleSubmit(onSubmit)}
+                disabled={!isValid || isPending}
                 loading={isPending}
                 userType={selectedUserType}
               />
