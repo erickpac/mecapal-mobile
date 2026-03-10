@@ -58,7 +58,7 @@ export default function EmailVerificationScreen() {
           ) : undefined
         }
       />
-      <ContentContainer className="flex-1 px-4">
+      <ContentContainer className="px-4">
         <KeyboardAvoidingView
           className="flex-1 gap-6 pt-8"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}

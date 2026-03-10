@@ -68,7 +68,7 @@ export default function ResetPasswordScreen() {
           ) : undefined
         }
       />
-      <ContentContainer className="flex-1">
+      <ContentContainer>
         <KeyboardAvoidingView
           className="flex-1 pt-8"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}

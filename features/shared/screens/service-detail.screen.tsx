@@ -28,7 +28,7 @@ export default function ServiceDetailScreen() {
   return (
     <>
       <NavigationHeader showBackButton />
-      <ContentContainer className="flex-1">
+      <ContentContainer>
         <ScrollView contentContainerClassName="px-4 pb-8">
           <Text className="mb-4 mt-2 font-plus-jakarta-bold text-2xl">
             {t(`home.services.${id}.title`)}

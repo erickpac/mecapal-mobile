@@ -35,7 +35,8 @@ export default function LoginScreen({
   const { setHasCompletedOnboarding, selectedUserType } = useStore();
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
-  const { isOnboarding, navigateToForgotPassword, navigateToRegister } = useAuthFlow();
+  const { isOnboarding, navigateToForgotPassword, navigateToRegister } =
+    useAuthFlow();
   const { emailError, passwordError, isValid } = useLoginValidation(
     email,
     password,
@@ -67,12 +68,12 @@ export default function LoginScreen({
           ) : undefined
         }
       />
-      <ContentContainer className="flex-1">
+      <ContentContainer>
         <KeyboardAvoidingView
           className="flex-1 pt-8"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-          <ScrollView contentContainerClassName="px-4">
+          <ScrollView contentContainerClassName="px-4" bounces={false}>
             <View className="mb-6 mt-2 items-center">
               <View className="aspect-[287/206] w-64 max-w-full">
                 {selectedUserType === UserRole.CLIENT ? (

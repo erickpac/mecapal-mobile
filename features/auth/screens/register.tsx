@@ -40,7 +40,8 @@ export default function RegisterScreen() {
   const [userType, setUserType] = useState(selectedUserType ?? UserRole.CLIENT);
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
-  const { isOnboarding, navigateToLogin, navigateToEmailVerification } = useAuthFlow();
+  const { isOnboarding, navigateToLogin, navigateToEmailVerification } =
+    useAuthFlow();
   const { errors, isValid } = useRegisterValidation({
     firstName,
     lastName,
@@ -88,12 +89,12 @@ export default function RegisterScreen() {
           ) : undefined
         }
       />
-      <ContentContainer className="flex-1">
+      <ContentContainer>
         <KeyboardAvoidingView
           className="flex-1 pt-8"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-          <ScrollView contentContainerClassName="px-4">
+          <ScrollView contentContainerClassName="px-4" bounces={false}>
             <View className="mb-6 mt-2 items-center">
               <View className="aspect-[287/206] w-48 max-w-full">
                 {selectedUserType === UserRole.CLIENT ? (
