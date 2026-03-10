@@ -215,13 +215,15 @@ export default function RegisterScreen() {
               loading={isPending}
             />
 
-            <Button
-              title={t('auth.register.hasAccount')}
-              variant="text"
-              className="mt-2"
-              userType={selectedUserType}
-              onPress={navigateToLogin}
-            />
+            {isOnboarding && (
+              <Button
+                title={t('auth.register.hasAccount')}
+                variant="text"
+                className="mt-2"
+                userType={selectedUserType}
+                onPress={navigateToLogin}
+              />
+            )}
           </ScrollView>
         </KeyboardAvoidingView>
       </ContentContainer>

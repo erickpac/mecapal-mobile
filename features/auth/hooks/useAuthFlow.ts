@@ -32,9 +32,11 @@ export function useAuthFlow() {
     flow,
     isOnboarding,
     routes,
-    // Login ↔ Register: always replace (same level, no stack buildup)
+    // After success or going back to login: always replace
     navigateToLogin: () => replaceRoute(routes.login),
-    navigateToRegister: () => replaceRoute(routes.register),
+    // Login → Register: push in auth flow (back button returns to login),
+    // replace in onboarding (no back button, uses "I already have an account")
+    navigateToRegister: () => push(routes.register),
     // Deeper screens: push in auth flow so back button works
     navigateToForgotPassword: () => push(routes.forgotPassword),
     navigateToResetPassword: (email: string) =>
