@@ -18,8 +18,14 @@ import {
   navigateToSecurity,
 } from '../../routes';
 import Avatar from '@/components/avatar';
+import { IconName } from '@/types/navigation';
 
-const listProfileOptions = [
+const listProfileOptions: {
+  icon: IconName;
+  title: string;
+  subTitle: string;
+  onPress: () => void;
+}[] = [
   {
     icon: 'account-circle-outline',
     title: 'profile.personalInfo.title',
@@ -73,7 +79,7 @@ export default function UserProfileScreen() {
     subTitle,
     onPress,
   }: {
-    icon: string;
+    icon: IconName;
     title: string;
     subTitle: string;
     onPress: () => void;
@@ -85,7 +91,11 @@ export default function UserProfileScreen() {
       >
         <View className="flex-row items-center">
           <View className="mr-4 h-10 w-10 items-center justify-center">
-            <MaterialCommunityIcons name={icon} size={28} color={COLORS.primary} />
+            <MaterialCommunityIcons
+              name={icon}
+              size={28}
+              color={COLORS.primary}
+            />
           </View>
           <View className="flex-1">
             <Text className="font-plus-jakarta-semibold text-lg font-semibold text-gray-800">
@@ -95,7 +105,11 @@ export default function UserProfileScreen() {
               {t(`${subTitle}`)}
             </Text>
           </View>
-          <MaterialCommunityIcons name="chevron-right" size={20} color={COLORS.lightGray[700]} />
+          <MaterialCommunityIcons
+            name="chevron-right"
+            size={20}
+            color={COLORS.lightGray[700]}
+          />
         </View>
       </TouchableOpacity>
     );
@@ -136,7 +150,9 @@ export default function UserProfileScreen() {
                 <Text className="font-plus-jakarta-semibold text-xl font-semibold text-gray-800">
                   {t('profile.title')}
                 </Text>
-                <Text className="text-gray-600">{user ? `${user.firstName} ${user.lastName}` : 'John Doe'}</Text>
+                <Text className="text-gray-600">
+                  {user ? `${user.firstName} ${user.lastName}` : 'John Doe'}
+                </Text>
               </View>
             </View>
           </View>
@@ -155,7 +171,11 @@ export default function UserProfileScreen() {
               onPress={handleLogout}
               className="mt-6 flex flex-row items-center gap-2 p-4 align-middle"
             >
-              <MaterialCommunityIcons name="logout" size={24} color={COLORS.tertiary700} />
+              <MaterialCommunityIcons
+                name="logout"
+                size={24}
+                color={COLORS.tertiary700}
+              />
               <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-[#7C2F19] underline">
                 {t('profile.account.logout')}
               </Text>

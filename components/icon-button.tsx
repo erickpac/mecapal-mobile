@@ -1,9 +1,8 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { TouchableOpacity, ViewStyle, StyleProp } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
-
-type IconName = ComponentProps<typeof MaterialCommunityIcons>['name'];
+import { IconName } from '@/types/navigation';
 
 interface IconButtonProps {
   icon: IconName;

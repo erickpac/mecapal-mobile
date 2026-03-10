@@ -6,9 +6,7 @@ import SubheaderText from '@/components/subheader-text';
 import TabComponent from '@/components/tab-component';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
-import { ComponentProps } from 'react';
-
-type IconName = ComponentProps<typeof MaterialCommunityIcons>['name'];
+import { IconName } from '@/types/navigation';
 
 interface StepCardProps {
   step: number;
