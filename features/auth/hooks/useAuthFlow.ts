@@ -25,22 +25,21 @@ export function useAuthFlow() {
         emailVerification: AUTH_ROUTES.AUTH_EMAIL_VERIFICATION,
       };
 
-  // Onboarding: replace to avoid stack buildup (X dismiss handles exit)
-  // Auth: push to preserve back navigation
-  const navigate = isOnboarding ? replaceRoute : navigateTo;
+  // Push for going deeper in the auth flow (preserves back navigation)
+  const push = isOnboarding ? replaceRoute : navigateTo;
 
   return {
     flow,
     isOnboarding,
     routes,
-    // After success (login, verify, reset) always replace — no going back
+    // Login ↔ Register: always replace (same level, no stack buildup)
     navigateToLogin: () => replaceRoute(routes.login),
-    // Screen-to-screen navigation: push in auth flow, replace in onboarding
-    navigateToRegister: () => navigate(routes.register),
-    navigateToForgotPassword: () => navigate(routes.forgotPassword),
+    navigateToRegister: () => replaceRoute(routes.register),
+    // Deeper screens: push in auth flow so back button works
+    navigateToForgotPassword: () => push(routes.forgotPassword),
     navigateToResetPassword: (email: string) =>
-      navigate(`${routes.resetPassword}?email=${encodeURIComponent(email)}`),
+      push(`${routes.resetPassword}?email=${encodeURIComponent(email)}`),
     navigateToEmailVerification: (email: string) =>
-      navigate(`${routes.emailVerification}?email=${encodeURIComponent(email)}`),
+      push(`${routes.emailVerification}?email=${encodeURIComponent(email)}`),
   };
 }
