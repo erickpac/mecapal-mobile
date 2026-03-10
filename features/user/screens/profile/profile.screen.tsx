@@ -59,18 +59,18 @@ export default function UserProfileScreen() {
 
   const handleLogout = () => {
     Alert.alert(
-      `${t('profile.account.logout')}`,
-      '¿Estás seguro que deseas cerrar sesión?',
+      t('profile.account.logout'),
+      t('profile.account.logoutConfirm'),
       [
         {
-          text: 'Sí, cerrar sesión',
+          text: t('profile.account.logoutYes'),
           onPress: () => {
             logout();
             replaceRoute('/(app)/home');
           },
         },
         {
-          text: 'Regresar',
+          text: t('profile.account.logoutCancel'),
           style: 'cancel',
         },
       ],

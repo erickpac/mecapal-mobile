@@ -716,6 +716,9 @@
       "title": "Cuenta",
       "changePassword": "Cambiar contraseña",
       "logout": "Cerrar sesión",
+      "logoutConfirm": "¿Estás seguro que deseas cerrar sesión?",
+      "logoutYes": "Sí, cerrar sesión",
+      "logoutCancel": "Regresar",
       "deleteAccount": "Eliminar cuenta"
     }
   },

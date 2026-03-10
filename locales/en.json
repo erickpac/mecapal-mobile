@@ -711,6 +711,9 @@
       "title": "Account",
       "changePassword": "Change Password",
       "logout": "Logout",
+      "logoutConfirm": "Are you sure you want to log out?",
+      "logoutYes": "Yes, log out",
+      "logoutCancel": "Go back",
       "deleteAccount": "Delete Account"
     }
   },

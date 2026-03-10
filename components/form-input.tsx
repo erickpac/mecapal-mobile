@@ -2,8 +2,10 @@ import { memo } from 'react';
 import { Controller, Control, FieldValues, Path } from 'react-hook-form';
 import { Input, InputProps } from '@/components/input';
 
-interface FormInputProps<T extends FieldValues>
-  extends Omit<InputProps, 'value' | 'onChangeText' | 'error'> {
+interface FormInputProps<T extends FieldValues> extends Omit<
+  InputProps,
+  'value' | 'onChangeText' | 'error'
+> {
   control: Control<T>;
   name: Path<T>;
 }
@@ -17,13 +19,17 @@ const FormInputComponent = <T extends FieldValues>({
     <Controller
       control={control}
       name={name}
-      render={({ field: { onChange, onBlur, value }, fieldState: { error, isDirty } }) => (
+      render={({
+        field: { onChange, onBlur, value },
+        fieldState: { error },
+        formState: { submitCount },
+      }) => (
         <Input
+          key={submitCount}
           {...inputProps}
           value={value}
           onChangeText={onChange}
           onBlur={onBlur}
-          dirty={isDirty}
           error={error?.message}
         />
       )}

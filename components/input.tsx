@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, memo } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import { View, Text } from 'react-native';
 import { TextInput, TextInputProps } from 'react-native-paper';
 import { COLORS } from '@/consts/colors';
@@ -42,11 +42,6 @@ const InputComponent: React.FC<InputProps> = ({
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [blurred, setBlurred] = useState(false);
-
-  useEffect(() => {
-    if (dirty === false) setBlurred(false);
-  }, [dirty]);
-
   const touched = blurred;
 
   const getKeyboardType = useCallback(() => {
@@ -105,8 +100,8 @@ const InputComponent: React.FC<InputProps> = ({
   };
 
   const handleBlur: TextInputProps['onBlur'] = (e) => {
-    setBlurred(true);
     if (onBlur) onBlur(e);
+    setTimeout(() => setBlurred(true), 150);
   };
 
   return (
