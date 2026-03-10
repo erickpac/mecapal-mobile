@@ -16,6 +16,7 @@ import { USER_ROUTES } from '@/features/user/routes';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
 import { IconButton } from '@/components/icon-button';
+import { COLORS } from '@/consts/colors';
 import { Button } from '@/components/button';
 import { LoginUser, LoginTransporter } from '@/components/svg';
 import { Input } from '@/components/input';
@@ -62,7 +63,7 @@ export default function LoginScreen({
           isOnboarding ? (
             <IconButton
               icon="close"
-              color="text-white"
+              color={COLORS.white}
               onPress={() => router.dismiss()}
             />
           ) : undefined

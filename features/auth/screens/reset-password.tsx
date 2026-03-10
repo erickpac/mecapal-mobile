@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
 import { IconButton } from '@/components/icon-button';
+import { COLORS } from '@/consts/colors';
 import { Button } from '@/components/button';
 import { Input } from '@/components/input';
 import { useStore } from '@/store/useStore';
@@ -62,7 +63,7 @@ export default function ResetPasswordScreen() {
           isOnboarding ? (
             <IconButton
               icon="close"
-              color="text-white"
+              color={COLORS.white}
               onPress={() => router.dismiss()}
             />
           ) : undefined

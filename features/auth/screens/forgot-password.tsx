@@ -7,6 +7,7 @@ import { ContentContainer } from '@/components/content-container';
 import { ForgetPasswordImageClient } from '@/components/svg';
 import { useStore } from '@/store/useStore';
 import { IconButton } from '@/components/icon-button';
+import { COLORS } from '@/consts/colors';
 import { Button } from '@/components/button';
 import { useState } from 'react';
 import { useForgotPassword } from '@/features/auth/hooks/useForgotPassword';
@@ -64,7 +65,7 @@ export default function ForgotPasswordScreen() {
           isOnboarding ? (
             <IconButton
               icon="close"
-              color="text-white"
+              color={COLORS.white}
               onPress={() => router.dismiss()}
             />
           ) : undefined

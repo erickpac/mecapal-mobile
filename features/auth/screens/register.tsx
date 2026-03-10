@@ -83,7 +83,7 @@ export default function RegisterScreen() {
           isOnboarding ? (
             <IconButton
               icon="close"
-              color="text-white"
+              color={COLORS.white}
               onPress={() => router.dismiss()}
             />
           ) : undefined
