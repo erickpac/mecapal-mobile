@@ -1,6 +1,6 @@
 import { useLogin } from '@/features/auth/hooks/useLogin';
 import { useStore } from '@/store/useStore';
-import { router, usePathname } from 'expo-router';
+import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   KeyboardAvoidingView,
@@ -11,12 +11,6 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
-import { navigateToForgotPassword } from '../routes';
-import {
-  navigateToForgotPassword as navigateToOnboardingForgotPassword,
-  ONBOARDING_ROUTES,
-} from '@/features/onboarding/routes';
-import { AUTH_ROUTES } from '@/features/auth/routes';
 import { replaceRoute } from '@/features/shared/routes';
 import { USER_ROUTES } from '@/features/user/routes';
 import { NavigationHeader } from '@/components/navigation-header';
@@ -28,6 +22,7 @@ import { Input } from '@/components/input';
 import { useLoginValidation } from '@/features/auth/hooks/useLoginValidation';
 import { UserRole } from '@/features/auth/types/user';
 import { ActionLink } from '@/components/action-link';
+import { useAuthFlow } from '@/features/auth/hooks/useAuthFlow';
 
 export default function LoginScreen({
   showBackButton = true,
@@ -40,8 +35,7 @@ export default function LoginScreen({
   const { setHasCompletedOnboarding, selectedUserType } = useStore();
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
-  const pathname = usePathname();
-  const isOnboardingFlow = pathname.includes('/onboarding/');
+  const { isOnboarding, navigateToForgotPassword, navigateToRegister } = useAuthFlow();
   const { emailError, passwordError, isValid } = useLoginValidation(
     email,
     password,
@@ -62,9 +56,9 @@ export default function LoginScreen({
   return (
     <>
       <NavigationHeader
-        showBackButton={!showBackButton ? showBackButton : !isOnboardingFlow}
+        showBackButton={!showBackButton ? showBackButton : !isOnboarding}
         rightComponent={
-          isOnboardingFlow ? (
+          isOnboarding ? (
             <IconButton
               icon="close"
               color="text-white"
@@ -112,13 +106,7 @@ export default function LoginScreen({
                 />
                 <ActionLink
                   className="mb-4 mt-1 text-right text-[13px] text-black"
-                  onPress={() => {
-                    if (isOnboardingFlow) {
-                      navigateToOnboardingForgotPassword();
-                    } else {
-                      navigateToForgotPassword();
-                    }
-                  }}
+                  onPress={navigateToForgotPassword}
                   title={t('auth.login.forgotPassword')}
                 />
               </View>
@@ -142,13 +130,7 @@ export default function LoginScreen({
               title={`${t('auth.login.noAccount')}`}
               variant="text"
               className="mt-2"
-              onPress={() => {
-                if (isOnboardingFlow) {
-                  replaceRoute(ONBOARDING_ROUTES.ONBOARDING_REGISTER);
-                } else {
-                  replaceRoute(AUTH_ROUTES.AUTH_REGISTER);
-                }
-              }}
+              onPress={navigateToRegister}
               userType={selectedUserType}
             />
           </ScrollView>

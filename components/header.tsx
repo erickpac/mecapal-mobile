@@ -4,7 +4,7 @@ import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS } from '@/consts/colors';
-import MekapalWhite from './svg/mekapal-white-letters';
+import { MekapalWhite } from '@/components/svg';
 
 export const Header: React.FC<{ backgroundColor?: string }> = ({
   backgroundColor,
@@ -14,8 +14,6 @@ export const Header: React.FC<{ backgroundColor?: string }> = ({
   const role = user?.role ?? selectedUserType;
   const defaultBgColor =
     role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
-  // const defaultBgColor =
-  //   role === UserRole.TRANSPORTER ? COLORS.primary : COLORS.secondary;
   const finalBgColor = backgroundColor ?? defaultBgColor;
   const headerHeight = 56 + insets.top;
   const paddingTop = insets.top;

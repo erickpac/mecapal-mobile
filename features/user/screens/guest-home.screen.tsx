@@ -1,163 +1,143 @@
 import { Text, View, ScrollView, Image } from 'react-native';
 import { Header } from '@/components/header';
 import { useTranslation } from 'react-i18next';
+import { router } from 'expo-router';
 import { navigateTo } from '@/features/shared/routes';
-import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import WelcomeHero from '@/components/welcome-hero';
 import ListItem from '@/components/list-item';
 import { Button } from '@/components/button';
-import Amico from '@/components/svg/amico';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import SubheaderText from '@/components/subheader-text';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
+import { SERVICES } from '@/features/shared/data/services';
+import { LoginHome } from '@/components/svg';
 
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
-  const { setSelectedUserType } = useStore();
-
-  const handleClickLogin = (role: UserRole) => {
-    setSelectedUserType(role);
-    navigateTo('/auth');
+  const handleGoToAuth = () => {
+    router.navigate('/(app)/auth' as any);
   };
 
-  const listItemData = [
-    {
-      id: 1,
-      imageSource: require('../../../assets/images/home/motorcycle.png'),
-      title: 'Envíos Express',
-      description:
-        'Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque. Conoce más ',
-      linkText: 'Conoce más',
-      onPress: () => {},
-    },
-    {
-      id: 2,
-      imageSource: require('../../../assets/images/home/mid-truck.png'),
-      title: 'Carga Liviana',
-      description:
-        'Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque. Conoce más ',
-      linkText: 'Conoce más',
-      onPress: () => {},
-    },
-    {
-      id: 3,
-      imageSource: require('../../../assets/images/home/big-truck.png'),
-      title: 'Carga Pesada',
-      description:
-        'Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque. Conoce más ',
-      linkText: 'Conoce más',
-      onPress: () => {},
-    },
-  ];
+  const handleServicePress = (serviceId: string) => {
+    navigateTo(`/home/service-detail?id=${serviceId}`);
+  };
 
   return (
     <>
       <Header />
-      <ScrollView className="flex-1 bg-[#fbf9f4] pb-8">
+      <ScrollView
+        className="flex-1 bg-background-100"
+        contentContainerClassName="pb-0"
+        bounces={false}
+      >
+        {/* Welcome Hero */}
         <WelcomeHero centerAlign />
+
+        {/* About Section */}
         <View>
           <SubheaderText
-            title="Conoce más sobre nosotros"
-            onlyTitle={true}
+            title={t('home.guest.aboutTitle')}
+            onlyTitle
             className="mt-6"
           />
-          <View className="mt-4 w-dvw px-4">
+          <View className="mt-4 px-4">
             <Image
               source={require('../../../assets/images/guest-truck.png')}
               className="h-48 w-full rounded-xl"
-              resizeMethod="scale"
+              resizeMode="cover"
             />
           </View>
           <View className="px-4">
-            <Text className="mt-4 font-plus-jakarta text-sm font-normal">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <Text className="mt-4 font-plus-jakarta text-sm leading-5">
+              {t('home.guest.aboutDescription1')}
             </Text>
-            <Text className="mt-4 font-plus-jakarta text-sm font-normal">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit
-              anim id est laborum.
+            <Text className="mt-4 font-plus-jakarta text-sm leading-5">
+              {t('home.guest.aboutDescription2')}
             </Text>
           </View>
         </View>
+
+        {/* Services Section */}
         <View className="mt-10">
-          <View className="items-center">
-            <Text className="font-plus-jakarta-bold text-2xl font-bold">
-              Nuestros Servicios
-            </Text>
-          </View>
+          <SubheaderText title={t('home.guest.servicesTitle')} onlyTitle />
           <View className="mt-4 bg-white">
-            {listItemData.map((el) => (
-              <ListItem key={el.id} {...el} />
+            {SERVICES.map((service) => (
+              <ListItem
+                key={service.id}
+                icon={<service.icon width={75} height={75} />}
+                title={t(`home.services.${service.id}.title`)}
+                description={t(`home.services.${service.id}.listDescription`)}
+                linkText={t('home.guest.learnMore')}
+                onPress={() => handleServicePress(service.id)}
+              />
             ))}
           </View>
         </View>
-        {/*mekapal is for all*/}
+
+        {/* Mekapal is for everyone */}
         <View>
           <SubheaderText
             className="mb-4 mt-10"
-            title="¡Mekapal es para todos!"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            title={t('home.guest.forEveryoneTitle')}
+            description={t('home.guest.forEveryoneDescription')}
           />
-          <View className="my-4 flex flex-row justify-between gap-4 px-4">
+          <View className="my-4 flex-row gap-4 px-4">
             <View className="flex-1 rounded-xl border border-gray-300 bg-white p-6">
-              <View className="flex flex-col items-center">
+              <View className="items-center">
                 <MaterialCommunityIcons
                   name="account-circle-outline"
                   size={28}
                   color={COLORS.primary}
                 />
-                <Text className="mt-2 text-center font-plus-jakarta-bold text-lg font-bold">
-                  Cliente
+                <Text className="mt-2 text-center font-plus-jakarta-bold text-lg">
+                  {t('home.guest.clientTitle')}
                 </Text>
               </View>
-              <Text className="mt-4 text-center font-plus-jakarta-medium text-xs font-medium">
-                Esta cuenta es para todos aquellos que necesitan mover sus
-                chivas de un lugar a otro.
+              <Text className="mt-4 text-center font-plus-jakarta text-xs">
+                {t('home.guest.clientDescription')}
               </Text>
             </View>
-            <View className="flex-1 rounded-lg border border-gray-300 bg-white p-6">
-              <View className="flex flex-col items-center">
-                <MaterialCommunityIcons name="truck" size={28} color={COLORS.secondary} />
-                <Text className="mt-2 text-center font-plus-jakarta-bold text-lg font-bold">
-                  Transportista
+            <View className="flex-1 rounded-xl border border-gray-300 bg-white p-6">
+              <View className="items-center">
+                <MaterialCommunityIcons
+                  name="truck"
+                  size={28}
+                  color={COLORS.secondary}
+                />
+                <Text className="mt-2 text-center font-plus-jakarta-bold text-lg">
+                  {t('home.guest.transporterTitle')}
                 </Text>
               </View>
-              <Text className="mt-4 text-center font-plus-jakarta-medium text-xs font-medium">
-                Esta cuenta es para todos aquellos que ofrezcan servicios de
-                logística y cuentan con uno o más vehículos de carga.
+              <Text className="mt-4 text-center font-plus-jakarta text-xs">
+                {t('home.guest.transporterDescription')}
               </Text>
             </View>
           </View>
         </View>
 
-        {/*CTA*/}
+        {/* CTA */}
         <View className="mx-8 mt-6 items-center">
-          <View className="py-4">
-            <Amico />
-          </View>
-          <Text className="text-center font-plus-jakarta-semibold text-xl font-semibold">
+          <LoginHome />
+          <Text className="text-center font-plus-jakarta-semibold text-xl">
             {t('home.ctaUser.title')}
           </Text>
-          <View className="mt-4 flex w-72 flex-col items-center justify-center gap-5">
+          <View className="mt-4 w-72 gap-4">
             <Button
               title={t('home.ctaUser.action1')}
-              onPress={() => navigateTo('/auth/register')}
+              onPress={handleGoToAuth}
               userType={UserRole.CLIENT}
             />
             <Button
               title={t('home.ctaUser.action2')}
-              onPress={() => handleClickLogin(UserRole.CLIENT)}
+              onPress={handleGoToAuth}
               userType={UserRole.CLIENT}
               variant="outlined"
             />
           </View>
-
-          <View className="h-12">{/**Just to blank space */}</View>
         </View>
+
+        <View className="h-8" />
       </ScrollView>
     </>
   );

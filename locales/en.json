@@ -21,7 +21,7 @@
       "search": "Search",
       "history": "History",
       "about": "How it works?",
-      "auth": "Create Account",
+      "auth": "Create account",
       "orders": "Orders",
       "vehicles": "Vehicles",
       "earnings": "Earnings",
@@ -40,7 +40,7 @@
         "loginSubtitle": "Sign in to access all features",
         "login": "Sign In",
         "register": "Register",
-        "createAccount": "Create Account",
+        "createAccount": "Create account",
         "benefits": {
           "title": "Benefits of registering",
           "history": {
@@ -116,7 +116,7 @@
         "cta": {
           "title": "Found what you're looking for?",
           "subtitle": "Create an account to make reservations and enjoy all benefits",
-          "register": "Create Account",
+          "register": "Create account",
           "login": "Sign In"
         }
       },
@@ -171,7 +171,7 @@
         "cta": {
           "title": "Want to see your real history?",
           "subtitle": "Create an account and start building your service history",
-          "register": "Create Account",
+          "register": "Create account",
           "login": "Sign In"
         }
       },
@@ -203,7 +203,7 @@
       "guest": {
         "loginPrompt": "Ready to get started?",
         "loginSubtitle": "Create an account to access all services",
-        "register": "Create Account"
+        "register": "Create account"
       },
       "whatIs": {
         "title": "What is Mecapal?",
@@ -269,7 +269,7 @@
       "cta": {
         "title": "Ready to get started?",
         "subtitle": "Join thousands of users who already trust Mecapal",
-        "register": "Create Account",
+        "register": "Create account",
         "login": "Sign In"
       }
     },
@@ -281,7 +281,7 @@
         "subtitle": "The most reliable transportation platform"
       },
       "createAccount": {
-        "title": "Create Free Account",
+        "title": "Create free account",
         "subtitle": "Sign up in less than 2 minutes"
       },
       "signIn": {
@@ -328,7 +328,7 @@
         "upgrade": {
           "title": "Want more features?",
           "subtitle": "Create an account to access all application features",
-          "register": "Create Account",
+          "register": "Create account",
           "login": "Sign In"
         },
         "availableActions": {
@@ -562,6 +562,86 @@
       "title": "Ready to move your things?",
       "action1": "Create my account",
       "action2": "Login"
+    },
+    "guest": {
+      "aboutTitle": "Learn more about us",
+      "aboutDescription1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "aboutDescription2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "servicesTitle": "Our services",
+      "learnMore": "Learn more",
+      "forEveryoneTitle": "Mekapal is for everyone!",
+      "forEveryoneDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "clientTitle": "Client",
+      "clientDescription": "This account is for everyone who needs to move their things from one place to another.",
+      "transporterTitle": "Transporter",
+      "transporterDescription": "This account is for everyone who offers logistics services and has one or more cargo vehicles."
+    },
+    "services": {
+      "express": {
+        "title": "Express Shipping",
+        "listDescription": "Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque.",
+        "detailDescription": "This type of shipping is ideal if you want to send small packages and envelopes within a 1–10km radius from your location. Consider the following to decide on this type of shipping.",
+        "maxWeight": "20 Lbs.",
+        "maxSize": "30×30cm",
+        "vehicleType": "Motorcycle",
+        "consideration1": "Packages can be fragile but must be properly packed.",
+        "consideration2": "The package will not be exposed to the elements.",
+        "consideration3": "No complex unloading logistics needed.",
+        "example": "You want to send a 15×15 cm package to a client, it weighs 3 pounds, it's not fragile, it's well packaged and easy to deliver."
+      },
+      "light": {
+        "title": "Light Cargo",
+        "listDescription": "Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque.",
+        "detailDescription": "This type of shipping is ideal if you want to send packages and small envelopes within a 1–10km radius from your location. Consider the following to decide on this type of shipping.",
+        "maxWeight": "1 ton (2,200 Lbs)",
+        "maxSize": "30×30cm",
+        "vehicleType": "Pickup, small and medium truck",
+        "consideration1": "Items can be fragile but must be properly packed.",
+        "consideration2": "The package may be exposed to the elements.",
+        "consideration3": "Loading and unloading service may be needed.",
+        "example": "You want to transport medium boxes, sacks, a couple of pieces of furniture, or large items regardless of the radius from your location."
+      },
+      "heavy": {
+        "title": "Heavy Cargo",
+        "listDescription": "Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antium dolore mque.",
+        "detailDescription": "This type of shipping is ideal if you want to send packages and small envelopes within a 1–10km radius from your location. Consider the following to decide on this type of shipping.",
+        "maxWeight": "5 Tons and above",
+        "maxSize": "Depends",
+        "vehicleType": "Truck",
+        "consideration1": "Items can be fragile but must be properly packed.",
+        "consideration2": "Items will not be exposed to the elements.",
+        "consideration3": "Loading and unloading service may be needed.",
+        "example": "You want to transport many boxes of different sizes, you're moving, furniture or large items regardless of the radius from your location."
+      },
+      "detail": {
+        "maxWeight": "Maximum package weight",
+        "maxSize": "Maximum package size",
+        "vehicleType": "Vehicle type",
+        "considerations": "Considerations:",
+        "exampleTitle": "This shipping is for you if for example:"
+      }
+    },
+    "howItWorks": {
+      "title": "How does it work?",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "clientTab": "Client",
+      "transporterTab": "Transporter",
+      "client": {
+        "step1Title": "Create an account",
+        "step1Description": "Sed do eiusmod tempor incididunt ut labore et dolore magna ali qua.",
+        "step2Title": "Select the shipment type",
+        "step2Description": "Sed do eiusmod tempor incididunt ut labore et dolore",
+        "step3Title": "Ship your things!",
+        "step3Description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea"
+      },
+      "transporter": {
+        "step1Title": "Create an account",
+        "step1Description": "Sed do eiusmod tempor incididunt ut labore et dolore magna ali qua.",
+        "step2Title": "Complete your profile",
+        "step2Description": "Sed do eiusmod tempor incididunt ut labore elit dolore magna ali qua.",
+        "step3Title": "Provide your services!",
+        "step3Description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea"
+      }
     }
   },
   "profile": {

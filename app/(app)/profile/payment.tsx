@@ -1,8 +1,9 @@
-import { useStore } from '@/store/useStore';
-import UserPaymentScreen from '@/features/user/screens/profile/payment/payment.screen';
+import { View, Text } from 'react-native';
 
-export default function ProfileIndex() {
-  const { isAuthenticated } = useStore();
-
-  return <>{isAuthenticated && <UserPaymentScreen />}</>;
+export default function PaymentIndex() {
+  return (
+    <View className="flex-1 items-center justify-center bg-white">
+      <Text className="font-plus-jakarta-semibold text-lg">Payment</Text>
+    </View>
+  );
 }

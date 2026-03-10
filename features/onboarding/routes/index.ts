@@ -29,10 +29,6 @@ export const navigateToOnboardingLogin = () =>
   router.push(ONBOARDING_ROUTES.ONBOARDING_LOGIN as any);
 export const navigateToOnboardingRegister = () =>
   router.push(ONBOARDING_ROUTES.ONBOARDING_REGISTER as any);
-export const navigateToForgotPassword = () =>
-  router.push(ONBOARDING_ROUTES.ONBOARDING_FORGOT_PASSWORD);
-export const navigateToResetPassword = (email: string) =>
-  router.push(`${ONBOARDING_ROUTES.ONBOARDING_RESET_PASSWORD}?email=${encodeURIComponent(email)}` as any);
 
 // Onboarding replace navigation functions
 export const replaceToOnboarding = () =>

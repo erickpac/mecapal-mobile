@@ -1,12 +1,9 @@
-import { useStore } from '@/store/useStore';
-import TransporterEarningsScreen from '@/features/transporter/screens/earnings.screen';
-import { UserRole } from '@/features/auth/types/user';
+import { View, Text } from 'react-native';
 
 export default function EarningsIndex() {
-  const { isAuthenticated } = useStore();
   return (
-    <>
-      {isAuthenticated && UserRole.TRANSPORTER && <TransporterEarningsScreen />}
-    </>
+    <View className="flex-1 items-center justify-center bg-white">
+      <Text className="font-plus-jakarta-semibold text-lg">Earnings</Text>
+    </View>
   );
 }

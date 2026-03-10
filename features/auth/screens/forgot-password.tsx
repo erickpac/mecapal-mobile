@@ -1,4 +1,4 @@
-import { router, usePathname } from 'expo-router';
+import { router } from 'expo-router';
 import { KeyboardAvoidingView, Platform, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from '@/components/navigation-header';
@@ -11,13 +11,11 @@ import { Button } from '@/components/button';
 import { useState } from 'react';
 import { useForgotPassword } from '@/features/auth/hooks/useForgotPassword';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
-import { navigateToResetPassword } from '../routes';
-import { navigateToResetPassword as navigateToOnboardingResetPassword } from '@/features/onboarding/routes';
+import { useAuthFlow } from '@/features/auth/hooks/useAuthFlow';
 
 export default function ForgotPasswordScreen() {
   const { t } = useTranslation();
   const { selectedUserType } = useStore();
-  const pathname = usePathname();
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const {
@@ -26,8 +24,7 @@ export default function ForgotPasswordScreen() {
     error,
   } = useForgotPassword();
   const { getErrorMessage } = useLocalizedError();
-
-  const isModalMode = pathname.includes('/onboarding/');
+  const { isOnboarding, navigateToResetPassword } = useAuthFlow();
 
   const validateEmail = (value: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,11 +50,7 @@ export default function ForgotPasswordScreen() {
 
     try {
       await forgotPassword(email);
-      if (isModalMode) {
-        navigateToOnboardingResetPassword(email);
-      } else {
-        navigateToResetPassword(email);
-      }
+      navigateToResetPassword(email);
     } catch {
       // error state is handled by the mutation
     }
@@ -66,9 +59,9 @@ export default function ForgotPasswordScreen() {
   return (
     <>
       <NavigationHeader
-        showBackButton={!isModalMode}
+        showBackButton={!isOnboarding}
         rightComponent={
-          isModalMode ? (
+          isOnboarding ? (
             <IconButton
               icon="close"
               color="text-white"
