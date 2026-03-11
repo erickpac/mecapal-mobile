@@ -1,9 +1,14 @@
 {
   "cli": {
     "version": ">= 15.0.0",
-    "appVersionSource": "remote"
+    "appVersionSource": "remote",
+    "requireCommit": false
   },
   "build": {
+    "base": {
+      "node": "22.14.0",
+      "pnpm": "10.31.0"
+    },
     "development": {
       "developmentClient": true,
       "distribution": "internal",
