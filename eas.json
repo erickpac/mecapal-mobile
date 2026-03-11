@@ -17,6 +17,9 @@
     },
     "staging": {
       "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
       "env": {
         "APP_ENV": "staging",
         "EXPO_PUBLIC_API_URL": "https://pa9puydfmf.us-east-1.awsapprunner.com/api/"
