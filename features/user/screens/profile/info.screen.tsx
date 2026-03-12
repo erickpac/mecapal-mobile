@@ -1,7 +1,15 @@
-import { View, Text, ScrollView, Pressable } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+  Platform,
+  KeyboardAvoidingView,
+} from 'react-native';
 import { Button } from '@/components/button';
 import React, { useState } from 'react';
 import { NavigationHeader } from '@/components/navigation-header';
+import { ContentContainer } from '@/components/content-container';
 import { useTranslation } from 'react-i18next';
 import Avatar from '@/components/avatar';
 import { useStore } from '@/store/useStore';
@@ -10,9 +18,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Input } from '@/components/input';
 import { UserRole } from '@/features/auth/types/user';
 
-type Props = {};
-
-const InfoScreen = (props: Props) => {
+const InfoScreen = () => {
   const { t } = useTranslation();
   const { user, setUser } = useStore();
 
@@ -22,7 +28,6 @@ const InfoScreen = (props: Props) => {
 
   const handleEditPress = (field: string) => {
     if (editingFields.has(field)) {
-      // Save the field
       setEditingFields((prev) => {
         const newSet = new Set(prev);
         newSet.delete(field);
@@ -31,7 +36,6 @@ const InfoScreen = (props: Props) => {
       setEditedFields((prev) => new Set([...prev, field]));
       setUser(userEdit);
     } else {
-      // Start editing the field
       setEditingFields((prev) => new Set([...prev, field]));
     }
   };
@@ -46,7 +50,7 @@ const InfoScreen = (props: Props) => {
     const isEditing = editingFields.has(field);
     const isEdited = editedFields.has(field) && !isEditing;
 
-    if (isEdited) return null; // Don't show edit button if field has been edited
+    if (isEdited) return null;
 
     return (
       <Pressable
@@ -69,142 +73,155 @@ const InfoScreen = (props: Props) => {
   return (
     <>
       <NavigationHeader title="" showBackButton={true} borderBottom={false} />
-      <ScrollView className="flex-1 bg-white">
-        <View className="px-8 py-4">
-          <Text className="font-plus-jakarta-bold text-2xl font-bold text-gray-800">
-            {t('profile.personalInfo.title')}
-          </Text>
-        </View>
-        <View className="items-center">
-          <Avatar
-            size={48}
-            sizeEditButton={20}
-            onPress={() => console.log('Edit avatar pressed')}
-          />
-        </View>
-        <View className="mt-4 space-y-4 px-6 py-4">
-          <View className="flex-row items-center">
-            <View className="flex-1">
-              <Input
-                label="Nombre"
-                value={userEdit ? `${userEdit.firstName} ${userEdit.lastName}` : ''}
-                mode="flat"
-                disabled={
-                  !editingFields.has('name') && !editedFields.has('name')
-                }
-                contentStyle={{ backgroundColor: COLORS.white }}
-                style={{ backgroundColor: COLORS.white }}
-                activeUnderlineColor="black"
-                onChangeText={(value) => {
-                  const parts = value.split(' ');
-                  const firstName = parts[0] || '';
-                  const lastName = parts.slice(1).join(' ') || '';
-                  setUserEdit({ ...userEdit, firstName, lastName });
-                }}
+      <ContentContainer>
+        <KeyboardAvoidingView
+          className="flex-1"
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        >
+          <ScrollView contentContainerClassName="px-4" bounces={false}>
+            <View className="py-4">
+              <Text className="font-plus-jakarta-bold text-2xl font-bold text-gray-800">
+                {t('profile.personalInfo.title')}
+              </Text>
+            </View>
+            <View className="items-center">
+              <Avatar
+                size={48}
+                sizeEditButton={20}
+                onPress={() => console.log('Edit avatar pressed')}
               />
             </View>
-            {renderEditButton('name')}
-          </View>
-
-          <View className="flex-row items-center">
-            <View className="flex-1">
-              <Input
-                label="Numero de Telefono"
-                value={userEdit?.phone || ''}
-                mode="flat"
-                disabled={
-                  !editingFields.has('phone') && !editedFields.has('phone')
-                }
-                contentStyle={{ backgroundColor: COLORS.white }}
-                style={{ backgroundColor: COLORS.white }}
-                activeUnderlineColor="black"
-                onChangeText={(value) =>
-                  setUserEdit({ ...userEdit, phone: value })
-                }
-              />
-            </View>
-            {renderEditButton('phone')}
-          </View>
-
-          <View className="flex-row items-center">
-            <View className="flex-1">
-              <Input
-                label="Correo Electronico"
-                value={userEdit?.email || ''}
-                mode="flat"
-                disabled={
-                  !editingFields.has('email') && !editedFields.has('email')
-                }
-                contentStyle={{ backgroundColor: COLORS.white }}
-                style={{ backgroundColor: COLORS.white }}
-                activeUnderlineColor="black"
-                onChangeText={(value) =>
-                  setUserEdit({ ...userEdit, email: value })
-                }
-              />
-            </View>
-            {renderEditButton('email')}
-          </View>
-
-          {UserRole.TRANSPORTER && (
-            <View className="flex-row items-center">
-              <View className="flex-1">
-                <Input
-                  label="NIT"
-                  value={userEdit?.nit || ''}
-                  mode="flat"
-                  disabled={
-                    !editingFields.has('nit') && !editedFields.has('nit')
-                  }
-                  contentStyle={{ backgroundColor: COLORS.white }}
-                  style={{ backgroundColor: COLORS.white }}
-                  activeUnderlineColor="black"
-                  onChangeText={(value) =>
-                    setUserEdit({ ...userEdit, nit: value })
-                  }
-                />
+            <View className="mt-4 space-y-4 py-4">
+              <View className="flex-row items-center">
+                <View className="flex-1">
+                  <Input
+                    label="Nombre"
+                    value={
+                      userEdit
+                        ? `${userEdit.firstName} ${userEdit.lastName}`
+                        : ''
+                    }
+                    mode="flat"
+                    disabled={
+                      !editingFields.has('name') && !editedFields.has('name')
+                    }
+                    contentStyle={{ backgroundColor: COLORS.white }}
+                    style={{ backgroundColor: COLORS.white }}
+                    activeUnderlineColor="black"
+                    onChangeText={(value) => {
+                      const parts = value.split(' ');
+                      const firstName = parts[0] || '';
+                      const lastName = parts.slice(1).join(' ') || '';
+                      setUserEdit({ ...userEdit, firstName, lastName });
+                    }}
+                  />
+                </View>
+                {renderEditButton('name')}
               </View>
-              {renderEditButton('nit')}
-            </View>
-          )}
-          {UserRole.TRANSPORTER && (
-            <View className="flex-row items-center">
-              <View className="flex-1">
-                <Input
-                  label="DPI"
-                  value={userEdit?.dpi || ''}
-                  mode="flat"
-                  disabled={
-                    !editingFields.has('dpi') && !editedFields.has('dpi')
-                  }
-                  contentStyle={{ backgroundColor: COLORS.white }}
-                  style={{ backgroundColor: COLORS.white }}
-                  activeUnderlineColor="black"
-                  onChangeText={(value) =>
-                    setUserEdit({ ...userEdit, dpi: value })
-                  }
-                />
+
+              <View className="flex-row items-center">
+                <View className="flex-1">
+                  <Input
+                    label="Numero de Telefono"
+                    value={userEdit?.phone || ''}
+                    mode="flat"
+                    disabled={
+                      !editingFields.has('phone') && !editedFields.has('phone')
+                    }
+                    contentStyle={{ backgroundColor: COLORS.white }}
+                    style={{ backgroundColor: COLORS.white }}
+                    activeUnderlineColor="black"
+                    onChangeText={(value) =>
+                      setUserEdit({ ...userEdit, phone: value })
+                    }
+                  />
+                </View>
+                {renderEditButton('phone')}
               </View>
-              {renderEditButton('dpi')}
-            </View>
-          )}
 
-          <View className="flex-row items-center">
-            <View className="flex-1">
-              <Input
-                label="Tipo de Usuario"
-                value={userEdit?.role === 'CLIENT' ? 'Cliente' : 'Transportista'}
-                mode="flat"
-                disabled={true}
-                contentStyle={{ backgroundColor: COLORS.white }}
-                style={{ backgroundColor: COLORS.white }}
-                activeUnderlineColor="black"
-              />
-            </View>
-          </View>
-        </View>
+              <View className="flex-row items-center">
+                <View className="flex-1">
+                  <Input
+                    label="Correo Electronico"
+                    value={userEdit?.email || ''}
+                    mode="flat"
+                    disabled={
+                      !editingFields.has('email') && !editedFields.has('email')
+                    }
+                    contentStyle={{ backgroundColor: COLORS.white }}
+                    style={{ backgroundColor: COLORS.white }}
+                    activeUnderlineColor="black"
+                    onChangeText={(value) =>
+                      setUserEdit({ ...userEdit, email: value })
+                    }
+                  />
+                </View>
+                {renderEditButton('email')}
+              </View>
 
-        <View className="px-6 py-4">
+              {UserRole.TRANSPORTER && (
+                <View className="flex-row items-center">
+                  <View className="flex-1">
+                    <Input
+                      label="NIT"
+                      value={userEdit?.nit || ''}
+                      mode="flat"
+                      disabled={
+                        !editingFields.has('nit') && !editedFields.has('nit')
+                      }
+                      contentStyle={{ backgroundColor: COLORS.white }}
+                      style={{ backgroundColor: COLORS.white }}
+                      activeUnderlineColor="black"
+                      onChangeText={(value) =>
+                        setUserEdit({ ...userEdit, nit: value })
+                      }
+                    />
+                  </View>
+                  {renderEditButton('nit')}
+                </View>
+              )}
+              {UserRole.TRANSPORTER && (
+                <View className="flex-row items-center">
+                  <View className="flex-1">
+                    <Input
+                      label="DPI"
+                      value={userEdit?.dpi || ''}
+                      mode="flat"
+                      disabled={
+                        !editingFields.has('dpi') && !editedFields.has('dpi')
+                      }
+                      contentStyle={{ backgroundColor: COLORS.white }}
+                      style={{ backgroundColor: COLORS.white }}
+                      activeUnderlineColor="black"
+                      onChangeText={(value) =>
+                        setUserEdit({ ...userEdit, dpi: value })
+                      }
+                    />
+                  </View>
+                  {renderEditButton('dpi')}
+                </View>
+              )}
+
+              <View className="flex-row items-center">
+                <View className="flex-1">
+                  <Input
+                    label="Tipo de Usuario"
+                    value={
+                      userEdit?.role === 'CLIENT' ? 'Cliente' : 'Transportista'
+                    }
+                    mode="flat"
+                    disabled={true}
+                    contentStyle={{ backgroundColor: COLORS.white }}
+                    style={{ backgroundColor: COLORS.white }}
+                    activeUnderlineColor="black"
+                  />
+                </View>
+              </View>
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
+
+        <View className="px-4">
           <Button
             disabled={editingFields.size === 0}
             title="Guardar Cambios"
@@ -212,7 +229,7 @@ const InfoScreen = (props: Props) => {
             userType={user?.role}
           />
         </View>
-      </ScrollView>
+      </ContentContainer>
     </>
   );
 };

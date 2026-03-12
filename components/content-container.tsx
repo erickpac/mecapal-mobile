@@ -22,7 +22,7 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
 }) => {
   return (
     <SafeAreaView
-      className={`flex-1 bg-background-100 ${className}`}
+      className={`flex-1 bg-background-100 pb-4 ${className}`}
       edges={['bottom', 'left', 'right']}
     >
       {children}

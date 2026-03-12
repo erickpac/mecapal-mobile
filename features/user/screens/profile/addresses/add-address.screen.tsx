@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useStore } from '@/store/useStore';
 import {
   View,
@@ -6,20 +6,20 @@ import {
   ScrollView,
   Modal,
   TouchableOpacity,
-  Dimensions,
+  Platform,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
 import { TextInput } from 'react-native-paper';
 import { NavigationHeader } from '@/components/navigation-header';
+import { ContentContainer } from '@/components/content-container';
 import SubheaderText from '@/components/subheader-text';
 import { Input } from '@/components/input';
 import { Button } from '@/components/button';
 import { COLORS } from '@/consts/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { UserRole } from '@/features/auth/types/user';
-
-const { height: screenHeight } = Dimensions.get('window');
 
 const AddAddressScreen = () => {
   const { user } = useStore();
@@ -30,14 +30,12 @@ const AddAddressScreen = () => {
   const [showDepartmentPicker, setShowDepartmentPicker] = useState(false);
   const [showMunicipalityPicker, setShowMunicipalityPicker] = useState(false);
 
-  // Form state
   const [formData, setFormData] = useState({
     name: '',
     fullAddress: '',
     additionalInstructions: '',
   });
 
-  // Form validation
   const isFormValid = () => {
     return (
       formData.name.trim() !== '' &&
@@ -64,9 +62,7 @@ const AddAddressScreen = () => {
       };
 
       console.log('Address saved successfully:', addressData);
-      // Here you would normally save the address to your backend/store
 
-      // Reset form after successful submission
       setFormData({
         name: '',
         fullAddress: '',
@@ -136,104 +132,104 @@ const AddAddressScreen = () => {
   return (
     <>
       <NavigationHeader title="" showBackButton={true} borderBottom={false} />
-      <View className="flex-1 bg-white">
-        <ScrollView
-          className="flex-1 bg-white"
-          contentContainerStyle={{ paddingBottom: 100 }}
+      <ContentContainer>
+        <KeyboardAvoidingView
+          className="flex-1"
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-          <View className="px-6 pt-6">
-            <SubheaderText
-              title="Nueva dirección de Origen"
-              onlyTitle
-              align="left"
-            />
-            <Text className="mt-4 font-plus-jakarta text-base font-normal">
-              A continuación llena los siguientes datos:
-            </Text>
-          </View>
-          <View className="mt-8 px-6 pb-4">
-            <View className="space-y-4 rounded-lg">
-              <Input
-                label="Nombre de esta dirección"
-                value={formData.name}
-                type="text"
-                onChangeText={(value) => handleInputChange('name', value)}
+          <ScrollView contentContainerClassName="px-4" bounces={false}>
+            <View className="pt-4">
+              <SubheaderText
+                title="Nueva dirección de Origen"
+                onlyTitle
+                align="left"
               />
-
-              <View className="mb-4">
-                <TextInput
-                  label="Departamento"
-                  value={selectedDepartment}
-                  mode="outlined"
-                  editable={false}
-                  onPressIn={() => setShowDepartmentPicker(true)}
-                  right={
-                    <TextInput.Icon
-                      icon="chevron-down"
-                      size={20}
-                      color={COLORS.lightGray[700]}
-                      onPress={() => setShowDepartmentPicker(true)}
-                    />
-                  }
-                  outlineColor={COLORS.lightGray[600]}
-                  activeOutlineColor={COLORS.black}
-                  contentStyle={{
-                    fontSize: 16,
-                    lineHeight: 22,
-                    fontFamily: 'Plus Jakarta Sans Regular',
-                  }}
-                  style={{ backgroundColor: 'white' }}
-                  outlineStyle={{ borderWidth: 1 }}
-                />
-              </View>
-
-              <View className="mb-4">
-                <TextInput
-                  label="Municipio"
-                  value={selectedMunicipality}
-                  mode="outlined"
-                  editable={false}
-                  onPressIn={() => setShowMunicipalityPicker(true)}
-                  right={
-                    <TextInput.Icon
-                      icon="chevron-down"
-                      size={20}
-                      color={COLORS.lightGray[700]}
-                      onPress={() => setShowMunicipalityPicker(true)}
-                    />
-                  }
-                  outlineColor={COLORS.lightGray[600]}
-                  activeOutlineColor={COLORS.black}
-                  contentStyle={{
-                    fontSize: 16,
-                    lineHeight: 22,
-                    fontFamily: 'Plus Jakarta Sans Regular',
-                  }}
-                  style={{ backgroundColor: 'white' }}
-                  outlineStyle={{ borderWidth: 1 }}
-                />
-              </View>
-
-              <Input
-                label="Dirección Completa"
-                value={formData.fullAddress}
-                type="text"
-                onChangeText={(value) =>
-                  handleInputChange('fullAddress', value)
-                }
-              />
-              <Input
-                label="Indicaciones adicionales"
-                value={formData.additionalInstructions}
-                type="text"
-                onChangeText={(value) =>
-                  handleInputChange('additionalInstructions', value)
-                }
-              />
+              <Text className="mt-4 font-plus-jakarta text-base font-normal">
+                A continuación llena los siguientes datos:
+              </Text>
             </View>
-          </View>
+            <View className="mt-8 pb-4">
+              <View className="space-y-4 rounded-lg">
+                <Input
+                  label="Nombre de esta dirección"
+                  value={formData.name}
+                  type="text"
+                  onChangeText={(value) => handleInputChange('name', value)}
+                />
 
-          <View className="px-6">
+                <View className="mb-4">
+                  <TextInput
+                    label="Departamento"
+                    value={selectedDepartment}
+                    mode="outlined"
+                    editable={false}
+                    onPressIn={() => setShowDepartmentPicker(true)}
+                    right={
+                      <TextInput.Icon
+                        icon="chevron-down"
+                        size={20}
+                        color={COLORS.lightGray[700]}
+                        onPress={() => setShowDepartmentPicker(true)}
+                      />
+                    }
+                    outlineColor={COLORS.lightGray[600]}
+                    activeOutlineColor={COLORS.black}
+                    contentStyle={{
+                      fontSize: 16,
+                      lineHeight: 22,
+                      fontFamily: 'Plus Jakarta Sans Regular',
+                    }}
+                    style={{ backgroundColor: 'white' }}
+                    outlineStyle={{ borderWidth: 1 }}
+                  />
+                </View>
+
+                <View className="mb-4">
+                  <TextInput
+                    label="Municipio"
+                    value={selectedMunicipality}
+                    mode="outlined"
+                    editable={false}
+                    onPressIn={() => setShowMunicipalityPicker(true)}
+                    right={
+                      <TextInput.Icon
+                        icon="chevron-down"
+                        size={20}
+                        color={COLORS.lightGray[700]}
+                        onPress={() => setShowMunicipalityPicker(true)}
+                      />
+                    }
+                    outlineColor={COLORS.lightGray[600]}
+                    activeOutlineColor={COLORS.black}
+                    contentStyle={{
+                      fontSize: 16,
+                      lineHeight: 22,
+                      fontFamily: 'Plus Jakarta Sans Regular',
+                    }}
+                    style={{ backgroundColor: 'white' }}
+                    outlineStyle={{ borderWidth: 1 }}
+                  />
+                </View>
+
+                <Input
+                  label="Dirección Completa"
+                  value={formData.fullAddress}
+                  type="text"
+                  onChangeText={(value) =>
+                    handleInputChange('fullAddress', value)
+                  }
+                />
+                <Input
+                  label="Indicaciones adicionales"
+                  value={formData.additionalInstructions}
+                  type="text"
+                  onChangeText={(value) =>
+                    handleInputChange('additionalInstructions', value)
+                  }
+                />
+              </View>
+            </View>
+
             <View className="flex-row items-center space-x-3">
               <Checkbox
                 status={isDefaultAddress ? 'checked' : 'unchecked'}
@@ -245,9 +241,10 @@ const AddAddressScreen = () => {
                 Convertir en dirección predeterminada
               </Text>
             </View>
-          </View>
-        </ScrollView>
-        <View className="absolute bottom-0 left-0 right-0 border-t border-gray-100 bg-white px-6 py-6">
+          </ScrollView>
+        </KeyboardAvoidingView>
+
+        <View className="px-4">
           <Button
             title={'Guardar Dirección'}
             onPress={handleSubmit}
@@ -256,7 +253,7 @@ const AddAddressScreen = () => {
             variant="contained"
           />
         </View>
-      </View>
+      </ContentContainer>
 
       {/* Department Picker Modal */}
       <Modal
@@ -267,10 +264,7 @@ const AddAddressScreen = () => {
       >
         <View className="flex-1 bg-black/30">
           <View className="flex-1 justify-end">
-            <View
-              className="transform rounded-t-3xl bg-white"
-              style={{}}
-            >
+            <View className="transform rounded-t-3xl bg-white">
               <View className="flex-row items-center justify-between border-b border-gray-100 px-6 pb-2 pt-4">
                 <Text className="text-lg font-semibold text-gray-900">
                   Seleccionar Departamento
@@ -329,10 +323,7 @@ const AddAddressScreen = () => {
       >
         <View className="flex-1 bg-black/30">
           <View className="flex-1 justify-end">
-            <View
-              className="transform rounded-t-3xl bg-white"
-              style={{}}
-            >
+            <View className="transform rounded-t-3xl bg-white">
               <View className="flex-row items-center justify-between border-b border-gray-100 px-6 pb-2 pt-4">
                 <Text className="text-lg font-semibold text-gray-900">
                   Seleccionar Municipio

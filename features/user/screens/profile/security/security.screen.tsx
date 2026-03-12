@@ -1,7 +1,14 @@
-import { View, Text, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Platform,
+  KeyboardAvoidingView,
+} from 'react-native';
 import { Button } from '@/components/button';
 import React, { useState } from 'react';
 import { NavigationHeader } from '@/components/navigation-header';
+import { ContentContainer } from '@/components/content-container';
 import { useStore } from '@/store/useStore';
 import { Input } from '@/components/input';
 import { useTranslation } from 'react-i18next';
@@ -27,9 +34,7 @@ const SecurityScreen = () => {
   if (!user) {
     return (
       <View className="flex-1 items-center justify-center bg-white">
-        <Text className="text-gray-600">
-          {t('auth.changePassword.noUser')}
-        </Text>
+        <Text className="text-gray-600">{t('auth.changePassword.noUser')}</Text>
       </View>
     );
   }
@@ -65,66 +70,71 @@ const SecurityScreen = () => {
   return (
     <>
       <NavigationHeader title="" showBackButton={true} borderBottom={false} />
-      <View className="flex-1 bg-white">
-        <ScrollView className="flex-1">
-          <View className="px-8 pt-4">
-            <Text className="font-plus-jakarta-bold text-2xl font-bold text-gray-800">
-              {t('profile.security.title')}
-            </Text>
-            <Text className="mt-4 font-plus-jakarta text-base font-normal text-gray-800">
-              {t('profile.security.subtitle')}
-            </Text>
-          </View>
-
-          <View className="px-8 pb-4">
-            <Text className="my-4 font-plus-jakarta text-base font-normal text-gray-800">
-              {t('auth.changePassword.passwordHint')}
-            </Text>
-
-            <View className="space-y-4 rounded-lg">
-              <Input
-                label={t('auth.changePassword.oldPassword')}
-                value={oldPassword}
-                type="password"
-                onChangeText={setOldPassword}
-              />
-
-              <Input
-                label={t('auth.changePassword.newPassword')}
-                value={newPassword}
-                type="password"
-                onChangeText={setNewPassword}
-              />
-
-              <Input
-                label={t('auth.changePassword.confirmPassword')}
-                value={confirmPassword}
-                type="password"
-                onChangeText={setConfirmPassword}
-              />
+      <ContentContainer>
+        <KeyboardAvoidingView
+          className="flex-1"
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        >
+          <ScrollView contentContainerClassName="px-4" bounces={false}>
+            <View className="pt-4">
+              <Text className="font-plus-jakarta-bold text-2xl font-bold text-gray-800">
+                {t('profile.security.title')}
+              </Text>
+              <Text className="mt-4 font-plus-jakarta text-base font-normal text-gray-800">
+                {t('profile.security.subtitle')}
+              </Text>
             </View>
 
-            {validationError ? (
-              <Text className="mt-2 font-plus-jakarta text-sm text-red-500">
-                {validationError}
+            <View className="pb-4">
+              <Text className="my-4 font-plus-jakarta text-base font-normal text-gray-800">
+                {t('auth.changePassword.passwordHint')}
               </Text>
-            ) : null}
 
-            {error && (
-              <Text className="mt-2 font-plus-jakarta text-sm text-red-500">
-                {getErrorMessage(error)}
-              </Text>
-            )}
+              <View className="space-y-4 rounded-lg">
+                <Input
+                  label={t('auth.changePassword.oldPassword')}
+                  value={oldPassword}
+                  type="password"
+                  onChangeText={setOldPassword}
+                />
 
-            {isSuccess && (
-              <Text className="mt-2 font-plus-jakarta text-sm text-green-600">
-                {t('auth.changePassword.success')}
-              </Text>
-            )}
-          </View>
-        </ScrollView>
+                <Input
+                  label={t('auth.changePassword.newPassword')}
+                  value={newPassword}
+                  type="password"
+                  onChangeText={setNewPassword}
+                />
 
-        <View className="bg-white px-6 py-4">
+                <Input
+                  label={t('auth.changePassword.confirmPassword')}
+                  value={confirmPassword}
+                  type="password"
+                  onChangeText={setConfirmPassword}
+                />
+              </View>
+
+              {validationError ? (
+                <Text className="mt-2 font-plus-jakarta text-sm text-red-500">
+                  {validationError}
+                </Text>
+              ) : null}
+
+              {error && (
+                <Text className="mt-2 font-plus-jakarta text-sm text-red-500">
+                  {getErrorMessage(error)}
+                </Text>
+              )}
+
+              {isSuccess && (
+                <Text className="mt-2 font-plus-jakarta text-sm text-green-600">
+                  {t('auth.changePassword.success')}
+                </Text>
+              )}
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
+
+        <View className="px-4">
           <Button
             title={
               isPending
@@ -132,11 +142,13 @@ const SecurityScreen = () => {
                 : t('auth.changePassword.submit')
             }
             onPress={handlePasswordChange}
-            disabled={isPending || !oldPassword || !newPassword || !confirmPassword}
+            disabled={
+              isPending || !oldPassword || !newPassword || !confirmPassword
+            }
             userType={userRole}
           />
         </View>
-      </View>
+      </ContentContainer>
     </>
   );
 };

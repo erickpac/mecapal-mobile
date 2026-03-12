@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { Button } from '@/components/button';
-// import TabComponent from '@/components/tab-component';
 import { NavigationHeader } from '@/components/navigation-header';
+import { ContentContainer } from '@/components/content-container';
 import { useStore } from '@/store/useStore';
 import { COLORS } from '@/consts/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -63,7 +63,7 @@ const AddressScreen = () => {
         onPress={() => {
           navigateToAddAddress();
         }}
-        className="border-b border-t border-gray-100 bg-white p-4 px-6"
+        className="border-b border-t border-gray-100 bg-white p-4 px-4"
       >
         <View className="flex-row items-center justify-between">
           <View className="flex-1 pr-4">
@@ -95,9 +95,9 @@ const AddressScreen = () => {
   return (
     <>
       <NavigationHeader title="" showBackButton={true} borderBottom={false} />
-      <View className="flex-1 bg-white">
+      <ContentContainer>
         <View className="flex-1">
-          <View className="px-6 pt-6">
+          <View className="px-4 pt-4">
             <Text className="font-plus-jakarta-bold text-2xl font-bold text-gray-900">
               {t('profile.address.title2')}
             </Text>
@@ -106,20 +106,7 @@ const AddressScreen = () => {
             </Text>
           </View>
 
-          <View className="mt-6">
-            {/*{addresses.length > 0 && (
-              <TabComponent
-                tabs={[
-                  {
-                    title: t('profile.address.myAddresses'),
-                    component: <></>,
-                    activeColor: COLORS.primary,
-                  },
-                ]}
-              />
-            )}*/}
-          </View>
-          <View className="space-y-4 pb-2">
+          <View className="mt-6 space-y-4 pb-2">
             <FlatList
               data={addresses}
               renderItem={({ item }) => renderListAddressItem(item)}
@@ -127,7 +114,7 @@ const AddressScreen = () => {
             />
           </View>
         </View>
-        <View className="px-6 py-6 pt-4">
+        <View className="px-4">
           <Button
             title={t('profile.address.addNew')}
             onPress={() => navigateToAddAddress()}
@@ -136,7 +123,7 @@ const AddressScreen = () => {
             disabled={addresses.length >= 3}
           />
         </View>
-      </View>
+      </ContentContainer>
     </>
   );
 };
