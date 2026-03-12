@@ -15,7 +15,8 @@ import { replaceRoute } from '@/features/shared/routes';
 import { USER_ROUTES } from '@/features/user/routes';
 
 export default function AuthOptionsScreen() {
-  const { selectedUserType, setHasCompletedOnboarding, enterGuestMode } = useStore();
+  const { selectedUserType, setHasCompletedOnboarding, enterGuestMode } =
+    useStore();
   const { t } = useTranslation();
   const isUser = selectedUserType === UserRole.CLIENT;
   const content = useMemo(() => {

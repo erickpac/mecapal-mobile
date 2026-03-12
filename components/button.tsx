@@ -6,11 +6,10 @@ import { COLORS } from '@/consts/colors';
 
 type PaperButtonProps = ComponentProps<typeof PaperButton>;
 
-interface ButtonProps
-  extends Omit<
-    PaperButtonProps,
-    'mode' | 'onPress' | 'children' | 'buttonColor' | 'textColor'
-  > {
+interface ButtonProps extends Omit<
+  PaperButtonProps,
+  'mode' | 'onPress' | 'children' | 'buttonColor' | 'textColor'
+> {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
   fullWidth?: boolean;

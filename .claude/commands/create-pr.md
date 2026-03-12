@@ -48,6 +48,7 @@ EOF
 5. **Report**: Show the PR URL
 
 Important:
+
 - Target branch is always `develop` unless explicitly told otherwise
 - PR title should be under 70 characters
 - Check the test checkbox only if tests actually exist

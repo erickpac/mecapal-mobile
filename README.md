@@ -86,11 +86,11 @@ APP_ENV=staging
 
 The app uses [EAS (Expo Application Services)](https://expo.dev/eas) for builds and deployments with three profiles:
 
-| Profile | Bundle ID | App Name | Use |
-|---|---|---|---|
+| Profile       | Bundle ID                 | App Name          | Use                       |
+| ------------- | ------------------------- | ----------------- | ------------------------- |
 | `development` | `com.mekapal.app.staging` | Mekapal (Staging) | Local dev with dev client |
-| `staging` | `com.mekapal.app.staging` | Mekapal (Staging) | Internal testing |
-| `production` | `com.mekapal.app` | Mekapal | App Store / Play Store |
+| `staging`     | `com.mekapal.app.staging` | Mekapal (Staging) | Internal testing          |
+| `production`  | `com.mekapal.app`         | Mekapal           | App Store / Play Store    |
 
 ```bash
 # Build for staging (internal testers)

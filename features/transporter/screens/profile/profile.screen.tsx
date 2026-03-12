@@ -51,7 +51,9 @@ export default function TransporterProfileScreen() {
                 <Text className="text-xl font-semibold text-gray-800">
                   {t('profile.title')}
                 </Text>
-                <Text className="text-gray-600">{user ? `${user.firstName} ${user.lastName}` : 'John Doe'}</Text>
+                <Text className="text-gray-600">
+                  {user ? `${user.firstName} ${user.lastName}` : 'John Doe'}
+                </Text>
                 <View className="mt-2">
                   <StarsRating rating={4.5} />
                 </View>
@@ -241,7 +243,11 @@ export default function TransporterProfileScreen() {
               }}
               className="mt-6 flex flex-row items-center gap-2 p-4 align-middle"
             >
-              <MaterialCommunityIcons name="logout" size={24} color={COLORS.secondary} />
+              <MaterialCommunityIcons
+                name="logout"
+                size={24}
+                color={COLORS.secondary}
+              />
               <Text className="text-left text-base font-semibold text-secondary-500">
                 {t('profile.account.logout')}
               </Text>

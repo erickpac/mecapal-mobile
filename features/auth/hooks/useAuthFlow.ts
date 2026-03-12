@@ -6,7 +6,9 @@ import { replaceRoute, navigateTo } from '@/features/shared/routes';
 
 export function useAuthFlow() {
   const pathname = usePathname();
-  const flow: AuthFlow = pathname.includes('/onboarding/') ? 'onboarding' : 'auth';
+  const flow: AuthFlow = pathname.includes('/onboarding/')
+    ? 'onboarding'
+    : 'auth';
   const isOnboarding = flow === 'onboarding';
 
   const routes = isOnboarding

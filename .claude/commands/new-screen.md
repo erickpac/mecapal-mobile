@@ -19,18 +19,18 @@ The argument should be in the format: `<feature> <screen-name>` (e.g., `user pay
 **Screen structure templates:**
 
 Simple screen (read-only content):
+
 ```tsx
 <>
   <NavigationHeader title="" showBackButton={true} borderBottom={false} />
   <ContentContainer>
-    <ScrollView contentContainerClassName="px-4">
-      {/* content */}
-    </ScrollView>
+    <ScrollView contentContainerClassName="px-4">{/* content */}</ScrollView>
   </ContentContainer>
 </>
 ```
 
 Form screen (with inputs and bottom button):
+
 ```tsx
 <>
   <NavigationHeader title="" showBackButton={true} borderBottom={false} />

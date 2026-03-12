@@ -1,7 +1,11 @@
 import * as React from 'react';
 import Svg, { Path, SvgProps } from 'react-native-svg';
 
-export const LoginHome = ({ width = 181, height = 168, ...props }: SvgProps) => (
+export const LoginHome = ({
+  width = 181,
+  height = 168,
+  ...props
+}: SvgProps) => (
   <Svg width={width} height={height} fill="none" {...props}>
     <Path
       fill="#F5F5F5"

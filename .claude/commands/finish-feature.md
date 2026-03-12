@@ -15,6 +15,7 @@ Finish the current feature branch and merge to develop. Follow these steps exact
 5. **Report**: Show the final squash commit and confirm the merge is complete
 
 Important:
+
 - Always squash merge to develop (never regular merge)
 - Do NOT push to remote unless explicitly asked
 - Do NOT delete the feature branch unless explicitly asked

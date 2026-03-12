@@ -73,7 +73,6 @@ export function parseApiError(error: unknown): AppError {
     return new AppError(ErrorCode.UNKNOWN, undefined, error);
   }
 
-  const msg =
-    error instanceof Error ? error.message : 'Unknown error occurred';
+  const msg = error instanceof Error ? error.message : 'Unknown error occurred';
   return new AppError(ErrorCode.UNKNOWN, undefined, msg);
 }

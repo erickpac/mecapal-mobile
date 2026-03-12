@@ -16,7 +16,9 @@ export const authService = {
     return response.data;
   },
 
-  register: async (credentials: RegisterCredentials): Promise<RegisterResponse> => {
+  register: async (
+    credentials: RegisterCredentials,
+  ): Promise<RegisterResponse> => {
     const response = await api.post(AUTH_ENDPOINTS.SIGN_UP, credentials);
     return response.data;
   },
@@ -33,12 +35,17 @@ export const authService = {
     return { message: 'auth.forgotPassword.success' };
   },
 
-  resetPassword: async (data: ResetPasswordRequest): Promise<{ message: string }> => {
+  resetPassword: async (
+    data: ResetPasswordRequest,
+  ): Promise<{ message: string }> => {
     await api.post(AUTH_ENDPOINTS.RESET_PASSWORD, data);
     return { message: 'auth.resetPassword.success' };
   },
 
-  verifyEmail: async ({ email, code }: VerifyEmailRequest): Promise<{ message: string }> => {
+  verifyEmail: async ({
+    email,
+    code,
+  }: VerifyEmailRequest): Promise<{ message: string }> => {
     await api.post(AUTH_ENDPOINTS.CONFIRM_SIGN_UP, { email, code });
     return { message: 'auth.verifyEmail.success' };
   },
