@@ -62,7 +62,7 @@ export default function AuthOptionsScreen() {
           </View>
         </View>
 
-        <View className="gap-4">
+        <View className="gap-2">
           <Button
             title={t('onboarding.authOptions.createAccount')}
             onPress={() => navigateToOnboardingRegister()}

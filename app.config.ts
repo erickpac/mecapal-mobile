@@ -22,6 +22,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: false,
     bundleIdentifier: getBundleIdentifier(),
+    infoPlist: {
+      NSLocationWhenInUseUsageDescription:
+        'Mekapal necesita tu ubicación para seleccionar direcciones en el mapa.',
+    },
   },
   android: {
     adaptiveIcon: {
@@ -29,6 +33,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: '#ffffff',
     },
     package: getAndroidPackage(),
+    config: {
+      googleMaps: {
+        apiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY ?? '',
+      },
+    },
   },
   web: {
     bundler: 'metro',
@@ -38,6 +47,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   plugins: [
     'expo-router',
     'expo-localization',
+    'expo-font',
+    'expo-image',
+    'expo-web-browser',
+    [
+      'expo-location',
+      {
+        locationWhenInUsePermission:
+          'Mekapal necesita tu ubicación para seleccionar direcciones en el mapa.',
+      },
+    ],
     [
       'expo-splash-screen',
       {

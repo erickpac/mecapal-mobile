@@ -34,7 +34,13 @@ const ROLE_COLORS = {
 };
 
 export default function RegisterScreen() {
-  const { mutate: register, isPending, error, isSuccess } = useRegister();
+  const {
+    mutate: register,
+    isPending,
+    error,
+    isSuccess,
+    variables: registerVariables,
+  } = useRegister();
   const { selectedUserType, setSelectedUserType } = useStore();
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
@@ -44,7 +50,6 @@ export default function RegisterScreen() {
   const {
     control,
     handleSubmit,
-    watch,
     reset,
     formState: { isValid },
   } = useForm<RegisterFormData>({
@@ -60,16 +65,15 @@ export default function RegisterScreen() {
     mode: 'all',
   });
 
-  const email = watch('email');
   const userType = selectedUserType ?? UserRole.CLIENT;
   const activeColor = ROLE_COLORS[userType];
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && registerVariables?.email) {
+      navigateToEmailVerification(registerVariables.email);
       reset();
-      navigateToEmailVerification(email);
     }
-  }, [isSuccess, email, reset, navigateToEmailVerification]);
+  }, [isSuccess, registerVariables, navigateToEmailVerification, reset]);
 
   const handleSelectUserType = (value: string) => {
     setSelectedUserType(value as UserRole);

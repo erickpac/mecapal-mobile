@@ -11,6 +11,7 @@ export default function AddressesLayout() {
       <Stack.Screen name="index" />
       <Stack.Screen name="add" />
       <Stack.Screen name="edit" />
+      <Stack.Screen name="map" />
     </Stack>
   );
 }

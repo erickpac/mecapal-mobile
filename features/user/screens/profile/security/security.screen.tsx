@@ -70,7 +70,7 @@ const SecurityScreen = () => {
   return (
     <>
       <NavigationHeader title="" showBackButton={true} borderBottom={false} />
-      <ContentContainer>
+      <ContentContainer edges={['left', 'right']}>
         <KeyboardAvoidingView
           className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -134,7 +134,7 @@ const SecurityScreen = () => {
           </ScrollView>
         </KeyboardAvoidingView>
 
-        <View className="px-4">
+        <View className="px-4 pb-4">
           <Button
             title={
               isPending

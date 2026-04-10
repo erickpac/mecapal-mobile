@@ -59,9 +59,9 @@ export default function EmailVerificationScreen() {
           ) : undefined
         }
       />
-      <ContentContainer className="px-4">
+      <ContentContainer>
         <KeyboardAvoidingView
-          className="flex-1 gap-6 pt-8"
+          className="flex-1 px-4 pt-8"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
           <View className="mt-6">
@@ -73,7 +73,7 @@ export default function EmailVerificationScreen() {
             </Text>
           </View>
 
-          <View className="gap-4">
+          <View className="mt-6 gap-4">
             <Input
               label={t('auth.verifyEmail.codeLabel')}
               type="text"
@@ -91,20 +91,22 @@ export default function EmailVerificationScreen() {
                 {getErrorMessage(verifyError)}
               </Text>
             )}
-
-            <Button
-              title={
-                isVerifying
-                  ? t('auth.verifyEmail.verifying')
-                  : t('auth.verifyEmail.submit')
-              }
-              onPress={handleVerify}
-              disabled={code.length !== 6 || isVerifying}
-              loading={isVerifying}
-              userType={selectedUserType}
-            />
           </View>
         </KeyboardAvoidingView>
+
+        <View className="px-4 pb-4">
+          <Button
+            title={
+              isVerifying
+                ? t('auth.verifyEmail.verifying')
+                : t('auth.verifyEmail.submit')
+            }
+            onPress={handleVerify}
+            disabled={code.length !== 6 || isVerifying}
+            loading={isVerifying}
+            userType={selectedUserType}
+          />
+        </View>
       </ContentContainer>
     </>
   );

@@ -73,7 +73,7 @@ const InfoScreen = () => {
   return (
     <>
       <NavigationHeader title="" showBackButton={true} borderBottom={false} />
-      <ContentContainer>
+      <ContentContainer edges={['left', 'right']}>
         <KeyboardAvoidingView
           className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -221,7 +221,7 @@ const InfoScreen = () => {
           </ScrollView>
         </KeyboardAvoidingView>
 
-        <View className="px-4">
+        <View className="px-4 pb-4">
           <Button
             disabled={editingFields.size === 0}
             title="Guardar Cambios"

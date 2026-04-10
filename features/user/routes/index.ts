@@ -19,6 +19,7 @@ export const USER_ROUTES = {
   ADDRESSES_INDEX: '/profile/addresses',
   ADDRESSES_ADD: '/profile/addresses/add',
   ADDRESSES_EDIT: '/profile/addresses/edit',
+  ADDRESSES_MAP: '/profile/addresses/map',
 
   // Security routes
   SECURITY: '/profile/security',
@@ -50,8 +51,19 @@ export const navigateToAddressesIndex = () =>
   router.push(USER_ROUTES.ADDRESSES_INDEX);
 export const navigateToAddAddress = () =>
   router.push(USER_ROUTES.ADDRESSES_ADD);
-export const navigateToEditAddress = () =>
-  router.push(USER_ROUTES.ADDRESSES_EDIT);
+export const navigateToEditAddress = (id: string) =>
+  router.push({ pathname: USER_ROUTES.ADDRESSES_EDIT, params: { id } } as any);
+export const navigateToMapPicker = (
+  latitude?: number,
+  longitude?: number,
+) =>
+  router.push({
+    pathname: USER_ROUTES.ADDRESSES_MAP,
+    params: {
+      ...(latitude != null && { latitude: latitude.toString() }),
+      ...(longitude != null && { longitude: longitude.toString() }),
+    },
+  } as any);
 
 // Security navigation functions
 export const navigateToSecurity = () => router.push(USER_ROUTES.SECURITY);

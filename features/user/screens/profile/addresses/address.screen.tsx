@@ -1,126 +1,103 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import { Button } from '@/components/button';
+import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
+import { Button } from '@/components/button';
 import { useStore } from '@/store/useStore';
+import { useLocalizedError } from '@/hooks/useLocalizedError';
+import { useAddresses } from '@/features/user/hooks/useAddresses';
+import { useDeleteAddress } from '@/features/user/hooks/useDeleteAddress';
+import { useSetDefaultAddress } from '@/features/user/hooks/useSetDefaultAddress';
+import { AddressCard } from '@/features/user/components/address-card';
+import { AddressEmptyState } from '@/features/user/components/address-empty-state';
+import { Address } from '@/features/user/types/address';
+import {
+  navigateToAddAddress,
+  navigateToEditAddress,
+} from '@/features/user/routes';
 import { COLORS } from '@/consts/colors';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useTranslation } from 'react-i18next';
-import { navigateToAddAddress } from '@/features/user/routes';
 
-type Address = {
-  id: string;
-  name: string;
-  street: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  country: string;
-  isDefault: boolean;
-};
+const MAX_ADDRESSES = 10;
 
 const AddressScreen = () => {
   const { user } = useStore();
   const { t } = useTranslation();
+  const { getErrorMessage } = useLocalizedError();
 
-  const [addresses, setAddresses] = useState<Address[]>([
-    {
-      id: '1',
-      name: 'Casa',
-      street: '13a Calle 12-12, zona 10, Apto 1234',
-      city: 'Guatemala City',
-      state: 'Guatemala',
-      zipCode: '01001',
-      country: 'Guatemala',
-      isDefault: true,
-    },
-    {
-      id: '2',
-      name: 'Trabajo',
-      street: '13a Calle 12-12, zona 10, Apto 1234',
-      city: 'Guatemala City',
-      state: 'Guatemala',
-      zipCode: '01001',
-      country: 'Guatemala',
-      isDefault: false,
-    },
-    {
-      id: '3',
-      name: 'Trabajo',
-      street: '13a Calle 12-12, zona 10, Apto 1234',
-      city: 'Guatemala City',
-      state: 'Guatemala',
-      zipCode: '01001',
-      country: 'Guatemala',
-      isDefault: false,
-    },
-  ]);
+  const { data: addresses, isLoading, error } = useAddresses();
+  const { mutate: deleteAddress } = useDeleteAddress();
+  const { mutate: setDefault } = useSetDefaultAddress();
 
-  const renderListAddressItem = (address: Address) => {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          navigateToAddAddress();
-        }}
-        className="border-b border-t border-gray-100 bg-white p-4 px-4"
-      >
-        <View className="flex-row items-center justify-between">
-          <View className="flex-1 pr-4">
-            <View className="flex-row items-center gap-2">
-              <Text className="font-plus-jakarta-bold text-base font-bold leading-tight text-gray-900">
-                {address.name} {address.isDefault && '(Predeterminada)'}
-              </Text>
-            </View>
-            <Text className="font-plus-jakarta-medium text-base font-medium leading-tight text-gray-900">
-              {address.street}
-            </Text>
-            <Text className="font-plus-jakarta-medium text-base font-medium leading-tight text-gray-900">
-              {address.city}, {address.state}, {address.zipCode},{' '}
-              {address.country}
-            </Text>
-          </View>
-          <View className="justify-center">
-            <MaterialCommunityIcons
-              name="chevron-right"
-              size={20}
-              color={COLORS.lightGray[700]}
-            />
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
+  const handleEdit = (address: Address) => {
+    navigateToEditAddress(address.id);
   };
+
+  const handleDelete = (id: string) => {
+    deleteAddress(id);
+  };
+
+  const handleSetDefault = (id: string) => {
+    setDefault(id);
+  };
+
+  const addressCount = addresses?.length ?? 0;
+  const isMaxReached = addressCount >= MAX_ADDRESSES;
 
   return (
     <>
-      <NavigationHeader title="" showBackButton={true} borderBottom={false} />
-      <ContentContainer>
+      <NavigationHeader title="" showBackButton borderBottom={false} />
+      <ContentContainer edges={['left', 'right']}>
         <View className="flex-1">
           <View className="px-4 pt-4">
-            <Text className="font-plus-jakarta-bold text-2xl font-bold text-gray-900">
+            <Text className="font-plus-jakarta-bold text-2xl text-gray-900">
               {t('profile.address.title2')}
             </Text>
-            <Text className="mt-4 font-plus-jakarta text-base font-normal text-gray-800">
+            <Text className="mt-4 font-plus-jakarta text-base text-gray-800">
               {t('profile.address.subTitle2')}
             </Text>
           </View>
 
-          <View className="mt-6 space-y-4 pb-2">
-            <FlatList
-              data={addresses}
-              renderItem={({ item }) => renderListAddressItem(item)}
-              keyExtractor={(item) => item.id.toString()}
-            />
-          </View>
+          {isLoading ? (
+            <View className="flex-1 items-center justify-center py-16">
+              <ActivityIndicator size="small" color={COLORS.primary} />
+            </View>
+          ) : error ? (
+            <View className="flex-1 items-center justify-center px-8 py-16">
+              <Text className="text-center font-plus-jakarta text-sm text-red-500">
+                {getErrorMessage(error)}
+              </Text>
+            </View>
+          ) : !addresses || addresses.length === 0 ? (
+            <AddressEmptyState />
+          ) : (
+            <View className="mt-6 flex-1 pb-2">
+              <FlatList
+                data={addresses}
+                renderItem={({ item }) => (
+                  <AddressCard
+                    address={item}
+                    onEdit={handleEdit}
+                    onDelete={handleDelete}
+                    onSetDefault={handleSetDefault}
+                  />
+                )}
+                keyExtractor={(item) => item.id}
+              />
+            </View>
+          )}
         </View>
-        <View className="px-4">
+
+        <View className="px-4 pb-4">
           <Button
-            title={t('profile.address.addNew')}
-            onPress={() => navigateToAddAddress()}
+            title={
+              isMaxReached
+                ? t('profile.address.maxAddresses')
+                : t('profile.address.addNew')
+            }
+            onPress={navigateToAddAddress}
             userType={user?.role}
             variant="contained"
-            disabled={addresses.length >= 3}
+            disabled={isMaxReached}
           />
         </View>
       </ContentContainer>

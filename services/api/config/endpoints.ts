@@ -1,3 +1,17 @@
+export const LOCATION_ENDPOINTS = {
+  COUNTRIES: 'locations/countries',
+  STATES: 'locations/states',
+  MUNICIPALITIES: 'locations/municipalities',
+  ZONES: 'locations/zones/by-municipality',
+  ZONES_SEARCH: 'locations/zones',
+};
+
+export const ADDRESS_ENDPOINTS = {
+  BASE: 'address',
+  BY_ID: (id: string) => `address/${id}`,
+  SET_DEFAULT: (id: string) => `address/${id}/default`,
+};
+
 export const AUTH_ENDPOINTS = {
   SIGN_IN: 'auth/sign-in',
   SIGN_UP: 'auth/sign-up',
