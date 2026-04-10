@@ -209,7 +209,7 @@ const MapPickerScreen = () => {
           showsUserLocation
           showsMyLocationButton
           zoomEnabled
-          zoomControlEnabled
+          zoomControlEnabled={false}
           scrollEnabled
           rotateEnabled={false}
         >

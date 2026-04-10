@@ -14,7 +14,7 @@
       "distribution": "internal",
       "env": {
         "APP_ENV": "staging",
-        "EXPO_PUBLIC_API_URL": "https://pa9puydfmf.us-east-1.awsapprunner.com/api/"
+        "EXPO_PUBLIC_API_URL": "https://me-39b909563c194825b97b50e4fb6d423e.ecs.us-east-1.on.aws/api/"
       },
       "ios": {
         "simulator": true
@@ -27,7 +27,7 @@
       },
       "env": {
         "APP_ENV": "staging",
-        "EXPO_PUBLIC_API_URL": "https://pa9puydfmf.us-east-1.awsapprunner.com/api/"
+        "EXPO_PUBLIC_API_URL": "https://me-39b909563c194825b97b50e4fb6d423e.ecs.us-east-1.on.aws/api/"
       }
     },
     "production": {
