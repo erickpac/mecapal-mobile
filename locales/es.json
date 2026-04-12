@@ -449,6 +449,7 @@
       "description": "No te preocupes, ingresa tu correo electrónico a continuación y te enviaremos un código para restablecer tu contraseña.",
       "email": "Correo electrónico",
       "submit": "Enviar código",
+      "sending": "Enviando...",
       "backToLogin": "Cancelar",
       "continueAsGuest": "Continuar como invitado"
     },
@@ -462,21 +463,32 @@
       "submit": "Restablecer contraseña",
       "resetting": "Restableciendo...",
       "success": "Contraseña restablecida exitosamente",
-      "passwordsMismatch": "Las contraseñas no coinciden"
+      "passwordsMismatch": "Las contraseñas no coinciden",
+      "resendCode": "Reenviar código",
+      "resendCodeIn": "Reenviar código en {{seconds}}s",
+      "codeResent": "Te hemos enviado un nuevo código."
+    },
+    "resetPasswordSuccess": {
+      "title": "¡Contraseña restablecida!",
+      "description": "Tu contraseña se ha actualizado correctamente. Ya puedes iniciar sesión con tu nueva contraseña.",
+      "goToLogin": "Ir a Iniciar Sesión"
     },
     "changePassword": {
       "title": "Cambiar contraseña",
       "oldPassword": "Contraseña actual*",
       "currentPassword": "Contraseña actual",
-      "newPassword": "Nueva contraseña",
-      "confirmPassword": "Confirmar nueva contraseña",
+      "newPassword": "Nueva contraseña*",
+      "confirmPassword": "Confirmar nueva contraseña*",
       "submit": "Actualizar contraseña",
       "updating": "Actualizando...",
       "success": "Contraseña actualizada exitosamente",
-      "passwordHint": "Tu contraseña debe tener un mínimo de 8 caracteres, incluyendo letras, por lo menos un número y un símbolo.",
+      "passwordHint": "Tu contraseña debe tener un mínimo de 8 caracteres, incluyendo mayúsculas, minúsculas, números y símbolos.",
       "passwordsMismatch": "Las contraseñas nuevas no coinciden",
       "passwordTooShort": "La contraseña debe tener al menos 8 caracteres",
-      "noUser": "No se pudo cargar la información del usuario"
+      "noUser": "No se pudo cargar la información del usuario",
+      "invalidCurrentPassword": "La contraseña actual es incorrecta",
+      "invalidNewPassword": "La nueva contraseña no cumple con la política de seguridad",
+      "rateLimited": "Demasiados intentos. Por favor, intenta de nuevo en unos minutos."
     },
     "verifyEmail": {
       "title": "Verifica tu correo",
@@ -819,6 +831,10 @@
         "passwordPolicy": "Debe incluir mayúscula, minúscula, número y símbolo",
         "confirmPasswordRequired": "Por favor confirma tu contraseña",
         "passwordsMismatch": "Las contraseñas no coinciden"
+      },
+      "changePassword": {
+        "oldPasswordRequired": "La contraseña actual es requerida",
+        "samePassword": "La nueva contraseña debe ser distinta a la actual"
       }
     }
   }

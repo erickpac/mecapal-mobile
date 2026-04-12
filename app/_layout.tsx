@@ -63,9 +63,15 @@ export default function RootLayout() {
               screenOptions={{
                 headerShown: false,
                 contentStyle: { backgroundColor: 'white' },
-                animation: 'none',
               }}
-            />
+            >
+              <Stack.Screen name="index" options={{ animation: 'none' }} />
+              <Stack.Screen name="(app)" options={{ animation: 'none' }} />
+              <Stack.Screen
+                name="onboarding"
+                options={{ animation: 'none' }}
+              />
+            </Stack>
           </View>
         </PaperProvider>
       </I18nextProvider>

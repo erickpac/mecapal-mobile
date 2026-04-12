@@ -12,6 +12,7 @@ export const ONBOARDING_ROUTES = {
   ONBOARDING_EMAIL_VERIFICATION: '/onboarding/auth/email-verification',
   ONBOARDING_FORGOT_PASSWORD: '/onboarding/auth/forgot-password',
   ONBOARDING_RESET_PASSWORD: '/onboarding/auth/reset-password',
+  ONBOARDING_RESET_PASSWORD_SUCCESS: '/onboarding/auth/reset-password-success',
 } as const;
 
 // Onboarding navigation functions

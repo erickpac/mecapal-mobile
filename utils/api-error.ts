@@ -24,12 +24,19 @@ export class AppError extends Error {
   readonly code: ErrorCode;
   readonly statusCode?: number;
   readonly serverMessage?: string;
+  readonly serverErrorCode?: string;
 
-  constructor(code: ErrorCode, statusCode?: number, serverMessage?: string) {
+  constructor(
+    code: ErrorCode,
+    statusCode?: number,
+    serverMessage?: string,
+    serverErrorCode?: string,
+  ) {
     super(serverMessage ?? code);
     this.code = code;
     this.statusCode = statusCode;
     this.serverMessage = serverMessage;
+    this.serverErrorCode = serverErrorCode;
   }
 
   get i18nKey(): string {
@@ -44,28 +51,78 @@ export function parseApiError(error: unknown): AppError {
 
   if (error instanceof AxiosError) {
     const status = error.response?.status;
-    const message =
-      error.response?.data?.message ?? error.response?.data?.error;
+    const data = error.response?.data;
+    const rawMessage = data?.message;
+    const message = Array.isArray(rawMessage) ? rawMessage[0] : rawMessage;
+    const serverErrorCode =
+      typeof data?.error === 'string' ? data.error : undefined;
 
     if (!error.response && error.request) {
-      return new AppError(ErrorCode.NETWORK_ERROR, undefined, message);
+      return new AppError(
+        ErrorCode.NETWORK_ERROR,
+        undefined,
+        message,
+        serverErrorCode,
+      );
     }
 
     switch (status) {
       case 400:
-        return new AppError(ErrorCode.VALIDATION, status, message);
+        return new AppError(
+          ErrorCode.VALIDATION,
+          status,
+          message,
+          serverErrorCode,
+        );
       case 401:
-        return new AppError(ErrorCode.UNAUTHORIZED, status, message);
+        return new AppError(
+          ErrorCode.UNAUTHORIZED,
+          status,
+          message,
+          serverErrorCode,
+        );
       case 403:
-        return new AppError(ErrorCode.FORBIDDEN, status, message);
+        return new AppError(
+          ErrorCode.FORBIDDEN,
+          status,
+          message,
+          serverErrorCode,
+        );
       case 404:
-        return new AppError(ErrorCode.NOT_FOUND, status, message);
+        return new AppError(
+          ErrorCode.NOT_FOUND,
+          status,
+          message,
+          serverErrorCode,
+        );
       case 422:
-        return new AppError(ErrorCode.VALIDATION, status, message);
+        return new AppError(
+          ErrorCode.VALIDATION,
+          status,
+          message,
+          serverErrorCode,
+        );
+      case 429:
+        return new AppError(
+          ErrorCode.VALIDATION,
+          status,
+          message,
+          serverErrorCode ?? 'RATE_LIMITED',
+        );
       case 500:
-        return new AppError(ErrorCode.SERVER_ERROR, status, message);
+        return new AppError(
+          ErrorCode.SERVER_ERROR,
+          status,
+          message,
+          serverErrorCode,
+        );
       default:
-        return new AppError(ErrorCode.UNKNOWN, status, message);
+        return new AppError(
+          ErrorCode.UNKNOWN,
+          status,
+          message,
+          serverErrorCode,
+        );
     }
   }
 

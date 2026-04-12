@@ -1,10 +1,11 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +18,7 @@ import { FormInput } from '@/components/form-input';
 import { useStore } from '@/store/useStore';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
 import { useResetPassword } from '@/features/auth/hooks/useResetPassword';
+import { useForgotPassword } from '@/features/auth/hooks/useForgotPassword';
 import { useAuthFlow } from '@/features/auth/hooks/useAuthFlow';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -25,19 +27,49 @@ import {
   ResetPasswordFormData,
 } from '@/features/auth/schemas/reset-password';
 
+const RESEND_COOLDOWN_SECONDS = 45;
+
 export default function ResetPasswordScreen() {
   const { email } = useLocalSearchParams<{ email: string }>();
   const { t } = useTranslation();
   const { selectedUserType } = useStore();
   const { getErrorMessage } = useLocalizedError();
-  const { isOnboarding, navigateToLogin } = useAuthFlow();
+  const { isOnboarding, navigateToResetPasswordSuccess } = useAuthFlow();
 
   const {
-    mutateAsync: resetPassword,
+    mutate: resetPassword,
     isPending,
     error,
     isSuccess,
   } = useResetPassword();
+
+  const { mutate: resendForgotPassword, isPending: isResending } =
+    useForgotPassword();
+
+  const [secondsLeft, setSecondsLeft] = useState<number>(RESEND_COOLDOWN_SECONDS);
+  const [resendInfo, setResendInfo] = useState<string | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startCooldown = () => {
+    setSecondsLeft(RESEND_COOLDOWN_SECONDS);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setSecondsLeft((prev) => {
+        if (prev <= 1) {
+          if (intervalRef.current) clearInterval(intervalRef.current);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
+
+  useEffect(() => {
+    startCooldown();
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, []);
 
   const {
     control,
@@ -51,23 +83,30 @@ export default function ResetPasswordScreen() {
 
   useEffect(() => {
     if (isSuccess) {
-      navigateToLogin();
+      navigateToResetPasswordSuccess();
     }
-  }, [isSuccess, navigateToLogin]);
+  }, [isSuccess, navigateToResetPasswordSuccess]);
 
-  const onSubmit = async (data: ResetPasswordFormData) => {
+  const onSubmit = (data: ResetPasswordFormData) => {
     if (!email) return;
-
-    try {
-      await resetPassword({
-        email,
-        code: data.code,
-        newPassword: data.newPassword,
-      });
-    } catch {
-      // error state handled by mutation
-    }
+    resetPassword({
+      email,
+      code: data.code,
+      newPassword: data.newPassword,
+    });
   };
+
+  const handleResend = () => {
+    if (!email || secondsLeft > 0 || isResending) return;
+    resendForgotPassword(email, {
+      onSuccess: () => {
+        setResendInfo(t('auth.resetPassword.codeResent'));
+        startCooldown();
+      },
+    });
+  };
+
+  const canResend = secondsLeft === 0 && !isResending;
 
   return (
     <>
@@ -83,22 +122,26 @@ export default function ResetPasswordScreen() {
           ) : undefined
         }
       />
-      <ContentContainer>
+      <ContentContainer edges={['left', 'right', 'bottom']}>
         <KeyboardAvoidingView
-          className="flex-1 pt-8"
+          className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-          <ScrollView contentContainerClassName="px-4">
-            <View className="mt-6">
-              <Text className="mb-6 text-center font-plus-jakarta-bold text-2xl text-text-active">
+          <ScrollView
+            contentContainerClassName="px-4 pt-6 pb-6"
+            bounces={false}
+            keyboardShouldPersistTaps="handled"
+          >
+            <View className="mt-2">
+              <Text className="mb-4 text-center font-plus-jakarta-bold text-2xl text-text-active">
                 {t('auth.resetPassword.title')}
               </Text>
-              <Text className="mx-6 text-center font-plus-jakarta text-base text-text-active">
+              <Text className="mx-4 text-center font-plus-jakarta text-base text-text-active">
                 {t('auth.resetPassword.description', { email })}
               </Text>
             </View>
 
-            <View className="mt-6 gap-4">
+            <View className="mt-8 gap-4">
               <FormInput
                 control={control}
                 name="code"
@@ -106,6 +149,7 @@ export default function ResetPasswordScreen() {
                 type="number"
                 maxLength={6}
                 returnKeyType="next"
+                placeholder={t('auth.resetPassword.codePlaceholder')}
               />
 
               <FormInput
@@ -125,26 +169,53 @@ export default function ResetPasswordScreen() {
                 onSubmitEditing={handleSubmit(onSubmit)}
               />
 
+              <TouchableOpacity
+                onPress={handleResend}
+                disabled={!canResend}
+                activeOpacity={0.7}
+                className="items-center py-2"
+              >
+                <Text
+                  className={`font-plus-jakarta text-sm ${
+                    canResend ? 'text-primary-500' : 'text-gray-500'
+                  }`}
+                >
+                  {canResend
+                    ? t('auth.resetPassword.resendCode')
+                    : t('auth.resetPassword.resendCodeIn', {
+                        seconds: secondsLeft,
+                      })}
+                </Text>
+              </TouchableOpacity>
+
+              {resendInfo && !error && (
+                <Text className="text-center font-plus-jakarta text-sm text-success-500">
+                  {resendInfo}
+                </Text>
+              )}
+
               {error && (
                 <Text className="text-center font-plus-jakarta text-sm text-red-500">
                   {getErrorMessage(error)}
                 </Text>
               )}
-
-              <Button
-                title={
-                  isPending
-                    ? t('auth.resetPassword.resetting')
-                    : t('auth.resetPassword.submit')
-                }
-                onPress={handleSubmit(onSubmit)}
-                disabled={!isValid || isPending}
-                loading={isPending}
-                userType={selectedUserType}
-              />
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
+
+        <View className="px-4 pb-4">
+          <Button
+            title={
+              isPending
+                ? t('auth.resetPassword.resetting')
+                : t('auth.resetPassword.submit')
+            }
+            onPress={handleSubmit(onSubmit)}
+            disabled={!isValid || isPending}
+            loading={isPending}
+            userType={selectedUserType}
+          />
+        </View>
       </ContentContainer>
     </>
   );

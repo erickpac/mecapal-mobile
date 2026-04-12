@@ -1,35 +1,56 @@
 import {
-  View,
-  Text,
-  ScrollView,
-  Platform,
   KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Text,
+  View,
 } from 'react-native';
+import { useEffect } from 'react';
+import { router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/button';
-import React, { useState } from 'react';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
+import { FormInput } from '@/components/form-input';
 import { useStore } from '@/store/useStore';
-import { Input } from '@/components/input';
-import { useTranslation } from 'react-i18next';
 import { useChangePassword } from '@/features/auth/hooks/useChangePassword';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
+import {
+  createChangePasswordSchema,
+  ChangePasswordFormData,
+} from '@/features/auth/schemas/change-password';
+import { parseApiError } from '@/utils/api-error';
 
 const SecurityScreen = () => {
   const { t } = useTranslation();
   const { user } = useStore();
+  const { getErrorMessage } = useLocalizedError();
   const {
-    mutateAsync: changePassword,
+    mutate: changePassword,
     isPending,
     error,
     isSuccess,
+    reset: resetMutation,
   } = useChangePassword();
-  const { getErrorMessage } = useLocalizedError();
 
-  const [oldPassword, setOldPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [validationError, setValidationError] = useState('');
+  const {
+    control,
+    handleSubmit,
+    setError,
+    formState: { isValid },
+  } = useForm<ChangePasswordFormData>({
+    resolver: zodResolver(createChangePasswordSchema(t)),
+    defaultValues: { oldPassword: '', newPassword: '', confirmPassword: '' },
+    mode: 'all',
+  });
+
+  useEffect(() => {
+    if (isSuccess) {
+      router.back();
+    }
+  }, [isSuccess]);
 
   if (!user) {
     return (
@@ -39,95 +60,100 @@ const SecurityScreen = () => {
     );
   }
 
-  const userRole = user.role || 'CLIENT';
-
-  const handlePasswordChange = async () => {
-    setValidationError('');
-
-    if (newPassword !== confirmPassword) {
-      setValidationError(t('auth.changePassword.passwordsMismatch'));
-      return;
-    }
-
-    if (newPassword.length < 8) {
-      setValidationError(t('auth.changePassword.passwordTooShort'));
-      return;
-    }
-
-    try {
-      await changePassword({
-        oldPassword,
-        newPassword,
-      });
-      setOldPassword('');
-      setNewPassword('');
-      setConfirmPassword('');
-    } catch {
-      // error state is handled by the mutation
-    }
+  const onSubmit = (data: ChangePasswordFormData) => {
+    resetMutation();
+    changePassword(
+      { oldPassword: data.oldPassword, newPassword: data.newPassword },
+      {
+        onError: (err) => {
+          const appError = parseApiError(err);
+          const code = appError.serverErrorCode;
+          if (code === 'INVALID_CREDENTIALS') {
+            setError('oldPassword', {
+              type: 'server',
+              message: t('auth.changePassword.invalidCurrentPassword'),
+            });
+          } else if (code === 'INVALID_PASSWORD') {
+            setError('newPassword', {
+              type: 'server',
+              message:
+                appError.serverMessage ??
+                t('auth.changePassword.invalidNewPassword'),
+            });
+          }
+        },
+      },
+    );
   };
+
+  const formLevelError = (() => {
+    if (!error) return null;
+    const appError = parseApiError(error);
+    const code = appError.serverErrorCode;
+    if (code === 'INVALID_CREDENTIALS' || code === 'INVALID_PASSWORD') {
+      return null;
+    }
+    if (code === 'RATE_LIMITED') {
+      return t('auth.changePassword.rateLimited');
+    }
+    return getErrorMessage(error);
+  })();
 
   return (
     <>
-      <NavigationHeader title="" showBackButton={true} borderBottom={false} />
+      <NavigationHeader title="" showBackButton borderBottom={false} />
       <ContentContainer edges={['left', 'right']}>
         <KeyboardAvoidingView
           className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-          <ScrollView contentContainerClassName="px-4" bounces={false}>
+          <ScrollView
+            contentContainerClassName="px-4 pb-6"
+            bounces={false}
+            keyboardShouldPersistTaps="handled"
+          >
             <View className="pt-4">
-              <Text className="font-plus-jakarta-bold text-2xl font-bold text-gray-800">
+              <Text className="font-plus-jakarta-bold text-2xl text-gray-800">
                 {t('profile.security.title')}
               </Text>
-              <Text className="mt-4 font-plus-jakarta text-base font-normal text-gray-800">
+              <Text className="mt-4 font-plus-jakarta text-base text-gray-800">
                 {t('profile.security.subtitle')}
               </Text>
             </View>
 
-            <View className="pb-4">
-              <Text className="my-4 font-plus-jakarta text-base font-normal text-gray-800">
-                {t('auth.changePassword.passwordHint')}
-              </Text>
+            <Text className="my-4 font-plus-jakarta text-sm text-gray-700">
+              {t('auth.changePassword.passwordHint')}
+            </Text>
 
-              <View className="space-y-4 rounded-lg">
-                <Input
-                  label={t('auth.changePassword.oldPassword')}
-                  value={oldPassword}
-                  type="password"
-                  onChangeText={setOldPassword}
-                />
+            <View className="gap-4">
+              <FormInput
+                control={control}
+                name="oldPassword"
+                label={t('auth.changePassword.oldPassword')}
+                type="password"
+                returnKeyType="next"
+              />
 
-                <Input
-                  label={t('auth.changePassword.newPassword')}
-                  value={newPassword}
-                  type="password"
-                  onChangeText={setNewPassword}
-                />
+              <FormInput
+                control={control}
+                name="newPassword"
+                label={t('auth.changePassword.newPassword')}
+                type="password"
+                returnKeyType="next"
+              />
 
-                <Input
-                  label={t('auth.changePassword.confirmPassword')}
-                  value={confirmPassword}
-                  type="password"
-                  onChangeText={setConfirmPassword}
-                />
-              </View>
+              <FormInput
+                control={control}
+                name="confirmPassword"
+                label={t('auth.changePassword.confirmPassword')}
+                type="password"
+                returnKeyType="done"
+                onSubmitEditing={handleSubmit(onSubmit)}
+              />
 
-              {validationError ? (
-                <Text className="mt-2 font-plus-jakarta text-sm text-red-500">
-                  {validationError}
-                </Text>
-              ) : null}
-
-              {error && (
-                <Text className="mt-2 font-plus-jakarta text-sm text-red-500">
-                  {getErrorMessage(error)}
-                </Text>
-              )}
-
-              {isSuccess && (
-                <Text className="mt-2 font-plus-jakarta text-sm text-green-600">
-                  {t('auth.changePassword.success')}
+              {formLevelError && (
+                <Text className="text-center font-plus-jakarta text-sm text-red-500">
+                  {formLevelError}
                 </Text>
               )}
             </View>
@@ -141,11 +167,11 @@ const SecurityScreen = () => {
                 ? t('auth.changePassword.updating')
                 : t('auth.changePassword.submit')
             }
-            onPress={handlePasswordChange}
-            disabled={
-              isPending || !oldPassword || !newPassword || !confirmPassword
-            }
-            userType={userRole}
+            onPress={handleSubmit(onSubmit)}
+            disabled={!isValid || isPending}
+            loading={isPending}
+            userType={user.role}
+            variant="contained"
           />
         </View>
       </ContentContainer>

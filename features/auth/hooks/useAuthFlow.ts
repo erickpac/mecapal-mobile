@@ -17,6 +17,8 @@ export function useAuthFlow() {
         register: ONBOARDING_ROUTES.ONBOARDING_REGISTER,
         forgotPassword: ONBOARDING_ROUTES.ONBOARDING_FORGOT_PASSWORD,
         resetPassword: ONBOARDING_ROUTES.ONBOARDING_RESET_PASSWORD,
+        resetPasswordSuccess:
+          ONBOARDING_ROUTES.ONBOARDING_RESET_PASSWORD_SUCCESS,
         emailVerification: ONBOARDING_ROUTES.ONBOARDING_EMAIL_VERIFICATION,
       }
     : {
@@ -24,6 +26,7 @@ export function useAuthFlow() {
         register: AUTH_ROUTES.AUTH_REGISTER,
         forgotPassword: AUTH_ROUTES.AUTH_FORGOT_PASSWORD,
         resetPassword: AUTH_ROUTES.AUTH_RESET_PASSWORD,
+        resetPasswordSuccess: AUTH_ROUTES.AUTH_RESET_PASSWORD_SUCCESS,
         emailVerification: AUTH_ROUTES.AUTH_EMAIL_VERIFICATION,
       };
 
@@ -43,6 +46,22 @@ export function useAuthFlow() {
     navigateToForgotPassword: () => push(routes.forgotPassword),
     navigateToResetPassword: (email: string) =>
       push(`${routes.resetPassword}?email=${encodeURIComponent(email)}`),
+    navigateToResetPasswordSuccess: () =>
+      replaceRoute(routes.resetPasswordSuccess),
+    // Exits the forgot-password flow and returns to the login screen that
+    // initiated it. In auth flow two screens were pushed (forgot-password +
+    // reset-password, the latter replaced by the success screen): the first
+    // back pops within the /auth stack, the second exits it to the origin.
+    // In onboarding the flow uses replace, so the stack is [success] and a
+    // single replace to login is enough.
+    exitForgotPasswordFlow: () => {
+      if (isOnboarding) {
+        replaceRoute(routes.login);
+        return;
+      }
+      router.back();
+      router.back();
+    },
     navigateToEmailVerification: (email: string) =>
       push(`${routes.emailVerification}?email=${encodeURIComponent(email)}`),
   };

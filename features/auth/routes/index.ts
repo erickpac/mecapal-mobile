@@ -7,6 +7,7 @@ export const AUTH_ROUTES = {
   AUTH_EMAIL_VERIFICATION: '/auth/email-verification',
   AUTH_FORGOT_PASSWORD: '/auth/forgot-password',
   AUTH_RESET_PASSWORD: '/auth/reset-password',
+  AUTH_RESET_PASSWORD_SUCCESS: '/auth/reset-password-success',
 } as const;
 
 // Reset navigation and go to Auth
