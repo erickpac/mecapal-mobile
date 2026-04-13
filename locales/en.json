@@ -33,7 +33,7 @@
   "transport": {
     "home": {
       "greeting": "Hello, {{name}}!",
-      "guestGreeting": "Welcome to Mecapal!",
+      "guestGreeting": "Welcome to Mekapal!",
       "subtitle": "Do you need transportation today?",
       "guestSubtitle": "Find the transportation you need",
       "guest": {
@@ -199,7 +199,7 @@
       }
     },
     "about": {
-      "title": "About Mecapal",
+      "title": "About Mekapal",
       "subtitle": "We connect users with reliable transporters",
       "guest": {
         "loginPrompt": "Ready to get started?",
@@ -207,8 +207,8 @@
         "register": "Create account"
       },
       "whatIs": {
-        "title": "What is Mecapal?",
-        "description": "Mecapal is a platform that connects users who need transportation services with professional and reliable transporters. We offer a secure, fast, and efficient solution for all your transportation needs."
+        "title": "What is Mekapal?",
+        "description": "Mekapal is a platform that connects users who need transportation services with professional and reliable transporters. We offer a secure, fast, and efficient solution for all your transportation needs."
       },
       "howItWorks": {
         "title": "How does it work?",
@@ -249,7 +249,7 @@
         }
       },
       "benefits": {
-        "title": "Why choose Mecapal?",
+        "title": "Why choose Mekapal?",
         "secure": {
           "title": "Secure and Reliable",
           "description": "All our transporters are verified and insured"
@@ -269,16 +269,16 @@
       },
       "cta": {
         "title": "Ready to get started?",
-        "subtitle": "Join thousands of users who already trust Mecapal",
+        "subtitle": "Join thousands of users who already trust Mekapal",
         "register": "Create account",
         "login": "Sign In"
       }
     },
     "auth": {
-      "title": "Join Mecapal",
+      "title": "Join Mekapal",
       "subtitle": "Create your account and access all services",
       "welcome": {
-        "title": "Welcome to Mecapal!",
+        "title": "Welcome to Mekapal!",
         "subtitle": "The most reliable transportation platform"
       },
       "createAccount": {
@@ -311,9 +311,9 @@
       "quickActions": {
         "title": "Quick Actions",
         "explore": "Explore Services",
-        "learnMore": "Learn More About Mecapal"
+        "learnMore": "Learn More About Mekapal"
       },
-      "socialProof": "Join thousands of users who already trust Mecapal"
+      "socialProof": "Join thousands of users who already trust Mekapal"
     },
     "profile": {
       "title": "My Profile",

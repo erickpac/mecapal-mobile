@@ -42,10 +42,10 @@ Mekapal App is a mobile application that connects users with available truck dri
 
 ```bash
 # Clone the repository
-$ git clone git@github.com:erickpac/mecapal-mobile.git
+$ git clone git@github.com:erickpac/mekapal-mobile.git
 
 # Navigate into the project
-$ cd mecapal-app
+$ cd mekapal-mobile
 
 # Install dependencies
 $ pnpm install

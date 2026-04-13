@@ -33,7 +33,7 @@
   "transport": {
     "home": {
       "greeting": "¡Hola, {{name}}!",
-      "guestGreeting": "¡Bienvenido a Mecapal!",
+      "guestGreeting": "¡Bienvenido a Mekapal!",
       "subtitle": "¿Necesitas transporte hoy?",
       "guestSubtitle": "Encuentra el transporte que necesitas",
       "guest": {
@@ -199,7 +199,7 @@
       }
     },
     "about": {
-      "title": "Acerca de Mecapal",
+      "title": "Acerca de Mekapal",
       "subtitle": "Conectamos usuarios con transportistas confiables",
       "guest": {
         "loginPrompt": "¿Listo para empezar?",
@@ -207,8 +207,8 @@
         "register": "Crear cuenta"
       },
       "whatIs": {
-        "title": "¿Qué es Mecapal?",
-        "description": "Mecapal es una plataforma que conecta usuarios que necesitan servicios de transporte con transportistas profesionales y confiables. Ofrecemos una solución segura, rápida y eficiente para todas tus necesidades de transporte."
+        "title": "¿Qué es Mekapal?",
+        "description": "Mekapal es una plataforma que conecta usuarios que necesitan servicios de transporte con transportistas profesionales y confiables. Ofrecemos una solución segura, rápida y eficiente para todas tus necesidades de transporte."
       },
       "howItWorks": {
         "title": "¿Cómo funciona?",
@@ -249,7 +249,7 @@
         }
       },
       "benefits": {
-        "title": "¿Por qué elegir Mecapal?",
+        "title": "¿Por qué elegir Mekapal?",
         "secure": {
           "title": "Seguro y Confiable",
           "description": "Todos nuestros transportistas están verificados y asegurados"
@@ -269,16 +269,16 @@
       },
       "cta": {
         "title": "¿Listo para empezar?",
-        "subtitle": "Únete a miles de usuarios que ya confían en Mecapal",
+        "subtitle": "Únete a miles de usuarios que ya confían en Mekapal",
         "register": "Crear cuenta",
         "login": "Iniciar Sesión"
       }
     },
     "auth": {
-      "title": "Únete a Mecapal",
+      "title": "Únete a Mekapal",
       "subtitle": "Crea tu cuenta y accede a todos los servicios",
       "welcome": {
-        "title": "¡Bienvenido a Mecapal!",
+        "title": "¡Bienvenido a Mekapal!",
         "subtitle": "La plataforma de transporte más confiable"
       },
       "createAccount": {
@@ -311,9 +311,9 @@
       "quickActions": {
         "title": "Acciones Rápidas",
         "explore": "Explorar Servicios",
-        "learnMore": "Conoce Más Sobre Mecapal"
+        "learnMore": "Conoce Más Sobre Mekapal"
       },
-      "socialProof": "Únete a miles de usuarios que ya confían en Mecapal"
+      "socialProof": "Únete a miles de usuarios que ya confían en Mekapal"
     },
     "profile": {
       "title": "Mi Perfil",
