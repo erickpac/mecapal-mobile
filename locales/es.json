@@ -770,7 +770,70 @@
       "logoutConfirm": "¿Estás seguro que deseas cerrar sesión?",
       "logoutYes": "Sí, cerrar sesión",
       "logoutCancel": "Regresar",
-      "deleteAccount": "Eliminar cuenta"
+      "deleteAccount": "Eliminar mi cuenta"
+    }
+  },
+  "account": {
+    "deletion": {
+      "title": "Eliminar tu cuenta",
+      "warning": {
+        "delay": "Tu cuenta se eliminará después de 30 días. Durante ese período puedes cancelar el proceso iniciando sesión nuevamente.",
+        "keptTitle": "Lo que se conserva",
+        "keptBody": "Historial de órdenes y facturación requeridos por ley.",
+        "deletedTitle": "Lo que se elimina",
+        "deletedBody": "Tus datos personales, dirección, teléfono y credenciales de acceso."
+      },
+      "reasonLabel": "¿Por qué te vas? (opcional)",
+      "otherReasonLabel": "Cuéntanos más (máx. 500 caracteres)",
+      "passwordLabel": "Contraseña actual",
+      "submit": "Eliminar mi cuenta",
+      "submitting": "Procesando...",
+      "confirmTitle": "¿Estás seguro?",
+      "confirmMessage": "Esta acción programará la eliminación de tu cuenta. Podrás cancelarla iniciando sesión en los próximos 30 días.",
+      "confirmYes": "Sí, eliminar",
+      "reasons": {
+        "none": "Prefiero no decir",
+        "NO_LONGER_USE": "Ya no uso la app",
+        "CREATED_ANOTHER_ACCOUNT": "Creé otra cuenta",
+        "PRIVACY_CONCERNS": "Problemas de privacidad",
+        "APP_ISSUES": "La app tiene muchos errores",
+        "BAD_EXPERIENCE": "Mala experiencia con un cliente/transportista",
+        "MISSING_FEATURES": "Faltan funciones que necesito",
+        "PREFER_NOT_TO_SAY": "Prefiero no decir",
+        "OTHER": "Otro"
+      },
+      "blockers": {
+        "ACTIVE_ORDERS": "Tienes órdenes activas. Complétalas o cancélalas antes de eliminar tu cuenta.",
+        "PENDING_SETTLEMENTS": "Tienes liquidaciones pendientes. Espera a que se procesen.",
+        "OPEN_INCIDENTS": "Tienes incidentes abiertos. Resuélvelos antes de continuar.",
+        "ACTIVE_DELIVERY_REQUESTS": "Tienes solicitudes de entrega activas. Complétalas o cancélalas antes de continuar."
+      },
+      "errors": {
+        "passwordRequired": "La contraseña es obligatoria",
+        "invalidPassword": "Contraseña incorrecta",
+        "otherReasonRequired": "Cuéntanos brevemente tu motivo",
+        "otherReasonTooLong": "El motivo debe tener menos de 500 caracteres",
+        "validation": "Revisa los datos ingresados e intenta nuevamente.",
+        "blockedTitle": "No podemos eliminar tu cuenta todavía:",
+        "rateLimitedTitle": "Demasiados intentos",
+        "rateLimited": "Demasiados intentos. Intenta nuevamente en unos minutos."
+      },
+      "success": {
+        "title": "Eliminación programada",
+        "message": "Tu cuenta se eliminará el {{date}}.",
+        "cancelHint": "Puedes cancelar iniciando sesión antes de esa fecha.",
+        "goHome": "Volver al inicio"
+      },
+      "banner": {
+        "text": "Tu cuenta se eliminará el {{date}}.",
+        "cancel": "Cancelar eliminación",
+        "cancelling": "Cancelando..."
+      },
+      "pendingModal": {
+        "title": "Cuenta programada para eliminarse",
+        "message": "Tu cuenta se eliminará el {{date}}. Cancela la eliminación para poder hacer cambios.",
+        "cancelDeletion": "Cancelar eliminación"
+      }
     }
   },
   "settings": {

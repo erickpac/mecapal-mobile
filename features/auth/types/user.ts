@@ -13,4 +13,5 @@ export interface User {
   phone: string;
   companyName: string | null;
   taxId: string | null;
+  deletionScheduledFor: string | null;
 }

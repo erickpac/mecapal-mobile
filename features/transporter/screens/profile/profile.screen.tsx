@@ -12,6 +12,7 @@ import {
 import StarsRating from '@/components/stars-rating';
 import { COLORS } from '@/consts/colors';
 import { replaceRoute } from '@/features/shared/routes';
+import { navigateToDeleteAccount } from '@/features/account/routes';
 
 export default function TransporterProfileScreen() {
   const { user, logout } = useStore();
@@ -250,6 +251,20 @@ export default function TransporterProfileScreen() {
               />
               <Text className="text-left text-base font-semibold text-secondary-500">
                 {t('profile.account.logout')}
+              </Text>
+            </TouchableOpacity>
+            {/* Delete Account Button */}
+            <TouchableOpacity
+              onPress={navigateToDeleteAccount}
+              className="flex flex-row items-center gap-2 px-4 align-middle"
+            >
+              <MaterialCommunityIcons
+                name="trash-can-outline"
+                size={24}
+                color={COLORS.error}
+              />
+              <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-red-600 underline">
+                {t('profile.account.deleteAccount')}
               </Text>
             </TouchableOpacity>
           </View>

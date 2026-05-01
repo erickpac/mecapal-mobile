@@ -23,3 +23,8 @@ export const AUTH_ENDPOINTS = {
   CHANGE_PASSWORD: 'auth/change-password',
   SIGN_OUT: 'auth/sign-out',
 };
+
+export const ACCOUNT_ENDPOINTS = {
+  DELETE: 'auth/account',
+  CANCEL_DELETION: 'auth/account/cancel-deletion',
+};

@@ -11,6 +11,7 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from '@/locales/i18n';
 import { useEffect } from 'react';
 import { useStatusBar } from '@/hooks/useStatusBar';
+import { PendingDeletionModal } from '@/features/account/components/pending-deletion-modal';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -72,6 +73,7 @@ export default function RootLayout() {
                 options={{ animation: 'none' }}
               />
             </Stack>
+            <PendingDeletionModal />
           </View>
         </PaperProvider>
       </I18nextProvider>

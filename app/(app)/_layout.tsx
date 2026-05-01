@@ -1,4 +1,5 @@
 import { Tabs } from 'expo-router';
+import { View } from 'react-native';
 import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -10,6 +11,7 @@ import {
 } from '@/consts/navigation';
 import { useTabConfigurations } from '@/hooks/useTabConfigurations';
 import { COLORS } from '@/consts/colors';
+import { PendingDeletionBanner } from '@/features/account/components/pending-deletion-banner';
 
 export default function AppLayout() {
   const { user, isAuthenticated } = useStore();
@@ -37,7 +39,9 @@ export default function AppLayout() {
     user?.role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
 
   return (
-    <Tabs screenOptions={TAB_SCREEN_OPTIONS}>
+    <View className="flex-1">
+      <PendingDeletionBanner />
+      <Tabs screenOptions={TAB_SCREEN_OPTIONS}>
       {/* Render active tabs */}
       {activeTabs.map((tab) => {
         return (
@@ -70,6 +74,7 @@ export default function AppLayout() {
           }}
         />
       ))}
-    </Tabs>
+      </Tabs>
+    </View>
   );
 }

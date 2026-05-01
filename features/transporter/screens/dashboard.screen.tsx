@@ -8,7 +8,7 @@ import Card from '@/components/card';
 import { Truck } from '@/components/svg/vehicles/truck';
 import { Shuttle } from '@/components/svg/vehicles/shuttle';
 import { Motorcycle } from '@/components/svg/vehicles/motorcycle';
-import { Header } from '@/components/header';
+import { NavigationHeader } from '@/components/navigation-header';
 
 export default function TransporterDashboardScreen() {
   const { user } = useStore();
@@ -16,7 +16,7 @@ export default function TransporterDashboardScreen() {
 
   return (
     <>
-      <Header />
+      <NavigationHeader variant="logo" />
       <ScrollView className="flex-1 bg-gray-50">
         <WelcomeHero
           name={user ? `${user.firstName} ${user.lastName}` : ''}

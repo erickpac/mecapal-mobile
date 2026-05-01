@@ -20,6 +20,7 @@ import {
 import Avatar from '@/components/avatar';
 import { IconName } from '@/types/navigation';
 import { replaceRoute } from '@/features/shared/routes';
+import { navigateToDeleteAccount } from '@/features/account/routes';
 
 const listProfileOptions: {
   icon: IconName;
@@ -64,6 +65,7 @@ export default function UserProfileScreen() {
       [
         {
           text: t('profile.account.logoutYes'),
+          style: 'destructive',
           onPress: () => {
             logout();
             replaceRoute('/(app)/home');
@@ -121,7 +123,11 @@ export default function UserProfileScreen() {
 
   return (
     <>
-      <NavigationHeader title="" showBackButton={false} borderBottom={false} />
+      <NavigationHeader
+        variant="logo"
+        showBackButton={false}
+        borderBottom={false}
+      />
       <View className="m-0 flex-1 bg-white">
         <View className="m-0 flex-1 p-0">
           <View className="h-48 border-0 bg-blue-900">
@@ -182,6 +188,20 @@ export default function UserProfileScreen() {
               />
               <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-[#7C2F19] underline">
                 {t('profile.account.logout')}
+              </Text>
+            </TouchableOpacity>
+            {/* Delete Account Button */}
+            <TouchableOpacity
+              onPress={navigateToDeleteAccount}
+              className="flex flex-row items-center gap-2 px-4 align-middle"
+            >
+              <MaterialCommunityIcons
+                name="trash-can-outline"
+                size={24}
+                color={COLORS.error}
+              />
+              <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-red-600 underline">
+                {t('profile.account.deleteAccount')}
               </Text>
             </TouchableOpacity>
           </View>

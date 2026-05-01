@@ -68,6 +68,7 @@ export default function LoginScreen({
   return (
     <>
       <NavigationHeader
+        variant="logo"
         showBackButton={!showBackButton ? showBackButton : !isOnboarding}
         rightComponent={
           isOnboarding ? (

@@ -1,5 +1,5 @@
 import { Text, View, ScrollView, Image } from 'react-native';
-import { Header } from '@/components/header';
+import { NavigationHeader } from '@/components/navigation-header';
 import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
 import { navigateTo } from '@/features/shared/routes';
@@ -25,7 +25,7 @@ export default function GuestHomeScreen() {
 
   return (
     <>
-      <Header />
+      <NavigationHeader variant="logo" />
       <ScrollView
         className="flex-1 bg-background-100"
         contentContainerClassName="pb-0"

@@ -765,7 +765,70 @@
       "logoutConfirm": "Are you sure you want to log out?",
       "logoutYes": "Yes, log out",
       "logoutCancel": "Go back",
-      "deleteAccount": "Delete Account"
+      "deleteAccount": "Delete my account"
+    }
+  },
+  "account": {
+    "deletion": {
+      "title": "Delete your account",
+      "warning": {
+        "delay": "Your account will be deleted after 30 days. During that period you can cancel the process by signing in again.",
+        "keptTitle": "What's kept",
+        "keptBody": "Order and billing history required by law.",
+        "deletedTitle": "What's deleted",
+        "deletedBody": "Your personal data, address, phone number and sign-in credentials."
+      },
+      "reasonLabel": "Why are you leaving? (optional)",
+      "otherReasonLabel": "Tell us more (max 500 characters)",
+      "passwordLabel": "Current password",
+      "submit": "Delete my account",
+      "submitting": "Processing...",
+      "confirmTitle": "Are you sure?",
+      "confirmMessage": "This will schedule your account for deletion. You can cancel by signing in within the next 30 days.",
+      "confirmYes": "Yes, delete",
+      "reasons": {
+        "none": "Prefer not to say",
+        "NO_LONGER_USE": "I don't use the app anymore",
+        "CREATED_ANOTHER_ACCOUNT": "I created another account",
+        "PRIVACY_CONCERNS": "Privacy concerns",
+        "APP_ISSUES": "The app has too many issues",
+        "BAD_EXPERIENCE": "Bad experience with a client/transporter",
+        "MISSING_FEATURES": "Missing features I need",
+        "PREFER_NOT_TO_SAY": "Prefer not to say",
+        "OTHER": "Other"
+      },
+      "blockers": {
+        "ACTIVE_ORDERS": "You have active orders. Complete or cancel them before deleting your account.",
+        "PENDING_SETTLEMENTS": "You have pending settlements. Wait for them to be processed.",
+        "OPEN_INCIDENTS": "You have open incidents. Resolve them before continuing.",
+        "ACTIVE_DELIVERY_REQUESTS": "You have active delivery requests. Complete or cancel them before continuing."
+      },
+      "errors": {
+        "passwordRequired": "Password is required",
+        "invalidPassword": "Incorrect password",
+        "otherReasonRequired": "Please briefly tell us the reason",
+        "otherReasonTooLong": "Reason must be less than 500 characters",
+        "validation": "Please review your input and try again.",
+        "blockedTitle": "We can't delete your account yet:",
+        "rateLimitedTitle": "Too many attempts",
+        "rateLimited": "Too many attempts. Please try again in a few minutes."
+      },
+      "success": {
+        "title": "Deletion scheduled",
+        "message": "Your account will be deleted on {{date}}.",
+        "cancelHint": "You can cancel by signing in before that date.",
+        "goHome": "Back to home"
+      },
+      "banner": {
+        "text": "Your account will be deleted on {{date}}.",
+        "cancel": "Cancel deletion",
+        "cancelling": "Cancelling..."
+      },
+      "pendingModal": {
+        "title": "Account scheduled for deletion",
+        "message": "Your account will be deleted on {{date}}. Cancel deletion to make changes.",
+        "cancelDeletion": "Cancel deletion"
+      }
     }
   },
   "settings": {

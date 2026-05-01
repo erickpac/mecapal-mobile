@@ -13,6 +13,10 @@ interface AppState {
   isGuestMode: boolean;
   hasCompletedOnboarding: boolean;
   selectedUserType: UserRole | undefined;
+  pendingDeletionModal: {
+    visible: boolean;
+    scheduledFor: string | null;
+  };
   setUser: (user: User | null) => void;
   setAccessToken: (accessToken: string | null) => void;
   setRefreshToken: (refreshToken: string | null) => void;
@@ -20,6 +24,9 @@ interface AppState {
   setHasCompletedOnboarding: (completed: boolean) => void;
   setSelectedUserType: (userType: UserRole | undefined) => void;
   setGuestMode: (isGuest: boolean) => void;
+  setDeletionScheduledFor: (scheduledFor: string | null) => void;
+  showPendingDeletionModal: (scheduledFor: string) => void;
+  hidePendingDeletionModal: () => void;
   logout: () => void;
   enterGuestMode: () => void;
 }
@@ -35,8 +42,24 @@ export const useStore = create<AppState>()(
       isGuestMode: false,
       hasCompletedOnboarding: false,
       selectedUserType: undefined,
+      pendingDeletionModal: { visible: false, scheduledFor: null },
       setUser: (user) =>
         set({ user, isAuthenticated: !!user, isGuestMode: false }),
+      setDeletionScheduledFor: (scheduledFor) =>
+        set((state) =>
+          state.user
+            ? { user: { ...state.user, deletionScheduledFor: scheduledFor } }
+            : {},
+        ),
+      showPendingDeletionModal: (scheduledFor) =>
+        set((state) => ({
+          pendingDeletionModal: { visible: true, scheduledFor },
+          user: state.user
+            ? { ...state.user, deletionScheduledFor: scheduledFor }
+            : state.user,
+        })),
+      hidePendingDeletionModal: () =>
+        set({ pendingDeletionModal: { visible: false, scheduledFor: null } }),
       setAccessToken: (accessToken: string | null) => {
         if (accessToken) {
           TokenManager.setToken(accessToken);

@@ -2,7 +2,7 @@ import { useStore } from '@/store/useStore';
 import { Text, View, ScrollView, Image } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { navigateTo } from '@/features/shared/routes';
-import { Header } from '@/components/header';
+import { NavigationHeader } from '@/components/navigation-header';
 import { Button } from '@/components/button';
 import { UserRole } from '@/features/auth/types/user';
 import WelcomeHero from '@/components/welcome-hero';
@@ -22,7 +22,7 @@ export default function UserHomeScreen() {
 
   return (
     <>
-      <Header />
+      <NavigationHeader variant="logo" />
       <ScrollView
         className="flex-1 bg-background-100"
         contentContainerClassName="pb-0"

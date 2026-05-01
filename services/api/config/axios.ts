@@ -33,6 +33,22 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
+    // Global 403 ACCOUNT_PENDING_DELETION handler
+    const status = error.response?.status;
+    const data = error.response?.data;
+    if (
+      status === 403 &&
+      data &&
+      typeof data === 'object' &&
+      data.error === 'ACCOUNT_PENDING_DELETION' &&
+      typeof data.scheduledFor === 'string'
+    ) {
+      // Lazy import to avoid circular dependency (store imports auth services).
+      const { useStore } = await import('@/store/useStore');
+      useStore.getState().showPendingDeletionModal(data.scheduledFor);
+      return Promise.reject(error);
+    }
+
     // Check if we should attempt token refresh
     if (TokenService.shouldAttemptRefresh(error)) {
       TokenService.markRequestAsRetried(originalRequest);

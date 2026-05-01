@@ -6,8 +6,12 @@ import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS } from '@/consts/colors';
+import { MekapalWhite } from '@/components/svg';
+
+type NavigationHeaderVariant = 'nav' | 'logo';
 
 interface NavigationHeaderProps {
+  variant?: NavigationHeaderVariant;
   title?: string;
   showBackButton?: boolean;
   onBackPress?: () => void;
@@ -21,6 +25,7 @@ interface NavigationHeaderProps {
 }
 
 export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
+  variant = 'nav',
   title = '',
   showBackButton = true,
   onBackPress,
@@ -42,6 +47,24 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   const finalBackButtonColor = backButtonColor ?? defaultTextColor;
   const headerHeight = 56 + insets.top;
   const paddingTop = insets.top;
+
+  if (variant === 'logo') {
+    return (
+      <View
+        className="flex-row justify-center"
+        pointerEvents="box-none"
+        style={{
+          height: headerHeight,
+          paddingTop,
+          backgroundColor: finalBgColor,
+        }}
+      >
+        <View className="items-center justify-center">
+          <MekapalWhite />
+        </View>
+      </View>
+    );
+  }
 
   return (
     <View
