@@ -21,8 +21,9 @@
       }
     },
     "staging": {
-      "distribution": "internal",
+      "autoIncrement": true,
       "android": {
+        "distribution": "internal",
         "buildType": "apk"
       },
       "env": {
@@ -39,11 +40,21 @@
     }
   },
   "submit": {
+    "staging": {
+      "ios": {
+        "appleId": "mekapal@corplha.com",
+        "ascAppId": "6765531197",
+        "appleTeamId": "7D94PAKFK8"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./google-service-account.json"
+      }
+    },
     "production": {
       "ios": {
         "appleId": "mekapal@corplha.com",
-        "ascAppId": "your-app-store-connect-app-id",
-        "appleTeamId": "your-apple-team-id"
+        "ascAppId": "your-production-asc-app-id",
+        "appleTeamId": "7D94PAKFK8"
       },
       "android": {
         "serviceAccountKeyPath": "./google-service-account.json"

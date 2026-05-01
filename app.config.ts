@@ -25,6 +25,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     infoPlist: {
       NSLocationWhenInUseUsageDescription:
         'Mekapal necesita tu ubicación para seleccionar direcciones en el mapa.',
+      ITSAppUsesNonExemptEncryption: false,
     },
   },
   android: {
