@@ -669,7 +669,19 @@
       "subtitle": "Edita tu perfil",
       "name": "Nombre",
       "email": "Correo electrónico",
-      "phone": "Teléfono"
+      "phone": "Teléfono",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "taxId": "NIT",
+      "companyName": "Razón social",
+      "idNumber": "DPI",
+      "userType": "Tipo de usuario",
+      "userTypeClient": "Cliente",
+      "userTypeTransporter": "Transportista",
+      "readOnlyHint": "No editable",
+      "save": "Guardar cambios",
+      "saving": "Guardando...",
+      "updateSuccessMessage": "Tus cambios se guardaron correctamente."
     },
     "paymentMethods": {
       "title": "Métodos de Pago",
@@ -866,6 +878,14 @@
     "validationError": "Los datos proporcionados no son válidos",
     "serverError": "Error interno del servidor. Por favor, inténtelo más tarde",
     "networkError": "Error de conexión. Verifique su conexión a internet",
+    "profile": {
+      "editProfile": {
+        "firstNameTooShort": "El nombre debe tener al menos 2 caracteres",
+        "lastNameTooShort": "El apellido debe tener al menos 2 caracteres",
+        "phoneTooShort": "El teléfono debe tener al menos 8 dígitos",
+        "idNumberTooShort": "El DPI debe tener al menos 5 caracteres"
+      }
+    },
     "address": {
       "aliasRequired": "El nombre de la dirección es obligatorio",
       "aliasTooLong": "El nombre debe tener menos de 50 caracteres",

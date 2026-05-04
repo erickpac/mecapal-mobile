@@ -3,6 +3,12 @@ export enum UserRole {
   CLIENT = 'CLIENT',
 }
 
+export interface TransporterProfile {
+  id: string;
+  userId: string;
+  idNumber: string | null;
+}
+
 export interface User {
   id: string;
   cognitoSub: string;
@@ -14,4 +20,5 @@ export interface User {
   companyName: string | null;
   taxId: string | null;
   deletionScheduledFor: string | null;
+  transporterProfile: TransporterProfile | null;
 }

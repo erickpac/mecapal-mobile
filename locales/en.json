@@ -664,7 +664,19 @@
       "subtitle": "Edit your profile",
       "name": "Name",
       "email": "Email",
-      "phone": "Phone"
+      "phone": "Phone",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "taxId": "Tax ID",
+      "companyName": "Company name",
+      "idNumber": "ID number",
+      "userType": "User type",
+      "userTypeClient": "Client",
+      "userTypeTransporter": "Transporter",
+      "readOnlyHint": "Not editable",
+      "save": "Save changes",
+      "saving": "Saving...",
+      "updateSuccessMessage": "Your changes were saved successfully."
     },
     "paymentMethods": {
       "title": "Payment Methods",
@@ -861,6 +873,14 @@
     "validationError": "The provided data is not valid",
     "serverError": "Internal server error. Please try again later",
     "networkError": "Connection error. Please check your internet connection",
+    "profile": {
+      "editProfile": {
+        "firstNameTooShort": "First name must be at least 2 characters",
+        "lastNameTooShort": "Last name must be at least 2 characters",
+        "phoneTooShort": "Phone must be at least 8 digits",
+        "idNumberTooShort": "ID number must be at least 5 characters"
+      }
+    },
     "address": {
       "aliasRequired": "Address name is required",
       "aliasTooLong": "Name must be less than 50 characters",

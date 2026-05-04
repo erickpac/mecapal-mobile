@@ -1,78 +1,162 @@
+import { useEffect, useMemo } from 'react';
 import {
   View,
   Text,
   ScrollView,
-  Pressable,
   Platform,
   KeyboardAvoidingView,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { useForm, FieldValues } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { router } from 'expo-router';
 import { Button } from '@/components/button';
-import React, { useState } from 'react';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
-import { useTranslation } from 'react-i18next';
+import { FormInput } from '@/components/form-input';
+import { Input } from '@/components/input';
 import Avatar from '@/components/avatar';
 import { useStore } from '@/store/useStore';
-import { COLORS } from '@/consts/colors';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Input } from '@/components/input';
 import { UserRole } from '@/features/auth/types/user';
+import { useUpdateUser } from '@/features/user/hooks/useUpdateUser';
+import { UpdateUserPayload } from '@/features/user/types/user';
+import {
+  ClientEditProfileFormData,
+  TransporterEditProfileFormData,
+  createClientEditProfileSchema,
+  createTransporterEditProfileSchema,
+} from '@/features/user/schemas/edit-profile';
+import { useLocalizedError } from '@/hooks/useLocalizedError';
+import { useSnackbar } from '@/hooks/useSnackbar';
+
+const trim = (value: string | undefined | null): string =>
+  typeof value === 'string' ? value.trim() : '';
 
 const InfoScreen = () => {
   const { t } = useTranslation();
-  const { user, setUser } = useStore();
+  const { user } = useStore();
+  const { getErrorMessage } = useLocalizedError();
+  const { showSuccess, showError } = useSnackbar();
 
-  const [userEdit, setUserEdit] = useState(JSON.parse(JSON.stringify(user)));
-  const [editingFields, setEditingFields] = useState<Set<string>>(new Set());
-  const [editedFields, setEditedFields] = useState<Set<string>>(new Set());
+  const isTransporter = user?.role === UserRole.TRANSPORTER;
 
-  const handleEditPress = (field: string) => {
-    if (editingFields.has(field)) {
-      setEditingFields((prev) => {
-        const newSet = new Set(prev);
-        newSet.delete(field);
-        return newSet;
-      });
-      setEditedFields((prev) => new Set([...prev, field]));
-      setUser(userEdit);
-    } else {
-      setEditingFields((prev) => new Set([...prev, field]));
+  const schema = useMemo(
+    () =>
+      isTransporter
+        ? createTransporterEditProfileSchema(t)
+        : createClientEditProfileSchema(t),
+    [isTransporter, t],
+  );
+
+  const defaultValues = useMemo<
+    ClientEditProfileFormData | TransporterEditProfileFormData
+  >(() => {
+    const base: ClientEditProfileFormData = {
+      firstName: trim(user?.firstName),
+      lastName: trim(user?.lastName),
+      phone: trim(user?.phone),
+      taxId: trim(user?.taxId),
+    };
+
+    if (isTransporter) {
+      const transporterDefaults: TransporterEditProfileFormData = {
+        ...base,
+        companyName: trim(user?.companyName),
+        idNumber: trim(user?.transporterProfile?.idNumber),
+      };
+      return transporterDefaults;
     }
+
+    return base;
+  }, [user, isTransporter]);
+
+  type FormValues = typeof defaultValues;
+
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isDirty, isSubmitting, dirtyFields },
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues,
+    mode: 'onChange',
+  });
+
+  useEffect(() => {
+    reset(defaultValues);
+  }, [defaultValues, reset]);
+
+  const { mutate: updateUser, isPending } = useUpdateUser();
+
+  const buildPayload = (
+    values: FormValues,
+    dirty: Record<string, unknown>,
+  ): UpdateUserPayload => {
+    const payload: UpdateUserPayload = {};
+    const record = values as unknown as Record<string, string>;
+    const allowedKeys: Array<keyof UpdateUserPayload> = [
+      'firstName',
+      'lastName',
+      'phone',
+      'taxId',
+      'companyName',
+      'idNumber',
+    ];
+
+    allowedKeys.forEach((key) => {
+      if (!dirty[key]) return;
+      const raw = record[key];
+      const value = typeof raw === 'string' ? raw.trim() : '';
+
+      // Skip empty optional fields — don't send "" to the API
+      if (value === '') {
+        return;
+      }
+
+      payload[key] = value;
+    });
+
+    return payload;
   };
 
-  const handleSave = () => {
-    setUser(userEdit);
-    setEditingFields(new Set());
-    setEditedFields((prev) => new Set([...prev, ...editingFields]));
-  };
-
-  const renderEditButton = (field: string) => {
-    const isEditing = editingFields.has(field);
-    const isEdited = editedFields.has(field) && !isEditing;
-
-    if (isEdited) return null;
-
-    return (
-      <Pressable
-        className="absolute bottom-0 right-0 top-0 justify-center pr-2"
-        onPress={() => handleEditPress(field)}
-      >
-        {!isEditing && (
-          <View className="p-2">
-            <MaterialCommunityIcons
-              name="pencil"
-              size={20}
-              color={isEditing ? COLORS.primary : COLORS.black}
-            />
-          </View>
-        )}
-      </Pressable>
+  const onSubmit = (values: FormValues) => {
+    const payload = buildPayload(
+      values,
+      dirtyFields as Record<string, unknown>,
     );
+
+    if (Object.keys(payload).length === 0) {
+      return;
+    }
+
+    updateUser(payload, {
+      onSuccess: () => {
+        showSuccess(t('profile.personalInfo.updateSuccessMessage'));
+        // Snackbar is rendered by the app-level provider, so it remains visible
+        // after navigating back. A small delay lets the user register the action
+        // before the screen transitions away.
+        setTimeout(() => {
+          router.back();
+        }, 400);
+      },
+      onError: (error) => {
+        showError(getErrorMessage(error));
+      },
+    });
   };
+
+  // react-hook-form's handleSubmit is generic; cast to satisfy our union type.
+  const submit = handleSubmit(onSubmit as (values: FieldValues) => void);
+
+  const userTypeLabel =
+    user?.role === UserRole.TRANSPORTER
+      ? t('profile.personalInfo.userTypeTransporter')
+      : t('profile.personalInfo.userTypeClient');
 
   return (
     <>
-      <NavigationHeader title="" showBackButton={true} borderBottom={false} />
+      <NavigationHeader title="" showBackButton borderBottom={false} />
       <ContentContainer edges={['left', 'right']}>
         <KeyboardAvoidingView
           className="flex-1"
@@ -84,149 +168,94 @@ const InfoScreen = () => {
                 {t('profile.personalInfo.title')}
               </Text>
             </View>
+
             <View className="items-center">
-              <Avatar
-                size={48}
-                sizeEditButton={20}
-                onPress={() => console.log('Edit avatar pressed')}
-              />
+              <Avatar size={48} sizeEditButton={20} />
             </View>
-            <View className="mt-4 space-y-4 py-4">
-              <View className="flex-row items-center">
-                <View className="flex-1">
-                  <Input
-                    label="Nombre"
-                    value={
-                      userEdit
-                        ? `${userEdit.firstName} ${userEdit.lastName}`
-                        : ''
-                    }
-                    mode="flat"
-                    disabled={
-                      !editingFields.has('name') && !editedFields.has('name')
-                    }
-                    contentStyle={{ backgroundColor: COLORS.white }}
-                    style={{ backgroundColor: COLORS.white }}
-                    activeUnderlineColor="black"
-                    onChangeText={(value) => {
-                      const parts = value.split(' ');
-                      const firstName = parts[0] || '';
-                      const lastName = parts.slice(1).join(' ') || '';
-                      setUserEdit({ ...userEdit, firstName, lastName });
-                    }}
-                  />
-                </View>
-                {renderEditButton('name')}
-              </View>
 
-              <View className="flex-row items-center">
-                <View className="flex-1">
-                  <Input
-                    label="Numero de Telefono"
-                    value={userEdit?.phone || ''}
-                    mode="flat"
-                    disabled={
-                      !editingFields.has('phone') && !editedFields.has('phone')
-                    }
-                    contentStyle={{ backgroundColor: COLORS.white }}
-                    style={{ backgroundColor: COLORS.white }}
-                    activeUnderlineColor="black"
-                    onChangeText={(value) =>
-                      setUserEdit({ ...userEdit, phone: value })
-                    }
-                  />
-                </View>
-                {renderEditButton('phone')}
-              </View>
+            <View className="mt-8 pb-4">
+              <FormInput
+                control={control}
+                name="firstName"
+                label={t('profile.personalInfo.firstName')}
+                type="text"
+                returnKeyType="next"
+              />
 
-              <View className="flex-row items-center">
-                <View className="flex-1">
-                  <Input
-                    label="Correo Electronico"
-                    value={userEdit?.email || ''}
-                    mode="flat"
-                    disabled={
-                      !editingFields.has('email') && !editedFields.has('email')
-                    }
-                    contentStyle={{ backgroundColor: COLORS.white }}
-                    style={{ backgroundColor: COLORS.white }}
-                    activeUnderlineColor="black"
-                    onChangeText={(value) =>
-                      setUserEdit({ ...userEdit, email: value })
-                    }
-                  />
-                </View>
-                {renderEditButton('email')}
-              </View>
+              <FormInput
+                control={control}
+                name="lastName"
+                label={t('profile.personalInfo.lastName')}
+                type="text"
+                returnKeyType="next"
+              />
 
-              {UserRole.TRANSPORTER && (
-                <View className="flex-row items-center">
-                  <View className="flex-1">
-                    <Input
-                      label="NIT"
-                      value={userEdit?.nit || ''}
-                      mode="flat"
-                      disabled={
-                        !editingFields.has('nit') && !editedFields.has('nit')
-                      }
-                      contentStyle={{ backgroundColor: COLORS.white }}
-                      style={{ backgroundColor: COLORS.white }}
-                      activeUnderlineColor="black"
-                      onChangeText={(value) =>
-                        setUserEdit({ ...userEdit, nit: value })
-                      }
-                    />
-                  </View>
-                  {renderEditButton('nit')}
-                </View>
-              )}
-              {UserRole.TRANSPORTER && (
-                <View className="flex-row items-center">
-                  <View className="flex-1">
-                    <Input
-                      label="DPI"
-                      value={userEdit?.dpi || ''}
-                      mode="flat"
-                      disabled={
-                        !editingFields.has('dpi') && !editedFields.has('dpi')
-                      }
-                      contentStyle={{ backgroundColor: COLORS.white }}
-                      style={{ backgroundColor: COLORS.white }}
-                      activeUnderlineColor="black"
-                      onChangeText={(value) =>
-                        setUserEdit({ ...userEdit, dpi: value })
-                      }
-                    />
-                  </View>
-                  {renderEditButton('dpi')}
-                </View>
+              <FormInput
+                control={control}
+                name="phone"
+                label={t('profile.personalInfo.phone')}
+                type="phone"
+                returnKeyType="next"
+              />
+
+              <FormInput
+                control={control}
+                name="taxId"
+                label={t('profile.personalInfo.taxId')}
+                type="text"
+                returnKeyType="next"
+              />
+
+              {isTransporter && (
+                <>
+                  <FormInput
+                    control={control}
+                    name="companyName"
+                    label={t('profile.personalInfo.companyName')}
+                    type="text"
+                    returnKeyType="next"
+                  />
+                  <FormInput
+                    control={control}
+                    name="idNumber"
+                    label={t('profile.personalInfo.idNumber')}
+                    type="text"
+                    returnKeyType="done"
+                  />
+                </>
               )}
 
-              <View className="flex-row items-center">
-                <View className="flex-1">
-                  <Input
-                    label="Tipo de Usuario"
-                    value={
-                      userEdit?.role === 'CLIENT' ? 'Cliente' : 'Transportista'
-                    }
-                    mode="flat"
-                    disabled={true}
-                    contentStyle={{ backgroundColor: COLORS.white }}
-                    style={{ backgroundColor: COLORS.white }}
-                    activeUnderlineColor="black"
-                  />
-                </View>
-              </View>
+              <Input
+                label={t('profile.personalInfo.email')}
+                value={user?.email ?? ''}
+                disabled
+                editable={false}
+                right={undefined}
+              />
+
+              <Input
+                label={t('profile.personalInfo.userType')}
+                value={userTypeLabel}
+                disabled
+                editable={false}
+                right={undefined}
+              />
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
 
         <View className="px-4 pb-4">
           <Button
-            disabled={editingFields.size === 0}
-            title="Guardar Cambios"
-            onPress={handleSave}
+            title={
+              isPending
+                ? t('profile.personalInfo.saving')
+                : t('profile.personalInfo.save')
+            }
+            onPress={submit}
+            disabled={!isDirty || isPending || isSubmitting}
+            loading={isPending}
             userType={user?.role}
+            variant="contained"
           />
         </View>
       </ContentContainer>

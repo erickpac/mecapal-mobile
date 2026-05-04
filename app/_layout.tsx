@@ -12,6 +12,7 @@ import i18n from '@/locales/i18n';
 import { useEffect } from 'react';
 import { useStatusBar } from '@/hooks/useStatusBar';
 import { PendingDeletionModal } from '@/features/account/components/pending-deletion-modal';
+import { SnackbarProvider } from '@/components/snackbar-provider';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -59,22 +60,24 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <I18nextProvider i18n={i18n} defaultNS={'translation'}>
         <PaperProvider>
-          <View className="flex-1 bg-white">
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                contentStyle: { backgroundColor: 'white' },
-              }}
-            >
-              <Stack.Screen name="index" options={{ animation: 'none' }} />
-              <Stack.Screen name="(app)" options={{ animation: 'none' }} />
-              <Stack.Screen
-                name="onboarding"
-                options={{ animation: 'none' }}
-              />
-            </Stack>
-            <PendingDeletionModal />
-          </View>
+          <SnackbarProvider>
+            <View className="flex-1 bg-white">
+              <Stack
+                screenOptions={{
+                  headerShown: false,
+                  contentStyle: { backgroundColor: 'white' },
+                }}
+              >
+                <Stack.Screen name="index" options={{ animation: 'none' }} />
+                <Stack.Screen name="(app)" options={{ animation: 'none' }} />
+                <Stack.Screen
+                  name="onboarding"
+                  options={{ animation: 'none' }}
+                />
+              </Stack>
+              <PendingDeletionModal />
+            </View>
+          </SnackbarProvider>
         </PaperProvider>
       </I18nextProvider>
     </QueryClientProvider>

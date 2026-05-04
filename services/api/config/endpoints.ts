@@ -28,3 +28,8 @@ export const ACCOUNT_ENDPOINTS = {
   DELETE: 'auth/account',
   CANCEL_DELETION: 'auth/account/cancel-deletion',
 };
+
+export const USER_ENDPOINTS = {
+  GET_ME: 'user/me',
+  UPDATE: 'user',
+};
