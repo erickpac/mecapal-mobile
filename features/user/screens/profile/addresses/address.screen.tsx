@@ -5,6 +5,7 @@ import { ContentContainer } from '@/components/content-container';
 import { Button } from '@/components/button';
 import { useStore } from '@/store/useStore';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
+import { useSnackbar } from '@/hooks/useSnackbar';
 import { useAddresses } from '@/features/user/hooks/useAddresses';
 import { useDeleteAddress } from '@/features/user/hooks/useDeleteAddress';
 import { useSetDefaultAddress } from '@/features/user/hooks/useSetDefaultAddress';
@@ -23,6 +24,7 @@ const AddressScreen = () => {
   const { user } = useStore();
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
+  const { showSuccess, showError } = useSnackbar();
 
   const { data: addresses, isLoading, error } = useAddresses();
   const { mutate: deleteAddress } = useDeleteAddress();
@@ -33,11 +35,25 @@ const AddressScreen = () => {
   };
 
   const handleDelete = (id: string) => {
-    deleteAddress(id);
+    deleteAddress(id, {
+      onSuccess: () => {
+        showSuccess(t('profile.address.deleteSuccess'));
+      },
+      onError: (mutationError) => {
+        showError(getErrorMessage(mutationError));
+      },
+    });
   };
 
   const handleSetDefault = (id: string) => {
-    setDefault(id);
+    setDefault(id, {
+      onSuccess: () => {
+        showSuccess(t('profile.address.setDefaultSuccess'));
+      },
+      onError: (mutationError) => {
+        showError(getErrorMessage(mutationError));
+      },
+    });
   };
 
   const addressCount = addresses?.length ?? 0;

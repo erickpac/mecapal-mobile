@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useCallback } from 'react';
+import { useMemo, useState, useCallback } from 'react';
 import { useStore } from '@/store/useStore';
 import {
   View,
@@ -22,6 +22,7 @@ import { FormSelectInput } from '@/components/form-select-input';
 import { Button } from '@/components/button';
 import { COLORS } from '@/consts/colors';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
+import { useSnackbar } from '@/hooks/useSnackbar';
 import { useCreateAddress } from '@/features/user/hooks/useCreateAddress';
 import {
   useCountries,
@@ -40,6 +41,7 @@ const AddAddressScreen = () => {
   const { user } = useStore();
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
+  const { showSuccess, showError } = useSnackbar();
   const [coords, setCoords] = useState<{
     latitude: number;
     longitude: number;
@@ -54,12 +56,7 @@ const AddAddressScreen = () => {
     }, []),
   );
 
-  const {
-    mutate: createAddress,
-    isPending,
-    error,
-    isSuccess,
-  } = useCreateAddress();
+  const { mutate: createAddress, isPending } = useCreateAddress();
 
   const {
     control,
@@ -111,12 +108,6 @@ const AddAddressScreen = () => {
     [zones],
   );
 
-  useEffect(() => {
-    if (isSuccess) {
-      router.back();
-    }
-  }, [isSuccess]);
-
   const handleStateChange = (value: string) => {
     setValue('stateId', value, { shouldValidate: true });
     setValue('cityId', '', { shouldValidate: true });
@@ -135,20 +126,36 @@ const AddAddressScreen = () => {
       municipalities?.find((m) => m.id === data.cityId)?.name ?? '';
     const selectedZone = zones?.find((z) => z.id === data.zoneId);
 
-    createAddress({
-      alias: data.alias,
-      street: data.street,
-      city: cityName,
-      state: stateName,
-      postalCode: selectedZone?.code ?? '00000',
-      country: 'Guatemala',
-      latitude: coords?.latitude ?? selectedZone?.latitude ?? null,
-      longitude: coords?.longitude ?? selectedZone?.longitude ?? null,
-      isDefault: data.isDefault,
-      stateId: data.stateId || null,
-      municipalityId: data.cityId || null,
-      zoneId: data.zoneId || null,
-    });
+    createAddress(
+      {
+        alias: data.alias,
+        street: data.street,
+        city: cityName,
+        state: stateName,
+        postalCode: selectedZone?.code ?? '00000',
+        country: 'Guatemala',
+        latitude: coords?.latitude ?? selectedZone?.latitude ?? null,
+        longitude: coords?.longitude ?? selectedZone?.longitude ?? null,
+        isDefault: data.isDefault,
+        stateId: data.stateId || null,
+        municipalityId: data.cityId || null,
+        zoneId: data.zoneId || null,
+      },
+      {
+        onSuccess: () => {
+          showSuccess(t('profile.address.createSuccess'));
+          // Snackbar is rendered by the app-level provider, so it remains visible
+          // after navigating back. A small delay lets the user register the action
+          // before the screen transitions away.
+          setTimeout(() => {
+            router.back();
+          }, 400);
+        },
+        onError: (mutationError) => {
+          showError(getErrorMessage(mutationError));
+        },
+      },
+    );
   };
 
   return (
@@ -257,12 +264,6 @@ const AddAddressScreen = () => {
                 {t('profile.address.isDefault')}
               </Text>
             </TouchableOpacity>
-
-            {error && (
-              <Text className="mt-2 text-center font-plus-jakarta text-sm text-red-500">
-                {getErrorMessage(error)}
-              </Text>
-            )}
           </ScrollView>
         </KeyboardAvoidingView>
 
