@@ -122,26 +122,18 @@ const AddAddressScreen = () => {
   };
 
   const onSubmit = (data: AddressFormData) => {
-    const stateName =
-      departments?.find((d) => d.id === data.stateId)?.name ?? '';
-    const cityName =
-      municipalities?.find((m) => m.id === data.cityId)?.name ?? '';
     const selectedZone = zones?.find((z) => z.id === data.zoneId);
 
     createAddress(
       {
         alias: data.alias,
         street: data.street,
-        city: cityName,
-        state: stateName,
-        postalCode: selectedZone?.code ?? '00000',
-        country: 'Guatemala',
         latitude: coords?.latitude ?? selectedZone?.latitude ?? null,
         longitude: coords?.longitude ?? selectedZone?.longitude ?? null,
         isDefault: data.isDefault,
-        stateId: data.stateId || null,
-        municipalityId: data.cityId || null,
-        zoneId: data.zoneId || null,
+        stateId: data.stateId,
+        municipalityId: data.cityId,
+        zoneId: data.zoneId || undefined,
       },
       {
         onSuccess: () => {

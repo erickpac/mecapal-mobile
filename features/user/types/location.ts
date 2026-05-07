@@ -24,7 +24,7 @@ export interface Municipality {
 export interface Zone {
   id: string;
   name: string;
-  code: string;
+  postalCode: string;
   latitude: number;
   longitude: number;
   isActive: boolean;

@@ -61,6 +61,15 @@ export const AddressCard = ({
     ? ` (${t('profile.address.default')})`
     : '';
 
+  const postalCode = address.zone?.postalCode;
+  const streetLine = postalCode
+    ? `${address.street}, ${postalCode}`
+    : address.street;
+
+  const localityLine = [address.municipality?.name, address.state?.name]
+    .filter(Boolean)
+    .join(', ');
+
   return (
     <TouchableOpacity
       onPress={() => onEdit(address)}
@@ -74,14 +83,13 @@ export const AddressCard = ({
             {defaultLabel}
           </Text>
           <Text className="mt-0.5 font-plus-jakarta-medium text-base leading-tight text-gray-900">
-            {address.street}
+            {streetLine}
           </Text>
-          <Text className="font-plus-jakarta-medium text-base leading-tight text-gray-900">
-            {address.city}, {address.state}
-            {address.postalCode && address.postalCode !== '00000'
-              ? ` ${address.postalCode}`
-              : ''}
-          </Text>
+          {localityLine ? (
+            <Text className="font-plus-jakarta-medium text-base leading-tight text-gray-900">
+              {localityLine}
+            </Text>
+          ) : null}
         </View>
         <View className="justify-center">
           <MaterialCommunityIcons

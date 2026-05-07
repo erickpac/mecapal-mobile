@@ -3,18 +3,23 @@ export interface Address {
   userId: string;
   alias: string;
   street: string;
-  city: string;
-  state: string;
-  postalCode: string;
-  country: string;
   latitude: number | null;
   longitude: number | null;
   contactName: string | null;
   contactPhone: string | null;
   isDefault: boolean;
-  stateId: string | null;
-  municipalityId: string | null;
+  stateId: string;
+  municipalityId: string;
   zoneId: string | null;
+  state?: { id: string; name: string; code: string };
+  municipality?: { id: string; name: string; code: string };
+  zone?: {
+    id: string;
+    name: string;
+    postalCode: string;
+    latitude: number | null;
+    longitude: number | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -22,17 +27,13 @@ export interface Address {
 export interface CreateAddressPayload {
   alias: string;
   street: string;
-  city: string;
-  state: string;
-  postalCode: string;
-  country?: string;
   latitude?: number | null;
   longitude?: number | null;
   contactName?: string | null;
   contactPhone?: string | null;
   isDefault?: boolean;
-  stateId?: string | null;
-  municipalityId?: string | null;
+  stateId: string;
+  municipalityId: string;
   zoneId?: string | null;
 }
 

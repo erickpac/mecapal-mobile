@@ -178,10 +178,6 @@ const EditAddressScreen = () => {
   const onSubmit = (data: AddressFormData) => {
     if (!id) return;
 
-    const stateName =
-      departments?.find((d) => d.id === data.stateId)?.name ?? '';
-    const cityName =
-      municipalities?.find((m) => m.id === data.cityId)?.name ?? '';
     const selectedZone = zones?.find((z) => z.id === data.zoneId);
 
     updateAddress(
@@ -190,10 +186,6 @@ const EditAddressScreen = () => {
         data: {
           alias: data.alias,
           street: data.street,
-          city: cityName,
-          state: stateName,
-          postalCode: selectedZone?.code ?? address?.postalCode ?? '00000',
-          country: 'Guatemala',
           latitude:
             coords?.latitude ??
             selectedZone?.latitude ??
@@ -205,9 +197,9 @@ const EditAddressScreen = () => {
             address?.longitude ??
             null,
           isDefault: data.isDefault,
-          stateId: data.stateId || null,
-          municipalityId: data.cityId || null,
-          zoneId: data.zoneId || null,
+          stateId: data.stateId,
+          municipalityId: data.cityId,
+          zoneId: data.zoneId || undefined,
         },
       },
       {
