@@ -9,9 +9,12 @@ export const locationService = {
     return response.data;
   },
 
-  getStates: async (countryId: string, activeOnly = true): Promise<State[]> => {
+  getStates: async (
+    query: { countryId?: string; countryCode?: string },
+    activeOnly = true,
+  ): Promise<State[]> => {
     const response = await api.get(LOCATION_ENDPOINTS.STATES, {
-      params: { countryId, activeOnly },
+      params: { ...query, activeOnly },
     });
     return response.data;
   },

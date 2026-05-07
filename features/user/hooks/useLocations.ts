@@ -9,11 +9,15 @@ export const useCountries = () => {
   });
 };
 
-export const useDepartments = (countryId: string | undefined) => {
+export const useDepartments = (query: {
+  countryId?: string;
+  countryCode?: string;
+}) => {
+  const enabled = !!(query.countryId || query.countryCode);
   return useQuery({
-    queryKey: ['departments', countryId],
-    queryFn: () => locationService.getStates(countryId!),
-    enabled: !!countryId,
+    queryKey: ['departments', query.countryId ?? query.countryCode],
+    queryFn: () => locationService.getStates(query),
+    enabled,
     staleTime: Infinity,
   });
 };

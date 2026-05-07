@@ -30,11 +30,11 @@ import { useAddresses } from '@/features/user/hooks/useAddresses';
 import { useUpdateAddress } from '@/features/user/hooks/useUpdateAddress';
 import { useDeleteAddress } from '@/features/user/hooks/useDeleteAddress';
 import {
-  useCountries,
   useDepartments,
   useMunicipalities,
   useZones,
 } from '@/features/user/hooks/useLocations';
+import { DEFAULT_COUNTRY_CODE } from '@/consts/location';
 import {
   createAddressSchema,
   AddressFormData,
@@ -93,14 +93,12 @@ const EditAddressScreen = () => {
   const selectedStateId = watch('stateId');
   const selectedCityId = watch('cityId');
 
-  // Fetch Guatemala country to get its ID
-  const { data: countries } = useCountries();
-  const guatemalaId = countries?.find(
-    (c) => c.code === 'GT' || c.name === 'Guatemala',
-  )?.id;
-
-  // Cascading data
-  const { data: departments } = useDepartments(guatemalaId);
+  // Cascading data — countries are filtered to the default country.
+  // Multi-country support will replace DEFAULT_COUNTRY_CODE with the user's
+  // selected country.
+  const { data: departments } = useDepartments({
+    countryCode: DEFAULT_COUNTRY_CODE,
+  });
   const { data: municipalities } = useMunicipalities(
     selectedStateId || undefined,
   );

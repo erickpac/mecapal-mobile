@@ -61,10 +61,8 @@ export const AddressCard = ({
     ? ` (${t('profile.address.default')})`
     : '';
 
-  const postalCode = address.zone?.postalCode;
-  const streetLine = postalCode
-    ? `${address.street}, ${postalCode}`
-    : address.street;
+  const zone = address.zone?.name;
+  const streetLine = zone ? `${address.street}, ${zone}` : address.street;
 
   const localityLine = [address.municipality?.name, address.state?.name]
     .filter(Boolean)
