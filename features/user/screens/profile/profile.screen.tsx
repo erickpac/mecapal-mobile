@@ -173,6 +173,7 @@ export default function UserProfileScreen() {
               data={listProfileOptions}
               renderItem={({ item }) => renderListItem(item)}
               keyExtractor={(item) => item.icon.split('_').join('').toString()}
+              bounces={false}
             />
           </View>
           <View className="absolute bottom-0 left-0 right-0 bg-white p-4">

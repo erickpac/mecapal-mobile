@@ -170,7 +170,7 @@ const InfoScreen = () => {
             </View>
 
             <View className="items-center">
-              <Avatar size={48} sizeEditButton={20} />
+              <Avatar size={48} sizeEditButton={20} showEditButton />
             </View>
 
             <View className="mt-8 pb-4">

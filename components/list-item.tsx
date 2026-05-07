@@ -6,7 +6,7 @@ import { COLORS } from '@/consts/colors';
 interface ListItemProps {
   icon: ReactNode;
   title: string;
-  description: string;
+  description?: string;
   linkText?: string;
   onPress: () => void;
 }
@@ -29,12 +29,14 @@ const ListItem = ({
         <Text className="font-plus-jakarta-bold text-lg text-gray-800">
           {title}
         </Text>
-        <Text className="mt-1 pr-4 font-plus-jakarta text-sm text-gray-500">
-          {description}{' '}
-          {linkText && (
-            <Text style={{ color: COLORS.primary }}>{linkText}</Text>
-          )}
-        </Text>
+        {description && (
+          <Text className="mt-1 pr-4 font-plus-jakarta text-sm text-gray-500">
+            {description}{' '}
+            {linkText && (
+              <Text style={{ color: COLORS.primary }}>{linkText}</Text>
+            )}
+          </Text>
+        )}
       </View>
       <View className="items-center justify-center px-4">
         <MaterialCommunityIcons

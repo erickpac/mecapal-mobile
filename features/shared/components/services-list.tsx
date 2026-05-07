@@ -21,8 +21,6 @@ export const ServicesList = () => {
             key={service.id}
             icon={<service.icon width={75} height={75} />}
             title={t(`home.services.${service.id}.title`)}
-            description={t(`home.services.${service.id}.listDescription`)}
-            linkText={t('home.guest.learnMore')}
             onPress={() => handleServicePress(service.id)}
           />
         ))}

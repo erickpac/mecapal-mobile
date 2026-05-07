@@ -12,6 +12,7 @@ export class TokenService {
       const refreshToken = useStore.getState().refreshToken;
 
       if (!refreshToken) {
+        this.clearAllTokens();
         return false;
       }
 
@@ -50,8 +51,10 @@ export class TokenService {
   }
 
   private static clearAllTokens(): void {
-    useStore.getState().logout();
+    // Navigate to home first so the user lands on a tab that exists in both
+    // authenticated and guest tab configurations before activeTabs flips.
     replaceRoute(USER_ROUTES.HOME);
+    useStore.getState().logout();
   }
 
   static shouldAttemptRefresh(error: any): boolean {

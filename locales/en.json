@@ -577,13 +577,11 @@
       "action2": "Login"
     },
     "guest": {
-      "aboutTitle": "Learn more about us",
-      "aboutDescription1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "aboutDescription2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "aboutTitle": "We're your logistics ally",
+      "aboutDescription": "We're a logistics company specialized in the efficient and safe transport of all kinds of shipments. We operate in Guatemala City and across other regions of the country, adapting to each client's needs.",
       "servicesTitle": "Our services",
-      "learnMore": "Learn more",
       "forEveryoneTitle": "Mekapal is for everyone!",
-      "forEveryoneDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "forEveryoneDescription": "If you're a transporter or want to send your things anywhere in the country.",
       "clientTitle": "Client",
       "clientDescription": "This account is for everyone who needs to move their things from one place to another.",
       "transporterTitle": "Transporter",
@@ -636,24 +634,25 @@
     },
     "howItWorks": {
       "title": "How does it work?",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "description": "Sending your packages is fast and simple. Follow these steps to get started.",
       "clientTab": "Client",
       "transporterTab": "Transporter",
       "client": {
         "step1Title": "Create an account",
-        "step1Description": "Sed do eiusmod tempor incididunt ut labore et dolore magna ali qua.",
+        "step1Description": "Sign up as a <b>client</b> and complete your details to start sending.",
         "step2Title": "Select the shipment type",
-        "step2Description": "Sed do eiusmod tempor incididunt ut labore et dolore",
+        "step2Description": "Pick the option that best fits what you need to send:",
+        "step2Items": ["Express Shipping", "Light Cargo", "Heavy Cargo"],
         "step3Title": "Ship your things!",
-        "step3Description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea"
+        "step3Description": "Enter the origin and destination of your shipment, add package details, and find an available transporter."
       },
       "transporter": {
         "step1Title": "Create an account",
-        "step1Description": "Sed do eiusmod tempor incididunt ut labore et dolore magna ali qua.",
+        "step1Description": "Sign up as a <b>Transporter</b> and complete your details to start sending.",
         "step2Title": "Complete your profile",
-        "step2Description": "Sed do eiusmod tempor incididunt ut labore elit dolore magna ali qua.",
+        "step2Description": "You must complete your profile and submit some documents about your vehicle and identity before you can start. We'll let you know once you're approved.",
         "step3Title": "Provide your services!",
-        "step3Description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea"
+        "step3Description": "Enter the origin and destination of your shipment, add package details, and find an available transporter."
       }
     }
   },

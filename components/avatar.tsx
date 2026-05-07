@@ -27,16 +27,18 @@ const Avatar = (props: Props) => {
           color={COLORS.darkGray[400]}
         />
       </View>
-      <TouchableOpacity
-        className="absolute bottom-0 right-0 h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-gray-100 shadow-md"
-        onPress={props.onPress}
-      >
-        <MaterialCommunityIcons
-          name="pencil"
-          size={props.sizeEditButton || 20}
-          color={COLORS.darkGray[400]}
-        />
-      </TouchableOpacity>
+      {props.showEditButton && (
+        <TouchableOpacity
+          className="absolute bottom-0 right-0 h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-gray-100 shadow-md"
+          onPress={props.onPress}
+        >
+          <MaterialCommunityIcons
+            name="pencil"
+            size={props.sizeEditButton || 20}
+            color={COLORS.darkGray[400]}
+          />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

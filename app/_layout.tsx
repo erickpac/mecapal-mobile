@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { MD3LightTheme, PaperProvider } from 'react-native-paper';
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
@@ -6,7 +6,7 @@ import '../global.css';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { useTokenInitialization } from '@/hooks/useTokenInitialization';
-import { API_CONFIG } from '@/services/api/config/constants';
+import { queryClient } from '@/services/api/query-client';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '@/locales/i18n';
 import { useEffect } from 'react';
@@ -15,15 +15,6 @@ import { PendingDeletionModal } from '@/features/account/components/pending-dele
 import { SnackbarProvider } from '@/components/snackbar-provider';
 
 SplashScreen.preventAutoHideAsync();
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: API_CONFIG.RETRY_ATTEMPTS,
-      staleTime: API_CONFIG.STALE_TIME,
-    },
-  },
-});
 
 export default function RootLayout() {
   useStatusBar();

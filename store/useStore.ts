@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import TokenManager from '@/features/auth/services/token-manager';
+import { queryClient } from '@/services/api/query-client';
 
 interface AppState {
   user: User | null;
@@ -80,6 +81,7 @@ export const useStore = create<AppState>()(
           authService.signOut().catch(() => {}),
         );
         TokenManager.clearToken();
+        queryClient.clear();
         set({
           user: null,
           accessToken: null,
@@ -87,6 +89,7 @@ export const useStore = create<AppState>()(
           idToken: null,
           isAuthenticated: false,
           isGuestMode: false,
+          selectedUserType: undefined,
         });
       },
       enterGuestMode: () => {

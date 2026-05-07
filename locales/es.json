@@ -582,13 +582,11 @@
       "action2": "Iniciar sesión"
     },
     "guest": {
-      "aboutTitle": "Conoce más sobre nosotros",
-      "aboutDescription1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "aboutDescription2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "aboutTitle": "Somos tu aliado logístico",
+      "aboutDescription": "Somos una empresa de servicios logísticos especializada en el traslado eficiente y seguro de todo tipo de envíos. Operamos en Ciudad de Guatemala y en distintas regiones del país, adaptándonos a las necesidades de cada cliente.",
       "servicesTitle": "Nuestros servicios",
-      "learnMore": "Conoce más",
       "forEveryoneTitle": "¡Mekapal es para todos!",
-      "forEveryoneDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "forEveryoneDescription": "Si eres transportista o deseas enviar tus chivas a cualquier lugar del país.",
       "clientTitle": "Cliente",
       "clientDescription": "Esta cuenta es para todos aquellos que necesitan mover sus chivas de un lugar a otro.",
       "transporterTitle": "Transportista",
@@ -641,24 +639,25 @@
     },
     "howItWorks": {
       "title": "¿Cómo funciona?",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "description": "Enviar tus paquetes es rápido y sencillo. Sigue estos pasos para comenzar.",
       "clientTab": "Cliente",
       "transporterTab": "Transportista",
       "client": {
         "step1Title": "Crea una cuenta",
-        "step1Description": "Sed do eiusmod tempor incididunt ut labore et dolore magna ali qua.",
+        "step1Description": "Regístrate como <b>cliente</b> y completa tus datos para comenzar a realizar envíos.",
         "step2Title": "Selecciona el tipo de envío",
-        "step2Description": "Sed do eiusmod tempor incididunt ut labore et dolore",
+        "step2Description": "Selecciona la opción que mejor se adapte a lo que necesitas enviar:",
+        "step2Items": ["Envío Express", "Carga Liviana", "Carga Pesada"],
         "step3Title": "¡Envía tus chivas!",
-        "step3Description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea"
+        "step3Description": "Ingresa el origen y destino de tu carga, agrega los detalles del paquete y encuentra un transportista disponible."
       },
       "transporter": {
         "step1Title": "Crea una cuenta",
-        "step1Description": "Sed do eiusmod tempor incididunt ut labore et dolore magna ali qua.",
+        "step1Description": "Regístrate como <b>Transportista</b> y completa tus datos para comenzar a realizar envíos.",
         "step2Title": "Completa tu perfil",
-        "step2Description": "Sed do eiusmod tempor incididunt ut labore elit dolore magna ali qua.",
+        "step2Description": "Es obligatorio completar tu perfil y enviar algunos documentos sobre tu vehículo y tu identidad para poder iniciar. Nosotros te haremos saber cuando estés aprobado.",
         "step3Title": "¡Presta tus servicios!",
-        "step3Description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea"
+        "step3Description": "Ingresa el origen y destino de tu carga, agrega los detalles del paquete y encuentra un transportista disponible."
       }
     }
   },

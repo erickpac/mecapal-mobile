@@ -3,6 +3,7 @@ import { NavigationHeader } from '@/components/navigation-header';
 import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
 import { UserRole } from '@/features/auth/types/user';
+import { useStore } from '@/store/useStore';
 import WelcomeHero from '@/components/welcome-hero';
 import { Button } from '@/components/button';
 import SubheaderText from '@/components/subheader-text';
@@ -13,6 +14,10 @@ import { LoginHome } from '@/components/svg';
 
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
+  const { selectedUserType } = useStore();
+  const userType = selectedUserType ?? UserRole.CLIENT;
+  const ctaColor =
+    userType === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
   const handleGoToAuth = () => {
     router.navigate('/(app)/auth' as any);
   };
@@ -35,20 +40,17 @@ export default function GuestHomeScreen() {
             onlyTitle
             className="mt-6"
           />
+          <View className="px-4">
+            <Text className="mt-4 text-center font-plus-jakarta-medium text-lg leading-tight">
+              {t('home.guest.aboutDescription')}
+            </Text>
+          </View>
           <View className="mt-4 px-4">
             <Image
               source={require('../../../assets/images/guest-truck.png')}
               className="h-48 w-full rounded-xl"
               resizeMode="cover"
             />
-          </View>
-          <View className="px-4">
-            <Text className="mt-4 font-plus-jakarta text-sm leading-5">
-              {t('home.guest.aboutDescription1')}
-            </Text>
-            <Text className="mt-4 font-plus-jakarta text-sm leading-5">
-              {t('home.guest.aboutDescription2')}
-            </Text>
           </View>
         </View>
 
@@ -60,9 +62,10 @@ export default function GuestHomeScreen() {
         {/* Mekapal is for everyone */}
         <View>
           <SubheaderText
-            className="mb-4 mt-10"
+            className="mb-4 mt-10 px-4"
             title={t('home.guest.forEveryoneTitle')}
             description={t('home.guest.forEveryoneDescription')}
+            descriptionClassName="leading-[18px]"
           />
           <View className="my-4 flex-row gap-4 px-4">
             <View className="flex-1 rounded-xl border border-gray-300 bg-white p-6">
@@ -100,7 +103,7 @@ export default function GuestHomeScreen() {
 
         {/* CTA */}
         <View className="mx-8 mt-6 items-center">
-          <LoginHome />
+          <LoginHome color={ctaColor} />
           <Text className="text-center font-plus-jakarta-semibold text-xl">
             {t('home.ctaUser.title')}
           </Text>
@@ -108,12 +111,12 @@ export default function GuestHomeScreen() {
             <Button
               title={t('home.ctaUser.action1')}
               onPress={handleGoToAuth}
-              userType={UserRole.CLIENT}
+              userType={userType}
             />
             <Button
               title={t('home.ctaUser.action2')}
               onPress={handleGoToAuth}
-              userType={UserRole.CLIENT}
+              userType={userType}
               variant="outlined"
             />
           </View>
