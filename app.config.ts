@@ -18,10 +18,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   scheme: 'mekapalapp',
-  userInterfaceStyle: 'automatic',
+  userInterfaceStyle: 'light',
   ios: {
     supportsTablet: false,
     bundleIdentifier: getBundleIdentifier(),
+    userInterfaceStyle: 'light',
     infoPlist: {
       NSLocationWhenInUseUsageDescription:
         'Mekapal necesita tu ubicación para seleccionar direcciones en el mapa.',
@@ -34,6 +35,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: '#ef6e30',
     },
     package: getAndroidPackage(),
+    userInterfaceStyle: 'light',
     config: {
       googleMaps: {
         apiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY ?? '',
@@ -64,6 +66,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         image: './assets/images/splash.png',
         resizeMode: 'cover',
         backgroundColor: '#ef6e30',
+        enableFullScreenImage_legacy: true,
       },
     ],
   ],

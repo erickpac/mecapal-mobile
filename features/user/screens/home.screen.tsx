@@ -8,17 +8,11 @@ import { UserRole } from '@/features/auth/types/user';
 import WelcomeHero from '@/components/welcome-hero';
 import Card from '@/components/card';
 import { Truck, Shuttle, Motorcycle } from '@/components/svg';
-import ListItem from '@/components/list-item';
-import SubheaderText from '@/components/subheader-text';
-import { SERVICES } from '@/features/shared/data/services';
+import { ServicesList } from '@/features/shared/components/services-list';
 
 export default function UserHomeScreen() {
   const { user } = useStore();
   const { t } = useTranslation();
-
-  const handleServicePress = (serviceId: string) => {
-    navigateTo(`/home/service-detail?id=${serviceId}`);
-  };
 
   return (
     <>
@@ -48,19 +42,7 @@ export default function UserHomeScreen() {
         </View>
 
         <View className="pt-4">
-          <SubheaderText title={t('home.guest.servicesTitle')} onlyTitle />
-          <View className="mt-4 bg-white">
-            {SERVICES.map((service) => (
-              <ListItem
-                key={service.id}
-                icon={<service.icon width={75} height={75} />}
-                title={t(`home.services.${service.id}.title`)}
-                description={t(`home.services.${service.id}.listDescription`)}
-                linkText={t('home.guest.learnMore')}
-                onPress={() => handleServicePress(service.id)}
-              />
-            ))}
-          </View>
+          <ServicesList />
         </View>
         <View className="bg-[#EAF6F3] p-6">
           <View className="mt-4 w-dvw">

@@ -8,7 +8,7 @@ import Svg, {
   SvgProps,
 } from 'react-native-svg';
 
-export const ExpressShipping = (props: SvgProps) => (
+export const ExpressCargo = (props: SvgProps) => (
   <Svg width={75} height={75} viewBox="0 0 75 75" fill="none" {...props}>
     <Rect width={75} height={75} rx={8} fill="#24A8F9" />
     <Rect

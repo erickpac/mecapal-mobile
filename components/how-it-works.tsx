@@ -132,7 +132,7 @@ const HowItWorks = () => {
   return (
     <View>
       <SubheaderText
-        className="mb-4 mt-10"
+        className="mb-4 mt-10 px-4"
         title={t('home.howItWorks.title')}
         description={t('home.howItWorks.description')}
       />

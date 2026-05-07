@@ -29,7 +29,7 @@ export default function ResetPasswordSuccessScreen() {
           ) : undefined
         }
       />
-      <ContentContainer edges={['left', 'right', 'bottom']}>
+      <ContentContainer>
         <View className="flex-1 items-center justify-center px-6">
           <View className="mb-6 items-center justify-center">
             <MaterialCommunityIcons

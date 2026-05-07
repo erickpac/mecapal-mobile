@@ -211,7 +211,9 @@ export default function RegisterScreen() {
                 returnKeyType="done"
               />
             </View>
+          </ScrollView>
 
+          <View className="px-4 pb-4">
             {error && (
               <Text className="mb-4 text-center font-plus-jakarta text-sm text-red-500">
                 {getErrorMessage(error)}
@@ -235,7 +237,7 @@ export default function RegisterScreen() {
                 onPress={navigateToLogin}
               />
             )}
-          </ScrollView>
+          </View>
         </KeyboardAvoidingView>
       </ContentContainer>
     </>

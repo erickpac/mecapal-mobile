@@ -50,8 +50,7 @@ const SelectInputComponent: React.FC<SelectInputProps> = ({
   const [tempValue, setTempValue] = useState(value);
   const [touched, setTouched] = useState(false);
 
-  const selectedLabel =
-    options.find((opt) => opt.value === value)?.label || '';
+  const selectedLabel = options.find((opt) => opt.value === value)?.label || '';
 
   const getOutlineColor = () => {
     if (touched && error) return COLORS.error;

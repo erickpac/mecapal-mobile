@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
 import { SERVICES } from '@/features/shared/data/services';
-import { COLORS } from '@/consts/colors';
 
 export default function ServiceDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -35,10 +34,10 @@ export default function ServiceDetailScreen() {
           </Text>
 
           <View
-            className="mb-4 items-center overflow-hidden rounded-xl py-6"
-            style={{ backgroundColor: COLORS.primary + '15' }}
+            className="mb-4 w-full"
+            style={{ aspectRatio: service.wideIcon.aspectRatio }}
           >
-            <service.icon width={150} height={150} />
+            <service.wideIcon width="100%" height="100%" />
           </View>
 
           <Text className="mb-6 font-plus-jakarta text-base leading-6 text-gray-700">

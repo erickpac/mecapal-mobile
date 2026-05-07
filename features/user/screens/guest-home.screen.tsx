@@ -2,25 +2,19 @@ import { Text, View, ScrollView, Image } from 'react-native';
 import { NavigationHeader } from '@/components/navigation-header';
 import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
-import { navigateTo } from '@/features/shared/routes';
 import { UserRole } from '@/features/auth/types/user';
 import WelcomeHero from '@/components/welcome-hero';
-import ListItem from '@/components/list-item';
 import { Button } from '@/components/button';
 import SubheaderText from '@/components/subheader-text';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
-import { SERVICES } from '@/features/shared/data/services';
+import { ServicesList } from '@/features/shared/components/services-list';
 import { LoginHome } from '@/components/svg';
 
 export default function GuestHomeScreen() {
   const { t } = useTranslation();
   const handleGoToAuth = () => {
     router.navigate('/(app)/auth' as any);
-  };
-
-  const handleServicePress = (serviceId: string) => {
-    navigateTo(`/home/service-detail?id=${serviceId}`);
   };
 
   return (
@@ -60,19 +54,7 @@ export default function GuestHomeScreen() {
 
         {/* Services Section */}
         <View className="mt-10">
-          <SubheaderText title={t('home.guest.servicesTitle')} onlyTitle />
-          <View className="mt-4 bg-white">
-            {SERVICES.map((service) => (
-              <ListItem
-                key={service.id}
-                icon={<service.icon width={75} height={75} />}
-                title={t(`home.services.${service.id}.title`)}
-                description={t(`home.services.${service.id}.listDescription`)}
-                linkText={t('home.guest.learnMore')}
-                onPress={() => handleServicePress(service.id)}
-              />
-            ))}
-          </View>
+          <ServicesList />
         </View>
 
         {/* Mekapal is for everyone */}

@@ -53,10 +53,7 @@ export const navigateToAddAddress = () =>
   router.push(USER_ROUTES.ADDRESSES_ADD);
 export const navigateToEditAddress = (id: string) =>
   router.push({ pathname: USER_ROUTES.ADDRESSES_EDIT, params: { id } } as any);
-export const navigateToMapPicker = (
-  latitude?: number,
-  longitude?: number,
-) =>
+export const navigateToMapPicker = (latitude?: number, longitude?: number) =>
   router.push({
     pathname: USER_ROUTES.ADDRESSES_MAP,
     params: {

@@ -40,10 +40,7 @@ const REASON_VALUES: DeletionReason[] = [
 export default function DeleteAccountConfirmScreen() {
   const { t } = useTranslation();
   const { user, setDeletionScheduledFor } = useStore();
-  const {
-    mutate: requestDeletion,
-    isPending,
-  } = useRequestAccountDeletion();
+  const { mutate: requestDeletion, isPending } = useRequestAccountDeletion();
 
   const [password, setPassword] = useState('');
   const [reason, setReason] = useState<DeletionReason | ''>('');
@@ -175,7 +172,7 @@ export default function DeleteAccountConfirmScreen() {
   return (
     <>
       <NavigationHeader title="" showBackButton borderBottom={false} />
-      <ContentContainer edges={['left', 'right']}>
+      <ContentContainer>
         <KeyboardAvoidingView
           className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -213,7 +210,9 @@ export default function DeleteAccountConfirmScreen() {
                 label={t('account.deletion.reasonLabel')}
                 value={reason}
                 options={reasonOptions}
-                onValueChange={(value) => setReason(value as DeletionReason | '')}
+                onValueChange={(value) =>
+                  setReason(value as DeletionReason | '')
+                }
                 modalTitle={t('account.deletion.reasonLabel')}
               />
 

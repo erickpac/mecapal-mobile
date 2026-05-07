@@ -14,7 +14,7 @@ import { COLORS } from '@/consts/colors';
 import { PendingDeletionBanner } from '@/features/account/components/pending-deletion-banner';
 
 export default function AppLayout() {
-  const { user, isAuthenticated } = useStore();
+  const { user, isAuthenticated, selectedUserType } = useStore();
 
   const { TRANSPORTER_TABS, USER_TABS, GUEST_TABS } = useTabConfigurations();
 
@@ -35,45 +35,45 @@ export default function AppLayout() {
     hiddenRoutes = USER_HIDDEN_ROUTES;
   }
 
+  const role = user?.role ?? selectedUserType;
   const activeColor =
-    user?.role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
+    role === UserRole.TRANSPORTER ? COLORS.secondary : COLORS.primary;
 
   return (
     <View className="flex-1">
       <PendingDeletionBanner />
       <Tabs screenOptions={TAB_SCREEN_OPTIONS}>
-      {/* Render active tabs */}
-      {activeTabs.map((tab) => {
-        return (
+        {/* Render active tabs */}
+        {activeTabs.map((tab) => {
+          return (
+            <Tabs.Screen
+              key={tab.name}
+              name={tab.name}
+              options={{
+                title: tab.title,
+                tabBarActiveTintColor: activeColor,
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons
+                    name={tab.icon}
+                    size={size}
+                    color={color}
+                  />
+                ),
+              }}
+            />
+          );
+        })}
+
+        {/* Render hidden routes */}
+        {hiddenRoutes.map((route) => (
           <Tabs.Screen
-            key={tab.name}
-            name={tab.name}
+            key={route}
+            name={route}
             options={{
-              title: tab.title,
-              tabBarActiveTintColor: activeColor,
-              tabBarInactiveTintColor: COLORS.lightGray[400],
-              tabBarIcon: ({ focused, size }) => (
-                <MaterialCommunityIcons
-                  name={tab.icon}
-                  size={size}
-                  color={focused ? activeColor : COLORS.lightGray[400]}
-                />
-              ),
+              href: null, // Hide from tabs
             }}
           />
-        );
-      })}
-
-      {/* Render hidden routes */}
-      {hiddenRoutes.map((route) => (
-        <Tabs.Screen
-          key={route}
-          name={route}
-          options={{
-            href: null, // Hide from tabs
-          }}
-        />
-      ))}
+        ))}
       </Tabs>
     </View>
   );

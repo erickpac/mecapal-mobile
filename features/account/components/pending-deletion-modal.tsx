@@ -53,9 +53,7 @@ export const PendingDeletionModal = () => {
             </Text>
             <Text className="mt-2 text-center font-plus-jakarta text-sm text-gray-700">
               {t('account.deletion.pendingModal.message', {
-                date: scheduledFor
-                  ? formatDeletionDate(scheduledFor)
-                  : '',
+                date: scheduledFor ? formatDeletionDate(scheduledFor) : '',
               })}
             </Text>
           </View>

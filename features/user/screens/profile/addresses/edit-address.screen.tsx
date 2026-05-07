@@ -101,7 +101,9 @@ const EditAddressScreen = () => {
 
   // Cascading data
   const { data: departments } = useDepartments(guatemalaId);
-  const { data: municipalities } = useMunicipalities(selectedStateId || undefined);
+  const { data: municipalities } = useMunicipalities(
+    selectedStateId || undefined,
+  );
   const { data: zones } = useZones(selectedCityId || undefined);
 
   // Map to select options
@@ -193,7 +195,10 @@ const EditAddressScreen = () => {
           postalCode: selectedZone?.code ?? address?.postalCode ?? '00000',
           country: 'Guatemala',
           latitude:
-            coords?.latitude ?? selectedZone?.latitude ?? address?.latitude ?? null,
+            coords?.latitude ??
+            selectedZone?.latitude ??
+            address?.latitude ??
+            null,
           longitude:
             coords?.longitude ??
             selectedZone?.longitude ??
@@ -227,7 +232,7 @@ const EditAddressScreen = () => {
     return (
       <>
         <NavigationHeader title="" showBackButton borderBottom={false} />
-        <ContentContainer edges={['left', 'right']}>
+        <ContentContainer>
           <View className="flex-1 items-center justify-center">
             <ActivityIndicator size="large" color={COLORS.primary} />
           </View>
@@ -239,7 +244,7 @@ const EditAddressScreen = () => {
   return (
     <>
       <NavigationHeader title="" showBackButton borderBottom={false} />
-      <ContentContainer edges={['left', 'right']}>
+      <ContentContainer>
         <KeyboardAvoidingView
           className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -354,30 +359,30 @@ const EditAddressScreen = () => {
               </Text>
             </TouchableOpacity>
           </ScrollView>
-        </KeyboardAvoidingView>
 
-        <View className="gap-2 px-4 pb-4">
-          <Button
-            title={
-              isPending
-                ? t('profile.address.updating')
-                : t('profile.address.updateAddress')
-            }
-            onPress={handleSubmit(onSubmit)}
-            disabled={!isValid || isPending || isDeleting}
-            loading={isPending}
-            userType={user?.role}
-            variant="contained"
-          />
-          <Button
-            title={t('profile.address.deleteAddress')}
-            onPress={handleDelete}
-            disabled={isDeleting}
-            loading={isDeleting}
-            userType={user?.role}
-            variant="outlined"
-          />
-        </View>
+          <View className="gap-2 px-4 pb-4">
+            <Button
+              title={
+                isPending
+                  ? t('profile.address.updating')
+                  : t('profile.address.updateAddress')
+              }
+              onPress={handleSubmit(onSubmit)}
+              disabled={!isValid || isPending || isDeleting}
+              loading={isPending}
+              userType={user?.role}
+              variant="contained"
+            />
+            <Button
+              title={t('profile.address.deleteAddress')}
+              onPress={handleDelete}
+              disabled={isDeleting}
+              loading={isDeleting}
+              userType={user?.role}
+              variant="outlined"
+            />
+          </View>
+        </KeyboardAvoidingView>
       </ContentContainer>
     </>
   );

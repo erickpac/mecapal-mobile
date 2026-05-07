@@ -46,7 +46,9 @@ export default function ResetPasswordScreen() {
   const { mutate: resendForgotPassword, isPending: isResending } =
     useForgotPassword();
 
-  const [secondsLeft, setSecondsLeft] = useState<number>(RESEND_COOLDOWN_SECONDS);
+  const [secondsLeft, setSecondsLeft] = useState<number>(
+    RESEND_COOLDOWN_SECONDS,
+  );
   const [resendInfo, setResendInfo] = useState<string | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -122,7 +124,7 @@ export default function ResetPasswordScreen() {
           ) : undefined
         }
       />
-      <ContentContainer edges={['left', 'right', 'bottom']}>
+      <ContentContainer>
         <KeyboardAvoidingView
           className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}

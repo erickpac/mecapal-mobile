@@ -30,7 +30,7 @@ const TabComponent: React.FC<TabComponentProps> = ({
 
   return (
     <View className={`flex-1 ${tabStyle}`}>
-      <View className="flex-row items-center justify-center px-28 py-2">
+      <View className="flex-row items-center justify-center px-6 py-2">
         {tabs.map((tab, index) => {
           const activeColor = tab.activeColor || defaultActiveColor;
           return (
@@ -38,6 +38,7 @@ const TabComponent: React.FC<TabComponentProps> = ({
               key={index}
               icon={() => (
                 <Text
+                  numberOfLines={1}
                   className={`text-center font-plus-jakarta-medium text-lg font-medium ${
                     activeTab === index ? '' : 'text-[#00000099]'
                   }`}

@@ -62,7 +62,7 @@ const AddressScreen = () => {
   return (
     <>
       <NavigationHeader title="" showBackButton borderBottom={false} />
-      <ContentContainer edges={['left', 'right']}>
+      <ContentContainer>
         <View className="flex-1">
           <View className="px-4 pt-4">
             <Text className="font-plus-jakarta-bold text-2xl text-gray-900">

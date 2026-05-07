@@ -157,7 +157,7 @@ const InfoScreen = () => {
   return (
     <>
       <NavigationHeader title="" showBackButton borderBottom={false} />
-      <ContentContainer edges={['left', 'right']}>
+      <ContentContainer>
         <KeyboardAvoidingView
           className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -242,22 +242,22 @@ const InfoScreen = () => {
               />
             </View>
           </ScrollView>
-        </KeyboardAvoidingView>
 
-        <View className="px-4 pb-4">
-          <Button
-            title={
-              isPending
-                ? t('profile.personalInfo.saving')
-                : t('profile.personalInfo.save')
-            }
-            onPress={submit}
-            disabled={!isDirty || isPending || isSubmitting}
-            loading={isPending}
-            userType={user?.role}
-            variant="contained"
-          />
-        </View>
+          <View className="px-4 pb-4">
+            <Button
+              title={
+                isPending
+                  ? t('profile.personalInfo.saving')
+                  : t('profile.personalInfo.save')
+              }
+              onPress={submit}
+              disabled={!isDirty || isPending || isSubmitting}
+              loading={isPending}
+              userType={user?.role}
+              variant="contained"
+            />
+          </View>
+        </KeyboardAvoidingView>
       </ContentContainer>
     </>
   );

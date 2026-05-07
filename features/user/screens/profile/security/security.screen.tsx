@@ -102,7 +102,7 @@ const SecurityScreen = () => {
   return (
     <>
       <NavigationHeader title="" showBackButton borderBottom={false} />
-      <ContentContainer edges={['left', 'right']}>
+      <ContentContainer>
         <KeyboardAvoidingView
           className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}

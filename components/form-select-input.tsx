@@ -1,12 +1,11 @@
 import { memo } from 'react';
 import { Controller, Control, FieldValues, Path } from 'react-hook-form';
-import {
-  SelectInput,
-  SelectInputProps,
-} from '@/components/select-input';
+import { SelectInput, SelectInputProps } from '@/components/select-input';
 
-interface FormSelectInputProps<T extends FieldValues>
-  extends Omit<SelectInputProps, 'value' | 'onValueChange' | 'error'> {
+interface FormSelectInputProps<T extends FieldValues> extends Omit<
+  SelectInputProps,
+  'value' | 'onValueChange' | 'error'
+> {
   control: Control<T>;
   name: Path<T>;
   onValueChange?: (value: string) => void;

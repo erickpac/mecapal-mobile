@@ -57,8 +57,7 @@ const MapPickerScreen = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { status } =
-          await Location.requestForegroundPermissionsAsync();
+        const { status } = await Location.requestForegroundPermissionsAsync();
 
         if (status !== 'granted') {
           setLoading(false);
@@ -109,7 +108,10 @@ const MapPickerScreen = () => {
     });
     const data = await response.json();
     if (data.length > 0) {
-      return { latitude: parseFloat(data[0].lat), longitude: parseFloat(data[0].lon) };
+      return {
+        latitude: parseFloat(data[0].lat),
+        longitude: parseFloat(data[0].lon),
+      };
     }
     return null;
   };
@@ -131,7 +133,10 @@ const MapPickerScreen = () => {
       try {
         const results = await Location.geocodeAsync(query);
         if (results.length > 0) {
-          coords = { latitude: results[0].latitude, longitude: results[0].longitude };
+          coords = {
+            latitude: results[0].latitude,
+            longitude: results[0].longitude,
+          };
         }
       } catch {
         // expo geocoding failed, try fallback

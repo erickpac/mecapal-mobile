@@ -124,6 +124,41 @@ eas submit --platform android                     # Submit to Play Store
 - Font: Plus Jakarta Sans (multiple weights)
 - Icons: `@expo/vector-icons` (MaterialCommunityIcons) + custom SVG components
 
+## Screen Layout
+
+Use `<ContentContainer>` as the screen wrapper. It auto-detects whether
+it's rendered inside the bottom tab navigator (via
+`BottomTabBarHeightContext`) and adjusts safe area insets accordingly:
+inside tabs it skips the bottom inset (the tab bar already handles it),
+outside tabs it includes the bottom inset (for the home indicator).
+Don't pass `edges` manually unless overriding the default behavior.
+
+### Form screen pattern
+
+Forms with a primary action button follow this layout:
+
+```tsx
+<NavigationHeader ... />
+<ContentContainer>
+  <KeyboardAvoidingView
+    className="flex-1"
+    behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+  >
+    <ScrollView contentContainerClassName="px-4" bounces={false}>
+      {/* form fields */}
+    </ScrollView>
+
+    <View className="px-4 pb-4">
+      {/* primary action button(s) */}
+    </View>
+  </KeyboardAvoidingView>
+</ContentContainer>
+```
+
+The button container is **inside** the `KeyboardAvoidingView` (so the
+keyboard pushes it up) but **outside** the `ScrollView` (so it stays
+pinned at the bottom regardless of form length).
+
 ## Code Conventions
 
 - Functional components with hooks

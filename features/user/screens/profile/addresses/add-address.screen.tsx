@@ -89,7 +89,9 @@ const AddAddressScreen = () => {
 
   // Cascading data
   const { data: departments } = useDepartments(guatemalaId);
-  const { data: municipalities } = useMunicipalities(selectedStateId || undefined);
+  const { data: municipalities } = useMunicipalities(
+    selectedStateId || undefined,
+  );
   const { data: zones } = useZones(selectedCityId || undefined);
 
   // Map to select options
@@ -161,7 +163,7 @@ const AddAddressScreen = () => {
   return (
     <>
       <NavigationHeader title="" showBackButton borderBottom={false} />
-      <ContentContainer edges={['left', 'right']}>
+      <ContentContainer>
         <KeyboardAvoidingView
           className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -265,22 +267,22 @@ const AddAddressScreen = () => {
               </Text>
             </TouchableOpacity>
           </ScrollView>
-        </KeyboardAvoidingView>
 
-        <View className="px-4 pb-4">
-          <Button
-            title={
-              isPending
-                ? t('profile.address.saving')
-                : t('profile.address.addNewAddress')
-            }
-            onPress={handleSubmit(onSubmit)}
-            disabled={!isValid || isPending}
-            loading={isPending}
-            userType={user?.role}
-            variant="contained"
-          />
-        </View>
+          <View className="px-4 pb-4">
+            <Button
+              title={
+                isPending
+                  ? t('profile.address.saving')
+                  : t('profile.address.addNewAddress')
+              }
+              onPress={handleSubmit(onSubmit)}
+              disabled={!isValid || isPending}
+              loading={isPending}
+              userType={user?.role}
+              variant="contained"
+            />
+          </View>
+        </KeyboardAvoidingView>
       </ContentContainer>
     </>
   );

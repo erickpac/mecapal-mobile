@@ -62,7 +62,7 @@ export default function ForgotPasswordScreen() {
           ) : undefined
         }
       />
-      <ContentContainer edges={['left', 'right', 'bottom']}>
+      <ContentContainer>
         <KeyboardAvoidingView
           className="flex-1"
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
