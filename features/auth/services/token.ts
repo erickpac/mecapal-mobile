@@ -11,8 +11,12 @@ export class TokenService {
     try {
       const refreshToken = useStore.getState().refreshToken;
 
+      // No refresh token means the user is not authenticated yet (e.g.
+      // a 401 during sign-in) or we already cleaned up. Either way, let
+      // the caller handle the original error — don't trigger a logout
+      // navigation here, because we'd kick the user out of screens that
+      // legitimately have no session yet.
       if (!refreshToken) {
-        this.clearAllTokens();
         return false;
       }
 
