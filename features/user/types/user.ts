@@ -7,6 +7,7 @@ export interface UpdateUserPayload {
   taxId?: string;
   companyName?: string;
   idNumber?: string;
+  profilePhotoUrl?: string;
 }
 
 export type UserMeResponse = User;

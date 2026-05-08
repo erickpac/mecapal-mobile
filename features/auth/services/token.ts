@@ -12,6 +12,7 @@ export class TokenService {
       const refreshToken = useStore.getState().refreshToken;
 
       if (!refreshToken) {
+        console.warn('[TokenService] no refresh token in store, clearing');
         this.clearAllTokens();
         return false;
       }
@@ -23,6 +24,18 @@ export class TokenService {
 
       return true;
     } catch (error) {
+      console.error('[TokenService] refresh failed:', error);
+      if (typeof error === 'object' && error !== null && 'response' in error) {
+        const axiosError = error as {
+          response?: { status?: number; data?: unknown };
+        };
+        console.error(
+          '[TokenService]   status:',
+          axiosError.response?.status,
+          'data:',
+          JSON.stringify(axiosError.response?.data),
+        );
+      }
       this.clearAllTokens();
       return false;
     }
@@ -54,7 +67,9 @@ export class TokenService {
     // Navigate to home first so the user lands on a tab that exists in both
     // authenticated and guest tab configurations before activeTabs flips.
     replaceRoute(USER_ROUTES.HOME);
-    useStore.getState().logout();
+    // Skip the server sign-out call: the token is already invalid, calling
+    // /sign-out would 401 and re-enter this function in a loop.
+    useStore.getState().logout({ skipServerSignOut: true });
   }
 
   static shouldAttemptRefresh(error: any): boolean {

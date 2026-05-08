@@ -35,7 +35,7 @@ export default function TransporterProfileScreen() {
               <Avatar
                 size={48}
                 sizeEditButton={20}
-                onPress={() => console.log('Edit avatar pressed')}
+                uri={user?.profilePhotoUrl}
                 className="-mt-20"
               />
               <View className="mt-4 items-center">

@@ -19,6 +19,7 @@ export interface User {
   phone: string;
   companyName: string | null;
   taxId: string | null;
+  profilePhotoUrl: string | null;
   deletionScheduledFor: string | null;
   transporterProfile: TransporterProfile | null;
 }

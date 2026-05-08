@@ -33,3 +33,7 @@ export const USER_ENDPOINTS = {
   GET_ME: 'user/me',
   UPDATE: 'user',
 };
+
+export const UPLOAD_ENDPOINTS = {
+  PRESIGNED_URL: 'upload/presigned-url',
+};

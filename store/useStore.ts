@@ -28,7 +28,7 @@ interface AppState {
   setDeletionScheduledFor: (scheduledFor: string | null) => void;
   showPendingDeletionModal: (scheduledFor: string) => void;
   hidePendingDeletionModal: () => void;
-  logout: () => void;
+  logout: (options?: { skipServerSignOut?: boolean }) => void;
   enterGuestMode: () => void;
 }
 
@@ -76,10 +76,16 @@ export const useStore = create<AppState>()(
       },
       setSelectedUserType: (userType) => set({ selectedUserType: userType }),
       setGuestMode: (isGuest) => set({ isGuestMode: isGuest }),
-      logout: () => {
-        import('@/features/auth/services/auth').then(({ authService }) =>
-          authService.signOut().catch(() => {}),
-        );
+      logout: (options) => {
+        // Skip the server sign-out call when an auto-flow (token refresh
+        // failure) is logging the user out: the token is already invalid,
+        // so signOut would itself 401 and re-enter clearAllTokens, looping
+        // forever. Manual logouts from UI keep the server call.
+        if (!options?.skipServerSignOut) {
+          import('@/features/auth/services/auth').then(({ authService }) =>
+            authService.signOut().catch(() => {}),
+          );
+        }
         TokenManager.clearToken();
         queryClient.clear();
         set({

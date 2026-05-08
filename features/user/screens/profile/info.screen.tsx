@@ -19,6 +19,7 @@ import Avatar from '@/components/avatar';
 import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import { useUpdateUser } from '@/features/user/hooks/useUpdateUser';
+import { useUploadProfilePhoto } from '@/features/user/hooks/useUploadProfilePhoto';
 import { UpdateUserPayload } from '@/features/user/types/user';
 import {
   ClientEditProfileFormData,
@@ -37,6 +38,7 @@ const InfoScreen = () => {
   const { user } = useStore();
   const { getErrorMessage } = useLocalizedError();
   const { showSuccess, showError } = useSnackbar();
+  const { pickAndUpload, isUploading } = useUploadProfilePhoto();
 
   const isTransporter = user?.role === UserRole.TRANSPORTER;
 
@@ -170,7 +172,14 @@ const InfoScreen = () => {
             </View>
 
             <View className="items-center">
-              <Avatar size={48} sizeEditButton={20} showEditButton />
+              <Avatar
+                size={48}
+                sizeEditButton={20}
+                showEditButton
+                uri={user?.profilePhotoUrl}
+                loading={isUploading}
+                onPress={pickAndUpload}
+              />
             </View>
 
             <View className="mt-8 pb-4">

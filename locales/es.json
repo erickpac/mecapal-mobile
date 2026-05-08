@@ -680,7 +680,10 @@
       "readOnlyHint": "No editable",
       "save": "Guardar cambios",
       "saving": "Guardando...",
-      "updateSuccessMessage": "Tus cambios se guardaron correctamente."
+      "updateSuccessMessage": "Tus cambios se guardaron correctamente.",
+      "photoUploadSuccess": "Foto de perfil actualizada",
+      "photoUploadError": "No se pudo subir la foto",
+      "photoPermissionDenied": "Se requiere permiso para acceder a tus fotos"
     },
     "paymentMethods": {
       "title": "Métodos de Pago",

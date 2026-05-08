@@ -69,6 +69,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         enableFullScreenImage_legacy: true,
       },
     ],
+    [
+      'expo-image-picker',
+      {
+        photosPermission:
+          'Mekapal necesita acceso a tu galería para que puedas elegir tu foto de perfil.',
+      },
+    ],
   ],
   experiments: {
     typedRoutes: true,

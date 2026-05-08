@@ -675,7 +675,10 @@
       "readOnlyHint": "Not editable",
       "save": "Save changes",
       "saving": "Saving...",
-      "updateSuccessMessage": "Your changes were saved successfully."
+      "updateSuccessMessage": "Your changes were saved successfully.",
+      "photoUploadSuccess": "Profile photo updated",
+      "photoUploadError": "Could not upload the photo",
+      "photoPermissionDenied": "Permission to access your photos is required"
     },
     "paymentMethods": {
       "title": "Payment Methods",
