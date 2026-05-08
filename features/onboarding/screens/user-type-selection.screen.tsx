@@ -1,6 +1,6 @@
 import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
 import { navigateToAuthOptions } from '../routes';
@@ -42,8 +42,12 @@ export default function UserTypeSelectionScreen() {
         backgroundColor={COLORS.primary}
       />
 
-      <ContentContainer className="justify-between px-4">
-        <View className="flex-1 pt-8">
+      <ContentContainer>
+        <ScrollView
+          className="flex-1"
+          contentContainerClassName="grow px-4 pt-8"
+          bounces={false}
+        >
           <View className="mb-6">
             <Text className="mb-4 text-center font-plus-jakarta-bold text-2xl text-text-active">
               {t('onboarding.userType.title')}
@@ -68,9 +72,9 @@ export default function UserTypeSelectionScreen() {
               />
             ))}
           </View>
-        </View>
+        </ScrollView>
 
-        <View className="flex-row items-center justify-center gap-2 pb-4">
+        <View className="flex-row items-center justify-center gap-2 pt-4">
           <View className="h-2 w-8 rounded-full bg-gray-300" />
           <View className="h-2 w-8 rounded-full bg-primary-500" />
           <View className="h-2 w-8 rounded-full bg-gray-300" />

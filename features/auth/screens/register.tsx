@@ -112,10 +112,10 @@ export default function RegisterScreen() {
           <ScrollView contentContainerClassName="px-4" bounces={false}>
             <View className="mb-6 mt-2 items-center">
               <View className="aspect-[287/206] w-48 max-w-full">
-                {selectedUserType === UserRole.CLIENT ? (
-                  <RegisterUser width="100%" height="100%" />
-                ) : (
+                {userType === UserRole.TRANSPORTER ? (
                   <RegisterTransporter width="100%" height="100%" />
+                ) : (
+                  <RegisterUser width="100%" height="100%" />
                 )}
               </View>
             </View>

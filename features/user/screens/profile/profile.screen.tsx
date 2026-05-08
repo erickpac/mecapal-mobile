@@ -5,7 +5,7 @@ import {
   View,
   Image,
   Alert,
-  FlatList,
+  ScrollView,
 } from 'react-native';
 import { NavigationHeader } from '@/components/navigation-header';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -128,8 +128,12 @@ export default function UserProfileScreen() {
         showBackButton={false}
         borderBottom={false}
       />
-      <View className="m-0 flex-1 bg-white">
-        <View className="m-0 flex-1 p-0">
+      <View className="flex-1 bg-white">
+        <ScrollView
+          className="flex-1"
+          contentContainerClassName="grow pb-4"
+          bounces={false}
+        >
           <View className="h-48 border-0 bg-blue-900">
             <Image
               source={require('../../../../assets/images/profile-background.png')}
@@ -168,45 +172,45 @@ export default function UserProfileScreen() {
           </View>
 
           {/* Menu Items */}
-          <View className="space-y-3 px-4">
-            <FlatList
-              data={listProfileOptions}
-              renderItem={({ item }) => renderListItem(item)}
-              keyExtractor={(item) => item.icon.split('_').join('').toString()}
-              bounces={false}
+          <View className="px-4">
+            {listProfileOptions.map((item) => (
+              <View
+                key={item.icon.split('_').join('').toString()}
+              >
+                {renderListItem(item)}
+              </View>
+            ))}
+          </View>
+
+          {/* Logout Button */}
+          <TouchableOpacity
+            onPress={handleLogout}
+            className="mt-6 flex flex-row items-center gap-2 p-4 align-middle"
+          >
+            <MaterialCommunityIcons
+              name="logout"
+              size={24}
+              color={COLORS.tertiary700}
             />
-          </View>
-          <View className="absolute bottom-0 left-0 right-0 bg-white p-4">
-            {/* Logout Button */}
-            <TouchableOpacity
-              onPress={handleLogout}
-              className="mt-6 flex flex-row items-center gap-2 p-4 align-middle"
-            >
-              <MaterialCommunityIcons
-                name="logout"
-                size={24}
-                color={COLORS.tertiary700}
-              />
-              <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-[#7C2F19] underline">
-                {t('profile.account.logout')}
-              </Text>
-            </TouchableOpacity>
-            {/* Delete Account Button */}
-            <TouchableOpacity
-              onPress={navigateToDeleteAccount}
-              className="flex flex-row items-center gap-2 px-4 align-middle"
-            >
-              <MaterialCommunityIcons
-                name="trash-can-outline"
-                size={24}
-                color={COLORS.error}
-              />
-              <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-red-600 underline">
-                {t('profile.account.deleteAccount')}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+            <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-[#7C2F19] underline">
+              {t('profile.account.logout')}
+            </Text>
+          </TouchableOpacity>
+          {/* Delete Account Button */}
+          <TouchableOpacity
+            onPress={navigateToDeleteAccount}
+            className="flex flex-row items-center gap-2 px-4 align-middle"
+          >
+            <MaterialCommunityIcons
+              name="trash-can-outline"
+              size={24}
+              color={COLORS.error}
+            />
+            <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-red-600 underline">
+              {t('profile.account.deleteAccount')}
+            </Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     </>
   );

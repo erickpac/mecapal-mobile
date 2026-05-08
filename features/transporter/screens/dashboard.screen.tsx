@@ -22,7 +22,7 @@ export default function TransporterDashboardScreen() {
           name={user ? `${user.firstName} ${user.lastName}` : ''}
           role={user?.role}
         />
-        <View className="-mt-16 w-full flex-row items-center justify-between px-3">
+        <View className="-mt-16 w-full flex-row items-center gap-3 px-3">
           <Card
             icon={<Motorcycle />}
             title={t('home.actions.heavyLoad')}

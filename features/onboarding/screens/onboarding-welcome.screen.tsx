@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { Button } from '@/components/button';
 import { navigateToUserTypeSelection } from '../routes';
 import { CarRental, CheckCircle } from '@/components/svg';
@@ -21,8 +21,12 @@ export default function OnboardingWelcomeScreen() {
         backgroundColor={COLORS.primary}
       />
 
-      <ContentContainer className="justify-between px-4">
-        <View className="flex-1 pt-8">
+      <ContentContainer>
+        <ScrollView
+          className="flex-1"
+          contentContainerClassName="grow px-4 pt-8"
+          bounces={false}
+        >
           <View className="mb-12 items-center">
             <Text className="mb-4 font-plus-jakarta-extrabold text-5xl leading-[64px] text-primary-500">
               Mekapal
@@ -60,14 +64,16 @@ export default function OnboardingWelcomeScreen() {
               </View>
             </View>
           </View>
-        </View>
+        </ScrollView>
 
-        <Button
-          title={t('onboarding.welcome.start')}
-          onPress={handleContinue}
-          fullWidth
-          buttonColor={COLORS.primary}
-        />
+        <View className="px-4 pt-4">
+          <Button
+            title={t('onboarding.welcome.start')}
+            onPress={handleContinue}
+            fullWidth
+            buttonColor={COLORS.primary}
+          />
+        </View>
       </ContentContainer>
     </>
   );

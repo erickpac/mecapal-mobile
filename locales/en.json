@@ -569,11 +569,11 @@
     "ctaTransporter": {
       "title": "Are you a transporter?",
       "subtitle": "Make your vehicle work for you",
-      "action1": "Create your account"
+      "action1": "Learn more"
     },
     "ctaUser": {
       "title": "Ready to move your things?",
-      "action1": "Create my account",
+      "action1": "Learn more",
       "action2": "Login"
     },
     "guest": {

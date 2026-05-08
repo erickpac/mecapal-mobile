@@ -1,6 +1,6 @@
 import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
 import {
@@ -39,8 +39,12 @@ export default function AuthOptionsScreen() {
   return (
     <>
       <NavigationHeader showBackButton={true} />
-      <ContentContainer className="justify-between px-4">
-        <View className="flex-1 pt-8">
+      <ContentContainer>
+        <ScrollView
+          className="flex-1"
+          contentContainerClassName="grow px-4 pt-8"
+          bounces={false}
+        >
           <View className="mb-2 items-center">
             <Text className="mb-4 font-plus-jakarta-extrabold text-5xl leading-[64px] text-primary-500">
               Mekapal
@@ -60,9 +64,9 @@ export default function AuthOptionsScreen() {
               {content.description}
             </Text>
           </View>
-        </View>
+        </ScrollView>
 
-        <View className="gap-2">
+        <View className="gap-2 px-4 pt-4">
           <Button
             title={t('onboarding.authOptions.createAccount')}
             onPress={() => navigateToOnboardingRegister()}

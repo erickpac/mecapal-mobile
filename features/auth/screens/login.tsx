@@ -88,10 +88,10 @@ export default function LoginScreen({
           <ScrollView contentContainerClassName="px-4" bounces={false}>
             <View className="mb-6 mt-2 items-center">
               <View className="aspect-[287/206] w-64 max-w-full">
-                {selectedUserType === UserRole.CLIENT ? (
-                  <LoginUser width="100%" height="100%" />
-                ) : (
+                {selectedUserType === UserRole.TRANSPORTER ? (
                   <LoginTransporter width="100%" height="100%" />
+                ) : (
+                  <LoginUser width="100%" height="100%" />
                 )}
               </View>
             </View>

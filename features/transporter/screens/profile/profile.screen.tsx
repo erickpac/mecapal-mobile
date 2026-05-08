@@ -20,8 +20,12 @@ export default function TransporterProfileScreen() {
   return (
     <>
       <NavigationHeader title="" showBackButton={false} borderBottom={false} />
-      <View className="m-0 flex-1 bg-white">
-        <View className="m-0 h-dvh flex-1 p-0">
+      <View className="flex-1 bg-white">
+        <ScrollView
+          className="flex-1"
+          contentContainerClassName="grow pb-4"
+          bounces={false}
+        >
           <View className="h-48 border-0 bg-blue-900">
             <Image
               source={require('../../../../assets/images/transporter_background.png')}
@@ -63,7 +67,7 @@ export default function TransporterProfileScreen() {
           </View>
 
           {/* Menu Items */}
-          <ScrollView className="space-y-3 px-4">
+          <View className="px-4">
             <TouchableOpacity
               onPress={() => {
                 navigateToTransporterInfo();
@@ -234,41 +238,40 @@ export default function TransporterProfileScreen() {
                 />
               </View>
             </TouchableOpacity>
-          </ScrollView>
-          <View className="absolute bottom-0 left-0 right-0 bg-white p-4">
-            {/* Logout Button */}
-            <TouchableOpacity
-              onPress={() => {
-                logout();
-                replaceRoute('/(app)/home');
-              }}
-              className="mt-6 flex flex-row items-center gap-2 p-4 align-middle"
-            >
-              <MaterialCommunityIcons
-                name="logout"
-                size={24}
-                color={COLORS.secondary}
-              />
-              <Text className="text-left text-base font-semibold text-secondary-500">
-                {t('profile.account.logout')}
-              </Text>
-            </TouchableOpacity>
-            {/* Delete Account Button */}
-            <TouchableOpacity
-              onPress={navigateToDeleteAccount}
-              className="flex flex-row items-center gap-2 px-4 align-middle"
-            >
-              <MaterialCommunityIcons
-                name="trash-can-outline"
-                size={24}
-                color={COLORS.error}
-              />
-              <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-red-600 underline">
-                {t('profile.account.deleteAccount')}
-              </Text>
-            </TouchableOpacity>
           </View>
-        </View>
+
+          {/* Logout Button */}
+          <TouchableOpacity
+            onPress={() => {
+              logout();
+              replaceRoute('/(app)/home');
+            }}
+            className="mt-6 flex flex-row items-center gap-2 p-4 align-middle"
+          >
+            <MaterialCommunityIcons
+              name="logout"
+              size={24}
+              color={COLORS.secondary}
+            />
+            <Text className="text-left text-base font-semibold text-secondary-500">
+              {t('profile.account.logout')}
+            </Text>
+          </TouchableOpacity>
+          {/* Delete Account Button */}
+          <TouchableOpacity
+            onPress={navigateToDeleteAccount}
+            className="flex flex-row items-center gap-2 px-4 align-middle"
+          >
+            <MaterialCommunityIcons
+              name="trash-can-outline"
+              size={24}
+              color={COLORS.error}
+            />
+            <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-red-600 underline">
+              {t('profile.account.deleteAccount')}
+            </Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     </>
   );

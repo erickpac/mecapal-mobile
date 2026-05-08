@@ -23,7 +23,7 @@ export default function UserHomeScreen() {
         bounces={false}
       >
         <WelcomeHero name={user ? `${user.firstName} ${user.lastName}` : ''} />
-        <View className="-mt-16 w-full flex-row items-center justify-between px-3">
+        <View className="-mt-16 w-full flex-row items-center gap-3 px-3">
           <Card
             icon={<Motorcycle />}
             title={t('home.actions.express')}
@@ -56,7 +56,7 @@ export default function UserHomeScreen() {
             <Text className="font-plus-jakarta-bold text-xl font-bold text-black">
               {t('home.ctaTransporter.title')}
             </Text>
-            <Text className="mt-2 font-plus-jakarta-medium text-[16px] font-medium text-black">
+            <Text className="mt-2 text-center font-plus-jakarta-medium text-[16px] font-medium text-black">
               {t('home.ctaTransporter.subtitle')}
             </Text>
             <View className="mt-5">
