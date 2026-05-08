@@ -1,5 +1,12 @@
 import { useStore } from '@/store/useStore';
-import { Text, TouchableOpacity, Image, View, ScrollView } from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  Image,
+  View,
+  ScrollView,
+  Alert,
+} from 'react-native';
 import { NavigationHeader } from '@/components/navigation-header';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
@@ -13,13 +20,127 @@ import StarsRating from '@/components/stars-rating';
 import { COLORS } from '@/consts/colors';
 import { replaceRoute } from '@/features/shared/routes';
 import { navigateToDeleteAccount } from '@/features/account/routes';
+import { IconName } from '@/types/navigation';
+
+const listProfileOptions: {
+  icon: IconName;
+  title: string;
+  subTitle: string;
+  onPress: () => void;
+}[] = [
+  {
+    icon: 'account-circle-outline',
+    title: 'profile.personalInfo.title',
+    subTitle: 'profile.personalInfo.subtitle',
+    onPress: navigateToTransporterInfo,
+  },
+  {
+    icon: 'cash-multiple',
+    title: 'profile.earnings.title',
+    subTitle: 'profile.earnings.subtitle',
+    onPress: navigateToEarnings,
+  },
+  {
+    icon: 'truck',
+    title: 'profile.fleet.title',
+    subTitle: 'profile.fleet.subtitle',
+    onPress: () => {},
+  },
+  {
+    icon: 'map-marker',
+    title: 'profile.coverage.title',
+    subTitle: 'profile.coverage.subtitle',
+    onPress: () => {},
+  },
+  {
+    icon: 'lock-outline',
+    title: 'profile.security.title',
+    subTitle: 'profile.security.subtitle',
+    onPress: navigateToSecurity,
+  },
+  {
+    icon: 'help-circle-outline',
+    title: 'profile.help.title',
+    subTitle: 'profile.help.subtitle',
+    onPress: navigateToHelp,
+  },
+];
 
 export default function TransporterProfileScreen() {
   const { user, logout } = useStore();
   const { t } = useTranslation();
+
+  const handleLogout = () => {
+    Alert.alert(
+      t('profile.account.logout'),
+      t('profile.account.logoutConfirm'),
+      [
+        {
+          text: t('profile.account.logoutYes'),
+          style: 'destructive',
+          onPress: () => {
+            logout();
+            replaceRoute('/(app)/home');
+          },
+        },
+        {
+          text: t('profile.account.logoutCancel'),
+          style: 'cancel',
+        },
+      ],
+    );
+  };
+
+  const renderListItem = ({
+    icon,
+    title,
+    subTitle,
+    onPress,
+  }: {
+    icon: IconName;
+    title: string;
+    subTitle: string;
+    onPress: () => void;
+  }) => {
+    return (
+      <TouchableOpacity
+        onPress={() => onPress()}
+        className="border-b border-gray-300 bg-white p-4"
+      >
+        <View className="flex-row items-center">
+          <View className="mr-4 h-10 w-10 items-center justify-center">
+            <MaterialCommunityIcons
+              name={icon}
+              size={28}
+              color={COLORS.secondary}
+            />
+          </View>
+          <View className="flex-1">
+            <Text className="font-plus-jakarta-semibold text-lg font-semibold text-gray-800">
+              {t(`${title}`)}
+            </Text>
+            <Text className="font-plus-jakarta-light text-gray-600">
+              {t(`${subTitle}`)}
+            </Text>
+          </View>
+          <MaterialCommunityIcons
+            name="chevron-right"
+            size={20}
+            color={COLORS.lightGray[700]}
+          />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <>
-      <NavigationHeader title="" showBackButton={false} borderBottom={false} />
+      <NavigationHeader
+        title=""
+        showBackButton={false}
+        borderBottom={false}
+        variant="logo"
+      />
       <View className="flex-1 bg-white">
         <ScrollView
           className="flex-1"
@@ -53,7 +174,7 @@ export default function TransporterProfileScreen() {
           <View className="-mt-24 rounded-2xl bg-white p-4">
             <View className="items-center">
               <View className="items-center">
-                <Text className="text-xl font-semibold text-gray-800">
+                <Text className="font-plus-jakarta-semibold text-xl font-semibold text-gray-800">
                   {t('profile.title')}
                 </Text>
                 <Text className="text-gray-600">
@@ -68,184 +189,16 @@ export default function TransporterProfileScreen() {
 
           {/* Menu Items */}
           <View className="px-4">
-            <TouchableOpacity
-              onPress={() => {
-                navigateToTransporterInfo();
-              }}
-              className="border-b border-gray-300 bg-white p-4"
-            >
-              <View className="flex-row items-center">
-                <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialCommunityIcons
-                    name="account-circle-outline"
-                    size={28}
-                    color={COLORS.secondary}
-                  />
-                </View>
-                <View className="flex-1">
-                  <Text className="font-plus-jakarta-bold text-lg font-semibold text-gray-800">
-                    {t('profile.personalInfo.title')}
-                  </Text>
-                  <Text className="text-gray-600">
-                    {t('profile.personalInfo.subtitle')}
-                  </Text>
-                </View>
-                <MaterialCommunityIcons
-                  name="chevron-right"
-                  size={20}
-                  color={COLORS.lightGray[700]}
-                />
+            {listProfileOptions.map((item) => (
+              <View key={item.icon.split('_').join('').toString()}>
+                {renderListItem(item)}
               </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => {
-                navigateToEarnings();
-              }}
-              className="border-b border-gray-300 bg-white p-4"
-            >
-              <View className="flex-row items-center">
-                <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialCommunityIcons
-                    name="cash-multiple"
-                    size={28}
-                    color={COLORS.secondary}
-                  />
-                </View>
-                <View className="flex-1">
-                  <Text className="font-plus-jakarta-bold text-lg font-semibold text-gray-800">
-                    {'Ganancias y Cuenta Bancaria'}
-                  </Text>
-                  <Text className="text-gray-600">
-                    {'Revisa tus ganancias mensuales'}
-                  </Text>
-                </View>
-                <MaterialCommunityIcons
-                  name="chevron-right"
-                  size={20}
-                  color={COLORS.lightGray[700]}
-                />
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => {}}
-              className="border-b border-gray-300 bg-white p-4"
-            >
-              <View className="flex-row items-center">
-                <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialCommunityIcons
-                    name="truck"
-                    size={28}
-                    color={COLORS.secondary}
-                  />
-                </View>
-                <View className="flex-1">
-                  <Text className="font-plus-jakarta-bold text-lg font-semibold text-gray-800">
-                    {'Mi Flota'}
-                  </Text>
-                  <Text className="text-gray-600">
-                    {'Información de tus vehículos'}
-                  </Text>
-                </View>
-                <MaterialCommunityIcons
-                  name="chevron-right"
-                  size={20}
-                  color={COLORS.lightGray[700]}
-                />
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => {}}
-              className="border-b border-gray-300 bg-white p-4"
-            >
-              <View className="flex-row items-center">
-                <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialCommunityIcons
-                    name="map-marker"
-                    size={28}
-                    color={COLORS.secondary}
-                  />
-                </View>
-                <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-800">
-                    {'Areas de Cobertura'}
-                  </Text>
-                  <Text className="text-gray-600">
-                    {'Ubicaciones Disponibles'}
-                  </Text>
-                </View>
-                <MaterialCommunityIcons
-                  name="chevron-right"
-                  size={20}
-                  color={COLORS.lightGray[700]}
-                />
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => navigateToSecurity()}
-              className="border-b border-gray-300 bg-white p-4"
-            >
-              <View className="flex-row items-center">
-                <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialCommunityIcons
-                    name="lock"
-                    size={28}
-                    color={COLORS.secondary}
-                  />
-                </View>
-                <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-800">
-                    {t('profile.security.title')}
-                  </Text>
-                  <Text className="text-gray-600">
-                    {t('profile.security.subtitle')}
-                  </Text>
-                </View>
-                <MaterialCommunityIcons
-                  name="chevron-right"
-                  size={20}
-                  color={COLORS.lightGray[700]}
-                />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => navigateToHelp()}
-              className="border-b border-gray-300 bg-white p-4"
-            >
-              <View className="flex-row items-center">
-                <View className="mr-4 h-10 w-10 items-center justify-center">
-                  <MaterialCommunityIcons
-                    name="help-circle-outline"
-                    size={28}
-                    color={COLORS.secondary}
-                  />
-                </View>
-                <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-800">
-                    {t('profile.help.title')}
-                  </Text>
-                  <Text className="text-gray-600">
-                    {t('profile.help.subtitle')}
-                  </Text>
-                </View>
-                <MaterialCommunityIcons
-                  name="chevron-right"
-                  size={20}
-                  color={COLORS.lightGray[700]}
-                />
-              </View>
-            </TouchableOpacity>
+            ))}
           </View>
 
           {/* Logout Button */}
           <TouchableOpacity
-            onPress={() => {
-              logout();
-              replaceRoute('/(app)/home');
-            }}
+            onPress={handleLogout}
             className="mt-6 flex flex-row items-center gap-2 p-4 align-middle"
           >
             <MaterialCommunityIcons
@@ -253,7 +206,7 @@ export default function TransporterProfileScreen() {
               size={24}
               color={COLORS.secondary}
             />
-            <Text className="text-left text-base font-semibold text-secondary-500">
+            <Text className="text-left font-plus-jakarta-semibold text-base font-semibold text-secondary-500 underline">
               {t('profile.account.logout')}
             </Text>
           </TouchableOpacity>

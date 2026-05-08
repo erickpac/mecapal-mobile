@@ -732,6 +732,18 @@
       "updating": "Updating...",
       "additionalInstructions": "Additional Instructions"
     },
+    "earnings": {
+      "title": "Earnings & Bank Account",
+      "subtitle": "Check your monthly earnings"
+    },
+    "fleet": {
+      "title": "My Fleet",
+      "subtitle": "Information about your vehicles"
+    },
+    "coverage": {
+      "title": "Coverage Areas",
+      "subtitle": "Available locations"
+    },
     "security": {
       "title": "Security",
       "subtitle": "Change your password"

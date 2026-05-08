@@ -737,6 +737,18 @@
       "updating": "Actualizando...",
       "additionalInstructions": "Indicaciones Adicionales"
     },
+    "earnings": {
+      "title": "Ganancias y Cuenta Bancaria",
+      "subtitle": "Revisa tus ganancias mensuales"
+    },
+    "fleet": {
+      "title": "Mi Flota",
+      "subtitle": "Información de tus vehículos"
+    },
+    "coverage": {
+      "title": "Áreas de Cobertura",
+      "subtitle": "Ubicaciones disponibles"
+    },
     "security": {
       "title": "Seguridad",
       "subtitle": "Cambia tu contraseña"
