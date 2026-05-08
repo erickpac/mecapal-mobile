@@ -12,7 +12,6 @@ export class TokenService {
       const refreshToken = useStore.getState().refreshToken;
 
       if (!refreshToken) {
-        console.warn('[TokenService] no refresh token in store, clearing');
         this.clearAllTokens();
         return false;
       }
@@ -23,19 +22,7 @@ export class TokenService {
       this.updateTokens(accessToken, idToken);
 
       return true;
-    } catch (error) {
-      console.error('[TokenService] refresh failed:', error);
-      if (typeof error === 'object' && error !== null && 'response' in error) {
-        const axiosError = error as {
-          response?: { status?: number; data?: unknown };
-        };
-        console.error(
-          '[TokenService]   status:',
-          axiosError.response?.status,
-          'data:',
-          JSON.stringify(axiosError.response?.data),
-        );
-      }
+    } catch {
       this.clearAllTokens();
       return false;
     }
