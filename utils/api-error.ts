@@ -21,22 +21,92 @@ const ERROR_CODE_TO_I18N: Record<ErrorCode, string> = {
 };
 
 /**
- * Stable error codes emitted by the backend (in the `error` or `code` field of
- * the response body) mapped to client-side i18n keys. The backend owns the
- * code; the translation lives here. Falls back to the generic per-status key
- * (ERROR_CODE_TO_I18N) when a code is not listed.
+ * Stable error codes emitted by the backend (in the `error` field of the
+ * response body) mapped to client-side i18n keys. The backend owns the code;
+ * the translation lives here. Mirrors `src/common/exceptions/error-code.ts`
+ * in mekapal-api. Generic codes reuse the per-status `errors.*` keys; domain
+ * codes get dedicated `errors.server.*` keys. Falls back to the generic
+ * per-status key (ERROR_CODE_TO_I18N) when a code is not listed.
  */
 const SERVER_ERROR_CODE_TO_I18N: Record<string, string> = {
+  // Generic / cross-cutting — reuse the existing per-status keys
+  VALIDATION_ERROR: 'errors.validationError',
+  BAD_REQUEST: 'errors.validationError',
+  INTERNAL_ERROR: 'errors.serverError',
+  UNAUTHORIZED: 'errors.unauthorized',
+  FORBIDDEN: 'errors.forbidden',
+  NOT_FOUND: 'errors.notFound',
+  CONFLICT: 'errors.generic',
+  RATE_LIMITED: 'errors.server.rateLimited',
+
+  // Auth / Cognito
   INVALID_CREDENTIALS: 'errors.server.invalidCredentials',
   USER_NOT_CONFIRMED: 'errors.server.userNotConfirmed',
-  USER_NOT_FOUND: 'errors.server.userNotFound',
   USER_ALREADY_EXISTS: 'errors.server.userAlreadyExists',
   INVALID_CODE: 'errors.server.invalidCode',
   EXPIRED_CODE: 'errors.server.expiredCode',
   INVALID_PASSWORD: 'errors.server.invalidPassword',
+  USER_NOT_FOUND: 'errors.server.userNotFound',
   INVALID_TOKEN: 'errors.server.invalidToken',
   UNAUTHORIZED_ROLE: 'errors.server.unauthorizedRole',
-  RATE_LIMITED: 'errors.server.rateLimited',
+
+  // Account deletion
+  DELETION_BLOCKED: 'errors.server.deletionBlocked',
+  DELETION_ALREADY_SCHEDULED: 'errors.server.deletionAlreadyScheduled',
+  DELETION_NOT_SCHEDULED: 'errors.server.deletionNotScheduled',
+
+  // User
+  EMAIL_ALREADY_TAKEN: 'errors.server.emailAlreadyTaken',
+
+  // Address
+  ADDRESS_NOT_FOUND: 'errors.server.addressNotFound',
+  ADDRESS_IN_USE: 'errors.server.addressInUse',
+  ADDRESS_LIMIT_EXCEEDED: 'errors.server.addressLimitExceeded',
+
+  // Vehicle
+  VEHICLE_NOT_FOUND: 'errors.server.vehicleNotFound',
+  VEHICLE_IN_USE: 'errors.server.vehicleInUse',
+  VEHICLE_LIMIT_EXCEEDED: 'errors.server.vehicleLimitExceeded',
+
+  // Delivery
+  DELIVERY_REQUEST_NOT_FOUND: 'errors.server.deliveryRequestNotFound',
+  DELIVERY_OFFER_NOT_FOUND: 'errors.server.deliveryOfferNotFound',
+  OFFER_WINDOW_EXPIRED: 'errors.server.offerWindowExpired',
+  INVALID_REQUEST_STATUS: 'errors.server.invalidRequestStatus',
+  INVALID_OFFER_STATUS: 'errors.server.invalidOfferStatus',
+  DUPLICATE_OFFER: 'errors.server.duplicateOffer',
+
+  // Order
+  ORDER_NOT_FOUND: 'errors.server.orderNotFound',
+  INVALID_ORDER_STATUS: 'errors.server.invalidOrderStatus',
+  INVALID_STATUS_TRANSITION: 'errors.server.invalidStatusTransition',
+
+  // Payment
+  PAYMENT_METHOD_NOT_FOUND: 'errors.server.paymentMethodNotFound',
+  TRANSACTION_NOT_FOUND: 'errors.server.transactionNotFound',
+  PAYMENT_FAILED: 'errors.server.paymentFailed',
+  INVALID_PAYMENT_METHOD: 'errors.server.invalidPaymentMethod',
+
+  // Bank account
+  BANK_ACCOUNT_NOT_FOUND: 'errors.server.bankAccountNotFound',
+  BANK_ACCOUNT_NOT_VERIFIED: 'errors.server.bankAccountNotVerified',
+  DUPLICATE_BANK_ACCOUNT: 'errors.server.duplicateBankAccount',
+  BANK_ACCOUNT_HAS_SETTLEMENTS: 'errors.server.bankAccountHasSettlements',
+
+  // Settlement
+  SETTLEMENT_NOT_FOUND: 'errors.server.settlementNotFound',
+  SETTLEMENT_ALREADY_PAID: 'errors.server.settlementAlreadyPaid',
+  SETTLEMENT_ALREADY_EXISTS: 'errors.server.settlementAlreadyExists',
+
+  // Review
+  REVIEW_NOT_FOUND: 'errors.server.reviewNotFound',
+  REVIEW_ALREADY_EXISTS: 'errors.server.reviewAlreadyExists',
+  INVALID_REVIEW_TARGET: 'errors.server.invalidReviewTarget',
+  ORDER_NOT_COMPLETED: 'errors.server.orderNotCompleted',
+
+  // Incident
+  INCIDENT_NOT_FOUND: 'errors.server.incidentNotFound',
+  INVALID_INCIDENT_STATUS: 'errors.server.invalidIncidentStatus',
 };
 
 export class AppError extends Error {
@@ -77,10 +147,9 @@ export function parseApiError(error: unknown): AppError {
     const data = error.response?.data;
     const rawMessage = data?.message;
     const message = Array.isArray(rawMessage) ? rawMessage[0] : rawMessage;
-    // Cognito/account filters use `error`; the user domain filter uses `code`.
+    // The standardized error contract always carries the stable code in `error`.
     const serverErrorCode =
-      (typeof data?.error === 'string' ? data.error : undefined) ??
-      (typeof data?.code === 'string' ? data.code : undefined);
+      typeof data?.error === 'string' ? data.error : undefined;
 
     if (!error.response && error.request) {
       return new AppError(
