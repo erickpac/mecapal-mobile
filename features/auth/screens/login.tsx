@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
+import { useSnackbar } from '@/hooks/useSnackbar';
 import { replaceRoute } from '@/features/shared/routes';
 import { USER_ROUTES } from '@/features/user/routes';
 import { NavigationHeader } from '@/components/navigation-header';
@@ -39,6 +40,7 @@ export default function LoginScreen({
   const { setHasCompletedOnboarding, selectedUserType } = useStore();
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
+  const { showError } = useSnackbar();
   const { isOnboarding, navigateToForgotPassword, navigateToRegister } =
     useAuthFlow();
 
@@ -64,6 +66,12 @@ export default function LoginScreen({
       replaceRoute(USER_ROUTES.HOME);
     }
   }, [isSuccess, reset, setHasCompletedOnboarding]);
+
+  useEffect(() => {
+    if (error) {
+      showError(getErrorMessage(error));
+    }
+  }, [error, showError, getErrorMessage]);
 
   return (
     <>
@@ -122,12 +130,6 @@ export default function LoginScreen({
                 />
               </View>
             </View>
-
-            {error && (
-              <Text className="mb-4 text-center font-plus-jakarta text-sm text-red-500">
-                {getErrorMessage(error)}
-              </Text>
-            )}
 
             <Button
               title={t('auth.login.login')}

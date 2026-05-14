@@ -888,6 +888,18 @@
     "validationError": "The provided data is not valid",
     "serverError": "Internal server error. Please try again later",
     "networkError": "Connection error. Please check your internet connection",
+    "server": {
+      "invalidCredentials": "Incorrect email or password.",
+      "userNotConfirmed": "Your account isn't verified yet. Check your email to confirm it.",
+      "userNotFound": "We couldn't find an account with this email.",
+      "userAlreadyExists": "An account with this email already exists.",
+      "invalidCode": "The verification code is invalid.",
+      "expiredCode": "The verification code expired. Request a new one.",
+      "invalidPassword": "The password doesn't meet the security requirements.",
+      "invalidToken": "Your session expired. Please sign in again.",
+      "unauthorizedRole": "This account doesn't have access to the app.",
+      "rateLimited": "Too many attempts. Wait a few minutes and try again."
+    },
     "profile": {
       "editProfile": {
         "firstNameTooShort": "First name must be at least 2 characters",

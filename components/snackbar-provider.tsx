@@ -58,6 +58,11 @@ export const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   const [variant, setVariant] = useState<SnackbarVariant>('info');
   const [duration, setDuration] = useState<number>(DEFAULT_DURATION);
   const queueRef = useRef<ShowSnackbarOptions[]>([]);
+  // Mirror `visible` into a ref so `showSnackbar` can read the latest value
+  // without taking it as a dependency — this keeps the callback identity
+  // stable, so consumers can safely use `showError` etc. in effect deps.
+  const visibleRef = useRef(visible);
+  visibleRef.current = visible;
 
   const presentNext = useCallback(() => {
     const next = queueRef.current.shift();
@@ -70,7 +75,7 @@ export const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
 
   const showSnackbar = useCallback(
     (options: ShowSnackbarOptions) => {
-      if (visible) {
+      if (visibleRef.current) {
         // Replace currently shown snackbar with the new one for fresher feedback.
         queueRef.current = [options];
         setVisible(false);
@@ -79,7 +84,7 @@ export const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
       queueRef.current.push(options);
       presentNext();
     },
-    [visible, presentNext],
+    [presentNext],
   );
 
   const hideSnackbar = useCallback(() => {

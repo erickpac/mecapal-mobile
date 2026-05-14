@@ -12,6 +12,7 @@ import {
 import { SegmentedButtons } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
+import { useSnackbar } from '@/hooks/useSnackbar';
 import { UserRole } from '@/features/auth/types/user';
 import { ContentContainer } from '@/components/content-container';
 import { RegisterUser, RegisterTransporter } from '@/components/svg';
@@ -44,6 +45,7 @@ export default function RegisterScreen() {
   const { selectedUserType, setSelectedUserType } = useStore();
   const { t } = useTranslation();
   const { getErrorMessage } = useLocalizedError();
+  const { showError } = useSnackbar();
   const { isOnboarding, navigateToLogin, navigateToEmailVerification } =
     useAuthFlow();
 
@@ -74,6 +76,12 @@ export default function RegisterScreen() {
       reset();
     }
   }, [isSuccess, registerVariables, navigateToEmailVerification, reset]);
+
+  useEffect(() => {
+    if (error) {
+      showError(getErrorMessage(error));
+    }
+  }, [error, showError, getErrorMessage]);
 
   const handleSelectUserType = (value: string) => {
     setSelectedUserType(value as UserRole);
@@ -214,12 +222,6 @@ export default function RegisterScreen() {
           </ScrollView>
 
           <View className="px-4 pb-4">
-            {error && (
-              <Text className="mb-4 text-center font-plus-jakarta text-sm text-red-500">
-                {getErrorMessage(error)}
-              </Text>
-            )}
-
             <Button
               title={t('auth.register.title')}
               onPress={handleSubmit(onSubmit)}
