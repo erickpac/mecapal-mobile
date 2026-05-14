@@ -17,8 +17,7 @@ export const useUploadProfilePhoto = () => {
   const [isUploading, setIsUploading] = useState(false);
 
   const pickAndUpload = async () => {
-    const permission =
-      await ImagePicker.requestMediaLibraryPermissionsAsync();
+    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (!permission.granted) {
       showError(t('profile.personalInfo.photoPermissionDenied'));
       return;

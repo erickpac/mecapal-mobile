@@ -28,7 +28,7 @@ export const NewsletterSection = () => {
       <Text className="text-center font-plus-jakarta-bold text-2xl text-white">
         {t('home.newsletter.title')}
       </Text>
-      <Text className="mt-2 text-center font-plus-jakarta-regular text-sm text-white">
+      <Text className="font-plus-jakarta-regular mt-2 text-center text-sm text-white">
         {t('home.newsletter.subtitle')}
       </Text>
       <View className="mt-5">

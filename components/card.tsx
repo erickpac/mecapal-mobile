@@ -18,7 +18,7 @@ const Card = ({ title, icon, onPress, className = '' }: Props) => {
       <View className="h-28 flex-col items-center justify-center rounded-lg border border-gray-300 bg-white px-2">
         <View>{icon}</View>
         <Text
-          className="font-plus-jakarta text-center text-xs font-medium leading-tight"
+          className="text-center font-plus-jakarta text-xs font-medium leading-tight"
           numberOfLines={2}
         >
           {title}
