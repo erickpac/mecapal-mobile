@@ -566,14 +566,10 @@
       "title": "Transacciones recientes",
       "noTransactions": "Aún no hay transacciones"
     },
-    "ctaTransporter": {
-      "title": "¿Quieres ser transportista?",
-      "subtitle": "Haz que tu vehiculo trabaje para ti",
-      "action1": "Conoce más"
-    },
     "newsletter": {
       "title": "Suscríbete a nuestro boletín",
       "subtitle": "Sé el primero en acceder a promociones y noticias.",
+      "emailLabel": "Correo electrónico",
       "action1": "Suscribirme"
     },
     "ctaUser": {
@@ -908,6 +904,10 @@
       "stateRequired": "El departamento es obligatorio",
       "postalCodeRequired": "El código postal es obligatorio",
       "contactPhoneInvalid": "Ingresa un número de 8 dígitos válido"
+    },
+    "newsletter": {
+      "emailRequired": "El correo es obligatorio",
+      "emailInvalid": "Ingresa tu correo electrónico correctamente"
     },
     "auth": {
       "login": {

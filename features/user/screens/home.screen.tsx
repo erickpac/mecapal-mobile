@@ -1,14 +1,13 @@
 import { useStore } from '@/store/useStore';
-import { Text, View, ScrollView, Image } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { navigateTo } from '@/features/shared/routes';
 import { NavigationHeader } from '@/components/navigation-header';
-import { Button } from '@/components/button';
-import { UserRole } from '@/features/auth/types/user';
 import WelcomeHero from '@/components/welcome-hero';
 import Card from '@/components/card';
 import { Truck, Shuttle, Motorcycle } from '@/components/svg';
 import { ServicesList } from '@/features/shared/components/services-list';
+import { NewsletterSection } from '@/features/shared/components/newsletter-section';
 
 export default function UserHomeScreen() {
   const { user } = useStore();
@@ -44,30 +43,7 @@ export default function UserHomeScreen() {
         <View className="pt-4">
           <ServicesList />
         </View>
-        <View className="bg-[#EAF6F3] p-6">
-          <View className="mt-4 w-dvw">
-            <Image
-              source={require('../../../assets/images/truck-2-home.png')}
-              className="h-48 w-full rounded-xl"
-              resizeMethod="scale"
-            />
-          </View>
-          <View className="mx-8 mt-6 items-center px-6 pb-6">
-            <Text className="font-plus-jakarta-bold text-xl font-bold text-black">
-              {t('home.ctaTransporter.title')}
-            </Text>
-            <Text className="mt-2 text-center font-plus-jakarta-medium text-[16px] font-medium text-black">
-              {t('home.ctaTransporter.subtitle')}
-            </Text>
-            <View className="mt-5">
-              <Button
-                title={t('home.ctaTransporter.action1')}
-                onPress={() => {}}
-                userType={UserRole.TRANSPORTER}
-              />
-            </View>
-          </View>
-        </View>
+        <NewsletterSection />
       </ScrollView>
     </>
   );

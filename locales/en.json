@@ -566,10 +566,11 @@
       "title": "Recent Transactions",
       "noTransactions": "No transactions yet"
     },
-    "ctaTransporter": {
-      "title": "Are you a transporter?",
-      "subtitle": "Make your vehicle work for you",
-      "action1": "Learn more"
+    "newsletter": {
+      "title": "Subscribe to our newsletter",
+      "subtitle": "Be the first to access promotions and news.",
+      "emailLabel": "Email",
+      "action1": "Subscribe"
     },
     "ctaUser": {
       "title": "Ready to move your things?",
@@ -903,6 +904,10 @@
       "stateRequired": "State is required",
       "postalCodeRequired": "Postal code is required",
       "contactPhoneInvalid": "Enter a valid 8-digit phone number"
+    },
+    "newsletter": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address"
     },
     "auth": {
       "login": {
