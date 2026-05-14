@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import ListItem from '@/components/list-item';
 import SubheaderText from '@/components/subheader-text';
@@ -19,7 +19,13 @@ export const ServicesList = () => {
         {SERVICES.map((service) => (
           <ListItem
             key={service.id}
-            icon={<service.icon width={75} height={75} />}
+            icon={
+              <Image
+                source={service.icon}
+                className="h-[75px] w-[75px]"
+                resizeMode="contain"
+              />
+            }
             title={t(`home.services.${service.id}.title`)}
             onPress={() => handleServicePress(service.id)}
           />

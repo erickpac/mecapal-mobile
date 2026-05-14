@@ -10,6 +10,7 @@ import {
 import { NavigationHeader } from '@/components/navigation-header';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
+import { IMAGES } from '@/consts/images';
 import { useTranslation } from 'react-i18next';
 import {
   navigateToHelp,
@@ -136,7 +137,7 @@ export default function UserProfileScreen() {
         >
           <View className="h-48 border-0 bg-blue-900">
             <Image
-              source={require('../../../../assets/images/profile-background.png')}
+              source={IMAGES.backgrounds.profileClient}
               className="absolute inset-0 h-full w-full"
               resizeMode="cover"
             />
@@ -174,9 +175,7 @@ export default function UserProfileScreen() {
           {/* Menu Items */}
           <View className="px-4">
             {listProfileOptions.map((item) => (
-              <View
-                key={item.icon.split('_').join('').toString()}
-              >
+              <View key={item.icon.split('_').join('').toString()}>
                 {renderListItem(item)}
               </View>
             ))}

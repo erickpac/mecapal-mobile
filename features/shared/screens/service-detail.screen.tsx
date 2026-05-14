@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Image } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from '@/components/navigation-header';
@@ -35,9 +35,13 @@ export default function ServiceDetailScreen() {
 
           <View
             className="mb-4 w-full"
-            style={{ aspectRatio: service.wideIcon.aspectRatio }}
+            style={{ aspectRatio: service.wideAspectRatio }}
           >
-            <service.wideIcon width="100%" height="100%" />
+            <Image
+              source={service.wideIcon}
+              style={{ width: '100%', height: '100%' }}
+              resizeMode="contain"
+            />
           </View>
 
           <Text className="mb-6 font-plus-jakarta text-base leading-6 text-gray-700">

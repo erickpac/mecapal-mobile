@@ -1,34 +1,32 @@
-import { ComponentType } from 'react';
-import { SvgProps } from 'react-native-svg';
-import {
-  ExpressCargo,
-  LightCargo,
-  HeavyCargo,
-  ExpressCargoWide,
-  LightCargoWide,
-  HeavyCargoWide,
-} from '@/components/svg';
+import { ImageSourcePropType } from 'react-native';
+import { IMAGES } from '@/consts/images';
 
 export interface ServiceData {
   id: string;
-  icon: ComponentType<SvgProps>;
-  wideIcon: ComponentType<SvgProps> & { aspectRatio: number };
+  icon: ImageSourcePropType;
+  wideIcon: ImageSourcePropType;
+  wideAspectRatio: number;
 }
+
+const WIDE_ASPECT_RATIO = 678 / 290;
 
 export const SERVICES: ServiceData[] = [
   {
     id: 'express',
-    icon: ExpressCargo,
-    wideIcon: ExpressCargoWide,
+    icon: IMAGES.vehicles.expressCargo,
+    wideIcon: IMAGES.vehicles.expressCargoWide,
+    wideAspectRatio: WIDE_ASPECT_RATIO,
   },
   {
     id: 'light',
-    icon: LightCargo,
-    wideIcon: LightCargoWide,
+    icon: IMAGES.vehicles.lightCargo,
+    wideIcon: IMAGES.vehicles.lightCargoWide,
+    wideAspectRatio: WIDE_ASPECT_RATIO,
   },
   {
     id: 'heavy',
-    icon: HeavyCargo,
-    wideIcon: HeavyCargoWide,
+    icon: IMAGES.vehicles.heavyCargo,
+    wideIcon: IMAGES.vehicles.heavyCargoWide,
+    wideAspectRatio: WIDE_ASPECT_RATIO,
   },
 ];

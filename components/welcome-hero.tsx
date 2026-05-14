@@ -1,6 +1,7 @@
 import { UserRole } from '@/features/auth/types/user';
 import { useTranslation } from 'react-i18next';
 import { Text, View, Image } from 'react-native';
+import { IMAGES } from '@/consts/images';
 
 type Props = {
   name?: string | null;
@@ -14,13 +15,15 @@ const WelcomeHero = ({
   centerAlign = false,
 }: Props) => {
   const { t } = useTranslation();
-  const pathUser = require('../assets/images/Hero-background.png');
-  const pathTransporter = require('../assets/images/hero-background-transporter.png');
 
   return (
     <View className="h-40 rounded-b-2xl">
       <Image
-        source={role === UserRole.CLIENT ? pathUser : pathTransporter}
+        source={
+          role === UserRole.CLIENT
+            ? IMAGES.backgrounds.heroClient
+            : IMAGES.backgrounds.heroTransporter
+        }
         className="absolute inset-0 h-full w-full rounded-b-2xl"
         resizeMode="cover"
       />

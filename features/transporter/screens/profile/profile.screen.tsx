@@ -18,6 +18,7 @@ import {
 } from '@/features/transporter/routes';
 import StarsRating from '@/components/stars-rating';
 import { COLORS } from '@/consts/colors';
+import { IMAGES } from '@/consts/images';
 import { replaceRoute } from '@/features/shared/routes';
 import { navigateToDeleteAccount } from '@/features/account/routes';
 import { IconName } from '@/types/navigation';
@@ -149,7 +150,7 @@ export default function TransporterProfileScreen() {
         >
           <View className="h-48 border-0 bg-blue-900">
             <Image
-              source={require('../../../../assets/images/transporter_background.png')}
+              source={IMAGES.backgrounds.profileTransporter}
               className="absolute inset-0 h-full w-full"
               resizeMode="cover"
             />

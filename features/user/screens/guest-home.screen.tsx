@@ -9,6 +9,7 @@ import { Button } from '@/components/button';
 import SubheaderText from '@/components/subheader-text';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
+import { IMAGES } from '@/consts/images';
 import { ServicesList } from '@/features/shared/components/services-list';
 import { LoginHome } from '@/components/svg';
 
@@ -47,7 +48,7 @@ export default function GuestHomeScreen() {
           </View>
           <View className="mt-4 px-4">
             <Image
-              source={require('../../../assets/images/guest-truck.png')}
+              source={IMAGES.guestTruck}
               className="h-48 w-full rounded-xl"
               resizeMode="cover"
             />
