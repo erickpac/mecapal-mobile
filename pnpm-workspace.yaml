@@ -1,0 +1,7 @@
+nodeLinker: hoisted
+
+overrides:
+  '@expo/dom-webview': 55.0.5
+
+allowBuilds:
+  unrs-resolver: true

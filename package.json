@@ -15,7 +15,7 @@
     "build:ios:production": "eas build --profile production --platform ios --local",
     "submit:ios:staging": "eas submit --platform ios --profile staging --path $(ls -t build-*.ipa | head -1)",
     "submit:ios:production": "eas submit --platform ios --profile production --path $(ls -t build-*.ipa | head -1)",
-    "distribute:android": "firebase appdistribution:distribute $(ls -t build-*.apk | head -1) --app 1:623651505205:android:0171a9fd9b5a005a649d7c --groups internal-testers"
+    "submit:android:staging": "firebase appdistribution:distribute $(ls -t build-*.apk | head -1) --app 1:623651505205:android:0171a9fd9b5a005a649d7c --groups internal-testers"
   },
   "dependencies": {
     "@expo/metro-runtime": "^55.0.11",
@@ -74,7 +74,7 @@
     "typescript": "~5.9.3"
   },
   "private": true,
-  "packageManager": "pnpm@10.31.0",
+  "packageManager": "pnpm@11.3.0",
   "pnpm": {
     "overrides": {
       "@expo/dom-webview": "55.0.5"
