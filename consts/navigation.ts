@@ -33,7 +33,7 @@ export const USER_TABS: TabConfig[] = [
   {
     name: 'history',
     titleKey: 'navigation.tabs.history',
-    icon: 'clock-outline',
+    icon: 'clock',
   },
   {
     name: 'profile',
@@ -51,7 +51,7 @@ export const GUEST_TABS: TabConfig[] = [
   {
     name: 'about',
     titleKey: 'navigation.tabs.about',
-    icon: 'help-circle-outline',
+    icon: 'help-circle',
   },
   {
     name: 'auth',
