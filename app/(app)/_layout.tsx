@@ -1,5 +1,6 @@
 import { Tabs } from 'expo-router';
 import { View } from 'react-native';
+import { useEffect } from 'react';
 import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -12,9 +13,21 @@ import {
 import { useTabConfigurations } from '@/hooks/useTabConfigurations';
 import { COLORS } from '@/consts/colors';
 import { PendingDeletionBanner } from '@/features/account/components/pending-deletion-banner';
+import { useUserMe } from '@/features/user/hooks/useUserMe';
 
 export default function AppLayout() {
-  const { user, isAuthenticated, selectedUserType } = useStore();
+  const { user, isAuthenticated, selectedUserType, setUser } = useStore();
+
+  // Refresh the persisted user from /user/me whenever the authenticated
+  // layout mounts (cold start, rehydration, or login). The query is gated
+  // on `isAuthenticated` inside the hook so guest mode never hits the API.
+  const { data: userMeData } = useUserMe();
+
+  useEffect(() => {
+    if (userMeData) {
+      setUser(userMeData);
+    }
+  }, [userMeData, setUser]);
 
   const { TRANSPORTER_TABS, USER_TABS, GUEST_TABS } = useTabConfigurations();
 

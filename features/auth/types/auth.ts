@@ -20,6 +20,7 @@ export interface RegisterCredentials {
   password: string;
   role: UserRole;
   phone: string;
+  country?: string;
   companyName?: string;
   taxId?: string;
 }

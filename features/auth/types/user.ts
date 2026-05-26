@@ -17,6 +17,7 @@ export interface User {
   email: string;
   role: UserRole;
   phone: string;
+  countryCode: string;
   companyName: string | null;
   taxId: string | null;
   profilePhotoUrl: string | null;

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, useCallback } from 'react';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
 import { useStore } from '@/store/useStore';
 import {
   View,
@@ -16,8 +16,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { router } from 'expo-router';
-import { useFocusEffect } from '@react-navigation/native';
 import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
 import { FormInput } from '@/components/form-input';
@@ -93,11 +91,8 @@ const EditAddressScreen = () => {
   const selectedStateId = watch('stateId');
   const selectedCityId = watch('cityId');
 
-  // Cascading data — countries are filtered to the default country.
-  // Multi-country support will replace DEFAULT_COUNTRY_CODE with the user's
-  // selected country.
   const { data: departments } = useDepartments({
-    countryCode: DEFAULT_COUNTRY_CODE,
+    countryCode: user?.countryCode ?? DEFAULT_COUNTRY_CODE,
   });
   const { data: municipalities } = useMunicipalities(
     selectedStateId || undefined,
