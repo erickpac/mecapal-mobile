@@ -92,7 +92,7 @@ const EditAddressScreen = () => {
   const selectedCityId = watch('cityId');
 
   const { data: departments } = useDepartments({
-    countryCode: user?.countryCode ?? DEFAULT_COUNTRY_CODE,
+    countryCode: DEFAULT_COUNTRY_CODE,
   });
   const { data: municipalities } = useMunicipalities(
     selectedStateId || undefined,

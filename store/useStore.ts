@@ -113,15 +113,6 @@ export const useStore = create<AppState>()(
       name: 'app-storage',
       storage: createJSONStorage(() => AsyncStorage),
       version: 1,
-      migrate: (persistedState, _version) => {
-        // Pre-v1 stores were missing `countryCode` on the User object.
-        // Backfill so the rehydrated user matches the current User type.
-        const state = persistedState as Partial<AppState>;
-        if (state.user && !state.user.countryCode) {
-          state.user.countryCode = 'GT';
-        }
-        return state as AppState;
-      },
     },
   ),
 );

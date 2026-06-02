@@ -21,7 +21,6 @@ import { IconButton } from '@/components/icon-button';
 import { Button } from '@/components/button';
 import { FormInput } from '@/components/form-input';
 import { COLORS } from '@/consts/colors';
-import { DEFAULT_COUNTRY_CODE } from '@/consts/location';
 import { useAuthFlow } from '@/features/auth/hooks/useAuthFlow';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -96,7 +95,6 @@ export default function RegisterScreen() {
       password: data.password,
       phone: data.phone,
       role: userType,
-      country: DEFAULT_COUNTRY_CODE,
     });
   };
 
