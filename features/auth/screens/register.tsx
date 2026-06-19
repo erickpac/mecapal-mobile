@@ -5,11 +5,14 @@ import { useEffect } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
+  Pressable,
   ScrollView,
   Text,
   View,
 } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { SegmentedButtons } from 'react-native-paper';
+import { navigateToLegal } from '@/consts/legal';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedError } from '@/hooks/useLocalizedError';
 import { useSnackbar } from '@/hooks/useSnackbar';
@@ -22,7 +25,7 @@ import { Button } from '@/components/button';
 import { FormInput } from '@/components/form-input';
 import { COLORS } from '@/consts/colors';
 import { useAuthFlow } from '@/features/auth/hooks/useAuthFlow';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   createRegisterSchema,
@@ -63,6 +66,7 @@ export default function RegisterScreen() {
       phone: '',
       password: '',
       confirmPassword: '',
+      acceptedTerms: false,
     },
     mode: 'all',
   });
@@ -219,6 +223,39 @@ export default function RegisterScreen() {
                 returnKeyType="done"
               />
             </View>
+
+            <Controller
+              control={control}
+              name="acceptedTerms"
+              render={({ field: { value, onChange } }) => (
+                <View className="my-4 flex-row items-center">
+                  <Pressable
+                    onPress={() => onChange(!value)}
+                    hitSlop={8}
+                    accessibilityRole="checkbox"
+                    accessibilityState={{ checked: value }}
+                    accessibilityLabel={`${t('auth.register.acceptPrefix')} ${t('auth.register.termsLink')}`}
+                  >
+                    <MaterialCommunityIcons
+                      name={value ? 'checkbox-marked' : 'checkbox-blank-outline'}
+                      size={24}
+                      color={value ? activeColor : COLORS.lightGray[700]}
+                    />
+                  </Pressable>
+                  <Text className="ml-2 flex-1 font-plus-jakarta text-sm text-text-active">
+                    {t('auth.register.acceptPrefix')}{' '}
+                    <Text
+                      className="font-plus-jakarta-semibold underline"
+                      style={{ color: activeColor }}
+                      accessibilityRole="link"
+                      onPress={() => navigateToLegal('terms')}
+                    >
+                      {t('auth.register.termsLink')}
+                    </Text>
+                  </Text>
+                </View>
+              )}
+            />
           </ScrollView>
 
           <View className="px-4 pb-4">

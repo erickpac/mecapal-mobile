@@ -11,10 +11,11 @@ import { NavigationHeader } from '@/components/navigation-header';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import Avatar from '@/components/avatar';
-import { navigateToHelp, navigateToSecurity } from '@/features/user/routes';
+import { navigateToSecurity } from '@/features/user/routes';
 import {
   navigateToTransporterInfo,
   navigateToEarnings,
+  navigateToTransporterHelp,
 } from '@/features/transporter/routes';
 import StarsRating from '@/components/stars-rating';
 import { COLORS } from '@/consts/colors';
@@ -62,8 +63,8 @@ const listProfileOptions: {
   {
     icon: 'help-circle-outline',
     title: 'profile.help.title',
-    subTitle: 'profile.help.subtitle',
-    onPress: navigateToHelp,
+    subTitle: 'profile.help.subtitle2',
+    onPress: navigateToTransporterHelp,
   },
 ];
 

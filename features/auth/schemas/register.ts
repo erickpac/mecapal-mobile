@@ -25,6 +25,11 @@ export const createRegisterSchema = (t: TFunction) =>
       confirmPassword: z
         .string()
         .min(1, t('errors.auth.register.confirmPasswordRequired')),
+      acceptedTerms: z
+        .boolean()
+        .refine((value) => value === true, {
+          message: t('errors.auth.register.mustAcceptTerms'),
+        }),
     })
     .refine((data) => data.password === data.confirmPassword, {
       message: t('errors.auth.register.passwordsMismatch'),

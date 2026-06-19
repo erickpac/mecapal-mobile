@@ -7,6 +7,7 @@ export const TRANSPORTER_ROUTES = {
   VEHICLES: '/vehicles',
   EARNINGS: '/profile/earnings',
   PROFILE: '/profile',
+  HELP: '/profile/transporter-help',
 } as const;
 
 // Transporter navigation functions
@@ -19,6 +20,8 @@ export const navigateToTransporterProfile = () =>
   router.push(TRANSPORTER_ROUTES.PROFILE);
 export const navigateToTransporterInfo = () =>
   router.push(TRANSPORTER_ROUTES.INFO);
+export const navigateToTransporterHelp = () =>
+  router.push(TRANSPORTER_ROUTES.HELP);
 
 // Transporter replace navigation functions
 export const replaceToOrders = () => router.replace(TRANSPORTER_ROUTES.ORDERS);

@@ -4,41 +4,15 @@ import { NavigationHeader } from '@/components/navigation-header';
 import { ContentContainer } from '@/components/content-container';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '@/consts/colors';
-import { navigateToLegal } from '@/consts/legal';
-import {
-  navigateToHelpFaq,
-  navigateToHelpContact,
-} from '@/features/user/routes';
+import { navigateToLegal, type LegalDoc } from '@/consts/legal';
 
-const ITEMS: { key: string; labelKey: string; onPress: () => void }[] = [
-  {
-    key: 'privacy',
-    labelKey: 'profile.help.option1',
-    onPress: () => navigateToLegal('privacy'),
-  },
-  {
-    key: 'terms',
-    labelKey: 'profile.help.option2',
-    onPress: () => navigateToLegal('terms'),
-  },
-  {
-    key: 'data-deletion',
-    labelKey: 'profile.help.option5',
-    onPress: () => navigateToLegal('data-deletion'),
-  },
-  {
-    key: 'faq',
-    labelKey: 'profile.help.option3',
-    onPress: () => navigateToHelpFaq(),
-  },
-  {
-    key: 'contact',
-    labelKey: 'profile.help.option4',
-    onPress: () => navigateToHelpContact(),
-  },
+const ITEMS: { doc: LegalDoc; labelKey: string }[] = [
+  { doc: 'privacy', labelKey: 'profile.help.option1' },
+  { doc: 'terms', labelKey: 'profile.help.option2' },
+  { doc: 'data-deletion', labelKey: 'profile.help.option5' },
 ];
 
-const UserHelpScreen = () => {
+const TransporterHelpScreen = () => {
   const { t } = useTranslation();
   return (
     <>
@@ -54,10 +28,10 @@ const UserHelpScreen = () => {
                 {t('profile.help.subtitle2')}
               </Text>
             </View>
-            {ITEMS.map(({ key, labelKey, onPress }) => (
+            {ITEMS.map(({ doc, labelKey }) => (
               <TouchableOpacity
-                key={key}
-                onPress={onPress}
+                key={doc}
+                onPress={() => navigateToLegal(doc)}
                 className="h-14 justify-center rounded-lg border-b border-gray-300 bg-background-100"
               >
                 <View className="flex-row items-center">
@@ -81,4 +55,4 @@ const UserHelpScreen = () => {
   );
 };
 
-export default UserHelpScreen;
+export default TransporterHelpScreen;

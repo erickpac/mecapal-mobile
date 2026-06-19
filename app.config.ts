@@ -10,6 +10,9 @@ const getBundleIdentifier = () =>
 const getAndroidPackage = () =>
   IS_STAGING ? 'com.mekapal.app.staging' : 'com.mekapal.app';
 
+const getWebBaseUrl = () =>
+  IS_STAGING ? 'https://staging.mekapal.com' : 'https://mekapal.com';
+
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: getAppName(),
@@ -91,5 +94,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     eas: {
       projectId: '1d16d3e8-455a-4388-a90b-02af9c1b7de6',
     },
+    webBaseUrl: getWebBaseUrl(),
   },
 });

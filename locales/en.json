@@ -441,7 +441,9 @@
       "redirecting": "Redirecting to login...",
       "register": "Register",
       "hasAccount": "Already have an account? Login",
-      "continueAsGuest": "Continue as guest"
+      "continueAsGuest": "Continue as guest",
+      "acceptPrefix": "I have read and accept the",
+      "termsLink": "Terms and Conditions"
     },
     "forgotPassword": {
       "title": "Forgot Password",
@@ -757,6 +759,7 @@
       "option2": "Terms and Conditions",
       "option3": "Frequently Asked Questions",
       "option4": "Contact",
+      "option5": "Data Deletion Policy",
       "contact": {
         "title": "Contact",
         "subtitle": "You can contact us through the following channels:",
@@ -777,6 +780,9 @@
       "privacy": {
         "title": "Privacy Policy",
         "description": "Please read the privacy policy before continuing."
+      },
+      "dataDeletion": {
+        "title": "Data Deletion Policy"
       }
     },
     "preferences": {
@@ -975,7 +981,8 @@
         "passwordTooShort": "Password must be at least 8 characters",
         "passwordPolicy": "Must include uppercase, lowercase, number and symbol",
         "confirmPasswordRequired": "Please confirm your password",
-        "passwordsMismatch": "Passwords do not match"
+        "passwordsMismatch": "Passwords do not match",
+        "mustAcceptTerms": "You must accept the Terms and Conditions to continue"
       },
       "changePassword": {
         "oldPasswordRequired": "Current password is required",

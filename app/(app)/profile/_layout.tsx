@@ -14,6 +14,7 @@ export default function ProfileLayout() {
       <Stack.Screen name="addresses" />
       <Stack.Screen name="security" />
       <Stack.Screen name="help/index" />
+      <Stack.Screen name="transporter-help" />
       <Stack.Screen name="earnings" />
       <Stack.Screen name="account" />
     </Stack>

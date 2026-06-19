@@ -441,7 +441,9 @@
       "redirecting": "Redirigiendo al login...",
       "register": "Registrarse",
       "hasAccount": "¿Ya tienes cuenta? Inicia sesión",
-      "continueAsGuest": "Continuar como invitado"
+      "continueAsGuest": "Continuar como invitado",
+      "acceptPrefix": "He leído y acepto los",
+      "termsLink": "Términos y Condiciones"
     },
     "forgotPassword": {
       "title": "Olvidé mi contraseña",
@@ -757,6 +759,7 @@
       "option2": "Términos y Condiciones",
       "option3": "Preguntas Frecuentes",
       "option4": "Contacto",
+      "option5": "Política de Eliminación de Datos",
       "contact": {
         "title": "Contacto",
         "subtitle": "Puedes contactarnos en los siguientes canales:",
@@ -777,6 +780,9 @@
       "privacy": {
         "title": "Política de Privacidad",
         "description": "Por favor, lea la política de privacidad antes de continuar."
+      },
+      "dataDeletion": {
+        "title": "Política de Eliminación de Datos"
       }
     },
     "preferences": {
@@ -975,7 +981,8 @@
         "passwordTooShort": "Contraseña debe tener al menos 8 caracteres",
         "passwordPolicy": "Debe incluir mayúscula, minúscula, número y símbolo",
         "confirmPasswordRequired": "Por favor confirma tu contraseña",
-        "passwordsMismatch": "Las contraseñas no coinciden"
+        "passwordsMismatch": "Las contraseñas no coinciden",
+        "mustAcceptTerms": "Debes aceptar los Términos y Condiciones para continuar"
       },
       "changePassword": {
         "oldPasswordRequired": "La contraseña actual es requerida",
