@@ -12,4 +12,11 @@ export const userService = {
     const response = await api.patch<User>(USER_ENDPOINTS.UPDATE, payload);
     return response.data;
   },
+
+  deleteProfilePhoto: async (): Promise<User> => {
+    const response = await api.delete<User>(
+      USER_ENDPOINTS.DELETE_PROFILE_PHOTO,
+    );
+    return response.data;
+  },
 };

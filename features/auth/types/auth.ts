@@ -22,6 +22,7 @@ export interface RegisterCredentials {
   phone: string;
   companyName?: string;
   taxId?: string;
+  acceptedTerms: boolean;
 }
 
 export interface LoginCredentials {

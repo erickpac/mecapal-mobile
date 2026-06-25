@@ -99,6 +99,7 @@ export default function RegisterScreen() {
       password: data.password,
       phone: data.phone,
       role: userType,
+      acceptedTerms: data.acceptedTerms,
     });
   };
 

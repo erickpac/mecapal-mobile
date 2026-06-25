@@ -681,7 +681,14 @@
       "updateSuccessMessage": "Your changes were saved successfully.",
       "photoUploadSuccess": "Profile photo updated",
       "photoUploadError": "Could not upload the photo",
-      "photoPermissionDenied": "Permission to access your photos is required"
+      "photoPermissionDenied": "Permission to access your photos is required",
+      "photoDeleteSuccess": "Profile photo deleted",
+      "photoDeleteError": "Could not delete the photo",
+      "photoActionTitle": "Profile photo",
+      "photoChange": "Change photo",
+      "photoDelete": "Delete photo",
+      "photoDeleteConfirmTitle": "Delete profile photo?",
+      "photoDeleteConfirmMessage": "Your profile photo will be permanently deleted."
     },
     "paymentMethods": {
       "title": "Payment Methods",

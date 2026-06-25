@@ -5,6 +5,7 @@ import {
   ScrollView,
   Platform,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useForm, FieldValues } from 'react-hook-form';
@@ -20,6 +21,7 @@ import { useStore } from '@/store/useStore';
 import { UserRole } from '@/features/auth/types/user';
 import { useUpdateUser } from '@/features/user/hooks/useUpdateUser';
 import { useUploadProfilePhoto } from '@/features/user/hooks/useUploadProfilePhoto';
+import { useDeleteProfilePhoto } from '@/features/user/hooks/useDeleteProfilePhoto';
 import { UpdateUserPayload } from '@/features/user/types/user';
 import {
   ClientEditProfileFormData,
@@ -39,6 +41,45 @@ const InfoScreen = () => {
   const { getErrorMessage } = useLocalizedError();
   const { showSuccess, showError } = useSnackbar();
   const { pickAndUpload, isUploading } = useUploadProfilePhoto();
+  const { mutate: deletePhoto, isPending: isDeletingPhoto } =
+    useDeleteProfilePhoto();
+
+  const confirmDeletePhoto = () => {
+    Alert.alert(
+      t('profile.personalInfo.photoDeleteConfirmTitle'),
+      t('profile.personalInfo.photoDeleteConfirmMessage'),
+      [
+        { text: t('common.cancel'), style: 'cancel' },
+        {
+          text: t('common.delete'),
+          style: 'destructive',
+          onPress: () => deletePhoto(),
+        },
+      ],
+    );
+  };
+
+  const handleAvatarPress = () => {
+    const buttons: {
+      text: string;
+      style?: 'cancel' | 'default' | 'destructive';
+      onPress?: () => void;
+    }[] = [
+      { text: t('profile.personalInfo.photoChange'), onPress: pickAndUpload },
+    ];
+
+    if (user?.profilePhotoUrl) {
+      buttons.push({
+        text: t('profile.personalInfo.photoDelete'),
+        style: 'destructive',
+        onPress: confirmDeletePhoto,
+      });
+    }
+
+    buttons.push({ text: t('common.cancel'), style: 'cancel' });
+
+    Alert.alert(t('profile.personalInfo.photoActionTitle'), undefined, buttons);
+  };
 
   const isTransporter = user?.role === UserRole.TRANSPORTER;
 
@@ -177,8 +218,8 @@ const InfoScreen = () => {
                 sizeEditButton={20}
                 showEditButton
                 uri={user?.profilePhotoUrl}
-                loading={isUploading}
-                onPress={pickAndUpload}
+                loading={isUploading || isDeletingPhoto}
+                onPress={handleAvatarPress}
               />
             </View>
 

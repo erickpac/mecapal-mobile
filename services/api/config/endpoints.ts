@@ -32,6 +32,7 @@ export const ACCOUNT_ENDPOINTS = {
 export const USER_ENDPOINTS = {
   GET_ME: 'user/me',
   UPDATE: 'user',
+  DELETE_PROFILE_PHOTO: 'user/profile-photo',
 };
 
 export const UPLOAD_ENDPOINTS = {

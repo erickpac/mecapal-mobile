@@ -681,7 +681,14 @@
       "updateSuccessMessage": "Tus cambios se guardaron correctamente.",
       "photoUploadSuccess": "Foto de perfil actualizada",
       "photoUploadError": "No se pudo subir la foto",
-      "photoPermissionDenied": "Se requiere permiso para acceder a tus fotos"
+      "photoPermissionDenied": "Se requiere permiso para acceder a tus fotos",
+      "photoDeleteSuccess": "Foto de perfil eliminada",
+      "photoDeleteError": "No se pudo eliminar la foto",
+      "photoActionTitle": "Foto de perfil",
+      "photoChange": "Cambiar foto",
+      "photoDelete": "Eliminar foto",
+      "photoDeleteConfirmTitle": "¿Eliminar foto de perfil?",
+      "photoDeleteConfirmMessage": "Tu foto de perfil se eliminará de forma permanente."
     },
     "paymentMethods": {
       "title": "Métodos de Pago",
